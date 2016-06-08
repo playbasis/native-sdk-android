@@ -1,1 +1,13 @@
+# Java class files
+*.class
+
+# Iml
+*.iml
+
+# generated files
+bin/
+gen/
 /build
+
+# OSX files
+.DS_Store
