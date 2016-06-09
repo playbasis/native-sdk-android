@@ -15,12 +15,12 @@ public class Organization extends PBModel {
   @SerializedName("description")
   public String description;
 
-  public String getOrganizeId() {
-    return id;
-  }
-
-  public void updateByOrganize(OrganizeResponse organizeResponse) {
+  public Organization(OrganizeResponse organizeResponse) {
     this.id = organizeResponse.nodeId;
     this.name = organizeResponse.name;
+  }
+
+  public String getOrganizeId() {
+    return id;
   }
 }
