@@ -18,6 +18,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -114,7 +115,7 @@ public interface PlayerService {
 
   @GET("Player/{id}/custom")
   Observable<GetUserCustomFieldsApiResult> getPlayerCustomFields(
-      @NonNull @Field("api_key") String apiKey,
+      @NonNull @Query("api_key") String apiKey,
       @NonNull @Path("id") String playerId
   );
 
