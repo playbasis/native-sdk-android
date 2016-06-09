@@ -1,3 +1,15 @@
 <resources>
   <string name="app_name">PBCore</string>
+
+  <!-- Global -->
+  <string name="global_cancel">Cancel</string>
+  <string name="global_done">Done</string>
+  <string name="global_next">Next</string>
+  <string name="global_ok">OK</string>
+  <string name="global_male">Male</string>
+  <string name="global_female">Female</string>
+  <string name="global_error">Error</string>
+  <string name="global_no">No</string>
+  <string name="global_yes">Yes</string>
+
 </resources>
