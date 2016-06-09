@@ -1,8 +1,8 @@
 package com.playbasis.pbcore.rest.form;
 
 /**
- * Created by Tar on 6/9/16 AD.
+ * Created by Tar on 4/22/16 AD.
  */
-public class PBForm {
+public abstract class PBForm {
 
 }
