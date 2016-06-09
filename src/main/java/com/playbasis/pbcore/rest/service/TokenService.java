@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.rest.service;
 
+import android.support.annotation.NonNull;
+
 import com.playbasis.pbcore.rest.result.RequestTokenApiResult;
 
 import retrofit2.http.Field;
@@ -11,6 +13,9 @@ public interface TokenService {
 
   @FormUrlEncoded
   @POST("Auth")
-  Observable<RequestTokenApiResult> getToken(@Field("api_key") String key, @Field("api_secret") String secret);
+  Observable<RequestTokenApiResult> getToken(
+      @NonNull @Field("api_key") String key,
+      @Field("api_secret") String secret
+  );
 
 }
