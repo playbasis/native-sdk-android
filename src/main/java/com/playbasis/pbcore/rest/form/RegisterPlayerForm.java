@@ -1,18 +1,17 @@
 package com.playbasis.pbcore.rest.form;
 
-import com.playbasis.pbcore.rest.form.BaseUserForm;
 import com.smartsoftasia.ssalibrary.helper.MD5;
 import com.smartsoftasia.ssalibrary.helper.StringHelper;
 
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class RegisterForm extends BaseUserForm {
+public class RegisterPlayerForm extends BaseUserForm {
 
   private String userId;
   private String userName;
 
-  public RegisterForm(String email, String password) {
+  public RegisterPlayerForm(String email, String password) {
     super(email, password);
     userId = MD5.encrypt(email);
 
