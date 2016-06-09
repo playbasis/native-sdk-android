@@ -1,7 +1,5 @@
 package com.playbasis.pbcore.rest.form;
 
-import com.playbasis.pbcore.rest.form.BaseUserForm;
-
 /**
  * Created by Tar on 4/21/16 AD.
  */
