@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Created by androiddev01 on 4/26/2016 AD.
  */
 public class GetUserCustomFieldsApiResult extends PBApiResult<GetUserCustomFieldsApiResult.Response> {
-  public static final String TAG = "GetUserInfoApiResult";
+  public static final String TAG = "GetUserCustomFieldsApiResult";
 
   public HashMap<String, String> getCustomFieldMap() {
     return response.player.customFieldMap;
