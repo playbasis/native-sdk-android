@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Created by androiddev01 on 4/26/2016 AD.
  */
-public class GetUserInfoResponse {
-  public static final String TAG = "GetUserInfoResponse";
+public class GetPlayerInfoResponse {
+  public static final String TAG = "GetPlayerInfoResponse";
 
   @Expose
   @SerializedName("image")
@@ -52,7 +52,7 @@ public class GetUserInfoResponse {
   @SerializedName("organization")
   public List<OrganizeResponse> organizeResponses;
 
-  public GetUserInfoResponse() {
+  public GetPlayerInfoResponse() {
 
   }
 }

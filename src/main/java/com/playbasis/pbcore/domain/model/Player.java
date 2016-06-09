@@ -3,7 +3,7 @@ package com.playbasis.pbcore.domain.model;
 import android.support.annotation.StringDef;
 
 import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
-import com.playbasis.pbcore.rest.result.response.GetUserInfoResponse;
+import com.playbasis.pbcore.rest.result.response.GetPlayerInfoResponse;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -28,7 +28,7 @@ public class Player extends PBModel {
   public String lastName;
   public String email;
   public Birthdate birthday;
-  public String userId;
+  public String playerId;
   public String imageUrl;
   public String phoneNumber;
   public String registered;
@@ -37,25 +37,25 @@ public class Player extends PBModel {
   public Gender gender;
   public HashMap<String, String> customFieldMap = new HashMap<>();
 
-  public Player(String userId) {
-    this.userId = userId;
+  public Player(String playerId) {
+    this.playerId = playerId;
   }
 
-  public void update(GetUserInfoResponse getUserInfoResponse) {
-    if (getUserInfoResponse.userId != null) {
-      this.userId = getUserInfoResponse.userId;
+  public void update(GetPlayerInfoResponse getPlayerInfoResponse) {
+    if (getPlayerInfoResponse.userId != null) {
+      this.playerId = getPlayerInfoResponse.userId;
     }
 
-    this.email = getUserInfoResponse.email;
-    this.firstName = getUserInfoResponse.firstName;
-    this.lastName = getUserInfoResponse.lastName;
-    this.gender = new Gender(getUserInfoResponse.gender);
-    this.birthday = getUserInfoResponse.birthdate;
-    this.imageUrl = getUserInfoResponse.image;
-    this.phoneNumber = getUserInfoResponse.phoneNumber;
-    this.registered = getUserInfoResponse.registered;
-    this.lastLogin = getUserInfoResponse.lastLogin;
-    this.lastLogout = getUserInfoResponse.lastLogout;
+    this.email = getPlayerInfoResponse.email;
+    this.firstName = getPlayerInfoResponse.firstName;
+    this.lastName = getPlayerInfoResponse.lastName;
+    this.gender = new Gender(getPlayerInfoResponse.gender);
+    this.birthday = getPlayerInfoResponse.birthdate;
+    this.imageUrl = getPlayerInfoResponse.image;
+    this.phoneNumber = getPlayerInfoResponse.phoneNumber;
+    this.registered = getPlayerInfoResponse.registered;
+    this.lastLogin = getPlayerInfoResponse.lastLogin;
+    this.lastLogout = getPlayerInfoResponse.lastLogout;
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {

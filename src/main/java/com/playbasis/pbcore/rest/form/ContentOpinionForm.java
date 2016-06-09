@@ -21,6 +21,6 @@ public abstract class ContentOpinionForm extends CustomFieldForm {
   }
 
   public String getPlayerId() {
-    return player.userId;
+    return player.playerId;
   }
 }
