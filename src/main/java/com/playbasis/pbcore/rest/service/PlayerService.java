@@ -38,7 +38,7 @@ public interface PlayerService {
   Observable<LoginPlayerApiResult> loginPlayer(
       @NonNull @Field("token") String token,
       @Field("email") String email,
-      @Field("password") String password
+      @NonNull @Field("password") String password
   );
 
   /**
@@ -52,7 +52,7 @@ public interface PlayerService {
   @POST("Player/password/email")
   Observable<ForgetPasswordApiResult> forgetPlayerPassword(
       @NonNull @Field("token") String token,
-      @Field("email") String email
+      @NonNull @Field("email") String email
   );
 
   /**
@@ -66,7 +66,7 @@ public interface PlayerService {
   @POST("Player/{id}/data/all")
   Observable<GetUserDetailApiResult> getPlayerDetail(
       @NonNull @Field("token") String token,
-      @Path("id") String userId
+      @NonNull @Path("id") String userId
   );
 
   /**
@@ -87,23 +87,23 @@ public interface PlayerService {
       @Path("id") String playerId,
       @NonNull @Field("username") String username,
       @NonNull @Field("email") String email,
-      @NonNull @Field("image") String image,
-      @NonNull @Field("password") String password,
-      @NonNull @Field("approve_status") String approveStatus
+      @Field("image") String image,
+      @Field("password") String password,
+      @Field("approve_status") String approveStatus
   );
 
   @FormUrlEncoded
   @POST("Player/{id}/email/verify")
   Observable<VerifyPlayerEmailApiResult> sendPlayerVerifyEmail(
       @NonNull @Field("token") String token,
-      @Path("id") String playerId
+      @NonNull @Path("id") String playerId
   );
 
   @FormUrlEncoded
   @POST("Player/{id}/update")
   Observable<UpdatePlayerDetailApiResult> updatePlayer(
-      @Field("token") String token,
-      @Path("id") String userId,
+      @NonNull @Field("token") String token,
+      @NonNull @Path("id") String userId,
       @Field("first_name") String firstName,
       @Field("last_name") String lastName,
       @Field("gender") String gender,
@@ -114,32 +114,32 @@ public interface PlayerService {
 
   @GET("Player/{id}/custom")
   Observable<GetUserCustomFieldsApiResult> getPlayerCustomFields(
-      @Field("api_key") String apiKey,
-      @Path("id") String playerId
+      @NonNull @Field("api_key") String apiKey,
+      @NonNull @Path("id") String playerId
   );
 
   @FormUrlEncoded
   @POST("Player/{id}/custom")
   Observable<SetPlayerCustomFieldApiResult> setPlayerCustomFields(
       @NonNull @Field("token") String token,
-      @Path("id") String userId,
-      @Field("key") String key,
-      @Field("value") String value
+      @NonNull @Path("id") String userId,
+      @NonNull @Field("key") String key,
+      @NonNull @Field("value") String value
   );
 
   @FormUrlEncoded
   @POST("StoreOrg/nodes/{node_id}/addPlayer/{id}")
   Observable<UpdatePlayerOrganizationApiResult> addPlayerOrganization(
       @NonNull @Field("token") String token,
-      @Path("id") String userId,
-      @Path("node_id") String organizeId
+      @NonNull @Path("id") String userId,
+      @NonNull @Path("node_id") String organizeId
   );
 
   @FormUrlEncoded
   @POST("StoreOrg/nodes/{node_id}/removePlayer/{id}")
   Observable<RemovePlayerFromOrganizeApiResult> removePlayerOrganization(
       @NonNull @Field("token") String token,
-      @Path("id") String userId,
-      @Path("node_id") String organizeId
+      @NonNull @Path("id") String userId,
+      @NonNull @Path("node_id") String organizeId
   );
 }
