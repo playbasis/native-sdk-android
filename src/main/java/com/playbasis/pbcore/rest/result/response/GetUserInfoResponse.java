@@ -3,7 +3,6 @@ package com.playbasis.pbcore.rest.result.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.playbasis.pbcore.domain.model.Birthdate;
-import com.playbasis.pbcore.domain.model.Organize;
 
 import java.util.List;
 
@@ -51,7 +50,7 @@ public class GetUserInfoResponse {
   public String lastLogout;
   @Expose
   @SerializedName("organization")
-  public List<Organize> organizes;
+  public List<OrganizeResponse> organizeResponses;
 
   public GetUserInfoResponse() {
 

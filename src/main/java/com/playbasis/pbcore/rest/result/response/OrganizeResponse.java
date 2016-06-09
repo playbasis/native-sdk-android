@@ -1,11 +1,11 @@
-package com.playbasis.pbcore.domain.model;
+package com.playbasis.pbcore.rest.result.response;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Tar on 4/28/16 AD.
  */
-public class Organize {
+public class OrganizeResponse {
 
 
   @SerializedName("node_id")
