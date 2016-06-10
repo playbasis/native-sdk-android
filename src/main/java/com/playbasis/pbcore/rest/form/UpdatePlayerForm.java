@@ -23,6 +23,7 @@ public class UpdatePlayerForm extends PBForm {
 
   public UpdatePlayerForm(Player player, boolean preload) {
     this.player = player;
+    this.playerId = player.playerId;
 
     if (preload) {
       this.firstName = player.firstName;
