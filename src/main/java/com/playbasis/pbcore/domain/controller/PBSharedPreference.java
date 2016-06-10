@@ -16,16 +16,18 @@ import com.smartsoftasia.ssalibrary.helper.SharedPreferenceHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by Tar on 4/20/16 AD.
  */
-public abstract class PBSharedPreference extends BaseSharedPreference {
+public class PBSharedPreference extends BaseSharedPreference {
 
   public static final String TAG = "SharedPreference";
   public static final String TOKEN = "TokenKey";
   public static final String USER = "User";
 
-
+  @Inject
   public PBSharedPreference(Context context) {
     super(context);
   }
