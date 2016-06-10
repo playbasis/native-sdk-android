@@ -24,8 +24,8 @@ public interface ContentService {
   Observable<ContentsApiResult> getContents(
       @NonNull @Query("api_key") String apiKey,
       @Query("category") String projectCategory,
-      @Query("player_id") String playerId,
       @Query("pin") String pin,
+      @Query("player_id") String playerId,
       @Query("only_new_content") boolean onlyNewContent,
       @Query("sort") String sort,
       @Query("order") String order,
@@ -37,6 +37,7 @@ public interface ContentService {
   Observable<CountContentApiResult> countContents(
       @NonNull @Query("api_key") String apiKey,
       @Query("category") String category,
+      @Query("pin") String pin,
       @Query("player_id") String playerId,
       @Query("only_new_content") boolean onlyNewContent
   );

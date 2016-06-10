@@ -3,8 +3,8 @@ package com.playbasis.pbcore.rest.service;
 import android.support.annotation.NonNull;
 
 import com.playbasis.pbcore.rest.result.ForgetPasswordApiResult;
+import com.playbasis.pbcore.rest.result.GetPlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
-import com.playbasis.pbcore.rest.result.GetUserDetailApiResult;
 import com.playbasis.pbcore.rest.result.LoginPlayerApiResult;
 import com.playbasis.pbcore.rest.result.RegisterUserApiResult;
 import com.playbasis.pbcore.rest.result.RemovePlayerFromOrganizeApiResult;
@@ -65,7 +65,7 @@ public interface PlayerService {
    */
   @FormUrlEncoded
   @POST("Player/{id}/data/all")
-  Observable<GetUserDetailApiResult> getPlayerDetail(
+  Observable<GetPlayerDetailApiResult> getPlayerDetail(
       @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token
   );

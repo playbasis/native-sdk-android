@@ -35,8 +35,8 @@ public class GetContentsInteractor extends PlayBasisApiInteractor {
         .getContents(
             restClient.getApiKey(),
             getContentsForm.category,
-            getContentsForm.playerId,
             getContentsForm.pin,
+            getContentsForm.playerId,
             getContentsForm.onlyNewContents,
             getContentsForm.sort,
             getContentsForm.order,
