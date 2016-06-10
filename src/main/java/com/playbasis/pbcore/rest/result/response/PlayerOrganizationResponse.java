@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Tar on 4/28/16 AD.
  */
-public class OrganizeResponse {
-
+public class PlayerOrganizationResponse {
 
   @SerializedName("node_id")
   public String nodeId;

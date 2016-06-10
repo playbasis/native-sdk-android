@@ -1,7 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.playbasis.pbcore.rest.result.response.OrganizeResponse;
+import com.playbasis.pbcore.rest.result.response.PlayerOrganizationResponse;
 
 /**
  * Created by Tar on 6/9/16 AD.
@@ -15,9 +15,9 @@ public class Organization extends PBModel {
   @SerializedName("description")
   public String description;
 
-  public Organization(OrganizeResponse organizeResponse) {
-    this.id = organizeResponse.nodeId;
-    this.name = organizeResponse.name;
+  public Organization(PlayerOrganizationResponse playerOrganizationResponse) {
+    this.id = playerOrganizationResponse.nodeId;
+    this.name = playerOrganizationResponse.name;
   }
 
   public String getOrganizeId() {

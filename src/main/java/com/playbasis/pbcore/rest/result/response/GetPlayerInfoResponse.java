@@ -50,7 +50,7 @@ public class GetPlayerInfoResponse {
   public String lastLogout;
   @Expose
   @SerializedName("organization")
-  public List<OrganizeResponse> organizeResponses;
+  public List<PlayerOrganizationResponse> playerOrganizationResponses;
 
   public GetPlayerInfoResponse() {
 
