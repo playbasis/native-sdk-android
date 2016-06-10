@@ -1,23 +1,26 @@
 package com.playbasis.pbcore.domain.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.playbasis.pbcore.rest.result.StoreOrganizeApiResult;
 import com.playbasis.pbcore.rest.result.response.PlayerOrganizationResponse;
 
 /**
  * Created by Tar on 6/9/16 AD.
  */
-public class Organization extends PBModel {
+public abstract class Organization extends PBModel {
 
-  @SerializedName("_id")
   public String id;
-  @SerializedName("name")
   public String name;
-  @SerializedName("description")
   public String description;
 
-  public Organization(PlayerOrganizationResponse playerOrganizationResponse) {
+  public void init(PlayerOrganizationResponse playerOrganizationResponse) {
     this.id = playerOrganizationResponse.nodeId;
     this.name = playerOrganizationResponse.name;
+  }
+
+  public void init(StoreOrganizeApiResult.OrganizeResponse organizeResponse) {
+    this.id = organizeResponse.id;
+    this.name = organizeResponse.name;
+    this.description = organizeResponse.description;
   }
 
   public String getOrganizeId() {
