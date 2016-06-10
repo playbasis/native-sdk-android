@@ -9,10 +9,12 @@ public class RestClientConfiguration {
 
   String baseUrl;
   String apiKey;
+  String apiSecret;
 
   @Inject
-  public RestClientConfiguration(String baseUrl, String apiKey) {
+  public RestClientConfiguration(String baseUrl, String apiKey, String apiSecret) {
     this.baseUrl = baseUrl;
     this.apiKey = apiKey;
+    this.apiSecret = apiSecret;
   }
 }

@@ -127,4 +127,8 @@ public class RestClient {
   public String getApiKey() {
     return mRestClientConfiguration.apiKey;
   }
+
+  public String getApiSecret() {
+    return mRestClientConfiguration.apiSecret;
+  }
 }
