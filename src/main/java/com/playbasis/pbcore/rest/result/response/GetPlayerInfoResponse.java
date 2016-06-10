@@ -35,7 +35,7 @@ public class GetPlayerInfoResponse {
   public Birthdate birthdate;
   @Expose
   @SerializedName("cl_player_id")
-  public String userId;
+  public String playerId;
   @Expose
   @SerializedName("phone_number")
   public String phoneNumber;

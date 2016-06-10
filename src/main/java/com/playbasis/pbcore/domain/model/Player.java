@@ -42,8 +42,8 @@ public class Player extends PBModel {
   }
 
   public void update(GetPlayerInfoResponse getPlayerInfoResponse) {
-    if (getPlayerInfoResponse.userId != null) {
-      this.playerId = getPlayerInfoResponse.userId;
+    if (getPlayerInfoResponse.playerId != null) {
+      this.playerId = getPlayerInfoResponse.playerId;
     }
 
     this.email = getPlayerInfoResponse.email;
