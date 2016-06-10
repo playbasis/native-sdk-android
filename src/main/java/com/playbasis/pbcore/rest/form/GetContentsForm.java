@@ -6,15 +6,14 @@ package com.playbasis.pbcore.rest.form;
 public class GetContentsForm extends PBForm {
   public static final String TAG = "GetContentsForm";
 
-  public String category;
-  public String sort;
-  public String order;
-  public int limit;
-  public int offset;
-  public String tags;
-  public String playerId;
-  public String pin;
-  public boolean onlyNewContents;
+  public String category = null;
+  public String sort = null;
+  public String order = null;
+  public int limit = 10;
+  public int offset = 0;
+  public String playerId = null;
+  public String pin = null;
+  public boolean onlyNewContents = false;
 
   public void setCategory(String category) {
     this.category = category;
@@ -34,10 +33,6 @@ public class GetContentsForm extends PBForm {
 
   public void setOffset(int offset) {
     this.offset = offset;
-  }
-
-  public void setTags(String tags) {
-    this.tags = tags;
   }
 
   public void setPlayerId(String playerId) {
