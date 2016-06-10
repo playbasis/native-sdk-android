@@ -5,7 +5,9 @@ import android.text.Html;
 
 import com.playbasis.pbcore.rest.result.response.ContentResponse;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Tar on 5/5/16 AD.
@@ -25,7 +27,7 @@ public abstract class Content implements Parcelable {
 
   }
 
-  public Content(ContentResponse contentResponse) {
+  public void init(ContentResponse contentResponse) {
     this.id = contentResponse.id;
     this.title = contentResponse.title;
     this.summary = contentResponse.summary;
@@ -34,6 +36,22 @@ public abstract class Content implements Parcelable {
     this.image = contentResponse.image;
     this.startDate = contentResponse.startDate;
     this.endDate = contentResponse.endDate;
+  }
+
+  public static <T extends Content> List<T> createFromContentResponses(Class<T> klass, List<ContentResponse> contentResponses) {
+    ArrayList<T> results = new ArrayList<>();
+
+    try {
+      for (ContentResponse contentResponse : contentResponses) {
+        T t = klass.newInstance();
+        t.init(contentResponse);
+        results.add(t);
+      }
+    } catch (Exception e) {
+
+    }
+
+    return results;
   }
 
   public String getImageUrl() {
