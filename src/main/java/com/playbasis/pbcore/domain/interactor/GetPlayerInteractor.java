@@ -19,8 +19,8 @@ import rx.functions.Func1;
  */
 public class GetPlayerInteractor extends PlayBasisApiInteractor {
 
-  private GetPlayerForm getPlayerForm;
-  private GetPlayerCustomFieldInteractor getPlayerCustomFieldInteractor;
+  protected GetPlayerForm getPlayerForm;
+  protected GetPlayerCustomFieldInteractor getPlayerCustomFieldInteractor;
 
   @Inject
   public GetPlayerInteractor(ThreadExecutor threadExecutor,
@@ -45,7 +45,7 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
             }
 
             Player player = createPlayer(getPlayerDetailApiResult);
-            player.update(getPlayerDetailApiResult.response.getPlayerInfoResponse);
+            updatePlayer(player, getPlayerDetailApiResult);
 
             return player;
           }
@@ -60,6 +60,12 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
 
   public Player createPlayer(GetPlayerDetailApiResult getPlayerDetailApiResult) {
     Player player = new Player(getPlayerForm.playerId);
+    return player;
+  }
+
+  public Player updatePlayer(Player player, GetPlayerDetailApiResult getPlayerDetailApiResult) {
+    player.update(getPlayerDetailApiResult.response.getPlayerInfoResponse);
+
     return player;
   }
 
