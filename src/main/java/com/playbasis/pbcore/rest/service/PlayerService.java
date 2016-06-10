@@ -60,14 +60,14 @@ public interface PlayerService {
    * Get the details of a getPlayerInfoResponse
    *
    * @param token  access token
-   * @param userId getPlayerInfoResponse id
+   * @param playerId getPlayerInfoResponse id
    * @return User info result observable
    */
   @FormUrlEncoded
   @POST("Player/{id}/data/all")
   Observable<GetUserDetailApiResult> getPlayerDetail(
-      @NonNull @Field("token") String token,
-      @NonNull @Path("id") String userId
+      @NonNull @Path("id") String playerId,
+      @NonNull @Field("token") String token
   );
 
   /**
@@ -84,8 +84,8 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/register")
   Observable<RegisterUserApiResult> registerPlayer(
-      @NonNull @Field("token") String token,
       @Path("id") String playerId,
+      @NonNull @Field("token") String token,
       @NonNull @Field("username") String username,
       @NonNull @Field("email") String email,
       @Field("image") String image,
@@ -96,8 +96,8 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/email/verify")
   Observable<VerifyPlayerEmailApiResult> sendPlayerVerifyEmail(
-      @NonNull @Field("token") String token,
-      @NonNull @Path("id") String playerId
+      @NonNull @Path("id") String playerId,
+      @NonNull @Field("token") String token
   );
 
   @FormUrlEncoded
@@ -115,15 +115,15 @@ public interface PlayerService {
 
   @GET("Player/{id}/custom")
   Observable<GetUserCustomFieldsApiResult> getPlayerCustomFields(
-      @NonNull @Query("api_key") String apiKey,
-      @NonNull @Path("id") String playerId
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey
   );
 
   @FormUrlEncoded
   @POST("Player/{id}/custom")
   Observable<SetPlayerCustomFieldApiResult> setPlayerCustomFields(
-      @NonNull @Field("token") String token,
       @NonNull @Path("id") String userId,
+      @NonNull @Field("token") String token,
       @NonNull @Field("key") String key,
       @NonNull @Field("value") String value
   );
@@ -131,16 +131,16 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("StoreOrg/nodes/{node_id}/addPlayer/{id}")
   Observable<UpdatePlayerOrganizationApiResult> addPlayerOrganization(
-      @NonNull @Field("token") String token,
       @NonNull @Path("id") String userId,
-      @NonNull @Path("node_id") String organizeId
+      @NonNull @Path("node_id") String organizeId,
+      @NonNull @Field("token") String token
   );
 
   @FormUrlEncoded
   @POST("StoreOrg/nodes/{node_id}/removePlayer/{id}")
   Observable<RemovePlayerFromOrganizeApiResult> removePlayerOrganization(
-      @NonNull @Field("token") String token,
       @NonNull @Path("id") String userId,
-      @NonNull @Path("node_id") String organizeId
+      @NonNull @Path("node_id") String organizeId,
+      @NonNull @Field("token") String token
   );
 }
