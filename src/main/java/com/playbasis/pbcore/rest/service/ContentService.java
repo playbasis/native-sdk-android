@@ -24,13 +24,13 @@ public interface ContentService {
   Observable<ContentsApiResult> getContents(
       @NonNull @Query("api_key") String apiKey,
       @Query("category") String projectCategory,
+      @Query("player_id") String playerId,
+      @Query("pin") String pin,
+      @Query("only_new_content") boolean onlyNewContent,
       @Query("sort") String sort,
       @Query("order") String order,
       @Query("offset") int offset,
-      @Query("limit") int limit,
-      @Query("player_id") String playerId,
-      @Query("pin") String pin,
-      @Query("only_new_content") boolean onlyNewContent
+      @Query("limit") int limit
   );
 
   @GET("Content/count")
