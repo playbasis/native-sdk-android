@@ -17,13 +17,13 @@ import rx.functions.Func1;
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class GetPlayerCustomFieldInteractor extends PlayBasisApiInteractor {
+public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
   GetPlayerCustomFieldForm getPlayerCustomFieldForm;
 
   @Inject
-  public GetPlayerCustomFieldInteractor(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread,
-                                        RestClient restClient, RequestTokenInteractor requestTokenInteractor) {
+  public GetPlayerCustomFieldsInteractor(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread,
+                                         RestClient restClient, RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 

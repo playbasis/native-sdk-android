@@ -20,17 +20,17 @@ import rx.functions.Func1;
 public class GetPlayerInteractor extends PlayBasisApiInteractor {
 
   protected GetPlayerForm getPlayerForm;
-  protected GetPlayerCustomFieldInteractor getPlayerCustomFieldInteractor;
+  protected GetPlayerCustomFieldsInteractor getPlayerCustomFieldsInteractor;
 
   @Inject
   public GetPlayerInteractor(ThreadExecutor threadExecutor,
                              PostExecutionThread postExecutionThread,
                              RestClient restClient,
                              RequestTokenInteractor requestTokenInteractor,
-                             GetPlayerCustomFieldInteractor getPlayerCustomFieldInteractor) {
+                             GetPlayerCustomFieldsInteractor getPlayerCustomFieldsInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
 
-    this.getPlayerCustomFieldInteractor = getPlayerCustomFieldInteractor;
+    this.getPlayerCustomFieldsInteractor = getPlayerCustomFieldsInteractor;
   }
 
   @Override
@@ -52,8 +52,8 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
         }).flatMap(new Func1<Player, Observable<Player>>() {
           @Override
           public Observable<Player> call(Player user) {
-            getPlayerCustomFieldInteractor.setGetPlayerCustomFieldForm(new GetPlayerCustomFieldForm(user));
-            return getPlayerCustomFieldInteractor.buildUseCaseObservable();
+            getPlayerCustomFieldsInteractor.setGetPlayerCustomFieldForm(new GetPlayerCustomFieldForm(user));
+            return getPlayerCustomFieldsInteractor.buildUseCaseObservable();
           }
         });
   }
