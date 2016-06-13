@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="global_corner_radius">@dimen/dp_4</dimen>
+  <dimen name="global_section_header">@dimen/sp_16</dimen>
+  <dimen name="global_content">@dimen/sp_14</dimen>
+  <dimen name="global_instruction">@dimen/sp_16</dimen>
+  <dimen name="global_input_field">@dimen/sp_12</dimen>
+  <dimen name="global_button">@dimen/sp_14</dimen>
+  <dimen name="global_container_view_padding">@dimen/dp_16</dimen>
+
+  <dimen name="walkthrough_page_indicator_size">@dimen/dp_5</dimen>
+
+  <dimen name="spacing_narrow">@dimen/dp_2</dimen>
+  <dimen name="spacing_small">@dimen/dp_4</dimen>
+  <dimen name="spacing_default">@dimen/dp_8</dimen>
+  <dimen name="spacing_large">@dimen/dp_12</dimen>
+  <dimen name="spacing_extra_large">@dimen/dp_16</dimen>
+  <dimen name="spacing_wide">@dimen/dp_20</dimen>
+
+  <!-- Default screen margins, per the Android Design guidelines. -->
+  <dimen name="activity_horizontal_margin">@dimen/dp_16</dimen>
+  <dimen name="activity_vertical_margin">@dimen/dp_16</dimen>
+</resources>
