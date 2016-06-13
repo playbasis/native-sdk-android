@@ -6,7 +6,7 @@ import com.playbasis.pbcore.rest.result.ForgetPasswordApiResult;
 import com.playbasis.pbcore.rest.result.GetPlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.LoginPlayerApiResult;
-import com.playbasis.pbcore.rest.result.RegisterUserApiResult;
+import com.playbasis.pbcore.rest.result.RegisterPlayerApiResult;
 import com.playbasis.pbcore.rest.result.RemovePlayerFromOrganizeApiResult;
 import com.playbasis.pbcore.rest.result.SetPlayerCustomFieldApiResult;
 import com.playbasis.pbcore.rest.result.UpdatePlayerDetailApiResult;
@@ -83,7 +83,7 @@ public interface PlayerService {
    */
   @FormUrlEncoded
   @POST("Player/{id}/register")
-  Observable<RegisterUserApiResult> registerPlayer(
+  Observable<RegisterPlayerApiResult> registerPlayer(
       @Path("id") String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("username") String username,
