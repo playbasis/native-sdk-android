@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class LoginPlayerApiResult extends BaseUserApiResult<LoginPlayerApiResult.Response> {
+public class LoginPlayerApiResult extends BasePlayerApiResult<LoginPlayerApiResult.Response> {
 
   @Override
   public String getUserId() {
