@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -37,6 +38,11 @@ public abstract class PBFragment extends com.smartsoftasia.ssalibrary.view.fragm
     if (basePresenter != null) {
       basePresenter.create();
     }
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
   }
 
   @Override
