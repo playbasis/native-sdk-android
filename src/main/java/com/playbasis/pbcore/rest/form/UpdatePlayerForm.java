@@ -21,6 +21,10 @@ public class UpdatePlayerForm extends PBForm {
   public File profilePictureFile;
   public String imageUrl;
 
+  public UpdatePlayerForm(String playerId) {
+    this.playerId = playerId;
+  }
+
   public UpdatePlayerForm(Player player, boolean preload) {
     this.player = player;
     this.playerId = player.playerId;

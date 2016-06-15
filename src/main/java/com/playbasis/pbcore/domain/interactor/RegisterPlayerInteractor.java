@@ -40,9 +40,9 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
             playerRegistrationForm.getPlayerId(),
             token.token,
             playerRegistrationForm.getUserName(),
-            playerRegistrationForm.email,
-            playerRegistrationForm.getImage(),
-            playerRegistrationForm.password,
+            playerRegistrationForm.getEmail(),
+            playerRegistrationForm.getImageUrl(),
+            playerRegistrationForm.getPassword(),
             "approved")
         .map(new PBApiErrorCheckFunc<RegisterPlayerApiResult>())
         .flatMap(new Func1<RegisterPlayerApiResult, Observable<VerifyPlayerEmailApiResult>>() {
