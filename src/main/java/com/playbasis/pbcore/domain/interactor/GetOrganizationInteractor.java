@@ -38,8 +38,8 @@ public class GetOrganizationInteractor extends RestInteractor {
   public Observable buildUseCaseObservable() {
     final GetStoreOrganizationForm form = getStoreOrganizationForm;
 
-    if (form.reloadCache) {
-      List<? extends Organization> organizations = sharedPreference.readOrganizations(form.klass, form.saveKey);
+    if (form.isReloadCache()) {
+      List<? extends Organization> organizations = sharedPreference.readOrganizations(form.getKlass(), form.getSaveKey());
 
       if (organizations != null) {
         return Observable.just(organizations);
@@ -49,7 +49,7 @@ public class GetOrganizationInteractor extends RestInteractor {
     return restClient.getStoreOrganizeService()
         .getStoreOrganize(
             restClient.getApiKey(),
-            form.organizationId
+            form.getOrganizationId()
         )
         .map(new PBApiErrorCheckFunc<StoreOrganizeApiResult>())
         .map(new Func1<StoreOrganizeApiResult, List<? extends Organization>>() {
@@ -59,8 +59,8 @@ public class GetOrganizationInteractor extends RestInteractor {
               return null;
             }
 
-            List<? extends Organization> organizations = storeOrganizeApiResult.getOrganizations(form.klass);
-            sharedPreference.writeOrganizations(organizations, form.saveKey);
+            List<? extends Organization> organizations = storeOrganizeApiResult.getOrganizations(form.getKlass());
+            sharedPreference.writeOrganizations(organizations, form.getSaveKey());
 
             return organizations;
           }

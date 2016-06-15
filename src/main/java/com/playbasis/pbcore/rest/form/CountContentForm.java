@@ -10,9 +10,9 @@ public class CountContentForm extends PBForm {
 
   public static final String TAG = "CountContentForm";
 
-  public String category = null;
-  public Player player = null;
-  public String pin = null;
+  protected String category = null;
+  protected Player player = null;
+  protected String pin = null;
 
   public CountContentForm(String category) {
     this.category = category;

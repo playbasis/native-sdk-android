@@ -1,16 +1,22 @@
 package com.playbasis.pbcore.rest.form;
 
+import com.smartsoftasia.ssalibrary.helper.Validator;
+
 /**
  * Created by Tar on 4/21/16 AD.
  */
 public class PlayerRegistrationForm extends BaseUserForm {
 
-  private String playerId;
-  private String userName;
-  private String imageUrl;
+  protected String playerId;
+  protected String userName;
+  protected String imageUrl;
 
   public PlayerRegistrationForm(String email, String password) {
     super(email, password);
+  }
+
+  public boolean isUserNameValid(){
+    return Validator.isValidEmail(userName);
   }
 
   public String getPlayerId(){

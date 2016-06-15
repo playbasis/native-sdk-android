@@ -12,14 +12,14 @@ import java.io.File;
  */
 public class UpdatePlayerForm extends PBForm {
 
-  public Player player;
-  public String playerId;
-  public String firstName;
-  public String lastName;
-  public Birthdate birthDate;
-  public Gender gender;
-  public File profilePictureFile;
-  public String imageUrl;
+  protected Player player;
+  protected String playerId;
+  protected String firstName;
+  protected String lastName;
+  protected Birthdate birthDate;
+  protected Gender gender;
+  protected File profilePictureFile;
+  protected String imageUrl;
 
   public UpdatePlayerForm(String playerId) {
     this.playerId = playerId;
@@ -39,5 +39,69 @@ public class UpdatePlayerForm extends PBForm {
 
   public boolean isValidForm() {
     return Validator.isValid(playerId);
+  }
+
+  public Player getPlayer() {
+    return player;
+  }
+
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public Birthdate getBirthDate() {
+    return birthDate;
+  }
+
+  public void setBirthDate(Birthdate birthDate) {
+    this.birthDate = birthDate;
+  }
+
+  public Gender getGender() {
+    return gender;
+  }
+
+  public void setGender(Gender gender) {
+    this.gender = gender;
+  }
+
+  public File getProfilePictureFile() {
+    return profilePictureFile;
+  }
+
+  public void setProfilePictureFile(File profilePictureFile) {
+    this.profilePictureFile = profilePictureFile;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 }

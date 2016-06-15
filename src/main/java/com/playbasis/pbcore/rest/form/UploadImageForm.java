@@ -7,8 +7,8 @@ import java.io.File;
  */
 public class UploadImageForm extends PBForm {
 
-  private String playerId;
-  private File file;
+  protected String playerId;
+  protected File file;
 
   public UploadImageForm(String playerId, File file) {
     this.playerId = playerId;
@@ -21,5 +21,9 @@ public class UploadImageForm extends PBForm {
 
   public File getFile() {
     return file;
+  }
+
+  public void setFile(File file) {
+    this.file = file;
   }
 }

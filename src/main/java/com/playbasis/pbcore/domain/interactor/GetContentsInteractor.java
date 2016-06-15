@@ -34,14 +34,14 @@ public class GetContentsInteractor extends PlayBasisApiInteractor {
     return restClient.getContentService()
         .getContents(
             restClient.getApiKey(),
-            getContentsForm.category,
-            getContentsForm.pin,
-            getContentsForm.playerId,
-            getContentsForm.onlyNewContents,
-            getContentsForm.sort,
-            getContentsForm.order,
-            getContentsForm.offset,
-            getContentsForm.limit
+            getContentsForm.getCategory(),
+            getContentsForm.getPin(),
+            getContentsForm.getPlayerId(),
+            getContentsForm.isOnlyNewContents(),
+            getContentsForm.getSort(),
+            getContentsForm.getOrder(),
+            getContentsForm.getOffset(),
+            getContentsForm.getLimit()
         )
         .map(new PBApiErrorCheckFunc<ContentsApiResult>());
   }

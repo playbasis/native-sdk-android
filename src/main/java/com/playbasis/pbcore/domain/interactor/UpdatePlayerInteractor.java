@@ -35,15 +35,15 @@ public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    if (form.profilePictureFile != null) {
-      UploadImageForm uploadImageForm = new UploadImageForm(form.playerId, form.profilePictureFile);
+    if (form.getProfilePictureFile() != null) {
+      UploadImageForm uploadImageForm = new UploadImageForm(form.getPlayerId(), form.getProfilePictureFile());
       uploadImageInteractor.setUploadImageForm(uploadImageForm);
 
       return uploadImageInteractor.buildUseCaseObservable().map(new Func1<UploadImageApiResult, UploadImageApiResult>() {
         @Override
         public UploadImageApiResult call(UploadImageApiResult uploadImageApiResult) {
           if (uploadImageApiResult.success) {
-            form.imageUrl = uploadImageApiResult.response.url;
+            form.setImageUrl(uploadImageApiResult.response.url);
           }
 
           return uploadImageApiResult;
@@ -62,12 +62,12 @@ public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
   private Observable<UpdatePlayerDetailApiResult> buildUpdateUserObservable() {
     return restClient.getPlayerService().updatePlayer(
         token.token,
-        form.playerId,
-        form.firstName,
-        form.lastName,
-        form.gender.value,
-        form.birthDate.getParamValue(),
-        form.imageUrl
+        form.getPlayerId(),
+        form.getFirstName(),
+        form.getLastName(),
+        form.getGender().value,
+        form.getBirthDate().getParamValue(),
+        form.getImageUrl()
     ).map(new PBApiErrorCheckFunc<UpdatePlayerDetailApiResult>());
   }
 

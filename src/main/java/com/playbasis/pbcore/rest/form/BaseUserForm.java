@@ -7,8 +7,8 @@ import com.smartsoftasia.ssalibrary.helper.Validator;
  */
 public abstract class BaseUserForm extends PBForm {
 
-  private String email;
-  private String password;
+  protected String email;
+  protected String password;
 
   public BaseUserForm(String email, String password) {
     this.email = email;

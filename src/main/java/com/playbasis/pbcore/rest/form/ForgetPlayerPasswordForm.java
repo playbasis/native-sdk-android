@@ -5,9 +5,17 @@ package com.playbasis.pbcore.rest.form;
  */
 public class ForgetPlayerPasswordForm extends PBForm {
 
-  public String email;
+  protected String email;
 
   public ForgetPlayerPasswordForm(String email) {
+    this.email = email;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
     this.email = email;
   }
 }

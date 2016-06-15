@@ -26,7 +26,7 @@ public class PlayerAuthenticationInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    return restClient.getPlayerService().loginPlayer(token.token, mPlayerAuthenticationForm.email, mPlayerAuthenticationForm.password);
+    return restClient.getPlayerService().loginPlayer(token.token, mPlayerAuthenticationForm.getEmail(), mPlayerAuthenticationForm.getPassword());
   }
 
   public void setPlayerAuthenticationForm(PlayerAuthenticationForm playerAuthenticationForm) {

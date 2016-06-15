@@ -35,7 +35,7 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    return restClient.getPlayerService().getPlayerDetail(getPlayerForm.playerId, token.token)
+    return restClient.getPlayerService().getPlayerDetail(getPlayerForm.getPlayerId(), token.token)
         .map(new PBApiErrorCheckFunc<GetPlayerDetailApiResult>())
         .map(new Func1<GetPlayerDetailApiResult, Player>() {
           @Override
@@ -59,7 +59,7 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
   }
 
   public Player createPlayer(GetPlayerDetailApiResult getPlayerDetailApiResult) {
-    Player player = new Player(getPlayerForm.playerId);
+    Player player = new Player(getPlayerForm.getPlayerId());
     return player;
   }
 

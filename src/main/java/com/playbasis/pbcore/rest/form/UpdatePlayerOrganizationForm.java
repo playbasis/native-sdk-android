@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class UpdatePlayerOrganizationForm extends PBForm {
 
-  private String playerId;
-  private Organization newModel;
-  private List<? extends Organization> currentModels;
-  private boolean clearExising;
+  protected String playerId;
+  protected Organization newModel;
+  protected List<? extends Organization> currentModels;
+  protected boolean clearExising;
 
   public UpdatePlayerOrganizationForm(String playerId, Organization newModel, List<? extends Organization> currentModels, boolean clearExising) {
     this.playerId = playerId;
@@ -29,11 +29,23 @@ public class UpdatePlayerOrganizationForm extends PBForm {
     return newModel;
   }
 
+  public void setNewModel(Organization newModel) {
+    this.newModel = newModel;
+  }
+
   public List<? extends Organization> getCurrentModels() {
     return currentModels;
   }
 
-  public boolean shouldClearExising() {
+  public void setCurrentModels(List<? extends Organization> currentModels) {
+    this.currentModels = currentModels;
+  }
+
+  public boolean isClearExising() {
     return clearExising;
+  }
+
+  public void setClearExising(boolean clearExising) {
+    this.clearExising = clearExising;
   }
 }

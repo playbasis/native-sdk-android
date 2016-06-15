@@ -5,10 +5,13 @@ package com.playbasis.pbcore.rest.form;
  */
 public class PlayerEmailVerificationForm extends PBForm {
 
-  public String playerId;
+  protected String playerId;
 
   public PlayerEmailVerificationForm(String playerId) {
     this.playerId = playerId;
   }
 
+  public String getPlayerId() {
+    return playerId;
+  }
 }
