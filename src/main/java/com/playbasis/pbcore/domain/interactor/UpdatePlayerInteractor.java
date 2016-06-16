@@ -61,8 +61,8 @@ public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
 
   private Observable<UpdatePlayerDetailApiResult> buildUpdateUserObservable() {
     return restClient.getPlayerService().updatePlayer(
-        token.token,
         form.getPlayerId(),
+        token.token,
         form.getFirstName(),
         form.getLastName(),
         form.getGender().getValue(),

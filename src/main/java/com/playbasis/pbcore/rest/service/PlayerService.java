@@ -73,8 +73,8 @@ public interface PlayerService {
   /**
    * Register a user from client's website as a Playbasis player.
    *
+   * @param playerId   user id, must be unique
    * @param token    access token
-   * @param userId   user id, must be unique
    * @param username user name, must be unique
    * @param email    user email, must be unique
    * @param image    url to the user profile image
@@ -84,7 +84,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/register")
   Observable<RegisterPlayerApiResult> registerPlayer(
-      @Path("id") String playerId,
+      @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("username") String username,
       @NonNull @Field("email") String email,
@@ -103,8 +103,8 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/update")
   Observable<UpdatePlayerDetailApiResult> updatePlayer(
-      @NonNull @Field("token") String token,
       @NonNull @Path("id") String userId,
+      @NonNull @Field("token") String token,
       @Field("first_name") String firstName,
       @Field("last_name") String lastName,
       @Field("gender") String gender,
