@@ -9,7 +9,8 @@
   <color name="tertiary_light">#68AAEC</color>
   <color name="tertiary">#4688CA</color>
   <color name="tertiary_dark">#2466A8</color>
-  <color name="accent">#434343</color>
+  <color name="accent">#FFFFFF</color>
+
   <color name="dark_text">#606060</color>
   <color name="medium_text">#525252</color>
   <color name="light_text">#606060</color>
@@ -18,10 +19,10 @@
   <color name="container_background">@color/white</color>
   <color name="dialog_background">@color/white</color>
 
-  <color name="global_primary_activity_background">@color/secondary</color>
+  <color name="global_primary_activity_background">@color/accent</color>
   <color name="global_primary_text">@color/primary</color>
   <color name="global_primary_content_text">@color/medium_text</color>
-  <color name="global_primary_solid_button_text">@color/secondary</color>
+  <color name="global_primary_solid_button_text">@color/accent</color>
   <color name="global_primary_solid_button_background">@color/primary</color>
   <color name="global_primary_solid_button_background_pressed">@color/primary_dark</color>
   <color name="global_primary_border_button_text">@color/primary</color>
@@ -31,22 +32,22 @@
   <color name="global_secondary_activity_background">@color/primary</color>
   <color name="global_secondary_text">@color/secondary</color>
   <color name="global_secondary_content_text">@color/light_text</color>
-  <color name="global_secondary_solid_button_text">@color/primary</color>
+  <color name="global_secondary_solid_button_text">@color/accent</color>
   <color name="global_secondary_solid_button_background">@color/secondary</color>
   <color name="global_secondary_solid_button_background_pressed">@color/secondary_dark</color>
   <color name="global_secondary_border_button_text">@color/secondary</color>
   <color name="global_secondary_border_button_background">@color/secondary</color>
   <color name="global_secondary_border_button_background_pressed">@color/secondary_dark</color>
 
-  <color name="global_tertiary_solid_button_text">@color/secondary</color>
+  <color name="global_tertiary_solid_button_text">@color/accent</color>
   <color name="global_tertiary_solid_button_background">@color/tertiary</color>
   <color name="global_tertiary_solid_button_background_pressed">@color/tertiary_light</color>
   <color name="global_tertiary_border_button_text">@color/tertiary</color>
   <color name="global_tertiary_border_button_background">@color/tertiary</color>
   <color name="global_tertiary_border_button_background_pressed">@color/secondary_dark</color>
 
-  <color name="global_activity_title">@color/secondary</color>
-  <color name="global_activity_button_text">@color/secondary</color>
+  <color name="global_activity_title">@color/accent</color>
+  <color name="global_activity_button_text">@color/accent</color>
 
   <color name="global_input_field_text">@color/black</color>
   <color name="global_input_field_hint">#CACACA</color>
