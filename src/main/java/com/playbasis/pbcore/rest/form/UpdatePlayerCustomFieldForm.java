@@ -10,8 +10,8 @@ public class UpdatePlayerCustomFieldForm extends CustomFieldForm {
   protected String playerId;
 
   public UpdatePlayerCustomFieldForm(Player player) {
-    this.playerId = player.playerId;
-    this.customFieldMap = player.customFieldMap;
+    this.playerId = player.getPlayerId();
+    this.customFieldMap = player.getCustomFields();
   }
 
   public UpdatePlayerCustomFieldForm(Player player, String key, String value) {

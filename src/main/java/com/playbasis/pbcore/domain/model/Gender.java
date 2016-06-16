@@ -11,8 +11,8 @@ public class Gender extends PBModel {
   public static final String MALE = "1";
   public static final String FEMALE = "2";
 
-  public String title;
-  public String value;
+  protected String title;
+  protected String value;
 
   public Gender(String title, String value) {
     this.title = title;
@@ -31,5 +31,21 @@ public class Gender extends PBModel {
 
   public Gender(int value) {
     this(String.valueOf(value));
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
   }
 }

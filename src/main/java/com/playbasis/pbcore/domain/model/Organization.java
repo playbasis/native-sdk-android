@@ -8,9 +8,9 @@ import com.playbasis.pbcore.rest.result.response.PlayerOrganizationResponse;
  */
 public abstract class Organization extends PBModel {
 
-  public String id;
-  public String name;
-  public String description;
+  protected String id;
+  protected String name;
+  protected String description;
 
   public void init(PlayerOrganizationResponse playerOrganizationResponse) {
     this.id = playerOrganizationResponse.nodeId;
@@ -23,7 +23,23 @@ public abstract class Organization extends PBModel {
     this.description = organizeResponse.description;
   }
 
-  public String getOrganizeId() {
+  public String getId() {
     return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

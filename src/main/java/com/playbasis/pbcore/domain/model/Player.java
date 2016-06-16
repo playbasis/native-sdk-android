@@ -24,18 +24,18 @@ public class Player extends PBModel {
 
   }
 
-  public String firstName;
-  public String lastName;
-  public String email;
-  public Birthdate birthday;
-  public String playerId;
-  public String imageUrl;
-  public String phoneNumber;
-  public String registered;
-  public String lastLogin;
-  public String lastLogout;
-  public Gender gender;
-  public HashMap<String, String> customFieldMap = new HashMap<>();
+  protected String firstName;
+  protected String lastName;
+  protected String email;
+  protected Birthdate birthday;
+  protected String playerId;
+  protected String imageUrl;
+  protected String phoneNumber;
+  protected String registered;
+  protected String lastLogin;
+  protected String lastLogout;
+  protected Gender gender;
+  protected HashMap<String, String> customFields = new HashMap<>();
 
   public Player(String playerId) {
     this.playerId = playerId;
@@ -59,18 +59,110 @@ public class Player extends PBModel {
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
-    this.customFieldMap.clear();
+    this.customFields.clear();
 
     if (getUserCustomFieldsApiResult.getCustomFieldMap() != null) {
-      this.customFieldMap.putAll(getUserCustomFieldsApiResult.getCustomFieldMap());
+      this.customFields.putAll(getUserCustomFieldsApiResult.getCustomFieldMap());
     }
   }
 
   public String getField(String key) {
-    return customFieldMap.get(key);
+    return customFields.get(key);
   }
 
   public boolean hasField(String key) {
-    return customFieldMap.containsKey(key);
+    return customFields.containsKey(key);
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public Birthdate getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(Birthdate birthday) {
+    this.birthday = birthday;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+  public String getRegistered() {
+    return registered;
+  }
+
+  public void setRegistered(String registered) {
+    this.registered = registered;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public String getLastLogin() {
+    return lastLogin;
+  }
+
+  public void setLastLogin(String lastLogin) {
+    this.lastLogin = lastLogin;
+  }
+
+  public String getLastLogout() {
+    return lastLogout;
+  }
+
+  public void setLastLogout(String lastLogout) {
+    this.lastLogout = lastLogout;
+  }
+
+  public Gender getGender() {
+    return gender;
+  }
+
+  public void setGender(Gender gender) {
+    this.gender = gender;
+  }
+
+  public HashMap<String, String> getCustomFields() {
+    return customFields;
+  }
+
+  public void setCustomFields(HashMap<String, String> customFields) {
+    this.customFields = customFields;
   }
 }

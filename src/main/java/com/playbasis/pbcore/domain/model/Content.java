@@ -1,7 +1,6 @@
 package com.playbasis.pbcore.domain.model;
 
 import android.os.Parcelable;
-import android.text.Html;
 
 import com.playbasis.pbcore.rest.result.response.ContentResponse;
 
@@ -14,14 +13,14 @@ import java.util.List;
  */
 public abstract class Content implements Parcelable {
 
-  public String id;
-  public String title;
-  public String summary;
-  public String detail;
-  public String category;
-  public String image;
-  public Date startDate;
-  public Date endDate;
+  protected String id;
+  protected String title;
+  protected String summary;
+  protected String detail;
+  protected String category;
+  protected String image;
+  protected Date startDate;
+  protected Date endDate;
 
   public Content() {
 
@@ -54,6 +53,42 @@ public abstract class Content implements Parcelable {
     return results;
   }
 
+  public String getId() {
+    return id;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getSummary() {
+    return summary;
+  }
+
+  public void setSummary(String summary) {
+    this.summary = summary;
+  }
+
+  public String getDetail() {
+    return detail;
+  }
+
+  public void setDetail(String detail) {
+    this.detail = detail;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
   public String getImageUrl() {
     if (image.startsWith("data/")) {
       return "http://images.pbapp.net/" + image;
@@ -62,15 +97,23 @@ public abstract class Content implements Parcelable {
     return image;
   }
 
-  public String getTitle() {
-    return Html.fromHtml(title).toString();
+  public void setImageUrl(String image) {
+    this.image = image;
   }
 
-  public String getSummary() {
-    return Html.fromHtml(summary).toString();
+  public Date getStartDate() {
+    return startDate;
   }
 
-  public String getDetail() {
-    return Html.fromHtml(detail).toString();
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
   }
 }

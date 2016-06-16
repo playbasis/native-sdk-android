@@ -30,13 +30,13 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
   @Override
   public Observable buildApiUseCaseObservable() {
     final Player player = getPlayerCustomFieldForm.player;
-    if (player == null || !Validator.isValid(player.playerId)) {
+    if (player == null || !Validator.isValid(player.getPlayerId())) {
       return Observable.just(player);
     }
 
     return restClient.getPlayerService()
         .getPlayerCustomFields(
-            player.playerId,
+            player.getPlayerId(),
             restClient.getApiKey()
         )
         .map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>())

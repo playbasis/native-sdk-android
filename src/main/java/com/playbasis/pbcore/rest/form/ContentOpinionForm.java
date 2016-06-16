@@ -17,10 +17,10 @@ public abstract class ContentOpinionForm extends CustomFieldForm {
   }
 
   public String getNodeId() {
-    return content.id;
+    return content.getId();
   }
 
   public String getPlayerId() {
-    return player.playerId;
+    return player.getPlayerId();
   }
 }

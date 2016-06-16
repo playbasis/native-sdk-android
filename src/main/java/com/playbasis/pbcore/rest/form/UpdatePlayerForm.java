@@ -27,13 +27,13 @@ public class UpdatePlayerForm extends PBForm {
 
   public UpdatePlayerForm(Player player, boolean preload) {
     this.player = player;
-    this.playerId = player.playerId;
+    this.playerId = player.getPlayerId();
 
     if (preload) {
-      this.firstName = player.firstName;
-      this.lastName = player.lastName;
-      this.birthDate = player.birthday;
-      this.gender = player.gender;
+      this.firstName = player.getFirstName();
+      this.lastName = player.getLastName();
+      this.birthDate = player.getBirthday();
+      this.gender = player.getGender();
     }
   }
 

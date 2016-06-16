@@ -47,7 +47,7 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
       for (Organization model : currentOrganizableModels) {
         observables.add(playerService.removePlayerOrganization(
             form.getPlayerId(),
-            model.getOrganizeId(),
+            model.getId(),
             token.token
         ));
       }
@@ -72,7 +72,7 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
     return restClient.getPlayerService()
         .addPlayerOrganization(
             form.getPlayerId(),
-            form.getNewModel().getOrganizeId(),
+            form.getNewModel().getId(),
             token.token
         ).map(new PBApiErrorCheckFunc<UpdatePlayerOrganizationApiResult>());
   }

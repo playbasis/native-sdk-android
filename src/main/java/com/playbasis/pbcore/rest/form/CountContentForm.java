@@ -33,13 +33,13 @@ public class CountContentForm extends PBForm {
 
   public String getPlayerId() {
     if (player != null) {
-      return player.playerId;
+      return player.getPlayerId();
     }
 
     return null;
   }
 
   public boolean isGetOnlyNewContent() {
-    return player != null && Validator.isValid(player.playerId);
+    return player != null && Validator.isValid(player.getPlayerId());
   }
 }
