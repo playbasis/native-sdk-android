@@ -38,8 +38,7 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
         .getPlayerCustomFields(
             player.getPlayerId(),
             restClient.getApiKey()
-        )
-        .map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>())
+        ).map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>())
         .map(new Func1<GetUserCustomFieldsApiResult, Player>() {
           @Override
           public Player call(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {

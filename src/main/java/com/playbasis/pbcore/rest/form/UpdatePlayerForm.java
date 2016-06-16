@@ -104,4 +104,20 @@ public class UpdatePlayerForm extends PBForm {
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
   }
+
+  public String getBirthdateValue() {
+    if (getBirthDate() != null) {
+      return getBirthDate().getParamValue();
+    }
+
+    return null;
+  }
+
+  public String getGenderValue() {
+    if (getGender() != null) {
+      return getGender().getValue();
+    }
+
+    return null;
+  }
 }

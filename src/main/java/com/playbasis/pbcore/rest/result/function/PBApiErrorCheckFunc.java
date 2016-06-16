@@ -1,6 +1,8 @@
 package com.playbasis.pbcore.rest.result.function;
 
+import com.playbasis.pbcore.rest.error.PBApiError;
 import com.playbasis.pbcore.rest.result.PBApiResult;
+
 import rx.exceptions.Exceptions;
 import rx.functions.Func1;
 
@@ -13,7 +15,7 @@ public class PBApiErrorCheckFunc<T extends PBApiResult> implements Func1<T,T> {
   @Override
   public T call(T t) {
     if (!t.success){
-      throw Exceptions.propagate(new Throwable(t.message));
+      throw Exceptions.propagate(new PBApiError(t));
     }
     return t;
   }

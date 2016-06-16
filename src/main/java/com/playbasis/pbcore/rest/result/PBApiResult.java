@@ -21,5 +21,4 @@ public abstract class PBApiResult<T> {
   public String version;
   @SerializedName("response")
   public T response;
-
 }

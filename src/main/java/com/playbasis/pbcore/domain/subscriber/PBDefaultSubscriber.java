@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.domain.subscriber;
 
+import com.playbasis.pbcore.rest.error.PBApiError;
 import com.playbasis.pbcore.rest.error.UserAbortError;
 import com.smartsoftasia.ssalibrary.domain.subscriber.DefaultSubscriber;
 
@@ -8,6 +9,7 @@ import com.smartsoftasia.ssalibrary.domain.subscriber.DefaultSubscriber;
  */
 public abstract class PBDefaultSubscriber<T> extends DefaultSubscriber<T> {
   public T resultObj;
+  public Throwable error;
 
   @Override
   public void onCompleted() {
@@ -16,11 +18,20 @@ public abstract class PBDefaultSubscriber<T> extends DefaultSubscriber<T> {
 
   @Override
   public final void onError(Throwable e) {
-    if (e instanceof UserAbortError) {
-      onUserAbort((UserAbortError) e);
+    error = e;
+
+    PBErrorType errorType;
+    if (e == null) {
+      errorType = PBErrorType.UNDEFINED;
+    } else if (e instanceof UserAbortError) {
+      errorType = PBErrorType.USER_ABORT_ERROR;
+    } else if (e instanceof PBApiError) {
+      errorType = PBErrorType.API_ERROR;
     } else {
-      onUseCaseError(e);
+      errorType = PBErrorType.USE_CASE_ERROR;
     }
+
+    onUseCaseError(error, errorType);
   }
 
   @Override
@@ -28,11 +39,16 @@ public abstract class PBDefaultSubscriber<T> extends DefaultSubscriber<T> {
     resultObj = t;
   }
 
-  public abstract void onUserAbort(UserAbortError e);
-
-  public abstract void onUseCaseError(Throwable e);
+  public abstract void onUseCaseError(Throwable e, PBErrorType errorType);
 
   protected final boolean hasResult() {
     return resultObj != null;
+  }
+
+  public enum PBErrorType {
+    USER_ABORT_ERROR,
+    API_ERROR,
+    USE_CASE_ERROR,
+    UNDEFINED
   }
 }

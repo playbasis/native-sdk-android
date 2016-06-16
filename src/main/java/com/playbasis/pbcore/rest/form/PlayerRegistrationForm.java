@@ -10,9 +10,12 @@ public class PlayerRegistrationForm extends BaseUserForm {
   protected String playerId;
   protected String userName;
   protected String imageUrl;
+  protected String status;
 
   public PlayerRegistrationForm(String email, String password) {
     super(email, password);
+
+    status = "approved";
   }
 
   public boolean isUserNameValid(){
@@ -41,5 +44,13 @@ public class PlayerRegistrationForm extends BaseUserForm {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 }

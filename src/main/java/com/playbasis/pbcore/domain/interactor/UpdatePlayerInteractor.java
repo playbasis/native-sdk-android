@@ -65,8 +65,8 @@ public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
         token.token,
         form.getFirstName(),
         form.getLastName(),
-        form.getGender().getValue(),
-        form.getBirthDate().getParamValue(),
+        form.getGenderValue(),
+        form.getBirthdateValue(),
         form.getImageUrl()
     ).map(new PBApiErrorCheckFunc<UpdatePlayerDetailApiResult>());
   }

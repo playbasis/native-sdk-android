@@ -43,7 +43,7 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
             playerRegistrationForm.getEmail(),
             playerRegistrationForm.getImageUrl(),
             playerRegistrationForm.getPassword(),
-            "approved")
+            playerRegistrationForm.getStatus())
         .map(new PBApiErrorCheckFunc<RegisterPlayerApiResult>())
         .flatMap(new Func1<RegisterPlayerApiResult, Observable<VerifyPlayerEmailApiResult>>() {
           @Override
