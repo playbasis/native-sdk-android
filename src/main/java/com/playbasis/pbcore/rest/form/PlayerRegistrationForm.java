@@ -11,11 +11,13 @@ public class PlayerRegistrationForm extends BaseUserForm {
   protected String userName;
   protected String imageUrl;
   protected String status;
+  protected boolean sendVerificationEmail;
 
   public PlayerRegistrationForm(String email, String password) {
     super(email, password);
 
     status = "approved";
+    sendVerificationEmail = true;
   }
 
   public boolean isUserNameValid(){
@@ -52,5 +54,13 @@ public class PlayerRegistrationForm extends BaseUserForm {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  public boolean isSendVerificationEmail() {
+    return sendVerificationEmail;
+  }
+
+  public void setSendVerificationEmail(boolean sendVerificationEmail) {
+    this.sendVerificationEmail = sendVerificationEmail;
   }
 }

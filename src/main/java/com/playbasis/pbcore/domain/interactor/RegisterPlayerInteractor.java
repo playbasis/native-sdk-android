@@ -35,7 +35,7 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    return restClient.getPlayerService()
+    Observable observable = restClient.getPlayerService()
         .registerPlayer(
             playerRegistrationForm.getPlayerId(),
             token.token,
@@ -44,20 +44,26 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
             playerRegistrationForm.getImageUrl(),
             playerRegistrationForm.getPassword(),
             playerRegistrationForm.getStatus())
-        .map(new PBApiErrorCheckFunc<RegisterPlayerApiResult>())
-        .flatMap(new Func1<RegisterPlayerApiResult, Observable<VerifyPlayerEmailApiResult>>() {
-          @Override
-          public Observable<VerifyPlayerEmailApiResult> call(RegisterPlayerApiResult result) {
-            registerPlayerApiResult = result;
-            return verifyPlayerEmailInteractor.buildUseCaseObservable();
-          }
-        }).map(new Func1<VerifyPlayerEmailApiResult, RegisterPlayerApiResult>() {
-          @Override
-          public RegisterPlayerApiResult call(VerifyPlayerEmailApiResult verifyPlayerEmailApiResult) {
-            registerPlayerApiResult.success = registerPlayerApiResult.success && verifyPlayerEmailApiResult.success;
-            return registerPlayerApiResult;
-          }
-        });
+        .map(new PBApiErrorCheckFunc<RegisterPlayerApiResult>());
+
+
+    if (playerRegistrationForm.isSendVerificationEmail()) {
+      observable = observable.flatMap(new Func1<RegisterPlayerApiResult, Observable<VerifyPlayerEmailApiResult>>() {
+        @Override
+        public Observable<VerifyPlayerEmailApiResult> call(RegisterPlayerApiResult result) {
+          registerPlayerApiResult = result;
+          return verifyPlayerEmailInteractor.buildUseCaseObservable();
+        }
+      }).map(new Func1<VerifyPlayerEmailApiResult, RegisterPlayerApiResult>() {
+        @Override
+        public RegisterPlayerApiResult call(VerifyPlayerEmailApiResult verifyPlayerEmailApiResult) {
+          registerPlayerApiResult.success = registerPlayerApiResult.success && verifyPlayerEmailApiResult.success;
+          return registerPlayerApiResult;
+        }
+      });
+    }
+
+    return observable;
   }
 
   public void setPlayerRegistrationForm(PlayerRegistrationForm playerRegistrationForm) {
