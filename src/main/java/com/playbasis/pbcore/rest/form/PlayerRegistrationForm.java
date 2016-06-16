@@ -16,7 +16,7 @@ public class PlayerRegistrationForm extends BaseUserForm {
   }
 
   public boolean isUserNameValid(){
-    return Validator.isValidEmail(userName);
+    return Validator.isValid(userName);
   }
 
   public String getPlayerId(){
