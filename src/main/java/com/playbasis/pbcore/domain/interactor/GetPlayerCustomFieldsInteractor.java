@@ -29,7 +29,7 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    final Player player = getPlayerCustomFieldForm.player;
+    final Player player = getPlayerCustomFieldForm.getPlayer();
     if (player == null || !Validator.isValid(player.getPlayerId())) {
       return Observable.just(player);
     }

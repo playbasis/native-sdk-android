@@ -1,7 +1,9 @@
 package com.playbasis.pbcore.dependency.module;
 
 import com.playbasis.pbcore.domain.interactor.ForgetPasswordInteractor;
+import com.playbasis.pbcore.domain.interactor.GetPlayerAllBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.GetPlayerCustomFieldsInteractor;
+import com.playbasis.pbcore.domain.interactor.GetPlayerEarnedBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.GetPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.RegisterPlayerInteractor;
@@ -109,4 +111,21 @@ public class PlayerModule {
     return new UpdatePlayerOrganizableModelInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
+  @Provides
+  @PerActivity
+  GetPlayerEarnedBadgesInteractor provideGetPlayerEarnedBadgesInteractor(ThreadExecutor threadExecutor,
+                                                                         PostExecutionThread postExecutionThread,
+                                                                         RestClient restClient,
+                                                                         RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerEarnedBadgesInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerAllBadgesInteractor provideGetPlayerAllBadgesInteractor(ThreadExecutor threadExecutor,
+                                                                   PostExecutionThread postExecutionThread,
+                                                                   RestClient restClient,
+                                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerAllBadgesInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
 }

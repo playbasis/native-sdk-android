@@ -7,6 +7,7 @@ import com.playbasis.pbcore.rest.result.response.GetPlayerInfoResponse;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -34,7 +35,11 @@ public class Player extends PBModel {
   protected String registered;
   protected String lastLogin;
   protected String lastLogout;
+  protected float levelPercent;
+  protected String levelTitle;
+  protected String levelImageUrl;
   protected Gender gender;
+  protected ArrayList<Badge> badges;
   protected HashMap<String, String> customFields = new HashMap<>();
 
   public Player(String playerId) {
@@ -56,6 +61,10 @@ public class Player extends PBModel {
     this.registered = getPlayerInfoResponse.registered;
     this.lastLogin = getPlayerInfoResponse.lastLogin;
     this.lastLogout = getPlayerInfoResponse.lastLogout;
+    this.levelPercent = getPlayerInfoResponse.levelPercent;
+    this.levelTitle = getPlayerInfoResponse.levelTitle;
+    this.levelImageUrl = getPlayerInfoResponse.levelImageUrl;
+    this.badges = Badge.create(getPlayerInfoResponse.playerBadgesResponses);
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
@@ -82,72 +91,48 @@ public class Player extends PBModel {
     return firstName;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
   public String getLastName() {
     return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
   }
 
   public String getEmail() {
     return email;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
   public Birthdate getBirthday() {
     return birthday;
-  }
-
-  public void setBirthday(Birthdate birthday) {
-    this.birthday = birthday;
-  }
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-  }
-
-  public String getRegistered() {
-    return registered;
-  }
-
-  public void setRegistered(String registered) {
-    this.registered = registered;
   }
 
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public String getRegistered() {
+    return registered;
   }
 
   public String getLastLogin() {
     return lastLogin;
   }
 
-  public void setLastLogin(String lastLogin) {
-    this.lastLogin = lastLogin;
-  }
-
   public String getLastLogout() {
     return lastLogout;
   }
 
-  public void setLastLogout(String lastLogout) {
-    this.lastLogout = lastLogout;
+  public float getLevelPercent() {
+    return levelPercent;
+  }
+
+  public String getLevelImageUrl() {
+    return levelImageUrl;
+  }
+
+  public String getLevelTitle() {
+    return levelTitle;
   }
 
   public Gender getGender() {
@@ -156,6 +141,10 @@ public class Player extends PBModel {
 
   public void setGender(Gender gender) {
     this.gender = gender;
+  }
+
+  public ArrayList<Badge> getBadges() {
+    return badges;
   }
 
   public HashMap<String, String> getCustomFields() {

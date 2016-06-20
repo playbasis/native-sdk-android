@@ -7,10 +7,13 @@ import com.playbasis.pbcore.domain.model.Player;
  */
 public class GetPlayerCustomFieldForm extends PBForm {
 
-  public Player player;
+  protected Player player;
 
   public GetPlayerCustomFieldForm(Player player) {
     this.player = player;
   }
 
+  public Player getPlayer() {
+    return player;
+  }
 }

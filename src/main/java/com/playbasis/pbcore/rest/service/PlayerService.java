@@ -3,6 +3,7 @@ package com.playbasis.pbcore.rest.service;
 import android.support.annotation.NonNull;
 
 import com.playbasis.pbcore.rest.result.ForgetPasswordApiResult;
+import com.playbasis.pbcore.rest.result.GetPlayerBadgesApiResult;
 import com.playbasis.pbcore.rest.result.GetPlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.LoginPlayerApiResult;
@@ -142,5 +143,17 @@ public interface PlayerService {
       @NonNull @Path("id") String userId,
       @NonNull @Path("node_id") String organizeId,
       @NonNull @Field("token") String token
+  );
+
+  @GET("Player/{id}/badge")
+  Observable<GetPlayerBadgesApiResult> getPlayerEarnedBadges(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey
+  );
+
+  @GET("Player/{id}/badgeAll")
+  Observable<GetPlayerBadgesApiResult> getPlayerAllBadges(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey
   );
 }

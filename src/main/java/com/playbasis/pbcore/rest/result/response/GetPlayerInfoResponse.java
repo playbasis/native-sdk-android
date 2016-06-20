@@ -49,8 +49,20 @@ public class GetPlayerInfoResponse {
   @SerializedName("last_logout")
   public String lastLogout;
   @Expose
+  @SerializedName("percent_of_level")
+  public float levelPercent;
+  @Expose
+  @SerializedName("level_title")
+  public String levelTitle;
+  @Expose
+  @SerializedName("level_image")
+  public String levelImageUrl;
+  @Expose
   @SerializedName("organization")
   public List<PlayerOrganizationResponse> playerOrganizationResponses;
+  @Expose
+  @SerializedName("badges")
+  public List<BadgeResponse> playerBadgesResponses;
 
   public GetPlayerInfoResponse() {
 
