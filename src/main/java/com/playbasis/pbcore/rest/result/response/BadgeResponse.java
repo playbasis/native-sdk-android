@@ -10,7 +10,7 @@ public class BadgeResponse {
   @SerializedName("badge_id")
   public String badgeId;
   @SerializedName("image")
-  public String image;
+  public String imageUrl;
   @SerializedName("sort_order")
   public int sortOrder;
   @SerializedName("name")

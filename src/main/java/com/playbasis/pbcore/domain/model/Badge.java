@@ -11,7 +11,7 @@ import java.util.List;
 public class Badge extends PBModel {
 
   private String badgeId;
-  private String image;
+  private String imageUrl;
   private String name;
   private String description;
   private String hint;
@@ -37,7 +37,7 @@ public class Badge extends PBModel {
 
   public void update(BadgeResponse badgeResponse) {
     this.badgeId = badgeResponse.badgeId;
-    this.image = badgeResponse.image;
+    this.imageUrl = badgeResponse.imageUrl;
     this.name = badgeResponse.name;
     this.description = badgeResponse.description;
     this.hint = badgeResponse.hint;
@@ -50,8 +50,8 @@ public class Badge extends PBModel {
     return badgeId;
   }
 
-  public String getImage() {
-    return image;
+  public String getImageUrl() {
+    return imageUrl;
   }
 
   public String getName() {
