@@ -5,7 +5,7 @@ import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonPlayerAdapter;
-import com.playbasis.pbcore.rest.result.response.PlayerResponse;
+import com.playbasis.pbcore.rest.result.response.PlayerCustomFieldResponse;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.ImageService;
 import com.playbasis.pbcore.rest.service.PlayerService;
@@ -76,7 +76,7 @@ public class RestClient {
   public Gson getGson() {
     return GsonHelper.newBuilder()
         .registerTypeAdapter(Birthdate.class, new GsonBirthdateAdapter())
-        .registerTypeAdapter(PlayerResponse.class, new GsonPlayerAdapter())
+        .registerTypeAdapter(PlayerCustomFieldResponse.class, new GsonPlayerAdapter())
         .create();
   }
 

@@ -2,7 +2,7 @@ package com.playbasis.pbcore.rest.result;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.playbasis.pbcore.rest.result.response.PlayerResponse;
+import com.playbasis.pbcore.rest.result.response.PlayerCustomFieldResponse;
 import java.util.HashMap;
 
 /**
@@ -18,7 +18,7 @@ public class GetUserCustomFieldsApiResult extends PBApiResult<GetUserCustomField
   public class Response {
 
     @SerializedName("player")
-    public PlayerResponse player;
+    public PlayerCustomFieldResponse player;
 
   }
 }

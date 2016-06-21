@@ -6,8 +6,8 @@ import java.util.HashMap;
 /**
  * Created by androiddev01 on 5/12/2016 AD.
  */
-public class PlayerResponse {
-  public static final String TAG = "PlayerResponse";
+public class PlayerCustomFieldResponse {
+  public static final String TAG = "PlayerCustomFieldResponse";
 
   @SerializedName("custom")
   public HashMap<String, String> customFieldMap;
