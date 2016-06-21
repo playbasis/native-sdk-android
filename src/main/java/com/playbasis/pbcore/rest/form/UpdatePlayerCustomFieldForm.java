@@ -2,6 +2,8 @@ package com.playbasis.pbcore.rest.form;
 
 import com.playbasis.pbcore.domain.model.Player;
 
+import java.util.HashMap;
+
 /**
  * Created by Tar on 4/21/16 AD.
  */
@@ -14,10 +16,9 @@ public class UpdatePlayerCustomFieldForm extends CustomFieldForm {
     this.customFieldMap = player.getCustomFields();
   }
 
-  public UpdatePlayerCustomFieldForm(Player player, String key, String value) {
-    this(player);
-
-    setCustomField(key, value);
+  public UpdatePlayerCustomFieldForm(String playerId, HashMap<String, String> customFields) {
+    this.playerId = playerId;
+    this.customFieldMap = customFields;
   }
 
   public String getPlayerId() {
