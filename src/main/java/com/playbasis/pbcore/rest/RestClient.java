@@ -7,6 +7,7 @@ import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonPlayerAdapter;
 import com.playbasis.pbcore.rest.result.response.PlayerCustomFieldResponse;
 import com.playbasis.pbcore.rest.service.ContentService;
+import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.ImageService;
 import com.playbasis.pbcore.rest.service.PlayerService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
@@ -40,6 +41,7 @@ public class RestClient {
   protected ImageService imageService;
   protected ContentService contentService;
   protected StoreOrganizeService storeOrganizeService;
+  protected GoodsService goodsService;
 
   @Inject
   public RestClient(PBSharedPreference sharedPreference, ApplicationBus applicationBus,
@@ -64,6 +66,7 @@ public class RestClient {
     imageService = retrofit.create(ImageService.class);
     contentService = retrofit.create(ContentService.class);
     storeOrganizeService = retrofit.create(StoreOrganizeService.class);
+    goodsService = retrofit.create(GoodsService.class);
   }
 
   public RestClient(String url) {
@@ -118,6 +121,10 @@ public class RestClient {
    */
   public StoreOrganizeService getStoreOrganizeService() {
     return storeOrganizeService;
+  }
+
+  public GoodsService getGoodsService() {
+    return goodsService;
   }
 
   public String getBaseUrl() {
