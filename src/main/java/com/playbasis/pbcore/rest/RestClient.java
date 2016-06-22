@@ -10,6 +10,7 @@ import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.ImageService;
 import com.playbasis.pbcore.rest.service.PlayerService;
+import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
 import com.smartsoftasia.ssalibrary.bus.ApplicationBus;
@@ -42,6 +43,7 @@ public class RestClient {
   protected ContentService contentService;
   protected StoreOrganizeService storeOrganizeService;
   protected GoodsService goodsService;
+  protected QuestService questService;
 
   @Inject
   public RestClient(PBSharedPreference sharedPreference, ApplicationBus applicationBus,
@@ -67,6 +69,7 @@ public class RestClient {
     contentService = retrofit.create(ContentService.class);
     storeOrganizeService = retrofit.create(StoreOrganizeService.class);
     goodsService = retrofit.create(GoodsService.class);
+    questService = retrofit.create(QuestService.class);
   }
 
   public RestClient(String url) {
@@ -125,6 +128,10 @@ public class RestClient {
 
   public GoodsService getGoodsService() {
     return goodsService;
+  }
+
+  public QuestService getQuestService() {
+    return questService;
   }
 
   public String getBaseUrl() {
