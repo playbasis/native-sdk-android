@@ -15,9 +15,9 @@ public class Goods extends PBModel {
   protected String name;
   protected String description;
   protected String imageUrl;
-  protected String tags;
   protected String code;
   protected String group;
+  protected List<String> tags;
   protected Date startDate;
   protected Date expireDate;
   protected int quantity;
@@ -25,6 +25,10 @@ public class Goods extends PBModel {
   protected int sortOrder;
   protected boolean isGroup;
   protected boolean sponsor;
+
+  public Goods() {
+
+  }
 
   public static ArrayList<Goods> create(List<GoodsResponse> responses) {
     ArrayList<Goods> goodsList = new ArrayList<>();
@@ -35,14 +39,14 @@ public class Goods extends PBModel {
 
     for (GoodsResponse goodsResponse : responses) {
       Goods goods = new Goods();
-      goods.update(goodsResponse);
+      goods.init(goodsResponse);
       goodsList.add(goods);
     }
 
     return goodsList;
   }
 
-  public void update(GoodsResponse goodsResponse) {
+  public void init(GoodsResponse goodsResponse) {
     this.goodsId = goodsResponse.goodsId;
     this.name = goodsResponse.name;
     this.description = goodsResponse.description;
@@ -79,12 +83,12 @@ public class Goods extends PBModel {
     return imageUrl;
   }
 
-  public String getTags() {
-    return tags;
-  }
-
   public String getCode() {
     return code;
+  }
+
+  public List<String> getTags() {
+    return tags;
   }
 
   public String getGroup() {

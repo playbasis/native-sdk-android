@@ -3,6 +3,8 @@ package com.playbasis.pbcore.rest.result.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 /**
  * Created by Tar on 5/5/16 AD.
  */
@@ -15,11 +17,17 @@ public class RewardResponse {
   @SerializedName("reward_value")
   public String value;
   @SerializedName("reward_data")
-  public GoodsResponse detail;
+  public DataResponse data;
 
 
-  public class GoodsResponse extends com.playbasis.pbcore.rest.result.response.GoodsResponse {
+  public class DataResponse extends com.playbasis.pbcore.rest.result.response.GoodsResponse {
 
+    @Expose
+    @SerializedName("date_added")
+    public Date addedDate;
+    @Expose
+    @SerializedName("date_modified")
+    public Date modifiedDate;
     @Expose
     @SerializedName("per_user")
     public int perUser;

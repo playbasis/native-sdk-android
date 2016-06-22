@@ -10,14 +10,18 @@ import java.util.List;
  */
 public class Badge extends PBModel {
 
-  private String badgeId;
-  private String imageUrl;
-  private String name;
-  private String description;
-  private String hint;
-  private boolean sponsor;
-  private int amount;
-  private int sortOrder;
+  protected String badgeId;
+  protected String imageUrl;
+  protected String name;
+  protected String description;
+  protected String hint;
+  protected boolean sponsor;
+  protected int amount;
+  protected int sortOrder;
+
+  public Badge() {
+
+  }
 
   public static ArrayList<Badge> create(List<BadgeResponse> responses) {
     ArrayList<Badge> badges = new ArrayList<>();
@@ -28,14 +32,14 @@ public class Badge extends PBModel {
 
     for (BadgeResponse badgeResponse : responses) {
       Badge badge = new Badge();
-      badge.update(badgeResponse);
+      badge.init(badgeResponse);
       badges.add(badge);
     }
 
     return badges;
   }
 
-  public void update(BadgeResponse badgeResponse) {
+  public void init(BadgeResponse badgeResponse) {
     this.badgeId = badgeResponse.badgeId;
     this.imageUrl = badgeResponse.imageUrl;
     this.name = badgeResponse.name;

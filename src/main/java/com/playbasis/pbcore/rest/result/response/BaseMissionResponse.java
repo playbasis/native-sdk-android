@@ -30,7 +30,7 @@ public class BaseMissionResponse {
   public String hint;
   @Expose
   @SerializedName("image")
-  public String image;
+  public String imageUrl;
   @Expose
   @SerializedName("completion")
   public List<CompletionResponse> completionResponse;
@@ -67,9 +67,9 @@ public class BaseMissionResponse {
     public class FilteredParamResponse {
       @Expose
       @SerializedName("quantity")
-      public Quantity quantity;
+      public QuantityResponse quantityResponse;
 
-      public class Quantity {
+      public class QuantityResponse {
         @Expose
         @SerializedName("operation")
         public String operation;

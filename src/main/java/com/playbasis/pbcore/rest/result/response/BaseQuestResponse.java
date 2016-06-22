@@ -3,6 +3,7 @@ package com.playbasis.pbcore.rest.result.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,20 +27,8 @@ public class BaseQuestResponse<T extends BaseMissionResponse> {
   @SerializedName("image")
   public String imageUrl;
   @Expose
-  @SerializedName("status")
-  public String status;
-  @Expose
-  @SerializedName("tags")
-  public String tags;
-  @Expose
   @SerializedName("sort_order")
   public String sortOrder;
-  @Expose
-  @SerializedName("mission_order")
-  public String missionOrder;
-  @Expose
-  @SerializedName("date_added")
-  public String addedDate;
   @Expose
   @SerializedName("client_id")
   public String clientId;
@@ -56,8 +45,20 @@ public class BaseQuestResponse<T extends BaseMissionResponse> {
   @SerializedName("organize_role")
   public String organizeRole;
   @Expose
+  @SerializedName("date_added")
+  public Date addedDate;
+  @Expose
   @SerializedName("date_modified")
-  public String modifiedDate;
+  public Date modifiedDate;
+  @Expose
+  @SerializedName("tags")
+  public List<String> tags;
+  @Expose
+  @SerializedName("status")
+  public boolean status;
+  @Expose
+  @SerializedName("mission_order")
+  public boolean missionOrder;
   @Expose
   @SerializedName("missions")
   public List<T> missionResponses;
@@ -68,7 +69,7 @@ public class BaseQuestResponse<T extends BaseMissionResponse> {
   @SerializedName("rewards")
   public List<RewardResponse> rewardResponses;
 
-  public class ConditionResponse {
+  public static class ConditionResponse {
     @Expose
     @SerializedName("condition_id")
     public String conditionId;

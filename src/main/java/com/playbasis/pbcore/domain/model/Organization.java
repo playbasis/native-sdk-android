@@ -12,6 +12,10 @@ public abstract class Organization extends PBModel {
   protected String name;
   protected String description;
 
+  public Organization() {
+
+  }
+
   public void init(PlayerOrganizationResponse playerOrganizationResponse) {
     this.id = playerOrganizationResponse.nodeId;
     this.name = playerOrganizationResponse.name;

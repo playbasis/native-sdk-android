@@ -33,6 +33,13 @@ public interface GoodsService {
       @Query("player_id") String playerId
   );
 
+  @GET("Goods/couponVerify")
+  Observable<VerifyGoodsCouponApiResult> verifyGoodsCoupon(
+      @NonNull @Query("api_key") String apiKey,
+      @NonNull @Query("goods_id") String goodsId,
+      @NonNull @Query("coupon_code") String couponCode
+  );
+
   /**
    * Get the details of a getPlayerInfoResponse
    *
@@ -42,9 +49,10 @@ public interface GoodsService {
    */
   @FormUrlEncoded
   @POST("Goods/couponVerify")
-  Observable<VerifyGoodsCouponApiResult> verifyGoodsCoupon(
+  Observable<VerifyGoodsCouponApiResult> spendGoodsCoupon(
       @NonNull @Field("token") String token,
       @NonNull @Field("goods_id") String goodsId,
-      @NonNull @Field("coupon_code") String couponCode
+      @NonNull @Field("coupon_code") String couponCode,
+      @NonNull @Field("player_id") String playerId
   );
 }

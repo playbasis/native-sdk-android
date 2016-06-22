@@ -25,9 +25,9 @@ public class PlayerMissionResponse extends BaseMissionResponse {
     public String message;
     @Expose
     @SerializedName("incomplete")
-    public IncompleteResponse incompleteResponse;
+    public IncompletionResponse incompletionResponse;
 
-    public class IncompleteResponse {
+    public class IncompletionResponse {
 
       @Expose
       @SerializedName("incompletion_id")

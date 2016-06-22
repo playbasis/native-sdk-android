@@ -41,7 +41,7 @@ public interface QuestService {
   @POST("Quest/{id}/join")
   Observable<JoinQuestApiResult> joinQuest(
       @NonNull @Path("id") String questId,
-      @NonNull @Field("token") String key,
+      @NonNull @Field("token") String token,
       @NonNull @Field("player_id") String playerId
   );
 
@@ -49,7 +49,7 @@ public interface QuestService {
   @POST("Quest/{id}/cancel")
   Observable<CancelQuestApiResult> cancelQuest(
       @NonNull @Path("id") String questId,
-      @NonNull @Field("token") String key,
+      @NonNull @Field("token") String token,
       @NonNull @Field("player_id") String playerId
   );
 
