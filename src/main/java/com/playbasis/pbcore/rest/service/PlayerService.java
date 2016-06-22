@@ -7,6 +7,9 @@ import com.playbasis.pbcore.rest.result.GetPlayerBadgesApiResult;
 import com.playbasis.pbcore.rest.result.GetPlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.LoginPlayerApiResult;
+import com.playbasis.pbcore.rest.result.PlayerJoinedQuestApiResult;
+import com.playbasis.pbcore.rest.result.PlayerQuestApiResult;
+import com.playbasis.pbcore.rest.result.PlayerQuestListApiResult;
 import com.playbasis.pbcore.rest.result.RegisterPlayerApiResult;
 import com.playbasis.pbcore.rest.result.RemovePlayerFromOrganizeApiResult;
 import com.playbasis.pbcore.rest.result.SetPlayerCustomFieldApiResult;
@@ -155,5 +158,28 @@ public interface PlayerService {
   Observable<GetPlayerBadgesApiResult> getPlayerAllBadges(
       @NonNull @Path("id") String playerId,
       @NonNull @Query("api_key") String apiKey
+  );
+
+  @GET("Player/questAll")
+  Observable<PlayerQuestListApiResult> getAllPlayerQuest(
+      @NonNull @Query("api_key") String apiKey,
+      @NonNull @Query("player_id") String PlayerId,
+      @NonNull @Query("tags") String tags,
+      @NonNull @Query("filter") String filter
+  );
+
+  @GET("Player/quest")
+  Observable<PlayerJoinedQuestApiResult> getPlayerJoinedQuest(
+      @NonNull @Query("api_key") String apiKey,
+      @NonNull @Query("player_id") String PlayerId,
+      @NonNull @Query("tags") String tags,
+      @NonNull @Query("filter") String filter
+  );
+
+  @GET("Player/quest/{id}")
+  Observable<PlayerQuestApiResult> getPlayerQuestDetail(
+      @NonNull @Path("id") String questId,
+      @NonNull @Query("api_key") String apiKey,
+      @NonNull @Query("player_id") String PlayerId
   );
 }
