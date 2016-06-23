@@ -28,13 +28,31 @@ public abstract class PlayBasisApiInteractor extends RestInteractor {
 
   @Override
   public Observable buildUseCaseObservable() {
-    return requestTokenInteractor.buildUseCaseObservable().retryWhen(retryWhenFunc1).flatMap(new Func1<Token, Observable>() {
-      @Override
-      public Observable call(Token token) {
-        PlayBasisApiInteractor.this.token = token;
-        return buildApiUseCaseObservable().retryWhen(retryWhenFunc1);
-      }
-    });
+    return requestTokenInteractor.buildUseCaseObservable()
+        .retryWhen(retryWhenFunc1)
+        .flatMap(new Func1<Token, Observable>() {
+          @Override
+          public Observable call(Token token) {
+            PlayBasisApiInteractor.this.token = token;
+            return buildApiUseCaseObservable().retryWhen(retryWhenFunc1);
+          }
+        });
+  }
+
+  protected final String getApiToken() {
+    if (token != null) {
+      return getApiToken();
+    }
+
+    return null;
+  }
+
+  protected final String getApiKey() {
+    if (restClient != null) {
+      return getApiKey();
+    }
+
+    return null;
   }
 
 }
