@@ -6,7 +6,7 @@ import com.playbasis.pbcore.rest.result.response.QuestResponse;
 /**
  * Created by Tar on 6/22/16 AD.
  */
-public class QuestApiResult extends PBApiResult<QuestApiResult.Response> {
+public class QuestInfoApiResult extends PBApiResult<QuestInfoApiResult.Response> {
 
   public QuestResponse getQuestResponse() {
     return response.questResponse;

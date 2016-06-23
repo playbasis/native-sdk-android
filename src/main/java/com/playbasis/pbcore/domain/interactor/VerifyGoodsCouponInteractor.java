@@ -33,9 +33,10 @@ public class VerifyGoodsCouponInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getGoodsService()
         .verifyGoodsCoupon(
-            token.token,
+            restClient.getApiKey(),
             verifyGoodsCouponForm.getGoodsId(),
-            verifyGoodsCouponForm.getCode()
+            verifyGoodsCouponForm.getCode(),
+            verifyGoodsCouponForm.getPlayerId()
         )
         .map(new PBApiErrorCheckFunc<VerifyGoodsCouponApiResult>());
   }

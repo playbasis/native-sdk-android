@@ -37,7 +37,8 @@ public interface GoodsService {
   Observable<VerifyGoodsCouponApiResult> verifyGoodsCoupon(
       @NonNull @Query("api_key") String apiKey,
       @NonNull @Query("goods_id") String goodsId,
-      @NonNull @Query("coupon_code") String couponCode
+      @NonNull @Query("coupon_code") String couponCode,
+      @Query("player_id") String playerId
   );
 
   /**
@@ -49,7 +50,7 @@ public interface GoodsService {
    */
   @FormUrlEncoded
   @POST("Goods/couponVerify")
-  Observable<VerifyGoodsCouponApiResult> spendGoodsCoupon(
+  Observable<VerifyGoodsCouponApiResult> redeemGoodsCoupon(
       @NonNull @Field("token") String token,
       @NonNull @Field("goods_id") String goodsId,
       @NonNull @Field("coupon_code") String couponCode,

@@ -1,26 +1,26 @@
 package com.playbasis.pbcore.rest.form;
 
-import com.playbasis.pbcore.domain.model.Player;
-
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class GetGoodsInfoForm extends PBForm {
+public class RedeemGoodsCouponForm extends PBForm {
 
   private String goodsId;
+  private String code;
   private String playerId;
 
-  public GetGoodsInfoForm(String goodsId) {
+  public RedeemGoodsCouponForm(String goodsId, String code, String playerId) {
     this.goodsId = goodsId;
-  }
-
-  public GetGoodsInfoForm(String goodsId, Player player) {
-    this.goodsId = goodsId;
-    this.playerId = player.getPlayerId();
+    this.code = code;
+    this.playerId = playerId;
   }
 
   public String getGoodsId() {
     return goodsId;
+  }
+
+  public String getCode() {
+    return code;
   }
 
   public String getPlayerId() {
