@@ -2,9 +2,9 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.DeleteImageApiResult;
-import com.playbasis.pbcore.rest.result.ImageListApiResult;
-import com.playbasis.pbcore.rest.result.UploadImageApiResult;
+import com.playbasis.pbcore.rest.result.file.DeleteImageApiResult;
+import com.playbasis.pbcore.rest.result.file.ImageListApiResult;
+import com.playbasis.pbcore.rest.result.file.UploadImageApiResult;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

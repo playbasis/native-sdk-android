@@ -2,10 +2,10 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.ContentOpinionApiResult;
-import com.playbasis.pbcore.rest.result.ContentsApiResult;
-import com.playbasis.pbcore.rest.result.CountContentApiResult;
-import com.playbasis.pbcore.rest.result.CreateContentApiResult;
+import com.playbasis.pbcore.rest.result.content.ContentOpinionApiResult;
+import com.playbasis.pbcore.rest.result.content.ContentsApiResult;
+import com.playbasis.pbcore.rest.result.content.CountContentApiResult;
+import com.playbasis.pbcore.rest.result.content.CreateContentApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

@@ -1,8 +1,8 @@
 package com.playbasis.pbcore.domain.model;
 
-import com.playbasis.pbcore.rest.result.response.BaseQuestResponse;
-import com.playbasis.pbcore.rest.result.response.PlayerQuestResponse;
-import com.playbasis.pbcore.rest.result.response.QuestResponse;
+import com.playbasis.pbcore.rest.response.BaseQuestResponse;
+import com.playbasis.pbcore.rest.response.PlayerQuestResponse;
+import com.playbasis.pbcore.rest.response.QuestResponse;
 
 import java.util.ArrayList;
 import java.util.Date;

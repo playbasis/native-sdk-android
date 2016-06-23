@@ -1,7 +1,7 @@
 package com.playbasis.pbcore.dependency.module;
 
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
-import com.playbasis.pbcore.domain.interactor.UploadImageInteractor;
+import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
 import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;

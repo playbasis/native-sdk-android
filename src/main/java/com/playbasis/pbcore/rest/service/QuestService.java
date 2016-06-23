@@ -2,11 +2,11 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.CancelQuestApiResult;
-import com.playbasis.pbcore.rest.result.JoinQuestApiResult;
-import com.playbasis.pbcore.rest.result.MissionInfoApiResult;
-import com.playbasis.pbcore.rest.result.QuestInfoApiResult;
-import com.playbasis.pbcore.rest.result.QuestListApiResult;
+import com.playbasis.pbcore.rest.result.quest.CancelQuestApiResult;
+import com.playbasis.pbcore.rest.result.quest.JoinQuestApiResult;
+import com.playbasis.pbcore.rest.result.quest.MissionInfoApiResult;
+import com.playbasis.pbcore.rest.result.quest.QuestInfoApiResult;
+import com.playbasis.pbcore.rest.result.quest.QuestListApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

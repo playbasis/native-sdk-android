@@ -2,7 +2,7 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.StoreOrganizeApiResult;
+import com.playbasis.pbcore.rest.result.organize.StoreOrganizeApiResult;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

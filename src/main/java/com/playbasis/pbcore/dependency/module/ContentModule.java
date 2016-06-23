@@ -1,10 +1,10 @@
 package com.playbasis.pbcore.dependency.module;
 
-import com.playbasis.pbcore.domain.interactor.ContentFeedbackInteractor;
-import com.playbasis.pbcore.domain.interactor.CountContentInteractor;
-import com.playbasis.pbcore.domain.interactor.DislikeContentInteractor;
-import com.playbasis.pbcore.domain.interactor.GetContentsInteractor;
-import com.playbasis.pbcore.domain.interactor.LikeContentInteractor;
+import com.playbasis.pbcore.domain.interactor.content.ContentFeedbackInteractor;
+import com.playbasis.pbcore.domain.interactor.content.CountContentInteractor;
+import com.playbasis.pbcore.domain.interactor.content.DislikeContentInteractor;
+import com.playbasis.pbcore.domain.interactor.content.GetContentsInteractor;
+import com.playbasis.pbcore.domain.interactor.content.LikeContentInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;

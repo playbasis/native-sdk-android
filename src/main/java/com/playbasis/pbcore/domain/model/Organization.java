@@ -1,7 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
-import com.playbasis.pbcore.rest.result.StoreOrganizeApiResult;
-import com.playbasis.pbcore.rest.result.response.PlayerOrganizationResponse;
+import com.playbasis.pbcore.rest.result.organize.StoreOrganizeApiResult;
+import com.playbasis.pbcore.rest.response.PlayerOrganizationResponse;
 
 /**
  * Created by Tar on 6/9/16 AD.

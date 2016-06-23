@@ -2,8 +2,8 @@ package com.playbasis.pbcore.domain.model;
 
 import android.support.annotation.StringDef;
 
-import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
-import com.playbasis.pbcore.rest.result.response.GetPlayerInfoResponse;
+import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
+import com.playbasis.pbcore.rest.response.PlayerResponse;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -46,25 +46,25 @@ public class Player extends PBModel {
     this.playerId = playerId;
   }
 
-  public void update(GetPlayerInfoResponse getPlayerInfoResponse) {
-    if (getPlayerInfoResponse.playerId != null) {
-      this.playerId = getPlayerInfoResponse.playerId;
+  public void update(PlayerResponse PlayerResponse) {
+    if (PlayerResponse.playerId != null) {
+      this.playerId = PlayerResponse.playerId;
     }
 
-    this.email = getPlayerInfoResponse.email;
-    this.firstName = getPlayerInfoResponse.firstName;
-    this.lastName = getPlayerInfoResponse.lastName;
-    this.gender = new Gender(getPlayerInfoResponse.gender);
-    this.birthday = getPlayerInfoResponse.birthdate;
-    this.imageUrl = getPlayerInfoResponse.image;
-    this.phoneNumber = getPlayerInfoResponse.phoneNumber;
-    this.registered = getPlayerInfoResponse.registered;
-    this.lastLogin = getPlayerInfoResponse.lastLogin;
-    this.lastLogout = getPlayerInfoResponse.lastLogout;
-    this.levelPercent = getPlayerInfoResponse.levelPercent;
-    this.levelTitle = getPlayerInfoResponse.levelTitle;
-    this.levelImageUrl = getPlayerInfoResponse.levelImageUrl;
-    this.badges = Badge.create(getPlayerInfoResponse.playerBadgesResponses);
+    this.email = PlayerResponse.email;
+    this.firstName = PlayerResponse.firstName;
+    this.lastName = PlayerResponse.lastName;
+    this.gender = new Gender(PlayerResponse.gender);
+    this.birthday = PlayerResponse.birthdate;
+    this.imageUrl = PlayerResponse.image;
+    this.phoneNumber = PlayerResponse.phoneNumber;
+    this.registered = PlayerResponse.registered;
+    this.lastLogin = PlayerResponse.lastLogin;
+    this.lastLogout = PlayerResponse.lastLogout;
+    this.levelPercent = PlayerResponse.levelPercent;
+    this.levelTitle = PlayerResponse.levelTitle;
+    this.levelImageUrl = PlayerResponse.levelImageUrl;
+    this.badges = Badge.create(PlayerResponse.playerBadgesResponses);
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {

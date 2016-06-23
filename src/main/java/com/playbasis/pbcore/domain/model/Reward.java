@@ -1,6 +1,6 @@
 package com.playbasis.pbcore.domain.model;
 
-import com.playbasis.pbcore.rest.result.response.RewardResponse;
+import com.playbasis.pbcore.rest.response.RewardResponse;
 
 import java.util.ArrayList;
 import java.util.Date;

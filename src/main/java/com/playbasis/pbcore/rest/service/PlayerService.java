@@ -2,20 +2,20 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.ForgetPasswordApiResult;
-import com.playbasis.pbcore.rest.result.GetPlayerBadgesApiResult;
-import com.playbasis.pbcore.rest.result.GetPlayerDetailApiResult;
-import com.playbasis.pbcore.rest.result.GetUserCustomFieldsApiResult;
-import com.playbasis.pbcore.rest.result.LoginPlayerApiResult;
-import com.playbasis.pbcore.rest.result.PlayerJoinedQuestApiResult;
-import com.playbasis.pbcore.rest.result.PlayerQuestApiResult;
-import com.playbasis.pbcore.rest.result.PlayerQuestListApiResult;
-import com.playbasis.pbcore.rest.result.RegisterPlayerApiResult;
-import com.playbasis.pbcore.rest.result.RemovePlayerFromOrganizeApiResult;
-import com.playbasis.pbcore.rest.result.SetPlayerCustomFieldApiResult;
-import com.playbasis.pbcore.rest.result.UpdatePlayerDetailApiResult;
-import com.playbasis.pbcore.rest.result.UpdatePlayerOrganizationApiResult;
-import com.playbasis.pbcore.rest.result.VerifyPlayerEmailApiResult;
+import com.playbasis.pbcore.rest.result.player.ForgetPasswordApiResult;
+import com.playbasis.pbcore.rest.result.player.GetPlayerBadgesApiResult;
+import com.playbasis.pbcore.rest.result.player.GetPlayerDetailApiResult;
+import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
+import com.playbasis.pbcore.rest.result.player.LoginPlayerApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerJoinedQuestApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerQuestApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
+import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
+import com.playbasis.pbcore.rest.result.organize.RemovePlayerFromOrganizeApiResult;
+import com.playbasis.pbcore.rest.result.player.SetPlayerCustomFieldApiResult;
+import com.playbasis.pbcore.rest.result.player.UpdatePlayerDetailApiResult;
+import com.playbasis.pbcore.rest.result.organize.UpdatePlayerOrganizationApiResult;
+import com.playbasis.pbcore.rest.result.player.VerifyPlayerEmailApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -36,7 +36,7 @@ public interface PlayerService {
    * @param token    access token
    * @param email    email of the player
    * @param password password of the player
-   * @return getPlayerInfoResponse api result observable
+   * @return PlayerResponse api result observable
    */
   @FormUrlEncoded
   @POST("Player/auth")
@@ -47,10 +47,10 @@ public interface PlayerService {
   );
 
   /**
-   * Send a new password to the getPlayerInfoResponse mail box.
+   * Send a new password to the PlayerResponse mail box.
    *
    * @param token access token
-   * @param email email of the getPlayerInfoResponse
+   * @param email email of the PlayerResponse
    * @return forget api result observable
    */
   @FormUrlEncoded
@@ -61,10 +61,10 @@ public interface PlayerService {
   );
 
   /**
-   * Get the details of a getPlayerInfoResponse
+   * Get the details of a PlayerResponse
    *
    * @param token  access token
-   * @param playerId getPlayerInfoResponse id
+   * @param playerId PlayerResponse id
    * @return User info result observable
    */
   @FormUrlEncoded

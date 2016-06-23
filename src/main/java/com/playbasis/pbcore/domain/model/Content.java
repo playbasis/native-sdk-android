@@ -2,7 +2,7 @@ package com.playbasis.pbcore.domain.model;
 
 import android.os.Parcelable;
 
-import com.playbasis.pbcore.rest.result.response.ContentResponse;
+import com.playbasis.pbcore.rest.response.ContentResponse;
 
 import java.util.ArrayList;
 import java.util.Date;

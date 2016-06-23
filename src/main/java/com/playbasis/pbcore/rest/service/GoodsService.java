@@ -2,10 +2,10 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.GoodsInfoApiResult;
-import com.playbasis.pbcore.rest.result.GoodsListApiResult;
-import com.playbasis.pbcore.rest.result.RedeemGoodsCouponApiResult;
-import com.playbasis.pbcore.rest.result.VerifyGoodsCouponApiResult;
+import com.playbasis.pbcore.rest.result.goods.GoodsInfoApiResult;
+import com.playbasis.pbcore.rest.result.goods.GoodsListApiResult;
+import com.playbasis.pbcore.rest.result.goods.RedeemGoodsCouponApiResult;
+import com.playbasis.pbcore.rest.result.goods.VerifyGoodsCouponApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -43,10 +43,10 @@ public interface GoodsService {
   );
 
   /**
-   * Get the details of a getPlayerInfoResponse
+   * Get the details of a PlayerResponse
    *
    * @param token  access token
-   * @param playerId getPlayerInfoResponse id
+   * @param playerId PlayerResponse id
    * @return User info result observable
    */
   @FormUrlEncoded

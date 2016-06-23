@@ -5,7 +5,7 @@ import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonPlayerAdapter;
-import com.playbasis.pbcore.rest.result.response.PlayerCustomFieldResponse;
+import com.playbasis.pbcore.rest.response.PlayerCustomFieldResponse;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.ImageService;
@@ -96,9 +96,9 @@ public class RestClient {
   }
 
   /**
-   * Getter for the getPlayerInfoResponse service.
+   * Getter for the PlayerResponse service.
    *
-   * @return getPlayerInfoResponse service
+   * @return PlayerResponse service
    */
   public PlayerService getPlayerService() {
     return playerService;
