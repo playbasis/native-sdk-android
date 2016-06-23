@@ -26,7 +26,7 @@ public class DislikeContentInteractor extends ContentOpinionInteractor {
   @Override
   public Observable buildApiUseCaseObservable() {
     return restClient.getContentService().dislikeContent(
-        token.token,
+        getApiToken(),
         form.getNodeId(),
         form.getPlayerId(),
         form.getKeys(),

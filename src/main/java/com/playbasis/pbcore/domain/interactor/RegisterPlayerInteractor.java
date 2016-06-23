@@ -38,7 +38,7 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
     Observable observable = restClient.getPlayerService()
         .registerPlayer(
             playerRegistrationForm.getPlayerId(),
-            token.token,
+            getApiToken(),
             playerRegistrationForm.getUserName(),
             playerRegistrationForm.getEmail(),
             playerRegistrationForm.getImageUrl(),

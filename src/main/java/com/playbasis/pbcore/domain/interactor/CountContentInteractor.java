@@ -33,7 +33,7 @@ public class CountContentInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getContentService()
         .countContents(
-            restClient.getApiKey(),
+            getApiKey(),
             mCountIdeasForm.getCategory(),
             mCountIdeasForm.getPin(),
             mCountIdeasForm.getPlayerId(),

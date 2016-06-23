@@ -33,7 +33,7 @@ public class VerifyGoodsCouponInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getGoodsService()
         .verifyGoodsCoupon(
-            restClient.getApiKey(),
+            getApiKey(),
             verifyGoodsCouponForm.getGoodsId(),
             verifyGoodsCouponForm.getCode(),
             verifyGoodsCouponForm.getPlayerId()

@@ -37,7 +37,7 @@ public class GetGoodsListInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getGoodsService()
         .getGoods(
-            restClient.getApiKey(),
+            getApiKey(),
             getGoodsListForm.getPlayerId(),
             getGoodsListForm.getTags()
         )

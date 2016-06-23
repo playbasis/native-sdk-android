@@ -30,7 +30,7 @@ public class ForgetPasswordInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getPlayerService()
         .forgetPlayerPassword(
-            token.token,
+            getApiToken(),
             forgetPlayerPasswordForm.getEmail()
         ).map(new PBApiErrorCheckFunc<ForgetPasswordApiResult>());
   }

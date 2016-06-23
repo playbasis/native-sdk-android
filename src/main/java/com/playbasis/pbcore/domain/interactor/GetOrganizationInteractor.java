@@ -48,7 +48,7 @@ public class GetOrganizationInteractor extends RestInteractor {
 
     return restClient.getStoreOrganizeService()
         .getStoreOrganize(
-            restClient.getApiKey(),
+            getApiKey(),
             form.getOrganizationId()
         )
         .map(new PBApiErrorCheckFunc<StoreOrganizeApiResult>())

@@ -33,7 +33,7 @@ public class GetContentsInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getContentService()
         .getContents(
-            restClient.getApiKey(),
+            getApiKey(),
             getContentsForm.getCategory(),
             getContentsForm.getPin(),
             getContentsForm.getPlayerId(),

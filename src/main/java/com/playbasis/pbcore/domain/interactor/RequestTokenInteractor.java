@@ -42,7 +42,7 @@ public class RequestTokenInteractor extends RestInteractor {
 
       return restClient.getTokenService()
           .getToken(
-              restClient.getApiKey(),
+              getApiKey(),
               restClient.getApiSecret()
           ).map(new Func1<RequestTokenApiResult, Token>() {
             @Override

@@ -36,7 +36,7 @@ public class GetGoodsInfoInteractor extends PlayBasisApiInteractor {
     return restClient.getGoodsService()
         .getGoodsDetail(
             getGoodsInfoForm.getGoodsId(),
-            restClient.getApiKey(),
+            getApiKey(),
             getGoodsInfoForm.getPlayerId()
         )
         .map(new PBApiErrorCheckFunc<GoodsInfoApiResult>())

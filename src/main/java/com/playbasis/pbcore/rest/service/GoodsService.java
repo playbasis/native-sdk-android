@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.playbasis.pbcore.rest.result.GoodsInfoApiResult;
 import com.playbasis.pbcore.rest.result.GoodsListApiResult;
+import com.playbasis.pbcore.rest.result.RedeemGoodsCouponApiResult;
 import com.playbasis.pbcore.rest.result.VerifyGoodsCouponApiResult;
 
 import retrofit2.http.Field;
@@ -50,7 +51,7 @@ public interface GoodsService {
    */
   @FormUrlEncoded
   @POST("Goods/couponVerify")
-  Observable<VerifyGoodsCouponApiResult> redeemGoodsCoupon(
+  Observable<RedeemGoodsCouponApiResult> redeemGoodsCoupon(
       @NonNull @Field("token") String token,
       @NonNull @Field("goods_id") String goodsId,
       @NonNull @Field("coupon_code") String couponCode,

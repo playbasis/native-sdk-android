@@ -32,7 +32,7 @@ public class UploadImageInteractor extends PlayBasisApiInteractor {
   @Override
   public Observable buildApiUseCaseObservable() {
     return restClient.getImageService().uploadImage(
-        RequestBody.create(MediaType.parse("text/plain"), token.token),
+        RequestBody.create(MediaType.parse("text/plain"), getApiToken()),
         RequestBody.create(MediaType.parse("text/plain"), form.getPlayerId()),
         MultipartBody.Part.createFormData(
             "file",

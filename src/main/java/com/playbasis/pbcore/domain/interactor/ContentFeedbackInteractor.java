@@ -29,7 +29,7 @@ public class ContentFeedbackInteractor extends PlayBasisApiInteractor {
   @Override
   public Observable buildApiUseCaseObservable() {
     return restClient.getContentService().sendContentFeedback(
-        token.token,
+        getApiToken(),
         form.getNodeId(),
         form.getPlayerId(),
         form.getComment(),
