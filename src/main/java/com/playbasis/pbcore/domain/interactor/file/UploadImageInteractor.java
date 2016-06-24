@@ -21,6 +21,8 @@ import rx.Observable;
  */
 public class UploadImageInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "UploadImageInteractor";
+
   private UploadImageForm form;
 
   @Inject

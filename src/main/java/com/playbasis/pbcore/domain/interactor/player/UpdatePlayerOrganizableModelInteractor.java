@@ -26,6 +26,8 @@ import rx.functions.FuncN;
  */
 public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "UpdatePlayerOrganizableModelInteractor";
+
   private UpdatePlayerOrganizationForm updatePlayerOrganizationForm;
 
   @Inject

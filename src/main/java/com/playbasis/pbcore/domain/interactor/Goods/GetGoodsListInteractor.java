@@ -22,7 +22,7 @@ import rx.functions.Func1;
  */
 public class GetGoodsListInteractor extends PlayBasisApiInteractor {
 
-  public static final String TAG = "GetIdeasInteractor";
+  public static final String TAG = "GetGoodsListInteractor";
 
   private GetGoodsListForm getGoodsListForm;
 

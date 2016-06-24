@@ -22,7 +22,7 @@ import rx.functions.Func1;
  */
 public class GetPlayerEarnedBadgesInteractor extends PlayBasisApiInteractor {
 
-  public static final String TAG = "GetIdeasInteractor";
+  public static final String TAG = "GetPlayerEarnedBadgesInteractor";
 
   private GetPlayerBadgesForm getPlayerBadgesForm;
 

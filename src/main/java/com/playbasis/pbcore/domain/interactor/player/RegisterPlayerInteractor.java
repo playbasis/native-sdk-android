@@ -21,6 +21,8 @@ import rx.functions.Func1;
  */
 public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "RegisterPlayerInteractor";
+
   public PlayerRegistrationForm playerRegistrationForm;
   private VerifyPlayerEmailInteractor verifyPlayerEmailInteractor;
   private RegisterPlayerApiResult registerPlayerApiResult;

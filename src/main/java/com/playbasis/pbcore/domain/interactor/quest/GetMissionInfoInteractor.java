@@ -18,7 +18,7 @@ import rx.Observable;
  */
 public class GetMissionInfoInteractor extends PlayBasisApiInteractor {
 
-  public static final String TAG = "GetIdeasInteractor";
+  public static final String TAG = "GetMissionInfoInteractor";
 
   private GetMissionInfoForm getMissionInfoForm;
 

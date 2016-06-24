@@ -16,6 +16,8 @@ import rx.Observable;
  */
 public class PlayerAuthenticationInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "PlayerAuthenticationInteractor";
+
   private PlayerAuthenticationForm mPlayerAuthenticationForm;
 
   @Inject

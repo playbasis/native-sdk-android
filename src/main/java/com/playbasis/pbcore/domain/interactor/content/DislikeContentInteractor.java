@@ -16,6 +16,8 @@ import rx.Observable;
  */
 public class DislikeContentInteractor extends ContentOpinionInteractor {
 
+  public static final String TAG = "DislikeContentInteractor";
+
   @Inject
   public DislikeContentInteractor(ThreadExecutor threadExecutor,
                                   PostExecutionThread postExecutionThread,

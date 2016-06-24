@@ -22,6 +22,8 @@ import rx.functions.Func1;
  */
 public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "UpdatePlayerInteractor";
+
   private UpdatePlayerForm form;
   private UploadImageInteractor uploadImageInteractor;
 

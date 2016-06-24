@@ -18,7 +18,7 @@ import rx.Observable;
  */
 public class VerifyGoodsCouponInteractor extends PlayBasisApiInteractor {
 
-  public static final String TAG = "GetIdeasInteractor";
+  public static final String TAG = "VerifyGoodsCouponInteractor";
 
   private VerifyGoodsCouponForm verifyGoodsCouponForm;
 

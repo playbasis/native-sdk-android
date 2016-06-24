@@ -12,6 +12,8 @@ import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
  */
 public abstract class ContentOpinionInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "ContentOpinionInteractor";
+
   protected ContentOpinionForm form;
 
   public ContentOpinionInteractor(ThreadExecutor threadExecutor,

@@ -18,6 +18,8 @@ import rx.Observable;
  */
 public class VerifyPlayerEmailInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "VerifyPlayerEmailInteractor";
+
   public PlayerEmailVerificationForm playerEmailVerificationForm;
 
   @Inject

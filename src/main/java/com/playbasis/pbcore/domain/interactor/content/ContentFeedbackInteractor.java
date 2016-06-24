@@ -18,6 +18,8 @@ import rx.Observable;
  */
 public class ContentFeedbackInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "ContentFeedbackInteractor";
+
   private ContentFeedbackForm form;
 
   @Inject

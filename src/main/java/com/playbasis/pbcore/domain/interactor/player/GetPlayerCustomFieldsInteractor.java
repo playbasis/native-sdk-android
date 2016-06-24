@@ -21,6 +21,8 @@ import rx.functions.Func1;
  */
 public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "GetPlayerCustomFieldsInteractor";
+
   GetPlayerCustomFieldForm getPlayerCustomFieldForm;
 
   @Inject

@@ -16,6 +16,8 @@ import rx.Observable;
  */
 public class LikeContentInteractor extends ContentOpinionInteractor {
 
+  public static final String TAG = "LikeContentInteractor";
+
   @Inject
   public LikeContentInteractor(ThreadExecutor threadExecutor,
                                PostExecutionThread postExecutionThread,

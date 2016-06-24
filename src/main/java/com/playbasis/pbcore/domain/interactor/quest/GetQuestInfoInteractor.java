@@ -18,7 +18,7 @@ import rx.Observable;
  */
 public class GetQuestInfoInteractor extends PlayBasisApiInteractor {
 
-  public static final String TAG = "GetIdeasInteractor";
+  public static final String TAG = "GetQuestInfoInteractor";
 
   private GetQuestInfoForm getQuestInfoForm;
 

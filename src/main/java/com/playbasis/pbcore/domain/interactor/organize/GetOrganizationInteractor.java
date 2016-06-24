@@ -23,6 +23,8 @@ import rx.functions.Func1;
  */
 public class GetOrganizationInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "GetOrganizationInteractor";
+
   GetStoreOrganizationForm getStoreOrganizationForm;
   PBSharedPreference sharedPreference;
 

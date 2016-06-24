@@ -18,6 +18,8 @@ import rx.Observable;
  */
 public class SetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
+  public static final String TAG = "SetPlayerCustomFieldsInteractor";
+
   private UpdatePlayerCustomFieldForm form;
 
   @Inject
