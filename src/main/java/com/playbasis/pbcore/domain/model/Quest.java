@@ -61,37 +61,45 @@ public class Quest extends PBModel {
     return quests;
   }
 
-  private void setup(BaseQuestResponse baseQuestResponse) {
-    this.questId = baseQuestResponse.questId;
-    this.name = baseQuestResponse.name;
-    this.description = baseQuestResponse.description;
-    this.hint = baseQuestResponse.hint;
-    this.imageUrl = baseQuestResponse.imageUrl;
-    this.status = baseQuestResponse.status;
-    this.tags = baseQuestResponse.tags;
-    this.sortOrder = baseQuestResponse.sortOrder;
-    this.missionOrder = baseQuestResponse.missionOrder;
-    this.addedDate = baseQuestResponse.addedDate;
-    this.clientId = baseQuestResponse.clientId;
-    this.siteId = baseQuestResponse.siteId;
-    this.feedbacks = baseQuestResponse.feedbacks;
-    this.organizeId = baseQuestResponse.organizeId;
-    this.organizeRole = baseQuestResponse.organizeRole;
-    this.modifiedDate = baseQuestResponse.modifiedDate;
-    this.missions = Mission.create(baseQuestResponse.missionResponses);
-    this.conditions = Condition.create(baseQuestResponse.conditionResponses);
-    this.rewards = Reward.create(baseQuestResponse.rewardResponses);
+  private void setup(BaseQuestResponse response, boolean allowNull) {
+    this.questId = valueOrDefault(response.questId, this.questId);
+    this.name = valueOrDefault(response.name, this.name, allowNull);
+    this.description = valueOrDefault(response.description, this.description, allowNull);
+    this.hint = valueOrDefault(response.hint, this.hint, allowNull);
+    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
+    this.status = valueOrDefault(response.status, this.status, allowNull);
+    this.tags = valueOrDefault(response.tags, this.tags, allowNull);
+    this.sortOrder = valueOrDefault(response.sortOrder, this.sortOrder, allowNull);
+    this.missionOrder = valueOrDefault(response.missionOrder, this.missionOrder, allowNull);
+    this.addedDate = valueOrDefault(response.addedDate, this.addedDate, allowNull);
+    this.clientId = valueOrDefault(response.clientId, this.clientId, allowNull);
+    this.siteId = valueOrDefault(response.siteId, this.siteId, allowNull);
+    this.feedbacks = valueOrDefault(response.feedbacks, this.feedbacks, allowNull);
+    this.organizeId = valueOrDefault(response.organizeId, this.organizeId, allowNull);
+    this.organizeRole = valueOrDefault(response.organizeRole, this.organizeRole, allowNull);
+    this.modifiedDate = valueOrDefault(response.modifiedDate, this.modifiedDate, allowNull);
+    this.missions = valueOrDefault(Mission.create(response.missionResponses), this.missions, allowNull);
+    this.conditions = valueOrDefault(Condition.create(response.conditionResponses), this.conditions, allowNull);
+    this.rewards = valueOrDefault(Reward.create(response.rewardResponses), this.rewards, allowNull);
   }
 
-  public void init(QuestResponse questResponse) {
-    setup(questResponse);
+  public void init(QuestResponse response) {
+    init(response, true);
   }
 
-  public void init(PlayerQuestResponse playerQuestResponse) {
-    setup(playerQuestResponse);
+  public void init(QuestResponse response, boolean allowNull) {
+    setup(response, allowNull);
+  }
 
-    if (playerQuestResponse.numMissionsResponse != null) {
-      this.numMissions = new NumMissions(playerQuestResponse.numMissionsResponse);
+  public void init(PlayerQuestResponse response) {
+    init(response, true);
+  }
+
+  public void init(PlayerQuestResponse response, boolean allowNull) {
+    setup(response, allowNull);
+
+    if (response.numMissionsResponse != null) {
+      this.numMissions = valueOrDefault(new NumMissions(response.numMissionsResponse), this.numMissions, allowNull);
     }
   }
 

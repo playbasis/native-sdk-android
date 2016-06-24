@@ -46,21 +46,29 @@ public class Goods extends PBModel {
     return goodsList;
   }
 
-  public void init(GoodsResponse goodsResponse) {
-    this.goodsId = goodsResponse.goodsId;
-    this.name = goodsResponse.name;
-    this.description = goodsResponse.description;
-    this.quantity = goodsResponse.quantity;
-    this.amount = goodsResponse.amount;
-    this.imageUrl = goodsResponse.imageUrl;
-    this.tags = goodsResponse.tags;
-    this.code = goodsResponse.code;
-    this.group = goodsResponse.group;
-    this.startDate = goodsResponse.startDate;
-    this.expireDate = goodsResponse.expireDate;
-    this.isGroup = goodsResponse.isGroup;
-    this.sponsor = goodsResponse.sponsor;
-    this.sortOrder = goodsResponse.sortOrder;
+  public void init(GoodsResponse response) {
+    init(response, true);
+  }
+
+  public void init(GoodsResponse response, boolean allowNull) {
+    if (response == null) {
+      return;
+    }
+
+    this.goodsId = valueOrDefault(response.goodsId, this.goodsId);
+    this.name = valueOrDefault(response.name, this.name, allowNull);
+    this.description = valueOrDefault(response.description, this.description, allowNull);
+    this.quantity = valueOrDefault(response.quantity, this.quantity, allowNull);
+    this.amount = valueOrDefault(response.amount, this.amount, allowNull);
+    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
+    this.tags = valueOrDefault(response.tags, this.tags, allowNull);
+    this.code = valueOrDefault(response.code, this.code, allowNull);
+    this.group = valueOrDefault(response.group, this.group, allowNull);
+    this.startDate = valueOrDefault(response.startDate, this.startDate, allowNull);
+    this.expireDate = valueOrDefault(response.expireDate, this.expireDate, allowNull);
+    this.isGroup = valueOrDefault(response.isGroup, this.isGroup, allowNull);
+    this.sponsor = valueOrDefault(response.sponsor, this.sponsor, allowNull);
+    this.sortOrder = valueOrDefault(response.sortOrder, this.sortOrder, allowNull);
   }
 
   public String getGoodsId() {

@@ -40,20 +40,24 @@ public class Completion extends PBModel {
     return completions;
   }
 
-  public void init(BaseMissionResponse.CompletionResponse completionResponse) {
-    if (completionResponse == null) {
+  public void init(BaseMissionResponse.CompletionResponse response) {
+    init(response, true);
+  }
+
+  public void init(BaseMissionResponse.CompletionResponse response, boolean allowNull) {
+    if (response == null) {
       return;
     }
 
-    this.elementId = completionResponse.elementId;
-    this.op = completionResponse.op;
-    this.filter = completionResponse.filter;
-    this.value = completionResponse.value;
-    this.completionId = completionResponse.completionId;
-    this.type = completionResponse.type;
-    this.title = completionResponse.title;
-    this.filteredParam = new FilteredParam(completionResponse.filteredParamResponse);
-    this.completionData = new CompletionData(completionResponse.completionDataResponse);
+    this.elementId = valueOrDefault(response.elementId, this.elementId);
+    this.op = valueOrDefault(response.op, this.op, allowNull);
+    this.filter = valueOrDefault(response.filter, this.filter, allowNull);
+    this.value = valueOrDefault(response.value, this.value, allowNull);
+    this.completionId = valueOrDefault(response.completionId, this.completionId, allowNull);
+    this.type = valueOrDefault(response.type, this.type, allowNull);
+    this.title = valueOrDefault(response.title, this.title, allowNull);
+    this.filteredParam = valueOrDefault(new FilteredParam(response.filteredParamResponse), this.filteredParam, allowNull);
+    this.completionData = valueOrDefault(new CompletionData(response.completionDataResponse), this.completionData, allowNull);
   }
 
   public String getElementId() {

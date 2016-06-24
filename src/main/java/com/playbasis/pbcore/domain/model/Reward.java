@@ -36,15 +36,19 @@ public class Reward extends PBModel {
     return rewards;
   }
 
-  public void init(RewardResponse rewardResponse) {
-    if (rewardResponse == null) {
+  public void init(RewardResponse response) {
+    init(response, true);
+  }
+
+  public void init(RewardResponse response, boolean allowNull) {
+    if (response == null) {
       return;
     }
 
-    this.rewardId = rewardResponse.rewardId;
-    this.type = rewardResponse.type;
-    this.value = rewardResponse.value;
-    this.data = new Data(rewardResponse.data);
+    this.rewardId = valueOrDefault(response.rewardId, this.rewardId);
+    this.type = valueOrDefault(response.type, this.type, allowNull);
+    this.value = valueOrDefault(response.value, this.value, allowNull);
+    this.data = valueOrDefault(new Data(response.data, allowNull), this.data, allowNull);
   }
 
   public String getRewardId() {
@@ -71,18 +75,18 @@ public class Reward extends PBModel {
     protected boolean status;
     protected boolean deleted;
 
-    private Data(RewardResponse.DataResponse dataResponse) {
+    private Data(RewardResponse.DataResponse dataResponse, boolean allowNull) {
       if (dataResponse == null) {
         return;
       }
 
-      this.addedDate = dataResponse.addedDate;
-      this.modifiedDate = dataResponse.modifiedDate;
-      this.perUser = dataResponse.perUser;
-      this.status = dataResponse.status;
-      this.deleted = dataResponse.deleted;
+      this.addedDate = valueOrDefault(dataResponse.addedDate, addedDate, allowNull);
+      this.modifiedDate = valueOrDefault(dataResponse.modifiedDate, modifiedDate, allowNull);
+      this.perUser = valueOrDefault(dataResponse.perUser, perUser, allowNull);
+      this.status = valueOrDefault(dataResponse.status, status, allowNull);
+      this.deleted = valueOrDefault(dataResponse.deleted, deleted, allowNull);
 
-      init(dataResponse);
+      init(dataResponse, allowNull);
     }
 
     public int getPerUser() {

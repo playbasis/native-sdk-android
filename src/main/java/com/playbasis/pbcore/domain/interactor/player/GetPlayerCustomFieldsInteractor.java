@@ -49,7 +49,7 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
           @Override
           public Player call(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
             if (getUserCustomFieldsApiResult != null) {
-              player.update(getUserCustomFieldsApiResult);
+              player.init(getUserCustomFieldsApiResult);
             }
 
             return player;

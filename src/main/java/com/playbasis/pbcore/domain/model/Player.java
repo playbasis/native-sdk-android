@@ -46,28 +46,33 @@ public class Player extends PBModel {
     this.playerId = playerId;
   }
 
-  public void update(PlayerResponse PlayerResponse) {
-    if (PlayerResponse.playerId != null) {
-      this.playerId = PlayerResponse.playerId;
-    }
-
-    this.email = PlayerResponse.email;
-    this.firstName = PlayerResponse.firstName;
-    this.lastName = PlayerResponse.lastName;
-    this.gender = new Gender(PlayerResponse.gender);
-    this.birthday = PlayerResponse.birthdate;
-    this.imageUrl = PlayerResponse.image;
-    this.phoneNumber = PlayerResponse.phoneNumber;
-    this.registered = PlayerResponse.registered;
-    this.lastLogin = PlayerResponse.lastLogin;
-    this.lastLogout = PlayerResponse.lastLogout;
-    this.levelPercent = PlayerResponse.levelPercent;
-    this.levelTitle = PlayerResponse.levelTitle;
-    this.levelImageUrl = PlayerResponse.levelImageUrl;
-    this.badges = Badge.create(PlayerResponse.playerBadgesResponses);
+  public void init(PlayerResponse response) {
+    init(response);
   }
 
-  public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
+  public void init(PlayerResponse response, boolean allowNull) {
+    if (response == null) {
+      return;
+    }
+
+    this.playerId = valueOrDefault(response.playerId, this.playerId);
+    this.email = valueOrDefault(response.email, this.email, allowNull);
+    this.firstName = valueOrDefault(response.firstName, this.firstName, allowNull);
+    this.lastName = valueOrDefault(response.lastName, this.lastName, allowNull);
+    this.gender = valueOrDefault(new Gender(response.gender), this.gender, allowNull);
+    this.birthday = valueOrDefault(response.birthdate, this.birthday, allowNull);
+    this.imageUrl = valueOrDefault(response.image, this.imageUrl, allowNull);
+    this.phoneNumber = valueOrDefault(response.phoneNumber, this.phoneNumber, allowNull);
+    this.registered = valueOrDefault(response.registered, this.registered, allowNull);
+    this.lastLogin = valueOrDefault(response.lastLogin, this.lastLogin, allowNull);
+    this.lastLogout = valueOrDefault(response.lastLogout, this.lastLogout, allowNull);
+    this.levelPercent = valueOrDefault(response.levelPercent, this.levelPercent, allowNull);
+    this.levelTitle = valueOrDefault(response.levelTitle, this.levelTitle, allowNull);
+    this.levelImageUrl = valueOrDefault(response.levelImageUrl, this.levelImageUrl, allowNull);
+    this.badges = valueOrDefault(Badge.create(response.playerBadgesResponses), this.badges, allowNull);
+  }
+
+  public void init(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
     this.customFields.clear();
 
     if (getUserCustomFieldsApiResult.getCustomFieldMap() != null) {

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Tar on 5/5/16 AD.
  */
-public abstract class Content implements Parcelable {
+public abstract class Content extends PBModel implements Parcelable {
 
   protected String id;
   protected String title;
@@ -24,17 +24,6 @@ public abstract class Content implements Parcelable {
 
   public Content() {
 
-  }
-
-  public void init(ContentResponse contentResponse) {
-    this.id = contentResponse.id;
-    this.title = contentResponse.title;
-    this.summary = contentResponse.summary;
-    this.detail = contentResponse.detail;
-    this.category = contentResponse.category;
-    this.image = contentResponse.image;
-    this.startDate = contentResponse.startDate;
-    this.endDate = contentResponse.endDate;
   }
 
   public static <T extends Content> List<T> createFromContentResponses(Class<T> klass, List<ContentResponse> contentResponses) {
@@ -51,6 +40,26 @@ public abstract class Content implements Parcelable {
     }
 
     return results;
+  }
+
+  public void init(ContentResponse response) {
+    init(response, true);
+  }
+
+  public void init(ContentResponse response, boolean allowNull) {
+    if (response == null) {
+      return;
+    }
+
+    this.id = valueOrDefault(response.id, this.id);
+    this.title = valueOrDefault(response.title, this.title, allowNull);
+    this.summary = valueOrDefault(response.summary, this.summary, allowNull);
+    this.detail = valueOrDefault(response.detail, this.detail, allowNull);
+    this.category = valueOrDefault(response.category, this.category, allowNull);
+    this.image = valueOrDefault(response.image, this.image, allowNull);
+    this.startDate = valueOrDefault(response.startDate, this.startDate, allowNull);
+    this.endDate = valueOrDefault(response.endDate, this.endDate, allowNull);
+
   }
 
   public String getId() {

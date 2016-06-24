@@ -46,28 +46,44 @@ public class Mission extends PBModel {
     return missions;
   }
 
-  private void setup(BaseMissionResponse baseMissionResponse) {
-    this.missionId = baseMissionResponse.missionId;
-    this.questId = baseMissionResponse.questId;
-    this.name = baseMissionResponse.name;
-    this.number = baseMissionResponse.number;
-    this.description = baseMissionResponse.description;
-    this.hint = baseMissionResponse.hint;
-    this.imageUrl = baseMissionResponse.imageUrl;
-    this.completions = Completion.create(baseMissionResponse.completionResponse);
+  private void setup(BaseMissionResponse response, boolean allowNull) {
+    this.missionId = valueOrDefault(response.missionId, this.missionId);
+    this.questId = valueOrDefault(response.questId, this.questId);
+    this.name = valueOrDefault(response.name, this.name, allowNull);
+    this.number = valueOrDefault(response.number, this.number, allowNull);
+    this.description = valueOrDefault(response.description, this.description, allowNull);
+    this.hint = valueOrDefault(response.hint, this.hint, allowNull);
+    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
+    this.completions = valueOrDefault(Completion.create(response.completionResponse), this.completions, allowNull);
   }
 
-  public void init(MissionResponse missionResponse) {
-    setup(missionResponse);
+  public void init(MissionResponse response) {
+    init(response, true);
   }
 
-  public void init(PlayerMissionResponse playerMissionResponse) {
-    setup(playerMissionResponse);
+  public void init(MissionResponse response, boolean allowNull) {
+    if (response == null) {
+      return;
+    }
 
-    this.status = playerMissionResponse.status;
+    setup(response, allowNull);
+  }
 
-    if (playerMissionResponse.pendingResponse != null) {
-      this.pending = new Pending(playerMissionResponse.pendingResponse);
+  public void init(PlayerMissionResponse response) {
+    init(response, true);
+  }
+
+  public void init(PlayerMissionResponse response, boolean allowNull) {
+    if (response == null) {
+      return;
+    }
+
+    setup(response, allowNull);
+
+    this.status = valueOrDefault(response.status, this.status, allowNull);
+
+    if (response.pendingResponse != null) {
+      this.pending = valueOrDefault(new Pending(response.pendingResponse), this.pending, allowNull);
     }
   }
 
