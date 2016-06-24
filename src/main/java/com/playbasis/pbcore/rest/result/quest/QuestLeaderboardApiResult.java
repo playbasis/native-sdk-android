@@ -1,7 +1,7 @@
 package com.playbasis.pbcore.rest.result.quest;
 
 import com.google.gson.annotations.SerializedName;
-import com.playbasis.pbcore.rest.response.QuestLeaderboardResponse;
+import com.playbasis.pbcore.rest.response.QuestPlayerRankResponse;
 import com.playbasis.pbcore.rest.result.PBApiResult;
 
 import java.util.List;
@@ -11,14 +11,14 @@ import java.util.List;
  */
 public class QuestLeaderboardApiResult extends PBApiResult<QuestLeaderboardApiResult.Response> {
 
-  public List<QuestLeaderboardResponse> getQuestLeaderboardResponses() {
-    return response.questLeaderboardResponses;
+  public List<QuestPlayerRankResponse> getQuestLeaderboardResponses() {
+    return response.questPlayerRankResponses;
   }
 
   public class Response {
 
     @SerializedName("result")
-    public List<QuestLeaderboardResponse> questLeaderboardResponses;
+    public List<QuestPlayerRankResponse> questPlayerRankResponses;
 
   }
 

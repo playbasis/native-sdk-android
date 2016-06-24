@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Tar on 6/21/16 AD.
  */
-public class QuestLeaderboardResponse {
+public class QuestPlayerRankResponse {
 
   @Expose
   @SerializedName("current")
