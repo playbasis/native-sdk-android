@@ -6,6 +6,7 @@ import com.playbasis.pbcore.rest.result.quest.CancelQuestApiResult;
 import com.playbasis.pbcore.rest.result.quest.JoinQuestApiResult;
 import com.playbasis.pbcore.rest.result.quest.MissionInfoApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestInfoApiResult;
+import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestListApiResult;
 
 import retrofit2.http.Field;
@@ -53,4 +54,9 @@ public interface QuestService {
       @NonNull @Field("player_id") String playerId
   );
 
+  @GET("Quest/leader")
+  Observable<QuestLeaderboardApiResult> getLeaderboard(
+      @NonNull @Query("api_key") String apiKey,
+      @NonNull @Query("quest_id") String questId
+  );
 }

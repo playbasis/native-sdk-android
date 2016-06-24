@@ -66,4 +66,13 @@ public class QuestModule {
     return new CancelQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
+  @Provides
+  @PerActivity
+  GetQuestLeaderboardInteractor provideGetQuestLeaderboardInteractor(ThreadExecutor threadExecutor,
+                                                                     PostExecutionThread postExecutionThread,
+                                                                     RestClient restClient,
+                                                                     RequestTokenInteractor requestTokenInteractor) {
+    return new GetQuestLeaderboardInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
 }
