@@ -2,7 +2,6 @@ package com.playbasis.pbcore.rest.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.playbasis.pbcore.domain.model.PBModel;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * Created by Tar on 6/21/16 AD.
  */
-public class GoodsResponse extends PBModel {
+public class GoodsResponse {
 
   @Expose
   @SerializedName("goods_id")

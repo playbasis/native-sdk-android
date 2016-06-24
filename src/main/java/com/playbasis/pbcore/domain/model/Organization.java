@@ -1,6 +1,6 @@
 package com.playbasis.pbcore.domain.model;
 
-import com.playbasis.pbcore.rest.result.organize.StoreOrganizeApiResult;
+import com.playbasis.pbcore.rest.response.OrganizeResponse;
 import com.playbasis.pbcore.rest.response.PlayerOrganizationResponse;
 
 /**
@@ -21,7 +21,7 @@ public abstract class Organization extends PBModel {
     this.name = playerOrganizationResponse.name;
   }
 
-  public void init(StoreOrganizeApiResult.OrganizeResponse organizeResponse) {
+  public void init(OrganizeResponse organizeResponse) {
     this.id = organizeResponse.id;
     this.name = organizeResponse.name;
     this.description = organizeResponse.description;

@@ -2,6 +2,7 @@ package com.playbasis.pbcore.rest.result.organize;
 
 import com.google.gson.annotations.SerializedName;
 import com.playbasis.pbcore.domain.model.Organization;
+import com.playbasis.pbcore.rest.response.OrganizeResponse;
 import com.playbasis.pbcore.rest.result.PBApiResult;
 
 import java.util.ArrayList;
@@ -36,17 +37,6 @@ public class StoreOrganizeApiResult extends PBApiResult<StoreOrganizeApiResult.R
 
     @SerializedName("results")
     public List<OrganizeResponse> organizations;
-
-  }
-
-  public class OrganizeResponse {
-
-    @SerializedName("_id")
-    public String id;
-    @SerializedName("name")
-    public String name;
-    @SerializedName("description")
-    public String description;
 
   }
 
