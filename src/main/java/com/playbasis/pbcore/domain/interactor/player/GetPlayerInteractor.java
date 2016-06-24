@@ -3,11 +3,11 @@ package com.playbasis.pbcore.domain.interactor.player;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Player;
+import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.GetPlayerCustomFieldForm;
 import com.playbasis.pbcore.rest.form.player.GetPlayerForm;
 import com.playbasis.pbcore.rest.result.player.GetPlayerDetailApiResult;
-import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
 import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 

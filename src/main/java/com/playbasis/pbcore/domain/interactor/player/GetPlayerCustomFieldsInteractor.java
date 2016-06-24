@@ -24,8 +24,10 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
   GetPlayerCustomFieldForm getPlayerCustomFieldForm;
 
   @Inject
-  public GetPlayerCustomFieldsInteractor(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread,
-                                         RestClient restClient, RequestTokenInteractor requestTokenInteractor) {
+  public GetPlayerCustomFieldsInteractor(ThreadExecutor threadExecutor,
+                                         PostExecutionThread postExecutionThread,
+                                         RestClient restClient,
+                                         RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 

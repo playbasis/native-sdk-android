@@ -14,6 +14,7 @@ import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
 import com.smartsoftasia.ssalibrary.bus.ApplicationBus;
+import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 import com.smartsoftasia.ssalibrary.helper.GsonHelper;
 
 import javax.inject.Inject;
@@ -23,6 +24,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by gregoire barret on 11/12/15.
@@ -46,7 +48,9 @@ public class RestClient {
   protected QuestService questService;
 
   @Inject
-  public RestClient(PBSharedPreference sharedPreference, ApplicationBus applicationBus,
+  public RestClient(ThreadExecutor threadExecutor,
+                    PBSharedPreference sharedPreference,
+                    ApplicationBus applicationBus,
                     RestClientConfiguration restClientConfiguration) {
     mSharedPreference = sharedPreference;
     mApplicationBus = applicationBus;
@@ -60,7 +64,7 @@ public class RestClient {
         .baseUrl(getBaseUrl())
         .client(client)
         .addConverterFactory(GsonConverterFactory.create(getGson()))
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.from(threadExecutor)))
         .build();
 
     tokenService = retrofit.create(TokenService.class);
