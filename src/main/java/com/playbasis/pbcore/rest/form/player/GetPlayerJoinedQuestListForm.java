@@ -9,16 +9,16 @@ public class GetPlayerJoinedQuestListForm extends PBForm {
 
   private String playerId;
   private String filter;
-  private String tag;
+  private String tags;
 
   public GetPlayerJoinedQuestListForm(String playerId) {
     this.playerId = playerId;
   }
 
-  public GetPlayerJoinedQuestListForm(String playerId, String filter, String tag) {
+  public GetPlayerJoinedQuestListForm(String playerId, String filter, String tags) {
     this.playerId = playerId;
     this.filter = filter;
-    this.tag = tag;
+    this.tags = tags;
   }
 
   public String getPlayerId() {
@@ -33,11 +33,11 @@ public class GetPlayerJoinedQuestListForm extends PBForm {
     this.filter = filter;
   }
 
-  public String getTag() {
-    return tag;
+  public String getTags() {
+    return tags;
   }
 
-  public void setTag(String tag) {
-    this.tag = tag;
+  public void setTags(String tags) {
+    this.tags = tags;
   }
 }

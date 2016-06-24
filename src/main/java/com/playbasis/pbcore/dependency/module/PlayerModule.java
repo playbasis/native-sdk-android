@@ -1,17 +1,20 @@
 package com.playbasis.pbcore.dependency.module;
 
+import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
+import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerEarnedBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
-import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
-import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.domain.interactor.player.VerifyPlayerEmailInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
@@ -128,4 +131,32 @@ public class PlayerModule {
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerAllBadgesInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
+
+  @Provides
+  @PerActivity
+  GetPlayerAllQuestInteractor provideGetPlayerAllQuestInteractor(ThreadExecutor threadExecutor,
+                                                                 PostExecutionThread postExecutionThread,
+                                                                 RestClient restClient,
+                                                                 RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerAllQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerJoinedQuestInteractor provideGetPlayerJoinedQuestInteractor(ThreadExecutor threadExecutor,
+                                                                       PostExecutionThread postExecutionThread,
+                                                                       RestClient restClient,
+                                                                       RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerJoinedQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerQuestInfoInteractor provideGetPlayerQuestInfoInteractor(ThreadExecutor threadExecutor,
+                                                                   PostExecutionThread postExecutionThread,
+                                                                   RestClient restClient,
+                                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerQuestInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
 }
