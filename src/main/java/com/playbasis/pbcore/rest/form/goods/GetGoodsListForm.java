@@ -1,6 +1,5 @@
 package com.playbasis.pbcore.rest.form.goods;
 
-import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.form.PBForm;
 
 /**
@@ -11,12 +10,12 @@ public class GetGoodsListForm extends PBForm {
   private String playerId;
   private String tags;
 
-  public GetGoodsListForm(Player player) {
-    player.getPlayerId();
+  public GetGoodsListForm() {
+
   }
 
-  public GetGoodsListForm(Player player, String tags) {
-    this.playerId = player.getPlayerId();
+  public GetGoodsListForm(String playerId, String tags) {
+    this.playerId = playerId;
     this.tags = tags;
   }
 
