@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName;
 public class PlayerQuestResponse extends BaseQuestResponse<PlayerMissionResponse> {
 
   @Expose
+  @SerializedName("player_status")
+  public String playerStatus;
+  @Expose
   @SerializedName("num_missions")
   public NumMissionsResponse numMissionsResponse;
 

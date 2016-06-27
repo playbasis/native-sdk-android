@@ -32,6 +32,7 @@ public class Quest extends PBModel {
   protected ArrayList<Mission> missions;
   protected ArrayList<Condition> conditions;
   protected ArrayList<Reward> rewards;
+  protected String playerStatus;
   protected NumMissions numMissions;
 
   public Quest() {
@@ -98,9 +99,95 @@ public class Quest extends PBModel {
   public void init(PlayerQuestResponse response, boolean allowNull) {
     setup(response, allowNull);
 
+    this.playerStatus = valueOrDefault(response.playerStatus, this.playerStatus, false);
+
     if (response.numMissionsResponse != null) {
       this.numMissions = valueOrDefault(new NumMissions(response.numMissionsResponse), this.numMissions, allowNull);
     }
+  }
+
+  public String getQuestId() {
+    return questId;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public String getHint() {
+    return hint;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public String getSortOrder() {
+    return sortOrder;
+  }
+
+  public String getClientId() {
+    return clientId;
+  }
+
+  public String getSiteId() {
+    return siteId;
+  }
+
+  public String getFeedbacks() {
+    return feedbacks;
+  }
+
+  public String getOrganizeId() {
+    return organizeId;
+  }
+
+  public String getOrganizeRole() {
+    return organizeRole;
+  }
+
+  public Date getAddedDate() {
+    return addedDate;
+  }
+
+  public Date getModifiedDate() {
+    return modifiedDate;
+  }
+
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public boolean isMissionOrder() {
+    return missionOrder;
+  }
+
+  public ArrayList<Mission> getMissions() {
+    return missions;
+  }
+
+  public ArrayList<Condition> getConditions() {
+    return conditions;
+  }
+
+  public ArrayList<Reward> getRewards() {
+    return rewards;
+  }
+
+  public String getPlayerStatus() {
+    return playerStatus;
+  }
+
+  public NumMissions getNumMissions() {
+    return numMissions;
   }
 
   public static class Condition {

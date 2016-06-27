@@ -47,7 +47,7 @@ public class Player extends PBModel {
   }
 
   public void init(PlayerResponse response) {
-    init(response);
+    init(response, true);
   }
 
   public void init(PlayerResponse response, boolean allowNull) {
