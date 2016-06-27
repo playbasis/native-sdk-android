@@ -1,4 +1,4 @@
-package com.playbasis.pbcore.domain.interactor.Goods;
+package com.playbasis.pbcore.domain.interactor.goods;
 
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;

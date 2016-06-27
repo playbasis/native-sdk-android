@@ -1,9 +1,9 @@
 package com.playbasis.pbcore.dependency.module;
 
-import com.playbasis.pbcore.domain.interactor.Goods.GetGoodsInfoInteractor;
-import com.playbasis.pbcore.domain.interactor.Goods.GetGoodsListInteractor;
+import com.playbasis.pbcore.domain.interactor.goods.GetGoodsInfoInteractor;
+import com.playbasis.pbcore.domain.interactor.goods.GetGoodsListInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
-import com.playbasis.pbcore.domain.interactor.Goods.VerifyGoodsCouponInteractor;
+import com.playbasis.pbcore.domain.interactor.goods.VerifyGoodsCouponInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
 import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
