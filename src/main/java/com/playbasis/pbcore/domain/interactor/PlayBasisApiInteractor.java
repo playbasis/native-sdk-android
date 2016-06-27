@@ -41,7 +41,7 @@ public abstract class PlayBasisApiInteractor extends RestInteractor {
 
   protected final String getApiToken() {
     if (token != null) {
-      return getApiToken();
+      return token.token;
     }
 
     return null;
@@ -49,7 +49,7 @@ public abstract class PlayBasisApiInteractor extends RestInteractor {
 
   protected final String getApiKey() {
     if (restClient != null) {
-      return getApiKey();
+      return restClient.getApiKey();
     }
 
     return null;
