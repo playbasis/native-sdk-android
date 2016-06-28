@@ -46,8 +46,8 @@ public class GetGoodsListInteractor extends PlayBasisApiInteractor {
         .map(new PBApiErrorCheckFunc<GoodsListApiResult>())
         .map(new Func1<GoodsListApiResult, ArrayList<Goods>>() {
           @Override
-          public ArrayList<Goods> call(GoodsListApiResult getPlayerBadgesApiResult) {
-            return Goods.create(getPlayerBadgesApiResult.getGoodsResponses());
+          public ArrayList<Goods> call(GoodsListApiResult goodsListApiResult) {
+            return Goods.create(goodsListApiResult.getGoodsResponses());
           }
         });
   }
