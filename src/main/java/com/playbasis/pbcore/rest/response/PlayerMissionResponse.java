@@ -3,6 +3,9 @@ package com.playbasis.pbcore.rest.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tar on 5/5/16 AD.
  */
@@ -13,7 +16,15 @@ public class PlayerMissionResponse extends BaseMissionResponse {
   public String status;
   @Expose
   @SerializedName("pending")
-  public PendingResponse pendingResponse;
+  public List<PendingResponse> pendingResponses;
+
+  public List<PendingResponse> getPendingResponses() {
+    if (pendingResponses != null) {
+      return pendingResponses;
+    }
+
+    return new ArrayList<>();
+  }
 
   public class PendingResponse {
 

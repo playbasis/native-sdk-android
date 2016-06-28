@@ -35,8 +35,8 @@ public class GetPlayerAllQuestInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getPlayerService()
         .getAllPlayerQuest(
-            getApiKey(),
             getPlayerAllQuestListForm.getPlayerId(),
+            getApiKey(),
             getPlayerAllQuestListForm.getTags(),
             getPlayerAllQuestListForm.getFilter()
         )

@@ -21,7 +21,7 @@ public class Mission extends PBModel {
   protected String imageUrl;
   protected List<Completion> completions;
   protected String status;
-  protected Pending pending;
+  protected List<Pending> pendings;
 
   public static <T extends BaseMissionResponse> ArrayList<Mission> create(List<T> responses) {
     ArrayList<Mission> missions = new ArrayList<>();
@@ -82,8 +82,14 @@ public class Mission extends PBModel {
 
     this.status = valueOrDefault(response.status, this.status, allowNull);
 
-    if (response.pendingResponse != null) {
-      this.pending = valueOrDefault(new Pending(response.pendingResponse), this.pending, allowNull);
+    if (allowNull && response.getPendingResponses().size() == 0) {
+      this.pendings = null;
+    } else {
+      this.pendings = new ArrayList<>();
+
+      for (PlayerMissionResponse.PendingResponse pendingResponse : response.getPendingResponses()) {
+        this.pendings.add(new Pending(pendingResponse));
+      }
     }
   }
 
