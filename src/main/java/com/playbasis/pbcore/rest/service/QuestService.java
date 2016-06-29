@@ -57,6 +57,7 @@ public interface QuestService {
   @GET("Quest/leader")
   Observable<QuestLeaderboardApiResult> getLeaderboard(
       @NonNull @Query("api_key") String apiKey,
-      @NonNull @Query("quest_id") String questId
+      @NonNull @Query("quest_id") String questId,
+      @NonNull @Query("completion_element_id") String completionElementId
   );
 }
