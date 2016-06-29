@@ -46,7 +46,7 @@ public class GetGoodsInfoInteractor extends PlayBasisApiInteractor {
           @Override
           public Goods call(GoodsInfoApiResult goodsInfoApiResult) {
             Goods goods = new Goods();
-            goods.init(goodsInfoApiResult.getGoodsResponse());
+            goods.update(goodsInfoApiResult.getGoodsResponse());
             return goods;
           }
         });

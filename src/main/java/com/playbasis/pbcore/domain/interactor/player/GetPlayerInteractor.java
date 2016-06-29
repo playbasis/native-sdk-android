@@ -71,7 +71,7 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
   }
 
   public Player updatePlayer(Player player, GetPlayerDetailApiResult getPlayerDetailApiResult) {
-    player.init(getPlayerDetailApiResult.response.PlayerResponse);
+    player.update(getPlayerDetailApiResult.response.PlayerResponse);
 
     return player;
   }

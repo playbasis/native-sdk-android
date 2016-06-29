@@ -23,7 +23,7 @@ public class StoreOrganizeApiResult extends PBApiResult<StoreOrganizeApiResult.R
     for (OrganizeResponse organizeResponse : response.organizations) {
       try {
         T t = klass.newInstance();
-        t.init(organizeResponse);
+        t.update(organizeResponse);
         results.add(t);
       } catch (Exception e) {
         e.printStackTrace();

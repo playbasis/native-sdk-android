@@ -20,6 +20,10 @@ public class Reward extends PBModel {
 
   }
 
+  public Reward(RewardResponse response) {
+    update(response);
+  }
+
   public static ArrayList<Reward> create(List<RewardResponse> responses) {
     ArrayList<Reward> rewards = new ArrayList<>();
 
@@ -29,32 +33,26 @@ public class Reward extends PBModel {
 
     for (RewardResponse rewardResponse : responses) {
       Reward reward = new Reward();
-      reward.init(rewardResponse);
+      reward.update(rewardResponse);
       rewards.add(reward);
     }
 
     return rewards;
   }
 
-  public void init(RewardResponse response) {
-    init(response, true);
-  }
-
-  public void init(RewardResponse response, boolean allowNull) {
+  public void update(RewardResponse response) {
     if (response == null) {
       return;
     }
 
-    this.rewardId = valueOrDefault(response.rewardId, this.rewardId);
-    this.type = valueOrDefault(response.type, this.type, allowNull);
-    this.value = valueOrDefault(response.value, this.value, allowNull);
+    this.rewardId = valueOrDefault(response.rewardId, rewardId);
+    this.type = response.type;
+    this.value = response.value;
 
     if (response.data instanceof RewardResponse.RewardGoodsResponse) {
-      this.redeemable = valueOrDefault(new Goods((RewardResponse.RewardGoodsResponse) response.data, allowNull), this.redeemable, allowNull);
+      this.redeemable = new Goods((RewardResponse.RewardGoodsResponse) response.data);
     } else if (response.data instanceof RewardResponse.RewardBadgeResponse) {
-      this.redeemable = valueOrDefault(new Badge((RewardResponse.RewardBadgeResponse) response.data, allowNull), this.redeemable, allowNull);
-    } else if (allowNull) {
-      this.redeemable = null;
+      this.redeemable = new Badge((RewardResponse.RewardBadgeResponse) response.data);
     }
   }
 
@@ -86,18 +84,18 @@ public class Reward extends PBModel {
     protected boolean status;
     protected boolean deleted;
 
-    private Goods(RewardResponse.RewardGoodsResponse rewardGoodsResponse, boolean allowNull) {
+    private Goods(RewardResponse.RewardGoodsResponse rewardGoodsResponse) {
       if (rewardGoodsResponse == null) {
         return;
       }
 
-      this.addedDate = valueOrDefault(rewardGoodsResponse.addedDate, addedDate, allowNull);
-      this.modifiedDate = valueOrDefault(rewardGoodsResponse.modifiedDate, modifiedDate, allowNull);
-      this.perUser = valueOrDefault(rewardGoodsResponse.perUser, perUser, allowNull);
-      this.status = valueOrDefault(rewardGoodsResponse.status, status, allowNull);
-      this.deleted = valueOrDefault(rewardGoodsResponse.deleted, deleted, allowNull);
+      this.addedDate = rewardGoodsResponse.addedDate;
+      this.modifiedDate = rewardGoodsResponse.modifiedDate;
+      this.perUser = rewardGoodsResponse.perUser;
+      this.status = rewardGoodsResponse.status;
+      this.deleted = rewardGoodsResponse.deleted;
 
-      init(rewardGoodsResponse, allowNull);
+      update(rewardGoodsResponse);
     }
 
     public int getPerUser() {
@@ -117,15 +115,15 @@ public class Reward extends PBModel {
     protected boolean claim;
     protected boolean redeem;
 
-    public Badge(RewardResponse.RewardBadgeResponse rewardBadgeResponse, boolean allowNull) {
+    public Badge(RewardResponse.RewardBadgeResponse rewardBadgeResponse) {
       if (rewardBadgeResponse == null) {
         return;
       }
 
-      this.claim = valueOrDefault(rewardBadgeResponse.claim, claim, allowNull);
-      this.redeem = valueOrDefault(rewardBadgeResponse.redeem, redeem, allowNull);
+      this.claim = rewardBadgeResponse.claim;
+      this.redeem = rewardBadgeResponse.redeem;
 
-      init(rewardBadgeResponse, allowNull);
+      update(rewardBadgeResponse);
     }
   }
 }

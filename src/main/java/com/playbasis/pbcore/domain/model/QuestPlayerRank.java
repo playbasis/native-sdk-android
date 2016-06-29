@@ -15,26 +15,30 @@ public class QuestPlayerRank extends PBModel {
   public int current;
   public Player player;
 
-  public void init(QuestPlayerRankResponse response) {
-    init(response, true);
+  public QuestPlayerRank() {
+
   }
 
-  public void init(QuestPlayerRankResponse response, boolean allowNull) {
+  public QuestPlayerRank(QuestPlayerRankResponse response) {
+    update(response);
+  }
+
+  public void update(QuestPlayerRankResponse response) {
     if (response == null) {
       return;
     }
 
-    this.status = valueOrDefault(response.status, this.status, allowNull);
-    this.completedDate = valueOrDefault(response.completedDate, this.completedDate, allowNull);
-    this.goal = valueOrDefault(response.goal, this.goal, allowNull);
-    this.current = valueOrDefault(response.current, this.current, allowNull);
+    this.status = response.status;
+    this.completedDate = response.completedDate;
+    this.goal = response.goal;
+    this.current = response.current;
 
     if (response.playerResponse != null) {
       if (this.player == null) {
         this.player = new Player(response.playerResponse.playerId);
       }
 
-      player.init(response.playerResponse, false);
+      player.update(response.playerResponse);
     }
   }
 

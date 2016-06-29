@@ -23,6 +23,10 @@ public class Badge extends PBModel {
 
   }
 
+  public Badge(BadgeResponse response) {
+    update(response);
+  }
+
   public static ArrayList<Badge> create(List<BadgeResponse> responses) {
     ArrayList<Badge> badges = new ArrayList<>();
 
@@ -31,31 +35,25 @@ public class Badge extends PBModel {
     }
 
     for (BadgeResponse badgeResponse : responses) {
-      Badge badge = new Badge();
-      badge.init(badgeResponse);
-      badges.add(badge);
+      badges.add(new Badge(badgeResponse));
     }
 
     return badges;
   }
 
-  public void init(BadgeResponse response) {
-    init(response, true);
-  }
-
-  public void init(BadgeResponse response, boolean allowNull) {
+  public void update(BadgeResponse response) {
     if (response == null) {
       return;
     }
 
-    this.badgeId = valueOrDefault(response.badgeId, this.badgeId);
-    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
-    this.name = valueOrDefault(response.name, this.name, allowNull);
-    this.description = valueOrDefault(response.description, this.description, allowNull);
-    this.hint = valueOrDefault(response.hint, this.hint, allowNull);
-    this.sponsor = valueOrDefault(response.sponsor, this.sponsor, allowNull);
-    this.amount = valueOrDefault(response.amount, this.amount, allowNull);
-    this.sortOrder = valueOrDefault(response.sortOrder, this.sortOrder, allowNull);
+    this.badgeId = valueOrDefault(response.badgeId, badgeId);
+    this.imageUrl = response.imageUrl;
+    this.name = response.name;
+    this.description = response.description;
+    this.hint = response.hint;
+    this.sponsor = response.sponsor;
+    this.amount = response.amount;
+    this.sortOrder = response.sortOrder;
   }
 
   public String getBadgeId() {

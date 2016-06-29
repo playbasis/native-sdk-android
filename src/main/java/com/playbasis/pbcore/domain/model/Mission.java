@@ -23,6 +23,14 @@ public class Mission extends PBModel {
   protected String status;
   protected List<Pending> pendings;
 
+  public Mission() {
+
+  }
+
+  public Mission(BaseMissionResponse response) {
+    update(response);
+  }
+
   public static <T extends BaseMissionResponse> ArrayList<Mission> create(List<T> responses) {
     ArrayList<Mission> missions = new ArrayList<>();
 
@@ -32,63 +40,43 @@ public class Mission extends PBModel {
 
     for (int i = 0; i < responses.size(); i++) {
       T response = responses.get(i);
-      Mission mission = new Mission();
-
       if (response instanceof MissionResponse) {
-        mission.init((MissionResponse) response);
+        missions.add(new Mission((MissionResponse) response));
       } else if (response instanceof PlayerMissionResponse) {
-        mission.init((PlayerMissionResponse) response);
+        missions.add(new Mission((PlayerMissionResponse) response));
       }
-
-      missions.add(mission);
     }
 
     return missions;
   }
 
-  private void setup(BaseMissionResponse response, boolean allowNull) {
-    this.missionId = valueOrDefault(response.missionId, this.missionId);
-    this.questId = valueOrDefault(response.questId, this.questId);
-    this.name = valueOrDefault(response.name, this.name, allowNull);
-    this.number = valueOrDefault(response.number, this.number, allowNull);
-    this.description = valueOrDefault(response.description, this.description, allowNull);
-    this.hint = valueOrDefault(response.hint, this.hint, allowNull);
-    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
-    this.completions = valueOrDefault(Completion.create(response.completionResponse), this.completions, allowNull);
-  }
-
-  public void init(MissionResponse response) {
-    init(response, true);
-  }
-
-  public void init(MissionResponse response, boolean allowNull) {
+  public void update(BaseMissionResponse response) {
     if (response == null) {
       return;
     }
 
-    setup(response, allowNull);
-  }
+    this.missionId = valueOrDefault(response.missionId, missionId);
+    this.questId = response.questId;
+    this.name = response.name;
+    this.number = response.number;
+    this.description = response.description;
+    this.hint = response.hint;
+    this.imageUrl = response.imageUrl;
+    this.completions = Completion.create(response.completionResponse);
 
-  public void init(PlayerMissionResponse response) {
-    init(response, true);
-  }
+    if (response instanceof PlayerMissionResponse) {
+      PlayerMissionResponse playerMissionResponse = (PlayerMissionResponse) response;
 
-  public void init(PlayerMissionResponse response, boolean allowNull) {
-    if (response == null) {
-      return;
-    }
+      this.status = playerMissionResponse.status;
 
-    setup(response, allowNull);
+      if (playerMissionResponse.getPendingResponses().size() == 0) {
+        this.pendings = null;
+      } else {
+        this.pendings = new ArrayList<>();
 
-    this.status = valueOrDefault(response.status, this.status, allowNull);
-
-    if (allowNull && response.getPendingResponses().size() == 0) {
-      this.pendings = null;
-    } else {
-      this.pendings = new ArrayList<>();
-
-      for (PlayerMissionResponse.PendingResponse pendingResponse : response.getPendingResponses()) {
-        this.pendings.add(new Pending(pendingResponse));
+        for (PlayerMissionResponse.PendingResponse pendingResponse : playerMissionResponse.getPendingResponses()) {
+          this.pendings.add(new Pending(pendingResponse));
+        }
       }
     }
   }

@@ -24,6 +24,10 @@ public class Completion extends PBModel {
 
   }
 
+  public Completion(BaseMissionResponse.CompletionResponse response) {
+    update(response);
+  }
+
   public static ArrayList<Completion> create(List<BaseMissionResponse.CompletionResponse> responses) {
     ArrayList<Completion> completions = new ArrayList<>();
 
@@ -32,32 +36,26 @@ public class Completion extends PBModel {
     }
 
     for (BaseMissionResponse.CompletionResponse completionResponse : responses) {
-      Completion completion = new Completion();
-      completion.init(completionResponse);
-      completions.add(completion);
+      completions.add(new Completion(completionResponse));
     }
 
     return completions;
   }
 
-  public void init(BaseMissionResponse.CompletionResponse response) {
-    init(response, true);
-  }
-
-  public void init(BaseMissionResponse.CompletionResponse response, boolean allowNull) {
+  public void update(BaseMissionResponse.CompletionResponse response) {
     if (response == null) {
       return;
     }
 
-    this.elementId = valueOrDefault(response.elementId, this.elementId);
-    this.op = valueOrDefault(response.op, this.op, allowNull);
-    this.filter = valueOrDefault(response.filter, this.filter, allowNull);
-    this.value = valueOrDefault(response.value, this.value, allowNull);
-    this.completionId = valueOrDefault(response.completionId, this.completionId, allowNull);
-    this.type = valueOrDefault(response.type, this.type, allowNull);
-    this.title = valueOrDefault(response.title, this.title, allowNull);
-    this.filteredParam = valueOrDefault(new FilteredParam(response.filteredParamResponse), this.filteredParam, allowNull);
-    this.completionData = valueOrDefault(new CompletionData(response.completionDataResponse), this.completionData, allowNull);
+    this.elementId = valueOrDefault(response.elementId, elementId);
+    this.op = response.op;
+    this.filter = response.filter;
+    this.value = response.value;
+    this.completionId = response.completionId;
+    this.type = response.type;
+    this.title = response.title;
+    this.filteredParam = new FilteredParam(response.filteredParamResponse);
+    this.completionData = new CompletionData(response.completionDataResponse);
   }
 
   public String getElementId() {
@@ -137,6 +135,7 @@ public class Completion extends PBModel {
   }
 
   public static class CompletionData {
+
     protected String actionId;
     protected String step;
     protected String description;

@@ -16,31 +16,31 @@ public abstract class Organization extends PBModel {
 
   }
 
-  public void init(PlayerOrganizationResponse response) {
-    init(response);
+  public Organization(PlayerOrganizationResponse response) {
+    update(response);
   }
 
-  public void init(PlayerOrganizationResponse response, boolean allowNull) {
+  public Organization(OrganizeResponse response) {
+    update(response);
+  }
+
+  public void update(PlayerOrganizationResponse response) {
     if (response == null) {
       return;
     }
 
-    this.id = valueOrDefault(response.nodeId, this.id);
-    this.name = valueOrDefault(response.name, this.name, allowNull);
+    this.id = valueOrDefault(response.nodeId, id);
+    this.name = response.name;
   }
 
-  public void init(OrganizeResponse response) {
-    init(response);
-  }
-
-  public void init(OrganizeResponse response, boolean allowNull) {
+  public void update(OrganizeResponse response) {
     if (response == null) {
       return;
     }
 
-    this.id = valueOrDefault(response.id, this.id);
-    this.name = valueOrDefault(response.name, this.name, allowNull);
-    this.description = valueOrDefault(response.description, this.description, allowNull);
+    this.id = valueOrDefault(response.id, id);
+    this.name = response.name;
+    this.description = response.description;
   }
 
   public String getId() {

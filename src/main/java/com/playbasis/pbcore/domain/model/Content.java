@@ -1,7 +1,5 @@
 package com.playbasis.pbcore.domain.model;
 
-import android.os.Parcelable;
-
 import com.playbasis.pbcore.rest.response.ContentResponse;
 
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.List;
 /**
  * Created by Tar on 5/5/16 AD.
  */
-public abstract class Content extends PBModel implements Parcelable {
+public class Content extends PBModel {
 
   protected String id;
   protected String title;
@@ -26,40 +24,37 @@ public abstract class Content extends PBModel implements Parcelable {
 
   }
 
-  public static <T extends Content> List<T> createFromContentResponses(Class<T> klass, List<ContentResponse> contentResponses) {
-    ArrayList<T> results = new ArrayList<>();
+  public Content(ContentResponse response) {
+    update(response);
+  }
+
+  public static List<Content> create(List<ContentResponse> contentResponses) {
+    ArrayList<Content> contents = new ArrayList<>();
 
     try {
       for (ContentResponse contentResponse : contentResponses) {
-        T t = klass.newInstance();
-        t.init(contentResponse);
-        results.add(t);
+        contents.add(new Content(contentResponse));
       }
     } catch (Exception e) {
 
     }
 
-    return results;
+    return contents;
   }
 
-  public void init(ContentResponse response) {
-    init(response, true);
-  }
-
-  public void init(ContentResponse response, boolean allowNull) {
+  public void update(ContentResponse response) {
     if (response == null) {
       return;
     }
 
-    this.id = valueOrDefault(response.id, this.id);
-    this.title = valueOrDefault(response.title, this.title, allowNull);
-    this.summary = valueOrDefault(response.summary, this.summary, allowNull);
-    this.detail = valueOrDefault(response.detail, this.detail, allowNull);
-    this.category = valueOrDefault(response.category, this.category, allowNull);
-    this.image = valueOrDefault(response.image, this.image, allowNull);
-    this.startDate = valueOrDefault(response.startDate, this.startDate, allowNull);
-    this.endDate = valueOrDefault(response.endDate, this.endDate, allowNull);
-
+    this.id = valueOrDefault(response.id, id);
+    this.title = response.title;
+    this.summary = response.summary;
+    this.detail = response.detail;
+    this.category = response.category;
+    this.image = response.image;
+    this.startDate = response.startDate;
+    this.endDate = response.endDate;
   }
 
   public String getId() {

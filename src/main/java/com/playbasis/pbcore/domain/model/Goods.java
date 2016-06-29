@@ -30,6 +30,10 @@ public class Goods extends PBModel {
 
   }
 
+  public Goods(GoodsResponse response) {
+    update(response);
+  }
+
   public static ArrayList<Goods> create(List<GoodsResponse> responses) {
     ArrayList<Goods> goodsList = new ArrayList<>();
 
@@ -38,37 +42,31 @@ public class Goods extends PBModel {
     }
 
     for (GoodsResponse goodsResponse : responses) {
-      Goods goods = new Goods();
-      goods.init(goodsResponse);
-      goodsList.add(goods);
+      goodsList.add(new Goods(goodsResponse));
     }
 
     return goodsList;
   }
 
-  public void init(GoodsResponse response) {
-    init(response, true);
-  }
-
-  public void init(GoodsResponse response, boolean allowNull) {
+  public void update(GoodsResponse response) {
     if (response == null) {
       return;
     }
 
-    this.goodsId = valueOrDefault(response.goodsId, this.goodsId);
-    this.name = valueOrDefault(response.name, this.name, allowNull);
-    this.description = valueOrDefault(response.description, this.description, allowNull);
-    this.quantity = valueOrDefault(response.quantity, this.quantity, allowNull);
-    this.amount = valueOrDefault(response.amount, this.amount, allowNull);
-    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
-    this.tags = valueOrDefault(response.tags, this.tags, allowNull);
-    this.code = valueOrDefault(response.code, this.code, allowNull);
-    this.group = valueOrDefault(response.group, this.group, allowNull);
-    this.startDate = valueOrDefault(response.startDate, this.startDate, allowNull);
-    this.expireDate = valueOrDefault(response.expireDate, this.expireDate, allowNull);
-    this.isGroup = valueOrDefault(response.isGroup, this.isGroup, allowNull);
-    this.sponsor = valueOrDefault(response.sponsor, this.sponsor, allowNull);
-    this.sortOrder = valueOrDefault(response.sortOrder, this.sortOrder, allowNull);
+    this.goodsId = valueOrDefault(response.goodsId, goodsId);
+    this.name = response.name;
+    this.description = response.description;
+    this.quantity = response.quantity;
+    this.amount = response.amount;
+    this.imageUrl = response.imageUrl;
+    this.tags = response.tags;
+    this.code = response.code;
+    this.group = response.group;
+    this.startDate = response.startDate;
+    this.expireDate = response.expireDate;
+    this.isGroup = response.isGroup;
+    this.sponsor = response.sponsor;
+    this.sortOrder = response.sortOrder;
   }
 
   public String getGoodsId() {

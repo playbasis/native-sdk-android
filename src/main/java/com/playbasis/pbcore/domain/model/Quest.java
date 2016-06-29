@@ -39,6 +39,10 @@ public class Quest extends PBModel {
 
   }
 
+  public Quest(BaseQuestResponse response) {
+    update(response);
+  }
+
   public static <T extends BaseQuestResponse> ArrayList<Quest> create(List<T> responses) {
     ArrayList<Quest> quests = new ArrayList<>();
 
@@ -51,9 +55,9 @@ public class Quest extends PBModel {
       Quest quest = new Quest();
 
       if (response instanceof QuestResponse) {
-        quest.init((QuestResponse) response);
+        quest.update((QuestResponse) response);
       } else if (response instanceof PlayerQuestResponse) {
-        quest.init((PlayerQuestResponse) response);
+        quest.update((PlayerQuestResponse) response);
       }
 
       quests.add(quest);
@@ -62,47 +66,39 @@ public class Quest extends PBModel {
     return quests;
   }
 
-  private void setup(BaseQuestResponse response, boolean allowNull) {
-    this.questId = valueOrDefault(response.questId, this.questId);
-    this.name = valueOrDefault(response.name, this.name, allowNull);
-    this.description = valueOrDefault(response.description, this.description, allowNull);
-    this.hint = valueOrDefault(response.hint, this.hint, allowNull);
-    this.imageUrl = valueOrDefault(response.imageUrl, this.imageUrl, allowNull);
-    this.status = valueOrDefault(response.status, this.status, allowNull);
-    this.tags = valueOrDefault(response.tags, this.tags, allowNull);
-    this.sortOrder = valueOrDefault(response.sortOrder, this.sortOrder, allowNull);
-    this.missionOrder = valueOrDefault(response.missionOrder, this.missionOrder, allowNull);
-    this.addedDate = valueOrDefault(response.addedDate, this.addedDate, allowNull);
-    this.clientId = valueOrDefault(response.clientId, this.clientId, allowNull);
-    this.siteId = valueOrDefault(response.siteId, this.siteId, allowNull);
-    this.feedbacks = valueOrDefault(response.feedbacks, this.feedbacks, allowNull);
-    this.organizeId = valueOrDefault(response.organizeId, this.organizeId, allowNull);
-    this.organizeRole = valueOrDefault(response.organizeRole, this.organizeRole, allowNull);
-    this.modifiedDate = valueOrDefault(response.modifiedDate, this.modifiedDate, allowNull);
-    this.missions = valueOrDefault(Mission.create(response.missionResponses), this.missions, allowNull);
-    this.conditions = valueOrDefault(Condition.create(response.conditionResponses), this.conditions, allowNull);
-    this.rewards = valueOrDefault(Reward.create(response.rewardResponses), this.rewards, allowNull);
-  }
+  public void update(BaseQuestResponse response) {
+    if (response == null) {
+      return;
+    }
 
-  public void init(QuestResponse response) {
-    init(response, true);
-  }
+    this.questId = valueOrDefault(response.questId, questId);
+    this.name = response.name;
+    this.description = response.description;
+    this.hint = response.hint;
+    this.imageUrl = response.imageUrl;
+    this.status = response.status;
+    this.tags = response.tags;
+    this.sortOrder = response.sortOrder;
+    this.missionOrder = response.missionOrder;
+    this.addedDate = response.addedDate;
+    this.clientId = response.clientId;
+    this.siteId = response.siteId;
+    this.feedbacks = response.feedbacks;
+    this.organizeId = response.organizeId;
+    this.organizeRole = response.organizeRole;
+    this.modifiedDate = response.modifiedDate;
+    this.missions = Mission.create(response.missionResponses);
+    this.conditions = Condition.create(response.conditionResponses);
+    this.rewards = Reward.create(response.rewardResponses);
 
-  public void init(QuestResponse response, boolean allowNull) {
-    setup(response, allowNull);
-  }
+    if (response instanceof PlayerQuestResponse) {
+      PlayerQuestResponse playerQuestResponse = (PlayerQuestResponse) response;
 
-  public void init(PlayerQuestResponse response) {
-    init(response, true);
-  }
+      this.playerStatus = playerQuestResponse.playerStatus;
 
-  public void init(PlayerQuestResponse response, boolean allowNull) {
-    setup(response, allowNull);
-
-    this.playerStatus = valueOrDefault(response.playerStatus, this.playerStatus, false);
-
-    if (response.numMissionsResponse != null) {
-      this.numMissions = valueOrDefault(new NumMissions(response.numMissionsResponse), this.numMissions, allowNull);
+      if (playerQuestResponse.numMissionsResponse != null) {
+        this.numMissions = new NumMissions(playerQuestResponse.numMissionsResponse);
+      }
     }
   }
 
