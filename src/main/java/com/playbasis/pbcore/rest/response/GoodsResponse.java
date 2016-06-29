@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Tar on 6/21/16 AD.
  */
-public class GoodsResponse {
+public class GoodsResponse implements RewardResponse.RewardDataInterface {
 
   @Expose
   @SerializedName("goods_id")

@@ -14,7 +14,7 @@ public class Reward extends PBModel {
   protected String rewardId;
   protected String type;
   protected String value;
-  protected Data data;
+  protected Redeemable redeemable;
 
   public Reward() {
 
@@ -48,7 +48,14 @@ public class Reward extends PBModel {
     this.rewardId = valueOrDefault(response.rewardId, this.rewardId);
     this.type = valueOrDefault(response.type, this.type, allowNull);
     this.value = valueOrDefault(response.value, this.value, allowNull);
-    this.data = valueOrDefault(new Data(response.data, allowNull), this.data, allowNull);
+
+    if (response.data instanceof RewardResponse.RewardGoodsResponse) {
+      this.redeemable = valueOrDefault(new Goods((RewardResponse.RewardGoodsResponse) response.data, allowNull), this.redeemable, allowNull);
+    } else if (response.data instanceof RewardResponse.RewardBadgeResponse) {
+      this.redeemable = valueOrDefault(new Badge((RewardResponse.RewardBadgeResponse) response.data, allowNull), this.redeemable, allowNull);
+    } else if (allowNull) {
+      this.redeemable = null;
+    }
   }
 
   public String getRewardId() {
@@ -63,11 +70,15 @@ public class Reward extends PBModel {
     return value;
   }
 
-  public Data getData() {
-    return data;
+  public Redeemable getRedeemable() {
+    return redeemable;
   }
 
-  public class Data extends com.playbasis.pbcore.domain.model.Goods {
+  public interface Redeemable {
+
+  }
+
+  public class Goods extends com.playbasis.pbcore.domain.model.Goods implements Redeemable {
 
     protected Date addedDate;
     protected Date modifiedDate;
@@ -75,18 +86,18 @@ public class Reward extends PBModel {
     protected boolean status;
     protected boolean deleted;
 
-    private Data(RewardResponse.DataResponse dataResponse, boolean allowNull) {
-      if (dataResponse == null) {
+    private Goods(RewardResponse.RewardGoodsResponse rewardGoodsResponse, boolean allowNull) {
+      if (rewardGoodsResponse == null) {
         return;
       }
 
-      this.addedDate = valueOrDefault(dataResponse.addedDate, addedDate, allowNull);
-      this.modifiedDate = valueOrDefault(dataResponse.modifiedDate, modifiedDate, allowNull);
-      this.perUser = valueOrDefault(dataResponse.perUser, perUser, allowNull);
-      this.status = valueOrDefault(dataResponse.status, status, allowNull);
-      this.deleted = valueOrDefault(dataResponse.deleted, deleted, allowNull);
+      this.addedDate = valueOrDefault(rewardGoodsResponse.addedDate, addedDate, allowNull);
+      this.modifiedDate = valueOrDefault(rewardGoodsResponse.modifiedDate, modifiedDate, allowNull);
+      this.perUser = valueOrDefault(rewardGoodsResponse.perUser, perUser, allowNull);
+      this.status = valueOrDefault(rewardGoodsResponse.status, status, allowNull);
+      this.deleted = valueOrDefault(rewardGoodsResponse.deleted, deleted, allowNull);
 
-      init(dataResponse, allowNull);
+      init(rewardGoodsResponse, allowNull);
     }
 
     public int getPerUser() {
@@ -99,6 +110,22 @@ public class Reward extends PBModel {
 
     public boolean isDeleted() {
       return deleted;
+    }
+  }
+
+  public class Badge extends com.playbasis.pbcore.domain.model.Badge implements Redeemable {
+    protected boolean claim;
+    protected boolean redeem;
+
+    public Badge(RewardResponse.RewardBadgeResponse rewardBadgeResponse, boolean allowNull) {
+      if (rewardBadgeResponse == null) {
+        return;
+      }
+
+      this.claim = valueOrDefault(rewardBadgeResponse.claim, claim, allowNull);
+      this.redeem = valueOrDefault(rewardBadgeResponse.redeem, redeem, allowNull);
+
+      init(rewardBadgeResponse, allowNull);
     }
   }
 }

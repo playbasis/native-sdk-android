@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Tar on 5/5/16 AD.
  */
-public class BadgeResponse {
+public class BadgeResponse implements RewardResponse.RewardDataInterface {
 
   @SerializedName("badge_id")
   public String badgeId;

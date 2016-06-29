@@ -17,10 +17,14 @@ public class RewardResponse {
   @SerializedName("reward_value")
   public String value;
   @SerializedName("reward_data")
-  public DataResponse data;
+  public RewardDataInterface data;
 
 
-  public class DataResponse extends com.playbasis.pbcore.rest.response.GoodsResponse {
+  public interface RewardDataInterface {
+
+  }
+
+  public class RewardGoodsResponse extends GoodsResponse implements RewardDataInterface {
 
     @Expose
     @SerializedName("date_added")
@@ -37,6 +41,17 @@ public class RewardResponse {
     @Expose
     @SerializedName("deleted")
     public boolean deleted;
+
+  }
+
+  public class RewardBadgeResponse extends BadgeResponse implements RewardDataInterface {
+
+    @Expose
+    @SerializedName("claim")
+    public boolean claim;
+    @Expose
+    @SerializedName("redeem")
+    public boolean redeem;
 
   }
 
