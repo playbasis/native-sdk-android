@@ -109,6 +109,18 @@ public class Mission extends PBModel {
     return imageUrl;
   }
 
+  public List<Completion> getCompletions() {
+    return completions;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public List<Pending> getPendings() {
+    return pendings;
+  }
+
   public static class Pending {
 
     protected String eventType;
@@ -135,47 +147,6 @@ public class Mission extends PBModel {
 
     public Incompletion getIncompletion() {
       return incompletion;
-    }
-
-    public static class Incompletion {
-
-      protected String incompletionId;
-      protected String type;
-      protected String value;
-      protected String elementId;
-      protected String filter;
-
-      public Incompletion(PlayerMissionResponse.PendingResponse.IncompletionResponse incompletionResponse) {
-        if (incompletionResponse == null) {
-          return;
-        }
-
-        this.incompletionId = incompletionResponse.incompletionId;
-        this.type = incompletionResponse.type;
-        this.value = incompletionResponse.value;
-        this.elementId = incompletionResponse.elementId;
-        this.filter = incompletionResponse.filter;
-      }
-
-      public String getIncompletionId() {
-        return incompletionId;
-      }
-
-      public String getType() {
-        return type;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public String getElementId() {
-        return elementId;
-      }
-
-      public String getFilter() {
-        return filter;
-      }
     }
   }
 }
