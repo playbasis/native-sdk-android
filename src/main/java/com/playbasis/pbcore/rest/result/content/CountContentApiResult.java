@@ -10,7 +10,7 @@ public class CountContentApiResult extends PBApiResult<CountContentApiResult.Res
 
   public static final String TAG = "CountContentApiResult";
 
-  public int getIdeaCount() {
+  public int getContentCount() {
     return response.resultCount;
   }
 
