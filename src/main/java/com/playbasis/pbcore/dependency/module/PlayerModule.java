@@ -35,9 +35,8 @@ public class PlayerModule {
   RegisterPlayerInteractor provideRegisterUserInteractor(ThreadExecutor threadExecutor,
                                                          PostExecutionThread postExecutionThread,
                                                          RestClient restClient,
-                                                         RequestTokenInteractor requestTokenInteractor,
-                                                         VerifyPlayerEmailInteractor verifyPlayerEmailInteractor) {
-    return new RegisterPlayerInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor, verifyPlayerEmailInteractor);
+                                                         RequestTokenInteractor requestTokenInteractor) {
+    return new RegisterPlayerInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
   @Provides
