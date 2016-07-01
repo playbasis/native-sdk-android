@@ -39,11 +39,12 @@ public class GetQuestLeaderboardInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getQuestService()
         .getLeaderboard(
-            getApiToken(),
+            getApiKey(),
             questLeaderboardForm.getQuestId(),
             questLeaderboardForm.getCompletionElementId()
         )
-        .map(new PBApiErrorCheckFunc<QuestLeaderboardApiResult>());
+        .map(new PBApiErrorCheckFunc<QuestLeaderboardApiResult>())
+        .map(getResultMapFunction());
   }
 
   public void setQuestLeaderboardForm(QuestLeaderboardForm questLeaderboardForm) {
