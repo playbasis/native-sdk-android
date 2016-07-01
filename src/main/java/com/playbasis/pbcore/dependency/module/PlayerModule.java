@@ -12,10 +12,10 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInterac
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
+import com.playbasis.pbcore.domain.interactor.player.SendPlayerEmailVerificationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
-import com.playbasis.pbcore.domain.interactor.player.VerifyPlayerEmailInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
 import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
@@ -41,11 +41,11 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  VerifyPlayerEmailInteractor provideVerifyUserEmailInteractor(ThreadExecutor threadExecutor,
-                                                               PostExecutionThread postExecutionThread,
-                                                               RestClient restClient,
-                                                               RequestTokenInteractor requestTokenInteractor) {
-    return new VerifyPlayerEmailInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  SendPlayerEmailVerificationInteractor provideVerifyUserEmailInteractor(ThreadExecutor threadExecutor,
+                                                                         PostExecutionThread postExecutionThread,
+                                                                         RestClient restClient,
+                                                                         RequestTokenInteractor requestTokenInteractor) {
+    return new SendPlayerEmailVerificationInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
   @Provides

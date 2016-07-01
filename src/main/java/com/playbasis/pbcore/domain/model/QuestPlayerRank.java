@@ -2,7 +2,9 @@ package com.playbasis.pbcore.domain.model;
 
 import com.playbasis.pbcore.rest.response.QuestPlayerRankResponse;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Tar on 6/9/16 AD.
@@ -21,6 +23,20 @@ public class QuestPlayerRank extends PBModel {
 
   public QuestPlayerRank(QuestPlayerRankResponse response) {
     update(response);
+  }
+
+  public static ArrayList<QuestPlayerRank> createQuestPlayerRank(List<QuestPlayerRankResponse> responses) {
+    ArrayList<QuestPlayerRank> questPlayerRanks = new ArrayList<>();
+
+    if (responses == null || responses.size() == 0) {
+      return questPlayerRanks;
+    }
+
+    for (QuestPlayerRankResponse response : responses) {
+      questPlayerRanks.add(new QuestPlayerRank(response));
+    }
+
+    return questPlayerRanks;
   }
 
   public void update(QuestPlayerRankResponse response) {

@@ -32,12 +32,13 @@ public class SetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    return restClient.getPlayerService().setPlayerCustomFields(
-        form.getPlayerId(),
-        getApiToken(),
-        form.getKeys(),
-        form.getValues())
-        .map(new PBApiErrorCheckFunc<SetPlayerCustomFieldApiResult>());
+    return restClient.getPlayerService()
+        .setPlayerCustomFields(
+            form.getPlayerId(),
+            getApiToken(),
+            form.getKeys(),
+            form.getValues()
+        ).map(new PBApiErrorCheckFunc<SetPlayerCustomFieldApiResult>());
   }
 
   public void setCurtomFieldForm(UpdatePlayerCustomFieldForm curtomFieldForm) {

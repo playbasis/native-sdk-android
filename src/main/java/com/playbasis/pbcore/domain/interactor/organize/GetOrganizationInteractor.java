@@ -1,6 +1,5 @@
 package com.playbasis.pbcore.domain.interactor.organize;
 
-import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Organization;
@@ -26,53 +25,36 @@ public class GetOrganizationInteractor extends PlayBasisApiInteractor {
   public static final String TAG = "GetOrganizationInteractor";
 
   GetStoreOrganizationForm getStoreOrganizationForm;
-  PBSharedPreference sharedPreference;
 
   @Inject
   public GetOrganizationInteractor(ThreadExecutor threadExecutor,
                                    PostExecutionThread postExecutionThread,
                                    RestClient restClient,
-                                   RequestTokenInteractor requestTokenInteractor,
-                                   PBSharedPreference sharedPreference) {
+                                   RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
-
-    this.sharedPreference = sharedPreference;
   }
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    final GetStoreOrganizationForm form = getStoreOrganizationForm;
-
-    if (form.isReloadCache()) {
-      List<? extends Organization> organizations = sharedPreference.readOrganizations(form.getKlass(), form.getSaveKey());
-
-      if (organizations != null) {
-        return Observable.just(organizations);
-      }
-    }
-
     return restClient.getStoreOrganizeService()
         .getStoreOrganize(
             getApiKey(),
-            form.getOrganizationId()
+            getStoreOrganizationForm.getOrganizationId()
         )
         .map(new PBApiErrorCheckFunc<StoreOrganizeApiResult>())
-        .map(new Func1<StoreOrganizeApiResult, List<? extends Organization>>() {
-          @Override
-          public List<? extends Organization> call(StoreOrganizeApiResult storeOrganizeApiResult) {
-            if (storeOrganizeApiResult == null) {
-              return null;
-            }
-
-            List<? extends Organization> organizations = storeOrganizeApiResult.getOrganizations(form.getKlass());
-            sharedPreference.writeOrganizations(organizations, form.getSaveKey());
-
-            return organizations;
-          }
-        });
+        .map(getResultMapFunction());
   }
 
   public void setGetStoreOrganizationForm(GetStoreOrganizationForm getStoreOrganizationForm) {
     this.getStoreOrganizationForm = getStoreOrganizationForm;
+  }
+
+  public Func1<StoreOrganizeApiResult, List<? extends Organization>> getResultMapFunction() {
+    return new Func1<StoreOrganizeApiResult, List<? extends Organization>>() {
+      @Override
+      public List<? extends Organization> call(StoreOrganizeApiResult storeOrganizeApiResult) {
+        return Organization.createOrganizes(storeOrganizeApiResult.getOrganizationResponse());
+      }
+    };
   }
 }

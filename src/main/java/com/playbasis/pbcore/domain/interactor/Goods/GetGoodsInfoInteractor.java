@@ -42,17 +42,21 @@ public class GetGoodsInfoInteractor extends PlayBasisApiInteractor {
             getGoodsInfoForm.getPlayerId()
         )
         .map(new PBApiErrorCheckFunc<GoodsInfoApiResult>())
-        .map(new Func1<GoodsInfoApiResult, Goods>() {
-          @Override
-          public Goods call(GoodsInfoApiResult goodsInfoApiResult) {
-            Goods goods = new Goods();
-            goods.update(goodsInfoApiResult.getGoodsResponse());
-            return goods;
-          }
-        });
+        .map(getResultMapFunction());
   }
 
   public void setGetGoodsInfoForm(GetGoodsInfoForm getGoodsInfoForm) {
     this.getGoodsInfoForm = getGoodsInfoForm;
+  }
+
+  public Func1<GoodsInfoApiResult, ? extends Goods> getResultMapFunction() {
+    return new Func1<GoodsInfoApiResult, Goods>() {
+      @Override
+      public Goods call(GoodsInfoApiResult goodsInfoApiResult) {
+        Goods goods = new Goods();
+        goods.update(goodsInfoApiResult.getGoodsResponse());
+        return goods;
+      }
+    };
   }
 }

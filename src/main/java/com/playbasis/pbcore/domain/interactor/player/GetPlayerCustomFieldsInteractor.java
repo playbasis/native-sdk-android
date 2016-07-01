@@ -45,19 +45,22 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
             player.getPlayerId(),
             getApiKey()
         ).map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>())
-        .map(new Func1<GetUserCustomFieldsApiResult, Player>() {
-          @Override
-          public Player call(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
-            if (getUserCustomFieldsApiResult != null) {
-              player.update(getUserCustomFieldsApiResult);
-            }
-
-            return player;
-          }
-        });
+        .map(getResultMapFunction());
   }
 
   public void setGetPlayerCustomFieldForm(GetPlayerCustomFieldForm getPlayerCustomFieldForm) {
     this.getPlayerCustomFieldForm = getPlayerCustomFieldForm;
+  }
+
+  public Func1<GetUserCustomFieldsApiResult, Player> getResultMapFunction() {
+    return new Func1<GetUserCustomFieldsApiResult, Player>() {
+      @Override
+      public Player call(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
+        Player player = getPlayerCustomFieldForm.getPlayer();
+        player.update(getUserCustomFieldsApiResult);
+
+        return player;
+      }
+    };
   }
 }

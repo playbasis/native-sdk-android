@@ -1,6 +1,5 @@
 package com.playbasis.pbcore.dependency.module;
 
-import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.organize.GetOrganizationInteractor;
 import com.playbasis.pbcore.rest.RestClient;
@@ -22,9 +21,8 @@ public class OrganizationModule {
   GetOrganizationInteractor provideGetOrganizationInteractor(ThreadExecutor threadExecutor,
                                                              PostExecutionThread postExecutionThread,
                                                              RestClient restClient,
-                                                             RequestTokenInteractor requestTokenInteractor,
-                                                             PBSharedPreference sharedPreference) {
-    return new GetOrganizationInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor, sharedPreference);
+                                                             RequestTokenInteractor requestTokenInteractor) {
+    return new GetOrganizationInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
 }

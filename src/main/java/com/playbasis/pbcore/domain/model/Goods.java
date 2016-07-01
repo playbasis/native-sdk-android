@@ -34,7 +34,7 @@ public class Goods extends PBModel {
     update(response);
   }
 
-  public static ArrayList<Goods> create(List<GoodsResponse> responses) {
+  public static ArrayList<Goods> createGoods(List<GoodsResponse> responses) {
     ArrayList<Goods> goodsList = new ArrayList<>();
 
     if (responses == null || responses.size() == 0) {

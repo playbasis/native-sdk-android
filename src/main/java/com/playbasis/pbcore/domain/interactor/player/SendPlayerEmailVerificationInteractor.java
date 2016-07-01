@@ -16,17 +16,17 @@ import rx.Observable;
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class VerifyPlayerEmailInteractor extends PlayBasisApiInteractor {
+public class SendPlayerEmailVerificationInteractor extends PlayBasisApiInteractor {
 
-  public static final String TAG = "VerifyPlayerEmailInteractor";
+  public static final String TAG = "SendPlayerEmailVerificationInteractor";
 
   public PlayerEmailVerificationForm playerEmailVerificationForm;
 
   @Inject
-  public VerifyPlayerEmailInteractor(ThreadExecutor threadExecutor,
-                                     PostExecutionThread postExecutionThread,
-                                     RestClient restClient,
-                                     RequestTokenInteractor requestTokenInteractor) {
+  public SendPlayerEmailVerificationInteractor(ThreadExecutor threadExecutor,
+                                               PostExecutionThread postExecutionThread,
+                                               RestClient restClient,
+                                               RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 

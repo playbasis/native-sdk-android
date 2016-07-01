@@ -3,14 +3,14 @@ package com.playbasis.pbcore.domain.interactor.player;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Badge;
+import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.GetPlayerBadgesForm;
 import com.playbasis.pbcore.rest.result.player.GetPlayerBadgesApiResult;
-import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
 import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -43,15 +43,19 @@ public class GetPlayerAllBadgesInteractor extends PlayBasisApiInteractor {
             getApiKey()
         )
         .map(new PBApiErrorCheckFunc<GetPlayerBadgesApiResult>())
-        .map(new Func1<GetPlayerBadgesApiResult, ArrayList<Badge>>() {
-          @Override
-          public ArrayList<Badge> call(GetPlayerBadgesApiResult getPlayerBadgesApiResult) {
-            return Badge.create(getPlayerBadgesApiResult.response);
-          }
-        });
+        .map(getResultMapFunction());
   }
 
   public void setGetPlayerBadgesForm(GetPlayerBadgesForm getPlayerBadgesForm) {
     this.getPlayerBadgesForm = getPlayerBadgesForm;
+  }
+
+  public Func1<GetPlayerBadgesApiResult, List<? extends Badge>> getResultMapFunction() {
+    return new Func1<GetPlayerBadgesApiResult, List<? extends Badge>>() {
+      @Override
+      public List<? extends Badge> call(GetPlayerBadgesApiResult getPlayerBadgesApiResult) {
+        return Badge.create(getPlayerBadgesApiResult.response);
+      }
+    };
   }
 }

@@ -10,13 +10,11 @@ public class GetStoreOrganizationForm {
   protected String organizationId;
   protected Class<? extends Organization> klass;
   protected String saveKey = null;
-  protected boolean reloadCache = false;
 
   public GetStoreOrganizationForm(String organizationId, Class<? extends Organization> klass, boolean reloadCache) {
     this.organizationId = organizationId;
     this.klass = klass;
     this.saveKey = organizationId;
-    this.reloadCache = reloadCache;
   }
 
   public String getOrganizationId() {
@@ -41,13 +39,5 @@ public class GetStoreOrganizationForm {
 
   public void setSaveKey(String saveKey) {
     this.saveKey = saveKey;
-  }
-
-  public boolean isReloadCache() {
-    return reloadCache;
-  }
-
-  public void setReloadCache(boolean reloadCache) {
-    this.reloadCache = reloadCache;
   }
 }

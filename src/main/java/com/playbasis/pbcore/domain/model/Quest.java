@@ -2,7 +2,6 @@ package com.playbasis.pbcore.domain.model;
 
 import com.playbasis.pbcore.rest.response.BaseQuestResponse;
 import com.playbasis.pbcore.rest.response.PlayerQuestResponse;
-import com.playbasis.pbcore.rest.response.QuestResponse;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,24 +42,15 @@ public class Quest extends PBModel {
     update(response);
   }
 
-  public static <T extends BaseQuestResponse> ArrayList<Quest> create(List<T> responses) {
+  public static <T extends BaseQuestResponse> ArrayList<Quest> createQuests(List<T> responses) {
     ArrayList<Quest> quests = new ArrayList<>();
 
     if (responses == null || responses.size() == 0) {
       return quests;
     }
 
-    for (int i = 0; i < responses.size(); i++) {
-      T response = responses.get(i);
-      Quest quest = new Quest();
-
-      if (response instanceof QuestResponse) {
-        quest.update((QuestResponse) response);
-      } else if (response instanceof PlayerQuestResponse) {
-        quest.update((PlayerQuestResponse) response);
-      }
-
-      quests.add(quest);
+    for (T response : responses) {
+      quests.add(new Quest(response));
     }
 
     return quests;
