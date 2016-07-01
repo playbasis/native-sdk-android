@@ -11,11 +11,11 @@ import java.util.List;
  */
 public class QuestPlayerRank extends PBModel {
 
-  public String status;
-  public Date completedDate;
-  public int goal;
-  public int current;
-  public Player player;
+  private String status;
+  private Date completedDate;
+  private int goal;
+  private int current;
+  private Player player;
 
   public QuestPlayerRank() {
 
