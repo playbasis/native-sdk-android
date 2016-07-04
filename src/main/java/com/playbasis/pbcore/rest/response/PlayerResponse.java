@@ -63,6 +63,8 @@ public class PlayerResponse {
   @Expose
   @SerializedName("badges")
   public List<BadgeResponse> playerBadgesResponses;
+  @SerializedName("goods")
+  public List<GoodsResponse> playerGoodsResponses;
 
   public PlayerResponse() {
 

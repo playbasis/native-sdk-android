@@ -40,6 +40,7 @@ public class Player extends PBModel {
   protected String levelImageUrl;
   protected Gender gender;
   protected ArrayList<Badge> badges;
+  protected ArrayList<Goods> goods;
   protected HashMap<String, String> customFields = new HashMap<>();
 
   @Override
@@ -80,6 +81,7 @@ public class Player extends PBModel {
     this.levelTitle = response.levelTitle;
     this.levelImageUrl = response.levelImageUrl;
     this.badges = Badge.createBadges(response.playerBadgesResponses);
+    this.goods = Goods.createGoods(response.playerGoodsResponses);
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {
@@ -160,6 +162,10 @@ public class Player extends PBModel {
 
   public ArrayList<Badge> getBadges() {
     return badges;
+  }
+
+  public ArrayList<Goods> getGoods() {
+    return goods;
   }
 
   public HashMap<String, String> getCustomFields() {
