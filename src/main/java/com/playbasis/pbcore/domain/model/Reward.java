@@ -74,6 +74,9 @@ public class Reward extends PBModel {
 
   public interface Redeemable {
 
+    String getName();
+    String getDescription();
+    String getImageUrl();
   }
 
   public class Goods extends com.playbasis.pbcore.domain.model.Goods implements Redeemable {
@@ -112,6 +115,7 @@ public class Reward extends PBModel {
   }
 
   public class Badge extends com.playbasis.pbcore.domain.model.Badge implements Redeemable {
+
     protected boolean claim;
     protected boolean redeem;
 
