@@ -27,7 +27,7 @@ public class Badge extends PBModel {
     update(response);
   }
 
-  public static ArrayList<Badge> create(List<BadgeResponse> responses) {
+  public static ArrayList<Badge> createBadges(List<BadgeResponse> responses) {
     ArrayList<Badge> badges = new ArrayList<>();
 
     if (responses == null || responses.size() == 0) {

@@ -79,7 +79,7 @@ public class Player extends PBModel {
     this.levelPercent = response.levelPercent;
     this.levelTitle = response.levelTitle;
     this.levelImageUrl = response.levelImageUrl;
-    this.badges = Badge.create(response.playerBadgesResponses);
+    this.badges = Badge.createBadges(response.playerBadgesResponses);
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {

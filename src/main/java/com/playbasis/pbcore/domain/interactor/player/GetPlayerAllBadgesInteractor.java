@@ -54,7 +54,7 @@ public class GetPlayerAllBadgesInteractor extends PlayBasisApiInteractor {
     return new Func1<GetPlayerBadgesApiResult, List<? extends Badge>>() {
       @Override
       public List<? extends Badge> call(GetPlayerBadgesApiResult getPlayerBadgesApiResult) {
-        return Badge.create(getPlayerBadgesApiResult.response);
+        return Badge.createBadges(getPlayerBadgesApiResult.response);
       }
     };
   }
