@@ -26,6 +26,17 @@ public class Goods extends PBModel {
   protected boolean isGroup;
   protected boolean sponsor;
 
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Goods) {
+      String goodsId = ((Goods) o).getGoodsId();
+
+      return goodsId != null && goodsId.equals(getGoodsId());
+    }
+
+    return super.equals(o);
+  }
+
   public Goods() {
 
   }
