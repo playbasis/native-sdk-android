@@ -4,6 +4,7 @@ import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerEarnedBadgesInteractor;
@@ -129,6 +130,15 @@ public class PlayerModule {
                                                                    RestClient restClient,
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerAllBadgesInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerAllGoodsInteractor provideGetPlayerAllGoodsInteractor(ThreadExecutor threadExecutor,
+                                                                 PostExecutionThread postExecutionThread,
+                                                                 RestClient restClient,
+                                                                 RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerAllGoodsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
   @Provides

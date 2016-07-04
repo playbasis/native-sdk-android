@@ -2,19 +2,20 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
+import com.playbasis.pbcore.rest.result.organize.RemovePlayerFromOrganizeApiResult;
+import com.playbasis.pbcore.rest.result.organize.UpdatePlayerOrganizationApiResult;
 import com.playbasis.pbcore.rest.result.player.ForgetPasswordApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerBadgesApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerDetailApiResult;
+import com.playbasis.pbcore.rest.result.player.GetPlayerGoodsApiResult;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.player.LoginPlayerApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerJoinedQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
 import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
-import com.playbasis.pbcore.rest.result.organize.RemovePlayerFromOrganizeApiResult;
 import com.playbasis.pbcore.rest.result.player.SetPlayerCustomFieldApiResult;
 import com.playbasis.pbcore.rest.result.player.UpdatePlayerDetailApiResult;
-import com.playbasis.pbcore.rest.result.organize.UpdatePlayerOrganizationApiResult;
 import com.playbasis.pbcore.rest.result.player.VerifyPlayerEmailApiResult;
 
 import retrofit2.http.Field;
@@ -156,6 +157,12 @@ public interface PlayerService {
 
   @GET("Player/{id}/badgeAll")
   Observable<GetPlayerBadgesApiResult> getPlayerAllBadges(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey
+  );
+
+  @GET("Player/{id}/goods")
+  Observable<GetPlayerGoodsApiResult> getPlayerAllGoods(
       @NonNull @Path("id") String playerId,
       @NonNull @Query("api_key") String apiKey
   );
