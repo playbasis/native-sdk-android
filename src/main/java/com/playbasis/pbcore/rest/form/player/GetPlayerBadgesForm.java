@@ -1,6 +1,5 @@
 package com.playbasis.pbcore.rest.form.player;
 
-import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.form.PBForm;
 
 /**
@@ -8,17 +7,13 @@ import com.playbasis.pbcore.rest.form.PBForm;
  */
 public class GetPlayerBadgesForm extends PBForm {
 
-  public Player player;
+  public String playerId;
 
-  public GetPlayerBadgesForm(Player player) {
-    this.player = player;
+  public GetPlayerBadgesForm(String playerId) {
+    this.playerId = playerId;
   }
 
   public String getPlayerId() {
-    if (player == null) {
-      return null;
-    }
-
-    return player.getPlayerId();
+    return playerId;
   }
 }
