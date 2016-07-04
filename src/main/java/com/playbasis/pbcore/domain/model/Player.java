@@ -42,6 +42,16 @@ public class Player extends PBModel {
   protected ArrayList<Badge> badges;
   protected HashMap<String, String> customFields = new HashMap<>();
 
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Player) {
+      String playerId = ((Player) o).getPlayerId();
+
+      return playerId != null && playerId.equals(getPlayerId());
+    }
+    return super.equals(o);
+  }
+
   public Player(String playerId) {
     this.playerId = playerId;
   }
