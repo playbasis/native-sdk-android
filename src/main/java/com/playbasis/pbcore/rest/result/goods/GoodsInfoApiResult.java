@@ -10,7 +10,10 @@ import com.playbasis.pbcore.rest.response.GoodsResponse;
 public class GoodsInfoApiResult extends PBApiResult<GoodsInfoApiResult.Response> {
 
   public GoodsResponse getGoodsResponse() {
-    response.goodsResponse.amount = response.amount;
+    if (response.goodsResponse != null) {
+      response.goodsResponse.amount = response.amount;
+    }
+
     return response.goodsResponse;
   }
 
