@@ -131,4 +131,8 @@ public class Goods extends PBModel {
   public int getSortOrder() {
     return sortOrder;
   }
+
+  public int getAmount() {
+    return amount;
+  }
 }
