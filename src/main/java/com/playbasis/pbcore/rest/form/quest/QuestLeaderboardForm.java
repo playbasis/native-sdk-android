@@ -9,6 +9,8 @@ public class QuestLeaderboardForm extends PBForm {
 
   private String questId;
   private String completionElementId;
+  private int limit = 100;
+  private int offset = 0;
 
   public QuestLeaderboardForm(String questId) {
     this.questId = questId;
@@ -25,5 +27,21 @@ public class QuestLeaderboardForm extends PBForm {
 
   public String getCompletionElementId() {
     return completionElementId;
+  }
+
+  public int getLimit() {
+    return limit;
+  }
+
+  public void setLimit(int limit) {
+    this.limit = limit;
+  }
+
+  public int getOffset() {
+    return offset;
+  }
+
+  public void setOffset(int offset) {
+    this.offset = offset;
   }
 }

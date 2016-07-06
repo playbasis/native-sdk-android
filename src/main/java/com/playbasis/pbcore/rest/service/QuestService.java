@@ -58,6 +58,8 @@ public interface QuestService {
   Observable<QuestLeaderboardApiResult> getLeaderboard(
       @NonNull @Query("api_key") String apiKey,
       @NonNull @Query("quest_id") String questId,
-      @NonNull @Query("completion_element_id") String completionElementId
+      @NonNull @Query("completion_element_id") String completionElementId,
+      @Query("limit") int limit,
+      @Query("offset") int offset
   );
 }

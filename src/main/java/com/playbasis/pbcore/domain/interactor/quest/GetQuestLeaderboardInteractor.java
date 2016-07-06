@@ -41,7 +41,9 @@ public class GetQuestLeaderboardInteractor extends PlayBasisApiInteractor {
         .getLeaderboard(
             getApiKey(),
             questLeaderboardForm.getQuestId(),
-            questLeaderboardForm.getCompletionElementId()
+            questLeaderboardForm.getCompletionElementId(),
+            questLeaderboardForm.getLimit(),
+            questLeaderboardForm.getOffset()
         )
         .map(new PBApiErrorCheckFunc<QuestLeaderboardApiResult>())
         .map(getResultMapFunction());
