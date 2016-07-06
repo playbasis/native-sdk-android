@@ -1,7 +1,6 @@
 package com.playbasis.pbcore.rest.form.player;
 
 import com.playbasis.pbcore.rest.form.BaseUserForm;
-import com.smartsoftasia.ssalibrary.helper.Validator;
 
 /**
  * Created by Tar on 4/21/16 AD.
@@ -13,14 +12,11 @@ public class PlayerRegistrationForm extends BaseUserForm {
   protected String imageUrl;
   protected String status;
 
-  public PlayerRegistrationForm(String email, String password) {
-    super(email, password);
-
-    status = "approved";
-  }
-
-  public boolean isUserNameValid(){
-    return Validator.isValid(userName);
+  public PlayerRegistrationForm(String email, String userName, String password) {
+    this.email = email;
+    this.userName = userName;
+    this.password = password;
+    this.status = "approved";
   }
 
   public String getPlayerId(){
@@ -29,14 +25,6 @@ public class PlayerRegistrationForm extends BaseUserForm {
 
   public void setPlayerId(String playerId) {
     this.playerId = playerId;
-  }
-
-  public String getUserName(){
-    return userName;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
   }
 
   public String getImageUrl(){

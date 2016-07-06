@@ -7,7 +7,4 @@ import com.playbasis.pbcore.rest.form.BaseUserForm;
  */
 public class PlayerAuthenticationForm extends BaseUserForm {
 
-  public PlayerAuthenticationForm(String email, String password) {
-    super(email,password);
-  }
 }

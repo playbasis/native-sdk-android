@@ -44,6 +44,7 @@ public interface PlayerService {
   Observable<LoginPlayerApiResult> loginPlayer(
       @NonNull @Field("token") String token,
       @Field("email") String email,
+      @Field("username") String username,
       @NonNull @Field("password") String password
   );
 
