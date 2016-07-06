@@ -8,7 +8,6 @@ import com.playbasis.pbcore.rest.form.BaseUserForm;
 public class PlayerRegistrationForm extends BaseUserForm {
 
   protected String playerId;
-  protected String userName;
   protected String imageUrl;
   protected String status;
 
