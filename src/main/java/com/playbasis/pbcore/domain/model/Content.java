@@ -28,7 +28,7 @@ public class Content extends PBModel {
     update(response);
   }
 
-  public static List<Content> create(List<ContentResponse> contentResponses) {
+  public static List<Content> createContents(List<ContentResponse> contentResponses) {
     ArrayList<Content> contents = new ArrayList<>();
 
     try {
