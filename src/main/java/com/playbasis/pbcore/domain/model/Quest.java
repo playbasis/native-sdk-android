@@ -34,6 +34,17 @@ public class Quest extends PBModel {
   protected String playerStatus;
   protected NumMissions numMissions;
 
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Quest) {
+      String questId = ((Quest) o).getQuestId();
+
+      return questId != null && questId.equals(getQuestId());
+    }
+
+    return super.equals(o);
+  }
+
   public Quest() {
 
   }
