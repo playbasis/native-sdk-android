@@ -79,7 +79,7 @@ public class Reward extends PBModel {
     String getImageUrl();
   }
 
-  public class Goods extends com.playbasis.pbcore.domain.model.Goods implements Redeemable {
+  public static class Goods extends com.playbasis.pbcore.domain.model.Goods implements Redeemable {
 
     protected Date addedDate;
     protected Date modifiedDate;
@@ -87,7 +87,11 @@ public class Reward extends PBModel {
     protected boolean status;
     protected boolean deleted;
 
-    private Goods(RewardResponse.RewardGoodsResponse rewardGoodsResponse) {
+    public Goods() {
+
+    }
+
+    public Goods(RewardResponse.RewardGoodsResponse rewardGoodsResponse) {
       if (rewardGoodsResponse == null) {
         return;
       }
@@ -99,6 +103,14 @@ public class Reward extends PBModel {
       this.deleted = rewardGoodsResponse.deleted;
 
       update(rewardGoodsResponse);
+    }
+
+    public Date getAddedDate() {
+      return addedDate;
+    }
+
+    public Date getModifiedDate() {
+      return modifiedDate;
     }
 
     public int getPerUser() {
@@ -114,10 +126,14 @@ public class Reward extends PBModel {
     }
   }
 
-  public class Badge extends com.playbasis.pbcore.domain.model.Badge implements Redeemable {
+  public static class Badge extends com.playbasis.pbcore.domain.model.Badge implements Redeemable {
 
     protected boolean claim;
     protected boolean redeem;
+
+    public Badge() {
+
+    }
 
     public Badge(RewardResponse.RewardBadgeResponse rewardBadgeResponse) {
       if (rewardBadgeResponse == null) {
@@ -128,6 +144,14 @@ public class Reward extends PBModel {
       this.redeem = rewardBadgeResponse.redeem;
 
       update(rewardBadgeResponse);
+    }
+
+    public boolean isClaim() {
+      return claim;
+    }
+
+    public boolean isRedeem() {
+      return redeem;
     }
   }
 }
