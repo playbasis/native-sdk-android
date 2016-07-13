@@ -15,11 +15,16 @@ public class QuestLeaderboardApiResult extends PBApiResult<QuestLeaderboardApiRe
     return response.questPlayerRankResponses;
   }
 
-  public class Response {
+  public QuestPlayerRankResponse getCurrentPlayerRankResponses() {
+    return response.currentPlayerRankResponses;
+  }
+
+  public static class Response {
 
     @SerializedName("result")
     public List<QuestPlayerRankResponse> questPlayerRankResponses;
-
+    @SerializedName("player_data")
+    public QuestPlayerRankResponse currentPlayerRankResponses;
   }
 
 }

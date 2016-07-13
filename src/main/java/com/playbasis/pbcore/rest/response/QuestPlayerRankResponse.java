@@ -23,6 +23,9 @@ public class QuestPlayerRankResponse {
   @SerializedName("goal")
   public int goal;
   @Expose
+  @SerializedName("rank")
+  public int rank;
+  @Expose
   @SerializedName("player")
   public PlayerResponse playerResponse;
 

@@ -61,6 +61,7 @@ public interface QuestService {
       @NonNull @Query("completion_element_id") String completionElementId,
       @Query("limit") int limit,
       @Query("offset") int offset,
-      @Query("status") String status
+      @Query("status") String status,
+      @Query("player_id") String playerId
   );
 }

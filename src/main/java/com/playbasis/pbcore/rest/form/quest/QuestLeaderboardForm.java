@@ -12,6 +12,7 @@ public class QuestLeaderboardForm extends PBForm {
   private int limit = 100;
   private int offset = 0;
   private String status;
+  private String playerId;
 
   public QuestLeaderboardForm(String questId) {
     this.questId = questId;
@@ -52,5 +53,13 @@ public class QuestLeaderboardForm extends PBForm {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
   }
 }
