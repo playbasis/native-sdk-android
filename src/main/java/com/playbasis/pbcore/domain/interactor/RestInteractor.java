@@ -7,6 +7,7 @@ import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
 import rx.Observable;
 import rx.functions.Func1;
@@ -33,7 +34,7 @@ public abstract class RestInteractor extends BaseInteractor {
       return observable.flatMap(new Func1<Throwable, Observable<?>>() {
         @Override
         public Observable<?> call(final Throwable throwable) {
-          if (noInternetConnectionInterface != null && (throwable instanceof IOException || throwable instanceof SocketTimeoutException)) {
+          if (noInternetConnectionInterface != null && (throwable instanceof IOException || throwable instanceof SocketTimeoutException || throwable instanceof UnknownHostException)) {
             return noInternetConnectionInterface.noInternetConnection(throwable);
           } else {
             return Observable.error(throwable);
