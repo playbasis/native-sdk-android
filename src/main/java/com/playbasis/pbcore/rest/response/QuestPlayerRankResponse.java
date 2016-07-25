@@ -17,6 +17,9 @@ public class QuestPlayerRankResponse {
   @SerializedName("date_completed")
   public Date completedDate;
   @Expose
+  @SerializedName("date_join")
+  public Date joinedDate;
+  @Expose
   @SerializedName("status")
   public String status;
   @Expose

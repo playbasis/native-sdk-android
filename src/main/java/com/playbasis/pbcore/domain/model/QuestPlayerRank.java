@@ -13,6 +13,7 @@ public class QuestPlayerRank extends PBModel {
 
   private String status;
   private Date completedDate;
+  private Date joinedDate;
   private int goal;
   private int current;
   private Player player;
@@ -47,6 +48,7 @@ public class QuestPlayerRank extends PBModel {
 
     this.status = response.status;
     this.completedDate = response.completedDate;
+    this.joinedDate = response.joinedDate;
     this.goal = response.goal;
     this.current = response.current;
     this.rank = response.rank;
@@ -66,6 +68,10 @@ public class QuestPlayerRank extends PBModel {
 
   public Date getCompletedDate() {
     return completedDate;
+  }
+
+  public Date getJoinedDate() {
+    return joinedDate;
   }
 
   public int getGoal() {
