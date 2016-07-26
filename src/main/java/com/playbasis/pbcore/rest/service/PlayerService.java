@@ -172,16 +172,16 @@ public interface PlayerService {
   Observable<PlayerQuestListApiResult> getAllPlayerQuest(
       @NonNull @Path("id") String PlayerId,
       @NonNull @Query("api_key") String apiKey,
-      @NonNull @Query("tags") String tags,
-      @NonNull @Query("filter") String filter
+      @Query("tags") String tags,
+      @Query("filter") String filter
   );
 
   @GET("Player/quest")
   Observable<PlayerJoinedQuestApiResult> getPlayerJoinedQuest(
       @NonNull @Query("api_key") String apiKey,
       @NonNull @Query("player_id") String PlayerId,
-      @NonNull @Query("tags") String tags,
-      @NonNull @Query("filter") String filter
+      @Query("tags") String tags,
+      @Query("filter") String filter
   );
 
   @GET("Player/quest/{id}")
