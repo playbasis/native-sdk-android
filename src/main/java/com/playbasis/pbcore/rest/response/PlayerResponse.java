@@ -65,6 +65,8 @@ public class PlayerResponse {
   public List<BadgeResponse> playerBadgesResponses;
   @SerializedName("goods")
   public List<GoodsResponse> playerGoodsResponses;
+  @SerializedName("points")
+  public List<PointResponse> playerPointsResponses;
 
   public PlayerResponse() {
 
