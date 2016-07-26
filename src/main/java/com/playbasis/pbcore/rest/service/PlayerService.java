@@ -11,6 +11,8 @@ import com.playbasis.pbcore.rest.result.player.GetPlayerGoodsApiResult;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.player.LoginPlayerApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerJoinedQuestApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerPointApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerPointsApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
 import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
@@ -189,5 +191,18 @@ public interface PlayerService {
       @NonNull @Path("id") String questId,
       @NonNull @Query("api_key") String apiKey,
       @NonNull @Query("player_id") String PlayerId
+  );
+
+  @GET("Player/{id}/points")
+  Observable<PlayerPointsApiResult> getPlayerAllPoints(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey
+  );
+
+  @GET("Player/{id}/points/{point_name}")
+  Observable<PlayerPointApiResult> getPlayerPoint(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Path("point_name") String pointName,
+      @NonNull @Query("api_key") String apiKey
   );
 }
