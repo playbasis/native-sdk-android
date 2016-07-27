@@ -20,7 +20,7 @@ public class JoinQuestInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "JoinQuestInteractor";
 
-  private JoinQuestForm joinQuestForm;
+  protected JoinQuestForm joinQuestForm;
 
   @Inject
   public JoinQuestInteractor(ThreadExecutor threadExecutor,

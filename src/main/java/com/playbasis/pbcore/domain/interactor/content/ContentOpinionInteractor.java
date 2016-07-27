@@ -14,7 +14,7 @@ public abstract class ContentOpinionInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "ContentOpinionInteractor";
 
-  protected ContentOpinionForm form;
+  protected ContentOpinionForm contentOpinionForm;
 
   public ContentOpinionInteractor(ThreadExecutor threadExecutor,
                                   PostExecutionThread postExecutionThread,
@@ -23,7 +23,7 @@ public abstract class ContentOpinionInteractor extends PlayBasisApiInteractor {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
-  public void setContentOpinionForm(ContentOpinionForm form) {
-    this.form = form;
+  public void setContentOpinionForm(ContentOpinionForm contentOpinionForm) {
+    this.contentOpinionForm = contentOpinionForm;
   }
 }

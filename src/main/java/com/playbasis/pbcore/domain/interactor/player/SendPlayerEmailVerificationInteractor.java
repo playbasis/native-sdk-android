@@ -20,7 +20,7 @@ public class SendPlayerEmailVerificationInteractor extends PlayBasisApiInteracto
 
   public static final String TAG = "SendPlayerEmailVerificationInteractor";
 
-  public PlayerEmailVerificationForm playerEmailVerificationForm;
+  protected PlayerEmailVerificationForm playerEmailVerificationForm;
 
   @Inject
   public SendPlayerEmailVerificationInteractor(ThreadExecutor threadExecutor,

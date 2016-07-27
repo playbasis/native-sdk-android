@@ -20,7 +20,7 @@ public class CancelQuestInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "CancelQuestInteractor";
 
-  private CancelQuestForm joinQuestForm;
+  protected CancelQuestForm cancelQuestForm;
 
   @Inject
   public CancelQuestInteractor(ThreadExecutor threadExecutor,
@@ -35,14 +35,14 @@ public class CancelQuestInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getQuestService()
         .cancelQuest(
-            joinQuestForm.getQuestId(),
+            cancelQuestForm.getQuestId(),
             getApiToken(),
-            joinQuestForm.getPlayerId()
+            cancelQuestForm.getPlayerId()
         )
         .map(new PBApiErrorCheckFunc<CancelQuestApiResult>());
   }
 
   public void setCancelQuestForm(CancelQuestForm joinQuestForm) {
-    this.joinQuestForm = joinQuestForm;
+    this.cancelQuestForm = joinQuestForm;
   }
 }

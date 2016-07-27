@@ -30,10 +30,10 @@ public class LikeContentInteractor extends ContentOpinionInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getContentService().likeContent(
         getApiToken(),
-        form.getNodeId(),
-        form.getPlayerId(),
-        form.getKeys(),
-        form.getValues()
+        contentOpinionForm.getNodeId(),
+        contentOpinionForm.getPlayerId(),
+        contentOpinionForm.getKeys(),
+        contentOpinionForm.getValues()
     ).map(new PBApiErrorCheckFunc<ContentOpinionApiResult>());
   }
 }

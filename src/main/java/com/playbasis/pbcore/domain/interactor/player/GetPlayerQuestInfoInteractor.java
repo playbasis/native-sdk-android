@@ -22,7 +22,7 @@ public class GetPlayerQuestInfoInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetPlayerAllQuestInteractor";
 
-  private GetPlayerQuestInfoForm getPlayerQuestInfoForm;
+  protected GetPlayerQuestInfoForm getPlayerQuestInfoForm;
 
   @Inject
   public GetPlayerQuestInfoInteractor(ThreadExecutor threadExecutor,

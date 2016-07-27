@@ -20,7 +20,7 @@ public class RedeemGoodsCouponInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "RedeemGoodsCouponInteractor";
 
-  private RedeemGoodsCouponForm redeemGoodsCouponForm;
+  protected RedeemGoodsCouponForm redeemGoodsCouponForm;
 
   @Inject
   public RedeemGoodsCouponInteractor(ThreadExecutor threadExecutor,

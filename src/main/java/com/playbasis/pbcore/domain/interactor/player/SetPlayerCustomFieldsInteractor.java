@@ -20,7 +20,7 @@ public class SetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "SetPlayerCustomFieldsInteractor";
 
-  private UpdatePlayerCustomFieldForm form;
+  protected UpdatePlayerCustomFieldForm updatePlayerCustomFieldForm;
 
   @Inject
   public SetPlayerCustomFieldsInteractor(ThreadExecutor threadExecutor,
@@ -34,14 +34,14 @@ public class SetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getPlayerService()
         .setPlayerCustomFields(
-            form.getPlayerId(),
+            updatePlayerCustomFieldForm.getPlayerId(),
             getApiToken(),
-            form.getKeys(),
-            form.getValues()
+            updatePlayerCustomFieldForm.getKeys(),
+            updatePlayerCustomFieldForm.getValues()
         ).map(new PBApiErrorCheckFunc<SetPlayerCustomFieldApiResult>());
   }
 
   public void setCurtomFieldForm(UpdatePlayerCustomFieldForm curtomFieldForm) {
-    this.form = curtomFieldForm;
+    this.updatePlayerCustomFieldForm = curtomFieldForm;
   }
 }

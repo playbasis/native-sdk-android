@@ -24,7 +24,7 @@ public class GetOrganizationInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetOrganizationInteractor";
 
-  GetStoreOrganizationForm getStoreOrganizationForm;
+  protected GetStoreOrganizationForm getStoreOrganizationForm;
 
   @Inject
   public GetOrganizationInteractor(ThreadExecutor threadExecutor,

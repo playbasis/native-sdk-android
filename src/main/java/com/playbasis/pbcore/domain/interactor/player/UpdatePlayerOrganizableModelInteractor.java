@@ -28,7 +28,7 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
 
   public static final String TAG = "UpdatePlayerOrganizableModelInteractor";
 
-  private UpdatePlayerOrganizationForm updatePlayerOrganizationForm;
+  protected UpdatePlayerOrganizationForm updatePlayerOrganizationForm;
 
   @Inject
   public UpdatePlayerOrganizableModelInteractor(ThreadExecutor threadExecutor,

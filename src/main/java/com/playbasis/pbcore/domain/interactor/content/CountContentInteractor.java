@@ -20,7 +20,7 @@ public class CountContentInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "CountContentInteractor";
 
-  private CountContentForm mCountIdeasForm;
+  protected CountContentForm countContentForm;
 
   @Inject
   public CountContentInteractor(ThreadExecutor threadExecutor,
@@ -36,16 +36,16 @@ public class CountContentInteractor extends PlayBasisApiInteractor {
     return restClient.getContentService()
         .countContents(
             getApiKey(),
-            mCountIdeasForm.getCategory(),
-            mCountIdeasForm.getPin(),
-            mCountIdeasForm.getPlayerId(),
-            mCountIdeasForm.isGetOnlyNewContent()
+            countContentForm.getCategory(),
+            countContentForm.getPin(),
+            countContentForm.getPlayerId(),
+            countContentForm.isGetOnlyNewContent()
         )
         .map(new PBApiErrorCheckFunc<CountContentApiResult>());
   }
 
-  public void setCountIdeasForm(CountContentForm getProjectForm) {
-    mCountIdeasForm = getProjectForm;
+  public void setCountIdeasForm(CountContentForm countContentForm) {
+    countContentForm = countContentForm;
   }
 
 }

@@ -24,7 +24,7 @@ public class GetGoodsListInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetGoodsListInteractor";
 
-  private GetGoodsListForm getGoodsListForm;
+  protected GetGoodsListForm getGoodsListForm;
 
   @Inject
   public GetGoodsListInteractor(ThreadExecutor threadExecutor,

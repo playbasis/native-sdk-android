@@ -22,7 +22,7 @@ public class GetMissionInfoInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetMissionInfoInteractor";
 
-  private GetMissionInfoForm getMissionInfoForm;
+  protected GetMissionInfoForm getMissionInfoForm;
 
   @Inject
   public GetMissionInfoInteractor(ThreadExecutor threadExecutor,

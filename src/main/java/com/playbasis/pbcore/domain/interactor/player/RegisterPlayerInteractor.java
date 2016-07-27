@@ -20,8 +20,7 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "RegisterPlayerInteractor";
 
-  public PlayerRegistrationForm playerRegistrationForm;
-  private RegisterPlayerApiResult registerPlayerApiResult;
+  protected PlayerRegistrationForm playerRegistrationForm;
 
   @Inject
   public RegisterPlayerInteractor(ThreadExecutor threadExecutor,

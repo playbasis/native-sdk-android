@@ -24,8 +24,8 @@ public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "UpdatePlayerInteractor";
 
-  private UpdatePlayerForm form;
-  private UploadImageInteractor uploadImageInteractor;
+  protected UpdatePlayerForm form;
+  protected UploadImageInteractor uploadImageInteractor;
 
   @Inject
   public UpdatePlayerInteractor(ThreadExecutor threadExecutor,

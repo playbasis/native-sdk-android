@@ -23,7 +23,7 @@ public class UploadImageInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "UploadImageInteractor";
 
-  private UploadImageForm form;
+  protected UploadImageForm uploadImageForm;
 
   @Inject
   public UploadImageInteractor(ThreadExecutor threadExecutor,
@@ -37,16 +37,16 @@ public class UploadImageInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getImageService().uploadImage(
         RequestBody.create(MediaType.parse("text/plain"), getApiToken()),
-        RequestBody.create(MediaType.parse("text/plain"), form.getPlayerId()),
+        RequestBody.create(MediaType.parse("text/plain"), uploadImageForm.getPlayerId()),
         MultipartBody.Part.createFormData(
             "file",
-            form.getFile().getName(),
-            RequestBody.create(MediaType.parse("image/*"), form.getFile())
+            uploadImageForm.getFile().getName(),
+            RequestBody.create(MediaType.parse("image/*"), uploadImageForm.getFile())
         )
     ).map(new PBApiErrorCheckFunc<UploadImageApiResult>());
   }
 
   public void setUploadImageForm(UploadImageForm uploadImageForm) {
-    this.form = uploadImageForm;
+    this.uploadImageForm = uploadImageForm;
   }
 }

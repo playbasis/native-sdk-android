@@ -20,7 +20,7 @@ public class ForgetPasswordInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "ForgetPasswordInteractor";
 
-  public ForgetPlayerPasswordForm forgetPlayerPasswordForm;
+  protected ForgetPlayerPasswordForm forgetPlayerPasswordForm;
 
   @Inject
   public ForgetPasswordInteractor(ThreadExecutor threadExecutor,

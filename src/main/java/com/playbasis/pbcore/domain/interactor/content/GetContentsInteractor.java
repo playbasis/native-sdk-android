@@ -24,7 +24,7 @@ public class GetContentsInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetContentsInteractor";
 
-  private GetContentsForm getContentsForm;
+  protected GetContentsForm getContentsForm;
 
   @Inject
   public GetContentsInteractor(ThreadExecutor threadExecutor,

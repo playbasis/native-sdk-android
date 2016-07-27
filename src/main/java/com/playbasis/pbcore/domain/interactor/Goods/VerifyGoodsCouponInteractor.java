@@ -20,7 +20,7 @@ public class VerifyGoodsCouponInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "VerifyGoodsCouponInteractor";
 
-  private VerifyGoodsCouponForm verifyGoodsCouponForm;
+  protected VerifyGoodsCouponForm verifyGoodsCouponForm;
 
   @Inject
   public VerifyGoodsCouponInteractor(ThreadExecutor threadExecutor,

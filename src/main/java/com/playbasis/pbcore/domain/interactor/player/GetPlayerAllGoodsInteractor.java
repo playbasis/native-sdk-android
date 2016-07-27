@@ -24,7 +24,7 @@ public class GetPlayerAllGoodsInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetPlayerAllBadgesInteractor";
 
-  private GetPlayerGoodsForm getPlayerGoodsForm;
+  protected GetPlayerGoodsForm getPlayerGoodsForm;
 
   @Inject
   public GetPlayerAllGoodsInteractor(ThreadExecutor threadExecutor,

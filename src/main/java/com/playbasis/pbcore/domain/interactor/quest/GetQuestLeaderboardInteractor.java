@@ -24,7 +24,7 @@ public class GetQuestLeaderboardInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetQuestLeaderboardInteractor";
 
-  private QuestLeaderboardForm questLeaderboardForm;
+  protected QuestLeaderboardForm questLeaderboardForm;
 
   @Inject
   public GetQuestLeaderboardInteractor(ThreadExecutor threadExecutor,

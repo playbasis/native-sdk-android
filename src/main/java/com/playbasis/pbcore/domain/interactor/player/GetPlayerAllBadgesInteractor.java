@@ -24,7 +24,7 @@ public class GetPlayerAllBadgesInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetPlayerAllBadgesInteractor";
 
-  private GetPlayerBadgesForm getPlayerBadgesForm;
+  protected GetPlayerBadgesForm getPlayerBadgesForm;
 
   @Inject
   public GetPlayerAllBadgesInteractor(ThreadExecutor threadExecutor,

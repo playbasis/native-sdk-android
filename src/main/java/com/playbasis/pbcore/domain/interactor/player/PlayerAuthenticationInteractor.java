@@ -18,7 +18,7 @@ public class PlayerAuthenticationInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "PlayerAuthenticationInteractor";
 
-  private PlayerAuthenticationForm mPlayerAuthenticationForm;
+  protected PlayerAuthenticationForm mPlayerAuthenticationForm;
 
   @Inject
   public PlayerAuthenticationInteractor(ThreadExecutor threadExecutor,

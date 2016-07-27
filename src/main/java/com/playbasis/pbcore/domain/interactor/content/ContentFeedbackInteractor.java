@@ -20,7 +20,7 @@ public class ContentFeedbackInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "ContentFeedbackInteractor";
 
-  private ContentFeedbackForm form;
+  protected ContentFeedbackForm contentFeedbackForm;
 
   @Inject
   public ContentFeedbackInteractor(ThreadExecutor threadExecutor,
@@ -34,15 +34,15 @@ public class ContentFeedbackInteractor extends PlayBasisApiInteractor {
   public Observable buildApiUseCaseObservable() {
     return restClient.getContentService().sendContentFeedback(
         getApiToken(),
-        form.getNodeId(),
-        form.getPlayerId(),
-        form.getComment(),
-        form.getKey(),
-        form.getValue()
+        contentFeedbackForm.getNodeId(),
+        contentFeedbackForm.getPlayerId(),
+        contentFeedbackForm.getComment(),
+        contentFeedbackForm.getKey(),
+        contentFeedbackForm.getValue()
     ).map(new PBApiErrorCheckFunc<ContentOpinionApiResult>());
   }
 
-  public void setContentFeedbackForm(ContentFeedbackForm form) {
-    this.form = form;
+  public void setContentFeedbackForm(ContentFeedbackForm contentFeedbackForm) {
+    this.contentFeedbackForm = contentFeedbackForm;
   }
 }

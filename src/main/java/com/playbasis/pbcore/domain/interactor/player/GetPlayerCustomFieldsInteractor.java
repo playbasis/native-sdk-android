@@ -23,7 +23,7 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetPlayerCustomFieldsInteractor";
 
-  GetPlayerCustomFieldForm getPlayerCustomFieldForm;
+  protected GetPlayerCustomFieldForm getPlayerCustomFieldForm;
 
   @Inject
   public GetPlayerCustomFieldsInteractor(ThreadExecutor threadExecutor,

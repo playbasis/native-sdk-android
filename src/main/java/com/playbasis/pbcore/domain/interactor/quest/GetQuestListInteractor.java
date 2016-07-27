@@ -24,7 +24,7 @@ public class GetQuestListInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetQuestListInteractor";
 
-  private GetQuestListForm getQuestListForm;
+  protected GetQuestListForm getQuestListForm;
 
   @Inject
   public GetQuestListInteractor(ThreadExecutor threadExecutor,

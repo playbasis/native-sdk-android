@@ -22,7 +22,7 @@ public class GetGoodsInfoInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetGoodsInfoInteractor";
 
-  private GetGoodsInfoForm getGoodsInfoForm;
+  protected GetGoodsInfoForm getGoodsInfoForm;
 
   @Inject
   public GetGoodsInfoInteractor(ThreadExecutor threadExecutor,
