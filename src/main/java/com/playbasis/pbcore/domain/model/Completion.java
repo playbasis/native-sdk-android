@@ -137,7 +137,7 @@ public class Completion extends PBModel {
   public static class CompletionData {
 
     protected String actionId;
-    protected String step;
+    protected String name;
     protected String description;
     protected String icon;
     protected String color;
@@ -148,7 +148,7 @@ public class Completion extends PBModel {
       }
 
       this.actionId = completionDataResponse.actionId;
-      this.step = completionDataResponse.step;
+      this.name = completionDataResponse.name;
       this.description = completionDataResponse.description;
       this.icon = completionDataResponse.icon;
       this.color = completionDataResponse.color;
@@ -158,8 +158,8 @@ public class Completion extends PBModel {
       return actionId;
     }
 
-    public String getStep() {
-      return step;
+    public String getName() {
+      return name;
     }
 
     public String getDescription() {

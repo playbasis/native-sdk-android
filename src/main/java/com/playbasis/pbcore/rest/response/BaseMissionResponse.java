@@ -85,7 +85,7 @@ public class BaseMissionResponse {
       public String actionId;
       @Expose
       @SerializedName("name")
-      public String step;
+      public String name;
       @Expose
       @SerializedName("description")
       public String description;
