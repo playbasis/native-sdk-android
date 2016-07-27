@@ -85,4 +85,8 @@ public class QuestPlayerRank extends PBModel {
   public Player getPlayer() {
     return player;
   }
+
+  public int getRank() {
+    return rank;
+  }
 }
