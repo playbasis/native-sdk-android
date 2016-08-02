@@ -15,6 +15,7 @@ import com.playbasis.pbcore.rest.result.player.PlayerPointApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerPointsApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerRankApiResult;
 import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
 import com.playbasis.pbcore.rest.result.player.SetPlayerCustomFieldApiResult;
 import com.playbasis.pbcore.rest.result.player.UpdatePlayerDetailApiResult;
@@ -203,6 +204,13 @@ public interface PlayerService {
   Observable<PlayerPointApiResult> getPlayerPoint(
       @NonNull @Path("id") String playerId,
       @NonNull @Path("point_name") String pointName,
+      @NonNull @Query("api_key") String apiKey
+  );
+
+  @GET("Player/rank/{rank_by}/{limit}")
+  Observable<PlayerRankApiResult> getPlayerRanking(
+      @NonNull @Path("rank_by") String rankBy,
+      @NonNull @Path("limit") String limit,
       @NonNull @Query("api_key") String apiKey
   );
 }

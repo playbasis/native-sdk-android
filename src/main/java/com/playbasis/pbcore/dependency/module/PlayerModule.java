@@ -13,6 +13,7 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerPointInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SendPlayerEmailVerificationInteractor;
@@ -186,5 +187,14 @@ public class PlayerModule {
                                                                    RestClient restClient,
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerPointInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerRankingInteractor provideGetPlayerRankingInteractor(ThreadExecutor threadExecutor,
+                                                               PostExecutionThread postExecutionThread,
+                                                               RestClient restClient,
+                                                               RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerRankingInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 }
