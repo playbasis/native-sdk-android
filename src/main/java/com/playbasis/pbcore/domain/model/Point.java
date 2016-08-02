@@ -10,6 +10,11 @@ import java.util.List;
  */
 public class Point extends PBModel {
 
+  protected String id;
+  protected String name;
+  protected int value;
+
+
   public Point() {
 
   }
@@ -33,6 +38,20 @@ public class Point extends PBModel {
   }
 
   public void update(PointResponse response) {
+    this.id = valueOrDefault(response.id, id);
+    this.name = response.name;
+    this.value = response.value;
+  }
 
+  public String getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public int getValue() {
+    return value;
   }
 }
