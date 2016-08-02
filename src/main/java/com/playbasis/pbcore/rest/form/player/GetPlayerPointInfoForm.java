@@ -7,8 +7,8 @@ import com.playbasis.pbcore.rest.form.PBForm;
  */
 public class GetPlayerPointInfoForm extends PBForm {
 
-  public String playerId;
-  public String pointName;
+  protected String playerId;
+  protected String pointName;
 
   public GetPlayerPointInfoForm(String playerId, String pointName) {
     this.playerId = playerId;
