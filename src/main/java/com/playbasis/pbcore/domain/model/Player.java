@@ -2,13 +2,17 @@ package com.playbasis.pbcore.domain.model;
 
 import android.support.annotation.StringDef;
 
-import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
+import com.playbasis.pbcore.rest.response.BadgeResponse;
+import com.playbasis.pbcore.rest.response.GoodsResponse;
 import com.playbasis.pbcore.rest.response.PlayerResponse;
+import com.playbasis.pbcore.rest.response.PointResponse;
+import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Tar on 6/9/16 AD.
@@ -41,6 +45,7 @@ public class Player extends PBModel {
   protected Gender gender;
   protected ArrayList<Badge> badges;
   protected ArrayList<Goods> goods;
+  protected ArrayList<Point> points;
   protected HashMap<String, String> customFields = new HashMap<>();
 
   @Override
@@ -51,6 +56,22 @@ public class Player extends PBModel {
       return playerId != null && playerId.equals(getPlayerId());
     }
     return super.equals(o);
+  }
+
+  protected ArrayList<Badge> createBadges(List<BadgeResponse> badgeResponses) {
+    return Badge.createBadges(badgeResponses);
+  }
+
+  protected ArrayList<Goods> createGoods(List<GoodsResponse> goodsResponses) {
+    return Goods.createGoods(goodsResponses);
+  }
+
+  protected ArrayList<Point> createPoints(List<PointResponse> pointResponses) {
+    return Point.createPoints(pointResponses);
+  }
+
+  protected Gender createGender(int gender) {
+    return new Gender(gender);
   }
 
   public Player(String playerId) {
@@ -70,7 +91,6 @@ public class Player extends PBModel {
     this.email = response.email;
     this.firstName = response.firstName;
     this.lastName = response.lastName;
-    this.gender = new Gender(response.gender);
     this.birthday = response.birthdate;
     this.imageUrl = response.image;
     this.phoneNumber = response.phoneNumber;
@@ -80,8 +100,10 @@ public class Player extends PBModel {
     this.levelPercent = response.levelPercent;
     this.levelTitle = response.levelTitle;
     this.levelImageUrl = response.levelImageUrl;
-    this.badges = Badge.createBadges(response.playerBadgesResponses);
-    this.goods = Goods.createGoods(response.playerGoodsResponses);
+    this.gender = createGender(response.gender);
+    this.badges = createBadges(response.playerBadgesResponses);
+    this.goods = createGoods(response.playerGoodsResponses);
+    this.points = createPoints(response.playerPointsResponses);
   }
 
   public void update(GetUserCustomFieldsApiResult getUserCustomFieldsApiResult) {

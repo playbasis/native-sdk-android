@@ -5,11 +5,13 @@ import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllPointsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerEarnedBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerPointInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
@@ -168,4 +170,21 @@ public class PlayerModule {
     return new GetPlayerQuestInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
+  @Provides
+  @PerActivity
+  GetPlayerAllPointsInteractor provideGetPlayerAllPointsInteractor(ThreadExecutor threadExecutor,
+                                                                   PostExecutionThread postExecutionThread,
+                                                                   RestClient restClient,
+                                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerAllPointsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerPointInfoInteractor provideGetPlayerPointInfoInteractor(ThreadExecutor threadExecutor,
+                                                                   PostExecutionThread postExecutionThread,
+                                                                   RestClient restClient,
+                                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerPointInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
 }
