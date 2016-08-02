@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Created by androiddev01 on 5/12/2016 AD.
  */
-public class GsonPlayerAdapter implements JsonDeserializer<PlayerCustomFieldResponse> {
+public class PlayerCustomFieldAdapter implements JsonDeserializer<PlayerCustomFieldResponse> {
 
   public PlayerCustomFieldResponse deserialize(JsonElement json, Type typeOfT,
                                                JsonDeserializationContext context) {

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
-import com.playbasis.pbcore.rest.adapter.GsonPlayerAdapter;
+import com.playbasis.pbcore.rest.adapter.PlayerCustomFieldAdapter;
 import com.playbasis.pbcore.rest.adapter.QuestLeaderboardCurrentPlayerAdapter;
 import com.playbasis.pbcore.rest.adapter.RewardDataAdapter;
 import com.playbasis.pbcore.rest.response.PlayerCustomFieldResponse;
@@ -90,7 +90,7 @@ public class RestClient {
   public Gson getGson() {
     return GsonHelper.newBuilder()
         .registerTypeAdapter(Birthdate.class, new GsonBirthdateAdapter())
-        .registerTypeAdapter(PlayerCustomFieldResponse.class, new GsonPlayerAdapter())
+        .registerTypeAdapter(PlayerCustomFieldResponse.class, new PlayerCustomFieldAdapter())
         .registerTypeAdapter(QuestLeaderboardApiResult.Response.class, new QuestLeaderboardCurrentPlayerAdapter())
         .registerTypeAdapter(RewardResponse.RewardDataInterface.class, new RewardDataAdapter())
         .create();
