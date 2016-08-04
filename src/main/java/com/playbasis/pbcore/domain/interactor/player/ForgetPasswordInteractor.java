@@ -35,7 +35,8 @@ public class ForgetPasswordInteractor extends PlayBasisApiInteractor {
     return restClient.getPlayerService()
         .forgetPlayerPassword(
             getApiToken(),
-            forgetPlayerPasswordForm.getEmail()
+            forgetPlayerPasswordForm.getEmail(),
+            forgetPlayerPasswordForm.getFields()
         ).map(new PBApiErrorCheckFunc<ForgetPasswordApiResult>());
   }
 

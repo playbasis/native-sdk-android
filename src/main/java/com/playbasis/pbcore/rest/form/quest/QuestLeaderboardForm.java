@@ -1,6 +1,7 @@
 package com.playbasis.pbcore.rest.form.quest;
 
 import com.playbasis.pbcore.rest.form.PBForm;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 4/21/16 AD.
@@ -27,39 +28,40 @@ public class QuestLeaderboardForm extends PBForm {
     return questId;
   }
 
-  public String getCompletionElementId() {
-    return completionElementId;
-  }
-
   public int getLimit() {
     return limit;
-  }
-
-  public void setLimit(int limit) {
-    this.limit = limit;
   }
 
   public int getOffset() {
     return offset;
   }
 
-  public void setOffset(int offset) {
-    this.offset = offset;
+  public void setLimit(int limit) {
+    this.limit = limit;
   }
 
-  public String getStatus() {
-    return status;
+  public void setOffset(int offset) {
+    this.offset = offset;
   }
 
   public void setStatus(String status) {
     this.status = status;
   }
 
-  public String getPlayerId() {
-    return playerId;
-  }
-
   public void setPlayerId(String playerId) {
     this.playerId = playerId;
+  }
+
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("completion_element_id", completionElementId);
+    map.put("player_id", playerId);
+    map.put("offset", offset);
+    map.put("limit", limit);
+    map.put("status", null);
+
+    return map;
   }
 }

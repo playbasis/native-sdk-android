@@ -39,7 +39,7 @@ public class GetOrganizationInteractor extends PlayBasisApiInteractor {
     return restClient.getStoreOrganizeService()
         .getStoreOrganize(
             getApiKey(),
-            getStoreOrganizationForm.getOrganizationId()
+            getStoreOrganizationForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<StoreOrganizeApiResult>())
         .map(getResultMapFunction());

@@ -37,7 +37,8 @@ public class JoinQuestInteractor extends PlayBasisApiInteractor {
         .joinQuest(
             joinQuestForm.getQuestId(),
             getApiToken(),
-            joinQuestForm.getPlayerId()
+            joinQuestForm.getPlayerId(),
+            joinQuestForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<JoinQuestApiResult>());
   }

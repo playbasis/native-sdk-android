@@ -2,8 +2,7 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
-import com.playbasis.pbcore.rest.result.organize.RemovePlayerFromOrganizeApiResult;
-import com.playbasis.pbcore.rest.result.organize.UpdatePlayerOrganizationApiResult;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 import com.playbasis.pbcore.rest.result.player.ForgetPasswordApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerBadgesApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerDetailApiResult;
@@ -22,11 +21,13 @@ import com.playbasis.pbcore.rest.result.player.UpdatePlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.player.VerifyPlayerEmailApiResult;
 
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -38,7 +39,6 @@ public interface PlayerService {
    * Login the player to the platform
    *
    * @param token    access token
-   * @param email    email of the player
    * @param password password of the player
    * @return PlayerResponse api result observable
    */
@@ -46,9 +46,8 @@ public interface PlayerService {
   @POST("Player/auth")
   Observable<LoginPlayerApiResult> loginPlayer(
       @NonNull @Field("token") String token,
-      @Field("email") String email,
-      @Field("username") String username,
-      @NonNull @Field("password") String password
+      @NonNull @Field("password") String password,
+      @FieldMap ParamsMap fields
   );
 
   /**
@@ -62,8 +61,9 @@ public interface PlayerService {
   @POST("Player/password/email")
   Observable<ForgetPasswordApiResult> forgetPlayerPassword(
       @NonNull @Field("token") String token,
-      @NonNull @Field("email") String email
-  );
+      @NonNull @Field("email") String email,
+      @FieldMap ParamsMap fields
+      );
 
   /**
    * Get the details of a PlayerResponse
@@ -76,7 +76,8 @@ public interface PlayerService {
   @POST("Player/{id}/data/all")
   Observable<GetPlayerDetailApiResult> getPlayerDetail(
       @NonNull @Path("id") String playerId,
-      @NonNull @Field("token") String token
+      @NonNull @Field("token") String token,
+      @FieldMap ParamsMap fields
   );
 
   /**
@@ -86,8 +87,6 @@ public interface PlayerService {
    * @param token    access token
    * @param username user name, must be unique
    * @param email    user email, must be unique
-   * @param image    url to the user profile image
-   * @param password user password
    * @return Register user observable
    */
   @FormUrlEncoded
@@ -97,16 +96,15 @@ public interface PlayerService {
       @NonNull @Field("token") String token,
       @NonNull @Field("username") String username,
       @NonNull @Field("email") String email,
-      @Field("image") String image,
-      @Field("password") String password,
-      @Field("approve_status") String approveStatus
+      @FieldMap ParamsMap fields
   );
 
   @FormUrlEncoded
   @POST("Player/{id}/email/verify")
   Observable<VerifyPlayerEmailApiResult> sendPlayerVerifyEmail(
       @NonNull @Path("id") String playerId,
-      @NonNull @Field("token") String token
+      @NonNull @Field("token") String token,
+      @FieldMap ParamsMap fields
   );
 
   @FormUrlEncoded
@@ -114,18 +112,15 @@ public interface PlayerService {
   Observable<UpdatePlayerDetailApiResult> updatePlayer(
       @NonNull @Path("id") String userId,
       @NonNull @Field("token") String token,
-      @Field("first_name") String firstName,
-      @Field("last_name") String lastName,
-      @Field("gender") String gender,
-      @Field("birth_date") String birthDate,
-      @Field("image") String imageUrl
+      @FieldMap ParamsMap fields
   );
 
 
   @GET("Player/{id}/custom")
   Observable<GetUserCustomFieldsApiResult> getPlayerCustomFields(
       @NonNull @Path("id") String playerId,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 
   @FormUrlEncoded
@@ -134,83 +129,73 @@ public interface PlayerService {
       @NonNull @Path("id") String userId,
       @NonNull @Field("token") String token,
       @NonNull @Field("key") String key,
-      @NonNull @Field("value") String value
-  );
-
-  @FormUrlEncoded
-  @POST("StoreOrg/nodes/{node_id}/addPlayer/{id}")
-  Observable<UpdatePlayerOrganizationApiResult> addPlayerOrganization(
-      @NonNull @Path("id") String userId,
-      @NonNull @Path("node_id") String organizeId,
-      @NonNull @Field("token") String token
-  );
-
-  @FormUrlEncoded
-  @POST("StoreOrg/nodes/{node_id}/removePlayer/{id}")
-  Observable<RemovePlayerFromOrganizeApiResult> removePlayerOrganization(
-      @NonNull @Path("id") String userId,
-      @NonNull @Path("node_id") String organizeId,
-      @NonNull @Field("token") String token
+      @NonNull @Field("value") String value,
+      @FieldMap ParamsMap fields
   );
 
   @GET("Player/{id}/badge")
   Observable<GetPlayerBadgesApiResult> getPlayerEarnedBadges(
       @NonNull @Path("id") String playerId,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/badgeAll")
   Observable<GetPlayerBadgesApiResult> getPlayerAllBadges(
       @NonNull @Path("id") String playerId,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/goods")
   Observable<GetPlayerGoodsApiResult> getPlayerAllGoods(
       @NonNull @Path("id") String playerId,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/questAll/{id}")
   Observable<PlayerQuestListApiResult> getAllPlayerQuest(
       @NonNull @Path("id") String PlayerId,
       @NonNull @Query("api_key") String apiKey,
-      @Query("tags") String tags,
-      @Query("filter") String filter
+      @QueryMap  ParamsMap fields
   );
 
   @GET("Player/quest")
   Observable<PlayerJoinedQuestApiResult> getPlayerJoinedQuest(
       @NonNull @Query("api_key") String apiKey,
       @NonNull @Query("player_id") String PlayerId,
-      @Query("tags") String tags,
-      @Query("filter") String filter
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/quest/{id}")
   Observable<PlayerQuestApiResult> getPlayerQuestDetail(
       @NonNull @Path("id") String questId,
       @NonNull @Query("api_key") String apiKey,
-      @NonNull @Query("player_id") String PlayerId
+      @NonNull @Query("player_id") String playerId,
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/points")
   Observable<PlayerPointsApiResult> getPlayerAllPoints(
       @NonNull @Path("id") String playerId,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/points/{point_name}")
   Observable<PlayerPointApiResult> getPlayerPoint(
       @NonNull @Path("id") String playerId,
       @NonNull @Path("point_name") String pointName,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 
   @GET("Player/rank/{rank_by}/{limit}")
   Observable<PlayerRankApiResult> getPlayerRanking(
       @NonNull @Path("rank_by") String rankBy,
       @NonNull @Path("limit") String limit,
-      @NonNull @Query("api_key") String apiKey
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 }

@@ -5,4 +5,8 @@ package com.playbasis.pbcore.rest.form;
  */
 public abstract class PBForm {
 
+  public ParamsMap getFields() {
+    return new ParamsMap();
+  }
+
 }

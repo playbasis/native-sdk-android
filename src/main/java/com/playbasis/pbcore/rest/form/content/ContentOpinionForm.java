@@ -1,7 +1,5 @@
 package com.playbasis.pbcore.rest.form.content;
 
-import com.playbasis.pbcore.domain.model.Content;
-import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.form.CustomFieldForm;
 
 /**
@@ -9,19 +7,19 @@ import com.playbasis.pbcore.rest.form.CustomFieldForm;
  */
 public abstract class ContentOpinionForm extends CustomFieldForm {
 
-  protected Content content;
-  protected Player player;
+  protected String contentId;
+  protected String playerId;
 
-  public ContentOpinionForm(Content content, Player player) {
-    this.content = content;
-    this.player = player;
+  public ContentOpinionForm(String contentId, String playerId) {
+    this.contentId = contentId;
+    this.playerId = playerId;
   }
 
   public String getNodeId() {
-    return content.getId();
+    return contentId;
   }
 
   public String getPlayerId() {
-    return player.getPlayerId();
+    return playerId;
   }
 }

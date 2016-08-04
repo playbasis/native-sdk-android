@@ -42,8 +42,10 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
     return restClient.getPlayerService()
         .getPlayerCustomFields(
-            player.getPlayerId(),
-            getApiKey()
+            getPlayerCustomFieldForm.getPlayerId(),
+            getApiKey(),
+            getPlayerCustomFieldForm.getFields()
+
         ).map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>())
         .map(getResultMapFunction());
   }

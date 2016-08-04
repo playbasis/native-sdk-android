@@ -41,8 +41,7 @@ public class GetPlayerJoinedQuestInteractor extends PlayBasisApiInteractor {
         .getPlayerJoinedQuest(
             getApiKey(),
             getPlayerJoinedQuestListForm.getPlayerId(),
-            getPlayerJoinedQuestListForm.getTags(),
-            getPlayerJoinedQuestListForm.getFilter()
+            getPlayerJoinedQuestListForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<PlayerJoinedQuestApiResult>())
         .map(getResultMapFunction());

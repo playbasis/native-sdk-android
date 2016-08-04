@@ -2,7 +2,6 @@ package com.playbasis.pbcore.rest.form;
 
 import android.text.TextUtils;
 
-import com.playbasis.pbcore.rest.form.PBForm;
 import com.smartsoftasia.ssalibrary.helper.Validator;
 
 import java.util.ArrayList;
@@ -53,5 +52,14 @@ public class CustomFieldForm extends PBForm {
 
   public void removeCustomField(String key) {
     customFieldMap.remove(key);
+  }
+
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap hashMap = super.getFields();
+    hashMap.put("key", getKeys());
+    hashMap.put("value", getValues());
+
+    return hashMap;
   }
 }

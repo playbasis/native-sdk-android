@@ -33,8 +33,11 @@ public class SendPlayerEmailVerificationInteractor extends PlayBasisApiInteracto
   @Override
   public Observable buildApiUseCaseObservable() {
     return restClient.getPlayerService()
-        .sendPlayerVerifyEmail(playerEmailVerificationForm.getPlayerId(), getApiToken())
-        .map(new PBApiErrorCheckFunc<VerifyPlayerEmailApiResult>());
+        .sendPlayerVerifyEmail(
+            playerEmailVerificationForm.getPlayerId(),
+            getApiToken(),
+            playerEmailVerificationForm.getFields()
+        ).map(new PBApiErrorCheckFunc<VerifyPlayerEmailApiResult>());
   }
 
   public void setPlayerEmailVerificationForm(PlayerEmailVerificationForm playerEmailVerificationForm) {

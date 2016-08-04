@@ -33,9 +33,8 @@ public class PlayerAuthenticationInteractor extends PlayBasisApiInteractor {
     return restClient.getPlayerService()
         .loginPlayer(
             getApiToken(),
-            mPlayerAuthenticationForm.getEmail(),
-            mPlayerAuthenticationForm.getUserName(),
-            mPlayerAuthenticationForm.getPassword()
+            mPlayerAuthenticationForm.getPassword(),
+            mPlayerAuthenticationForm.getFields()
         );
   }
 

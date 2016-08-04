@@ -40,7 +40,8 @@ public class GetPlayerAllPointsInteractor extends PlayBasisApiInteractor {
     return restClient.getPlayerService()
         .getPlayerAllPoints(
             getPlayerPointsForm.getPlayerId(),
-            getApiKey()
+            getApiKey(),
+            getPlayerPointsForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<PlayerPointsApiResult>())
         .map(getResultMapFunction());

@@ -17,4 +17,8 @@ public class GetPlayerCustomFieldForm extends PBForm {
   public Player getPlayer() {
     return player;
   }
+
+  public String getPlayerId() {
+    return player.getPlayerId();
+  }
 }

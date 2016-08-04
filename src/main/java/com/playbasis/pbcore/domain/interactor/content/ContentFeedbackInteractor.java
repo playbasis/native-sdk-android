@@ -37,8 +37,7 @@ public class ContentFeedbackInteractor extends PlayBasisApiInteractor {
         contentFeedbackForm.getNodeId(),
         contentFeedbackForm.getPlayerId(),
         contentFeedbackForm.getComment(),
-        contentFeedbackForm.getKey(),
-        contentFeedbackForm.getValue()
+        contentFeedbackForm.getFields()
     ).map(new PBApiErrorCheckFunc<ContentOpinionApiResult>());
   }
 

@@ -1,6 +1,7 @@
 package com.playbasis.pbcore.rest.form.player;
 
 import com.playbasis.pbcore.rest.form.PBForm;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 4/21/16 AD.
@@ -25,19 +26,21 @@ public class GetPlayerAllQuestListForm extends PBForm {
     return playerId;
   }
 
-  public String getTags() {
-    return tags;
-  }
-
   public void setTags(String tags) {
     this.tags = tags;
   }
 
-  public String getFilter() {
-    return filter;
-  }
-
   public void setFilter(String filter) {
     this.filter = filter;
+  }
+
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("tags", tags);
+    map.put("filter", filter);
+
+    return map;
   }
 }

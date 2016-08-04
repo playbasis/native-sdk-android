@@ -39,7 +39,8 @@ public class GetMissionInfoInteractor extends PlayBasisApiInteractor {
         .getMissionDetail(
             getMissionInfoForm.getQuestId(),
             getMissionInfoForm.getMissionId(),
-            getApiKey()
+            getApiKey(),
+            getMissionInfoForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<MissionInfoApiResult>())
         .map(getResultMapFunction());

@@ -40,7 +40,8 @@ public class GetPlayerEarnedBadgesInteractor extends PlayBasisApiInteractor {
     return restClient.getPlayerService()
         .getPlayerEarnedBadges(
             getPlayerBadgesForm.getPlayerId(),
-            getApiKey()
+            getApiKey(),
+            getPlayerBadgesForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<GetPlayerBadgesApiResult>())
         .map(getResultMapFunction());

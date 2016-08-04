@@ -65,15 +65,12 @@ public class UpdatePlayerInteractor extends PlayBasisApiInteractor {
   }
 
   private Observable<UpdatePlayerDetailApiResult> buildUpdateUserObservable() {
-    return restClient.getPlayerService().updatePlayer(
-        form.getPlayerId(),
-        getApiToken(),
-        form.getFirstName(),
-        form.getLastName(),
-        form.getGenderValue(),
-        form.getBirthdateValue(),
-        form.getImageUrl()
-    ).map(new PBApiErrorCheckFunc<UpdatePlayerDetailApiResult>());
+    return restClient.getPlayerService()
+        .updatePlayer(
+            form.getPlayerId(),
+            getApiToken(),
+            form.getFields()
+        ).map(new PBApiErrorCheckFunc<UpdatePlayerDetailApiResult>());
   }
 
   public void setUpdateUserForm(UpdatePlayerForm updatePlayerForm) {

@@ -37,7 +37,8 @@ public class SetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
             updatePlayerCustomFieldForm.getPlayerId(),
             getApiToken(),
             updatePlayerCustomFieldForm.getKeys(),
-            updatePlayerCustomFieldForm.getValues()
+            updatePlayerCustomFieldForm.getValues(),
+            updatePlayerCustomFieldForm.getFields()
         ).map(new PBApiErrorCheckFunc<SetPlayerCustomFieldApiResult>());
   }
 

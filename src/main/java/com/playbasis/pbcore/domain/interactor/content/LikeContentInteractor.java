@@ -32,8 +32,7 @@ public class LikeContentInteractor extends ContentOpinionInteractor {
         getApiToken(),
         contentOpinionForm.getNodeId(),
         contentOpinionForm.getPlayerId(),
-        contentOpinionForm.getKeys(),
-        contentOpinionForm.getValues()
+        contentOpinionForm.getFields()
     ).map(new PBApiErrorCheckFunc<ContentOpinionApiResult>());
   }
 }

@@ -40,7 +40,8 @@ public class GetQuestListInteractor extends PlayBasisApiInteractor {
     return restClient.getQuestService()
         .getAllQuest(
             getApiKey(),
-            getQuestListForm.getTags()
+            getQuestListForm.getTags(),
+            getQuestListForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<QuestListApiResult>());
   }

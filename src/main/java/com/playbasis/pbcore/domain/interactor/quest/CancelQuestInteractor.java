@@ -37,7 +37,8 @@ public class CancelQuestInteractor extends PlayBasisApiInteractor {
         .cancelQuest(
             cancelQuestForm.getQuestId(),
             getApiToken(),
-            cancelQuestForm.getPlayerId()
+            cancelQuestForm.getPlayerId(),
+            cancelQuestForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<CancelQuestApiResult>());
   }

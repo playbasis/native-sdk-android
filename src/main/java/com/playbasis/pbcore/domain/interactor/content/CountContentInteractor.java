@@ -36,10 +36,7 @@ public class CountContentInteractor extends PlayBasisApiInteractor {
     return restClient.getContentService()
         .countContents(
             getApiKey(),
-            countContentForm.getCategory(),
-            countContentForm.getPin(),
-            countContentForm.getPlayerId(),
-            countContentForm.isGetOnlyNewContent()
+            countContentForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<CountContentApiResult>());
   }

@@ -39,7 +39,9 @@ public class GetPlayerQuestInfoInteractor extends PlayBasisApiInteractor {
         .getPlayerQuestDetail(
             getPlayerQuestInfoForm.getQuestId(),
             getApiKey(),
-            getPlayerQuestInfoForm.getPlayerId()
+            getPlayerQuestInfoForm.getPlayerId(),
+            getPlayerQuestInfoForm.getFields()
+
         )
         .map(new PBApiErrorCheckFunc<PlayerQuestApiResult>())
         .map(getResultMapFunction());

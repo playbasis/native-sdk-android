@@ -42,7 +42,8 @@ public class GetPlayerInteractor extends PlayBasisApiInteractor {
     return restClient.getPlayerService()
         .getPlayerDetail(
             getPlayerForm.getPlayerId(),
-            getApiToken()
+            getApiToken(),
+            getPlayerForm.getFields()
         ).map(new PBApiErrorCheckFunc<GetPlayerDetailApiResult>())
         .map(new Func1<GetPlayerDetailApiResult, Player>() {
           @Override

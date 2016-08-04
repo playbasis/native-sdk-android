@@ -38,9 +38,7 @@ public class RegisterPlayerInteractor extends PlayBasisApiInteractor {
             getApiToken(),
             playerRegistrationForm.getUserName(),
             playerRegistrationForm.getEmail(),
-            playerRegistrationForm.getImageUrl(),
-            playerRegistrationForm.getPassword(),
-            playerRegistrationForm.getStatus()
+            playerRegistrationForm.getFields()
         ).map(new PBApiErrorCheckFunc<RegisterPlayerApiResult>());
   }
 

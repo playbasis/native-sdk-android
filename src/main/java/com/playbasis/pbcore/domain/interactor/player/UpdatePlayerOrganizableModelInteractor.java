@@ -3,12 +3,12 @@ package com.playbasis.pbcore.domain.interactor.player;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Organization;
+import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.UpdatePlayerOrganizationForm;
 import com.playbasis.pbcore.rest.result.organize.RemovePlayerFromOrganizeApiResult;
 import com.playbasis.pbcore.rest.result.organize.UpdatePlayerOrganizationApiResult;
-import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
-import com.playbasis.pbcore.rest.service.PlayerService;
+import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
 import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
@@ -41,7 +41,7 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
   @Override
   public Observable buildApiUseCaseObservable() {
     final UpdatePlayerOrganizationForm form = updatePlayerOrganizationForm;
-    final PlayerService playerService = restClient.getPlayerService();
+    final StoreOrganizeService storeOrganizeService = restClient.getStoreOrganizeService();
 
     final List<? extends Organization> currentOrganizableModels = form.getCurrentModels();
 
@@ -49,7 +49,7 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
       ArrayList<Observable<RemovePlayerFromOrganizeApiResult>> observables = new ArrayList<>();
 
       for (Organization model : currentOrganizableModels) {
-        observables.add(playerService.removePlayerOrganization(
+        observables.add(storeOrganizeService.removePlayerOrganization(
             form.getPlayerId(),
             model.getId(),
             getApiToken()
@@ -73,7 +73,7 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
   }
 
   private Observable<UpdatePlayerOrganizationApiResult> buildUpdateOrganizationObservable(UpdatePlayerOrganizationForm form) {
-    return restClient.getPlayerService()
+    return restClient.getStoreOrganizeService()
         .addPlayerOrganization(
             form.getPlayerId(),
             form.getNewModel().getId(),

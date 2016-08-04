@@ -38,7 +38,7 @@ public class VerifyGoodsCouponInteractor extends PlayBasisApiInteractor {
             getApiKey(),
             verifyGoodsCouponForm.getGoodsId(),
             verifyGoodsCouponForm.getCode(),
-            verifyGoodsCouponForm.getPlayerId()
+            verifyGoodsCouponForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<VerifyGoodsCouponApiResult>());
   }

@@ -38,7 +38,8 @@ public class RedeemGoodsCouponInteractor extends PlayBasisApiInteractor {
             getApiToken(),
             redeemGoodsCouponForm.getGoodsId(),
             redeemGoodsCouponForm.getCode(),
-            redeemGoodsCouponForm.getPlayerId()
+            redeemGoodsCouponForm.getPlayerId(),
+            redeemGoodsCouponForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<RedeemGoodsCouponApiResult>());
   }

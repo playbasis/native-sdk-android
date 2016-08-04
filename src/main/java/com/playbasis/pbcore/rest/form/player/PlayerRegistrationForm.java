@@ -1,6 +1,7 @@
 package com.playbasis.pbcore.rest.form.player;
 
 import com.playbasis.pbcore.rest.form.BaseUserForm;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 4/21/16 AD.
@@ -26,19 +27,32 @@ public class PlayerRegistrationForm extends BaseUserForm {
     this.playerId = playerId;
   }
 
-  public String getImageUrl(){
-    return imageUrl;
-  }
-
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
   }
 
-  public String getStatus() {
-    return status;
-  }
-
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("image", imageUrl);
+    map.put("phone_number", null);
+    map.put("facebook_id", null);
+    map.put("twitter_id", null);
+    map.put("password", null);
+    map.put("first_name", null);
+    map.put("last_name", null);
+    map.put("gender", null);
+    map.put("birth_date", null);
+    map.put("code", null);
+    map.put("anonymous", null);
+    map.put("device_id", null);
+    map.put("approve_status", status);
+
+    return map;
   }
 }

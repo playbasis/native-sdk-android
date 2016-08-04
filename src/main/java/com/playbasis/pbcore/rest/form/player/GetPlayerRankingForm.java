@@ -1,6 +1,7 @@
 package com.playbasis.pbcore.rest.form.player;
 
 import com.playbasis.pbcore.rest.form.PBForm;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 6/10/16 AD.
@@ -26,5 +27,14 @@ public class GetPlayerRankingForm extends PBForm {
 
   public String getLimit() {
     return limit;
+  }
+
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("mode", null);
+
+    return map;
   }
 }

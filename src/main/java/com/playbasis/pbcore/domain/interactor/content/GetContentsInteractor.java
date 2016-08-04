@@ -40,14 +40,7 @@ public class GetContentsInteractor extends PlayBasisApiInteractor {
     return restClient.getContentService()
         .getContents(
             getApiKey(),
-            getContentsForm.getCategory(),
-            getContentsForm.getPin(),
-            getContentsForm.getPlayerId(),
-            getContentsForm.isOnlyNewContents(),
-            getContentsForm.getSort(),
-            getContentsForm.getOrder(),
-            getContentsForm.getOffset(),
-            getContentsForm.getLimit()
+            getContentsForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<ContentsApiResult>())
         .map(getResultMapFunction());

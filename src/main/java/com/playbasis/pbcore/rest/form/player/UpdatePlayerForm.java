@@ -4,6 +4,7 @@ import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.domain.model.Gender;
 import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.form.PBForm;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 import com.smartsoftasia.ssalibrary.helper.Validator;
 
 import java.io.File;
@@ -38,6 +39,28 @@ public class UpdatePlayerForm extends PBForm {
     }
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("username", null);
+    map.put("email", null);
+    map.put("image", imageUrl);
+    map.put("phone_number", null);
+    map.put("exp", null);
+    map.put("level", null);
+    map.put("facebook_id", null);
+    map.put("twitter_id", null);
+    map.put("password", null);
+    map.put("first_name", firstName);
+    map.put("last_name", lastName);
+    map.put("gender", getGenderValue());
+    map.put("birth_date", getBirthdateValue());
+    map.put("device_id", null);
+
+    return map;
+  }
+
   public boolean isValidForm() {
     return Validator.isValid(playerId);
   }
@@ -54,20 +77,8 @@ public class UpdatePlayerForm extends PBForm {
     return playerId;
   }
 
-  public void setPlayerId(String playerId) {
-    this.playerId = playerId;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
   public void setFirstName(String firstName) {
     this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
   }
 
   public void setLastName(String lastName) {
@@ -96,10 +107,6 @@ public class UpdatePlayerForm extends PBForm {
 
   public void setProfilePictureFile(File profilePictureFile) {
     this.profilePictureFile = profilePictureFile;
-  }
-
-  public String getImageUrl() {
-    return imageUrl;
   }
 
   public void setImageUrl(String imageUrl) {

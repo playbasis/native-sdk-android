@@ -39,7 +39,8 @@ public class GetPlayerPointInfoInteractor extends PlayBasisApiInteractor {
         .getPlayerPoint(
             getPlayerPointInfoForm.getPlayerId(),
             getPlayerPointInfoForm.getPointName(),
-            getApiKey()
+            getApiKey(),
+            getPlayerPointInfoForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<PlayerPointApiResult>())
         .map(getResultMapFunction());

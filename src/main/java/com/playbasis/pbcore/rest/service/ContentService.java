@@ -2,17 +2,20 @@ package com.playbasis.pbcore.rest.service;
 
 import android.support.annotation.NonNull;
 
+import com.playbasis.pbcore.rest.form.ParamsMap;
 import com.playbasis.pbcore.rest.result.content.ContentOpinionApiResult;
 import com.playbasis.pbcore.rest.result.content.ContentsApiResult;
 import com.playbasis.pbcore.rest.result.content.CountContentApiResult;
 import com.playbasis.pbcore.rest.result.content.CreateContentApiResult;
 
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -23,23 +26,13 @@ public interface ContentService {
   @GET("Content")
   Observable<ContentsApiResult> getContents(
       @NonNull @Query("api_key") String apiKey,
-      @Query("category") String projectCategory,
-      @Query("pin") String pin,
-      @Query("player_id") String playerId,
-      @Query("only_new_content") boolean onlyNewContent,
-      @Query("sort") String sort,
-      @Query("order") String order,
-      @Query("offset") int offset,
-      @Query("limit") int limit
+      @QueryMap ParamsMap params
   );
 
   @GET("Content/count")
   Observable<CountContentApiResult> countContents(
       @NonNull @Query("api_key") String apiKey,
-      @Query("category") String category,
-      @Query("pin") String pin,
-      @Query("player_id") String playerId,
-      @Query("only_new_content") boolean onlyNewContent
+      @QueryMap ParamsMap params
   );
 
   @FormUrlEncoded
@@ -48,8 +41,7 @@ public interface ContentService {
       @NonNull @Field("token") String token,
       @NonNull @Path("node_id") String ideaId,
       @NonNull @Path("user_id") String userId,
-      @Field("key") String key,
-      @Field("value") String value
+      @FieldMap ParamsMap fields
   );
 
   @FormUrlEncoded
@@ -58,8 +50,7 @@ public interface ContentService {
       @NonNull @Field("token") String token,
       @NonNull @Path("node_id") String ideaId,
       @NonNull @Path("user_id") String userId,
-      @Field("key") String key,
-      @Field("value") String value
+      @FieldMap ParamsMap fields
   );
 
   @FormUrlEncoded
@@ -69,8 +60,7 @@ public interface ContentService {
       @NonNull @Path("node_id") String ideaId,
       @NonNull @Path("user_id") String userId,
       @NonNull @Field("feedback") String comment,
-      @Field("key") String choice,
-      @Field("value") String rating
+      @FieldMap ParamsMap fields
   );
 
   /**
@@ -92,11 +82,6 @@ public interface ContentService {
       @NonNull @Field("title") String title,
       @NonNull @Field("summary") String summary,
       @NonNull @Field("detail") String detail,
-      @Field("category") String projectCategory,
-      @Field("date_start") String dateStart,
-      @Field("date_end") String dateEnd,
-      @Field("key") String key,
-      @Field("value") String value,
-      @Field("image") String image,
-      @Field("status") boolean status);
+      @FieldMap ParamsMap fields
+  );
 }

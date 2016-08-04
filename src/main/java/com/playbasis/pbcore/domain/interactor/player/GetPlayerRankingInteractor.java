@@ -41,7 +41,8 @@ public class GetPlayerRankingInteractor extends PlayBasisApiInteractor {
         .getPlayerRanking(
             getPlayerRankingForm.getRankBy(),
             getPlayerRankingForm.getLimit(),
-            getApiKey()
+            getApiKey(),
+            getPlayerRankingForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<PlayerRankApiResult>())
         .map(getResultMapFunction());
