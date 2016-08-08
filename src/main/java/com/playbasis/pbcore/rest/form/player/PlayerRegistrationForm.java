@@ -43,7 +43,7 @@ public class PlayerRegistrationForm extends BaseUserForm {
     map.put("phone_number", null);
     map.put("facebook_id", null);
     map.put("twitter_id", null);
-    map.put("password", null);
+    map.put("password", password);
     map.put("first_name", null);
     map.put("last_name", null);
     map.put("gender", null);
