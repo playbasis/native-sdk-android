@@ -2,6 +2,7 @@ package com.playbasis.pbcore.rest.form.content;
 
 import com.playbasis.pbcore.rest.form.PBForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
+import com.smartsoftasia.ssalibrary.helper.Validator;
 
 /**
  * Created by Tar on 6/9/16 AD.
@@ -39,9 +40,12 @@ public class GetContentsForm extends PBForm {
     fields.put("pin", pin);
     fields.put("tags", null);
     fields.put("status", null);
-    fields.put("player_id", playerId);
-    fields.put("only_new_content", onlyNewContents);
-    fields.put("only_new_feedback", onlyNewFeedbacks);
+
+    if (Validator.isValid(playerId)) {
+      fields.put("player_id", playerId);
+      fields.put("only_new_content", onlyNewContents);
+      fields.put("only_new_feedback", onlyNewFeedbacks);
+    }
 
     return fields;
   }
