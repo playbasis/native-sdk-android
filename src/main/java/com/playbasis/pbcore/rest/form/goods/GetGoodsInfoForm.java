@@ -24,6 +24,10 @@ public class GetGoodsInfoForm extends PBForm {
     return goodsId;
   }
 
+  public String getPlayerId() {
+    return playerId;
+  }
+
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
