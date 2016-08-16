@@ -32,13 +32,22 @@ public class PBSharedPreference extends BaseSharedPreference {
     super(context);
   }
 
+  public String tokenKey() {
+    return TOKEN;
+  }
+
   public Token readToken() {
-    String tokenData = SharedPreferenceHelper.getPreferenceString(mContext, TOKEN, null);
+    String tokenData = SharedPreferenceHelper.getPreferenceString(mContext, tokenKey(), null);
 
     if (tokenData == null) {
       return null;
     } else {
-      return new Gson().fromJson(tokenData, Token.class);
+      try {
+        return new Gson().fromJson(tokenData, Token.class);
+      } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+      }
     }
   }
 
@@ -49,7 +58,7 @@ public class PBSharedPreference extends BaseSharedPreference {
       tokenData = new Gson().toJson(token);
     }
 
-    SharedPreferenceHelper.setPreference(mContext, TOKEN, tokenData);
+    SharedPreferenceHelper.setPreference(mContext, tokenKey(), tokenData);
   }
 
   @Nullable
