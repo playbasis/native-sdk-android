@@ -3,14 +3,16 @@ package com.playbasis.pbcore.rest;
 import com.google.gson.Gson;
 import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.model.Birthdate;
+import com.playbasis.pbcore.rest.adapter.CodesAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerCustomFieldAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerRankAdapter;
 import com.playbasis.pbcore.rest.adapter.QuestLeaderboardCurrentPlayerAdapter;
 import com.playbasis.pbcore.rest.adapter.RewardDataAdapter;
-import com.playbasis.pbcore.rest.response.PlayerCustomFieldResponse;
+import com.playbasis.pbcore.rest.response.GoodsResponse;
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
 import com.playbasis.pbcore.rest.response.RewardResponse;
+import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.GoodsService;
@@ -92,7 +94,8 @@ public class RestClient {
   public Gson getGson() {
     return GsonHelper.newBuilder()
         .registerTypeAdapter(Birthdate.class, new GsonBirthdateAdapter())
-        .registerTypeAdapter(PlayerCustomFieldResponse.class, new PlayerCustomFieldAdapter())
+        .registerTypeAdapter(GoodsResponse.CodeResponse.class, new CodesAdapter())
+        .registerTypeAdapter(GetUserCustomFieldsApiResult.PlayerCustomFieldResponse.class, new PlayerCustomFieldAdapter())
         .registerTypeAdapter(PlayerRankResponse.class, new PlayerRankAdapter())
         .registerTypeAdapter(QuestLeaderboardApiResult.Response.class, new QuestLeaderboardCurrentPlayerAdapter())
         .registerTypeAdapter(RewardResponse.RewardDataInterface.class, new RewardDataAdapter())

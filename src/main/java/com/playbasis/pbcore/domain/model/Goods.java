@@ -15,8 +15,8 @@ public class Goods extends PBModel {
   protected String name;
   protected String description;
   protected String imageUrl;
-  protected String code;
   protected String group;
+  protected List<String> codes;
   protected List<String> tags;
   protected Date startDate;
   protected Date expireDate;
@@ -71,7 +71,7 @@ public class Goods extends PBModel {
     this.amount = response.amount;
     this.imageUrl = response.imageUrl;
     this.tags = response.tags;
-    this.code = response.code;
+    this.codes = response.getCodes();
     this.group = response.group;
     this.startDate = response.startDate;
     this.expireDate = response.expireDate;
@@ -100,8 +100,8 @@ public class Goods extends PBModel {
     return imageUrl;
   }
 
-  public String getCode() {
-    return code;
+  public List<String> getCodes() {
+    return codes;
   }
 
   public List<String> getTags() {

@@ -3,6 +3,7 @@ package com.playbasis.pbcore.rest.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,9 +34,6 @@ public class GoodsResponse implements RewardResponse.RewardDataInterface {
   @SerializedName("tags")
   public List<String> tags;
   @Expose
-  @SerializedName("code")
-  public String code;
-  @Expose
   @SerializedName("group")
   public String group;
   @Expose
@@ -53,5 +51,21 @@ public class GoodsResponse implements RewardResponse.RewardDataInterface {
   @Expose
   @SerializedName("sort_order")
   public int sortOrder;
+  @Expose
+  @SerializedName("code")
+  public CodeResponse codeResponse;
 
+  public ArrayList<String> getCodes() {
+    if (codeResponse != null) {
+      return codeResponse.codes;
+    }
+
+    return null;
+  }
+
+  public static class CodeResponse {
+
+    public ArrayList<String> codes;
+
+  }
 }
