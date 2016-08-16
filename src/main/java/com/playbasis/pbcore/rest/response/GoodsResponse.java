@@ -54,6 +54,8 @@ public class GoodsResponse implements RewardResponse.RewardDataInterface {
   @Expose
   @SerializedName("code")
   public CodeResponse codeResponse;
+  @SerializedName("redeem")
+  public RedeemConditionResponse redeemConditionResponse;
 
   public ArrayList<String> getCodes() {
     if (codeResponse != null) {
@@ -63,9 +65,36 @@ public class GoodsResponse implements RewardResponse.RewardDataInterface {
     return null;
   }
 
+  public RedeemConditionResponse getRedeemConditionResponse() {
+    return redeemConditionResponse;
+  }
+
   public static class CodeResponse {
 
     public ArrayList<String> codes;
 
   }
+
+  public static class RedeemConditionResponse {
+
+    @SerializedName("point")
+    public PointCondition pointCondition;
+    @SerializedName("custom")
+    public ArrayList<CustomCondition> customConditionResponses;
+
+    public static class CustomCondition {
+      @SerializedName("custom_id")
+      public String customId;
+      @SerializedName("custom_name")
+      public String customName;
+      @SerializedName("custom_value")
+      public int customValue;
+    }
+
+    public static class PointCondition {
+      @SerializedName("point_value")
+      public int value;
+    }
+  }
+
 }

@@ -25,6 +25,7 @@ public class Goods extends PBModel {
   protected int sortOrder;
   protected boolean isGroup;
   protected boolean sponsor;
+  protected RedeemCondition redeemCondition;
 
   @Override
   public boolean equals(Object o) {
@@ -78,6 +79,10 @@ public class Goods extends PBModel {
     this.isGroup = response.isGroup;
     this.sponsor = response.sponsor;
     this.sortOrder = response.sortOrder;
+
+    if (response.getRedeemConditionResponse() != null) {
+      this.redeemCondition = new RedeemCondition(response.getRedeemConditionResponse());
+    }
   }
 
   public String getGoodsId() {
@@ -134,5 +139,69 @@ public class Goods extends PBModel {
 
   public int getAmount() {
     return amount;
+  }
+
+  public static class RedeemCondition {
+
+    protected PointCondition pointCondition;
+    protected ArrayList<CustomCondition> customConditions;
+
+    public RedeemCondition(GoodsResponse.RedeemConditionResponse response) {
+      if (response.pointCondition != null) {
+        pointCondition = new PointCondition(response.pointCondition);
+      }
+
+      if (response.customConditionResponses != null) {
+        this.customConditions = new ArrayList<>();
+        for (GoodsResponse.RedeemConditionResponse.CustomCondition customCondition : response.customConditionResponses) {
+          this.customConditions.add(new CustomCondition(customCondition));
+        }
+      }
+    }
+
+    public PointCondition getPointCondition() {
+      return pointCondition;
+    }
+
+    public ArrayList<CustomCondition> getCustomConditions() {
+      return customConditions;
+    }
+
+    public static class PointCondition {
+      protected int value;
+
+      public PointCondition(GoodsResponse.RedeemConditionResponse.PointCondition pointCondition) {
+        this.value = pointCondition.value;
+      }
+
+      public int getValue() {
+        return value;
+      }
+    }
+
+
+    public static class CustomCondition {
+      protected String id;
+      protected String name;
+      protected int value;
+
+      public CustomCondition(GoodsResponse.RedeemConditionResponse.CustomCondition customCondition) {
+        this.id = customCondition.customId;
+        this.name = customCondition.customName;
+        this.value = customCondition.customValue;
+      }
+
+      public String getId() {
+        return id;
+      }
+
+      public String getName() {
+        return name;
+      }
+
+      public int getValue() {
+        return value;
+      }
+    }
   }
 }
