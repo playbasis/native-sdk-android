@@ -11,6 +11,7 @@ import com.playbasis.pbcore.domain.model.Organization;
 import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.Token;
 import com.smartsoftasia.ssalibrary.domain.controller.BaseSharedPreference;
+import com.smartsoftasia.ssalibrary.helper.MD5;
 import com.smartsoftasia.ssalibrary.helper.SharedPreferenceHelper;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class PBSharedPreference extends BaseSharedPreference {
   }
 
   public String tokenKey() {
-    return TOKEN;
+    return MD5.encrypt(mContext.getPackageName());
   }
 
   public Token readToken() {
