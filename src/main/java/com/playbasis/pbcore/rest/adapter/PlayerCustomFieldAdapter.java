@@ -3,7 +3,7 @@ package com.playbasis.pbcore.rest.adapter;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.playbasis.pbcore.rest.response.PlayerCustomFieldResponse;
+import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult.PlayerCustomFieldResponse;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

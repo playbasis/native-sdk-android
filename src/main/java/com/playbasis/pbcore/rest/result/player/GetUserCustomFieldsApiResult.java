@@ -1,9 +1,8 @@
 package com.playbasis.pbcore.rest.result.player;
 
 import com.google.gson.annotations.SerializedName;
-
 import com.playbasis.pbcore.rest.result.PBApiResult;
-import com.playbasis.pbcore.rest.response.PlayerCustomFieldResponse;
+
 import java.util.HashMap;
 
 /**
@@ -20,6 +19,13 @@ public class GetUserCustomFieldsApiResult extends PBApiResult<GetUserCustomField
 
     @SerializedName("player")
     public PlayerCustomFieldResponse player;
+
+  }
+
+  public static class PlayerCustomFieldResponse {
+
+    @SerializedName("custom")
+    public HashMap<String, String> customFieldMap;
 
   }
 }
