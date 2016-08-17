@@ -7,9 +7,9 @@ import java.util.HashMap;
  */
 public class PlayerRankResponse {
 
-  public String playerId;
   public String sortBy;
   public int value;
+  public PlayerResponse playerResponse;
 
   public static class PlayerRankHashMap extends HashMap<String, String> {
 

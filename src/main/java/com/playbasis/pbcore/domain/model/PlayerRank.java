@@ -10,8 +10,9 @@ import java.util.List;
  */
 public class PlayerRank extends PBModel {
 
-  protected String playerId;
+  protected String sortBy;
   protected int value;
+  private Player player;
 
   public PlayerRank() {
 
@@ -36,12 +37,20 @@ public class PlayerRank extends PBModel {
   }
 
   public void update(PlayerRankResponse response) {
-    this.playerId = valueOrDefault(response.playerId, playerId);
+    this.sortBy = response.sortBy;
     this.value = response.value;
+
+    if (response.playerResponse != null) {
+      this.player = new Player(response.playerResponse);
+    }
   }
 
-  public String getPlayerId() {
-    return playerId;
+  public Player getPlayer() {
+    return player;
+  }
+
+  public String getSortBy() {
+    return sortBy;
   }
 
   public int getValue() {

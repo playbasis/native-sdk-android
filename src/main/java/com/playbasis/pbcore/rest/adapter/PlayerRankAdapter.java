@@ -5,6 +5,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
+import com.playbasis.pbcore.rest.response.PlayerResponse;
 import com.smartsoftasia.ssalibrary.helper.Validator;
 
 import java.lang.reflect.Type;
@@ -19,15 +20,18 @@ public class PlayerRankAdapter implements JsonDeserializer<PlayerRankResponse> {
                                                JsonDeserializationContext context) {
 
     JsonObject jsonObject = json.getAsJsonObject();
-    jsonObject.remove("pb_player_id");
-
     HashMap<String, String> hashMap = context.deserialize(jsonObject, PlayerRankResponse.PlayerRankHashMap.class);
+
     PlayerRankResponse playerRankResponse = new PlayerRankResponse();
+    playerRankResponse.playerResponse = context.deserialize(jsonObject, PlayerResponse.class);
+    playerRankResponse.playerResponse.playerId = hashMap.remove("player_id");
+
+    hashMap.remove("first_name");
+    hashMap.remove("last_name");
+    hashMap.remove("image");
 
     for (String key : hashMap.keySet()) {
-      if (key.equals("player_id")) {
-        playerRankResponse.playerId = hashMap.get(key);
-      } else if (!Validator.isValid(playerRankResponse.sortBy) || !Validator.isValid(playerRankResponse.value)) {
+      if (!Validator.isValid(playerRankResponse.sortBy) || !Validator.isValid(playerRankResponse.value)) {
         playerRankResponse.sortBy = key;
         playerRankResponse.value = Integer.valueOf(hashMap.get(key));
       }

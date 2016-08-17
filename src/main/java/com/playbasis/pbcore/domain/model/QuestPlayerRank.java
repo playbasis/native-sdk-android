@@ -54,11 +54,7 @@ public class QuestPlayerRank extends PBModel {
     this.rank = response.rank;
 
     if (response.playerResponse != null) {
-      if (this.player == null) {
-        this.player = new Player(response.playerResponse.playerId);
-      }
-
-      player.update(response.playerResponse);
+      this.player = new Player(response.playerResponse);
     }
   }
 
