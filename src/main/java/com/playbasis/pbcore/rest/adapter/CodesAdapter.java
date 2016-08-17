@@ -3,7 +3,6 @@ package com.playbasis.pbcore.rest.adapter;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.playbasis.pbcore.rest.response.GoodsResponse;
 
 import java.lang.reflect.Type;
@@ -19,14 +18,12 @@ public class CodesAdapter implements JsonDeserializer<GoodsResponse.CodeResponse
     GoodsResponse.CodeResponse codeResponse = new GoodsResponse.CodeResponse();
     codeResponse.codes = new ArrayList<>();
 
-    JsonObject codesJson = json.getAsJsonObject();
-
-    if (codesJson.isJsonArray()) {
-      ArrayList<String> list = context.deserialize(codesJson, ArrayList.class);
-      codeResponse.codes.addAll(list);
-    } else if (codesJson.isJsonObject()) {
-      String code = context.deserialize(codesJson, String.class);
+    if (json.isJsonPrimitive()) {
+      String code = context.deserialize(json, String.class);
       codeResponse.codes.add(code);
+    } else if (json.isJsonArray()) {
+      ArrayList<String> list = context.deserialize(json, ArrayList.class);
+      codeResponse.codes.addAll(list);
     }
 
     return codeResponse;
