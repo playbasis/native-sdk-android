@@ -194,7 +194,7 @@ public interface PlayerService {
   @GET("Player/rank/{rank_by}/{limit}")
   Observable<PlayerRankApiResult> getPlayerRanking(
       @NonNull @Path("rank_by") String rankBy,
-      @NonNull @Path("limit") String limit,
+      @NonNull @Path("limit") int limit,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );

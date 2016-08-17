@@ -9,14 +9,15 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 public class GetPlayerRankingForm extends PBForm {
 
   protected String rankBy;
-  protected String limit;
+  protected int limit;
+  protected String mode = null;
 
   public GetPlayerRankingForm(String rankBy) {
     this.rankBy = rankBy;
-    this.limit = "100";
+    this.limit = 100;
   }
 
-  public GetPlayerRankingForm(String rankBy, String limit) {
+  public GetPlayerRankingForm(String rankBy, int limit) {
     this.rankBy = rankBy;
     this.limit = limit;
   }
@@ -25,15 +26,19 @@ public class GetPlayerRankingForm extends PBForm {
     return rankBy;
   }
 
-  public String getLimit() {
+  public int getLimit() {
     return limit;
+  }
+
+  public void setMode(String mode) {
+    this.mode = mode;
   }
 
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
-    map.put("mode", null);
+    map.put("mode", mode);
 
     return map;
   }

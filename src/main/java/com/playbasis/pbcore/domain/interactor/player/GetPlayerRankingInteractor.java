@@ -24,7 +24,7 @@ public class GetPlayerRankingInteractor extends PlayBasisApiInteractor {
 
   public static final String TAG = "GetPlayerAllPointsInteractor";
 
-  private GetPlayerRankingForm getPlayerRankingForm;
+  protected GetPlayerRankingForm getPlayerRankingForm;
 
   @Inject
   public GetPlayerRankingInteractor(ThreadExecutor threadExecutor,
