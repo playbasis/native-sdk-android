@@ -1,6 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
+import com.playbasis.pbcore.rest.response.PlayerResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,7 @@ public class PlayerRank extends PBModel {
   public void update(PlayerRankResponse response) {
     this.sortBy = response.sortBy;
     this.value = response.value;
-
-    if (response.playerResponse != null) {
-      this.player = new Player(response.playerResponse);
-    }
+    this.player = createPlayer(response.playerResponse);
   }
 
   public Player getPlayer() {
@@ -55,5 +53,13 @@ public class PlayerRank extends PBModel {
 
   public int getValue() {
     return value;
+  }
+
+  protected Player createPlayer(PlayerResponse playerResponse) {
+    if (playerResponse != null && playerResponse.playerId != null) {
+      return new Player(playerResponse);
+    }
+
+    return null;
   }
 }

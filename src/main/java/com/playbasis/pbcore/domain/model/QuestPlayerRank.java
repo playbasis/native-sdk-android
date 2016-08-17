@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.domain.model;
 
+import com.playbasis.pbcore.rest.response.PlayerResponse;
 import com.playbasis.pbcore.rest.response.QuestPlayerRankResponse;
 
 import java.util.ArrayList;
@@ -52,10 +53,7 @@ public class QuestPlayerRank extends PBModel {
     this.goal = response.goal;
     this.current = response.current;
     this.rank = response.rank;
-
-    if (response.playerResponse != null) {
-      this.player = new Player(response.playerResponse);
-    }
+    this.player = createPlayer(response.playerResponse);
   }
 
   public String getStatus() {
@@ -84,5 +82,13 @@ public class QuestPlayerRank extends PBModel {
 
   public int getRank() {
     return rank;
+  }
+
+  protected Player createPlayer(PlayerResponse playerResponse) {
+    if (playerResponse != null && playerResponse.playerId != null) {
+      return new Player(playerResponse);
+    }
+
+    return null;
   }
 }
