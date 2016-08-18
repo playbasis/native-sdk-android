@@ -18,6 +18,14 @@ public class UpdatePlayerForm extends PBForm {
   protected String playerId;
   protected String firstName;
   protected String lastName;
+  protected String userName;
+  protected String exp;
+  protected String level;
+  protected String facebookId;
+  protected String twitterId;
+  protected String password;
+  protected String phoneNumber;
+  protected String email;
   protected Birthdate birthDate;
   protected Gender gender;
   protected File profilePictureFile;
@@ -43,15 +51,15 @@ public class UpdatePlayerForm extends PBForm {
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
-    map.put("username", null);
-    map.put("email", null);
+    map.put("username", userName);
+    map.put("email", email);
     map.put("image", imageUrl);
-    map.put("phone_number", null);
-    map.put("exp", null);
-    map.put("level", null);
-    map.put("facebook_id", null);
-    map.put("twitter_id", null);
-    map.put("password", null);
+    map.put("phone_number", phoneNumber);
+    map.put("exp", exp);
+    map.put("level", level);
+    map.put("facebook_id", facebookId);
+    map.put("twitter_id", twitterId);
+    map.put("password", password);
     map.put("first_name", firstName);
     map.put("last_name", lastName);
     map.put("gender", getGenderValue());
@@ -83,6 +91,38 @@ public class UpdatePlayerForm extends PBForm {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
+  public void setExp(String exp) {
+    this.exp = exp;
+  }
+
+  public void setLevel(String level) {
+    this.level = level;
+  }
+
+  public void setFacebookId(String facebookId) {
+    this.facebookId = facebookId;
+  }
+
+  public void setTwitterId(String twitterId) {
+    this.twitterId = twitterId;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public Birthdate getBirthDate() {
