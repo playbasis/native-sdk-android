@@ -14,7 +14,7 @@ import dagger.Provides;
  * Created by Tar on 4/21/16 AD.
  */
 @Module
-public class ImageModule {
+public class FileModule {
 
   @Provides
   @PerActivity

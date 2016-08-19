@@ -5,12 +5,17 @@
  */
 package com.playbasis.pbcore.dependency.component;
 
-import com.playbasis.pbcore.core.Playbasis;
+import android.content.Context;
+
 import com.playbasis.pbcore.dependency.module.PlaybasisModule;
-import com.playbasis.pbcore.dependency.module.ThreadModule;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBUiThreadHandler;
+import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.view.viewInterface.PBActivityInterface;
 import com.playbasis.pbcore.view.viewInterface.PBFragmentInterface;
+import com.playbasis.sdk.Playbasis;
 
 import javax.inject.Singleton;
 
@@ -19,8 +24,10 @@ import dagger.Component;
 /**
  * A component whose lifetime is the life of the application.
  */
-@Singleton // Constraints this component to one-per-application or unscoped bindings.
-@Component(modules = {PlaybasisModule.class, ThreadModule.class})
+@Singleton
+@Component(modules = {
+    PlaybasisModule.class
+})
 public interface PlaybasisComponent {
 
   void inject(Playbasis playbasis);
@@ -31,4 +38,13 @@ public interface PlaybasisComponent {
 
   RestClient restClient();
 
+  Context context();
+
+  PBThreadExecutor threadExecutor();
+
+  PBPostExecutionThread postExecutionThread();
+
+  PBUiThreadHandler threadHandler();
+
+  RequestTokenInteractor requestTokenInteractor();
 }

@@ -1,4 +1,4 @@
-package com.playbasis.pbcore.core;
+package com.playbasis.sdk;
 
 import android.app.Application;
 
@@ -38,7 +38,7 @@ public class Playbasis {
     instance();
   }
 
-  public PlaybasisComponent getPlaybasisComponent() {
+  public static PlaybasisComponent getPlaybasisComponent() {
     return playbasisComponent;
   }
 
