@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.rest.form.player;
 
+import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.rest.form.BaseUserForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
 
@@ -9,14 +10,20 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 public class PlayerRegistrationForm extends BaseUserForm {
 
   protected String playerId;
+  protected String firstName;
+  protected String lastName;
+  protected String facebookId;
+  protected String twitterId;
+  protected String phoneNumber;
+  protected Birthdate birthDate;
+  protected int gender;
   protected String imageUrl;
-  protected String status;
+  protected String status = "approved";
 
   public PlayerRegistrationForm(String email, String userName, String password) {
     this.email = email;
     this.userName = userName;
     this.password = password;
-    this.status = "approved";
   }
 
   public String getPlayerId(){
@@ -40,19 +47,27 @@ public class PlayerRegistrationForm extends BaseUserForm {
     ParamsMap map = super.getFields();
 
     map.put("image", imageUrl);
-    map.put("phone_number", null);
-    map.put("facebook_id", null);
-    map.put("twitter_id", null);
+    map.put("phone_number", phoneNumber);
+    map.put("facebook_id", facebookId);
+    map.put("twitter_id", twitterId);
     map.put("password", password);
-    map.put("first_name", null);
-    map.put("last_name", null);
-    map.put("gender", null);
-    map.put("birth_date", null);
+    map.put("first_name", firstName);
+    map.put("last_name", lastName);
+    map.put("gender", gender);
+    map.put("birth_date", getBirthdateValue());
     map.put("code", null);
     map.put("anonymous", null);
     map.put("device_id", null);
     map.put("approve_status", status);
 
     return map;
+  }
+
+  public String getBirthdateValue() {
+    if (birthDate != null) {
+      return birthDate.getParamValue();
+    }
+
+    return null;
   }
 }

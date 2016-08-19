@@ -1,9 +1,9 @@
 package com.playbasis.pbcore.dependency.module;
 
+import com.playbasis.pbcore.dependency.component.PerActivity;
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
-import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor;
@@ -11,9 +11,9 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllPointsInteracto
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerEarnedBadgesInteractor;
-import com.playbasis.pbcore.domain.interactor.player.GetPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerPointInfoInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerPrivateInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
@@ -23,7 +23,6 @@ import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsIntera
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
 import com.playbasis.pbcore.rest.RestClient;
-import com.playbasis.pbcore.dependency.component.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -72,12 +71,11 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerInteractor provideGetPlayerInteractor(PBThreadExecutor threadExecutor,
-                                                 PBPostExecutionThread postExecutionThread,
-                                                 RestClient restClient,
-                                                 RequestTokenInteractor requestTokenInteractor,
-                                                 GetPlayerCustomFieldsInteractor getPlayerCustomFieldsInteractor) {
-    return new GetPlayerInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor, getPlayerCustomFieldsInteractor);
+  GetPlayerPrivateInfoInteractor provideGetPlayerPrivateInfoInteractor(PBThreadExecutor threadExecutor,
+                                                                       PBPostExecutionThread postExecutionThread,
+                                                                       RestClient restClient,
+                                                                       RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerPrivateInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
   @Provides
@@ -94,9 +92,8 @@ public class PlayerModule {
   UpdatePlayerInteractor provideUpdateUserInteractor(PBThreadExecutor threadExecutor,
                                                      PBPostExecutionThread postExecutionThread,
                                                      RestClient restClient,
-                                                     RequestTokenInteractor requestTokenInteractor,
-                                                     UploadImageInteractor uploadImageInteractor) {
-    return new UpdatePlayerInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor, uploadImageInteractor);
+                                                     RequestTokenInteractor requestTokenInteractor) {
+    return new UpdatePlayerInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
   @Provides

@@ -18,6 +18,10 @@ public class GetPlayerDetailApiResult extends PBApiResult<GetPlayerDetailApiResu
     return null;
   }
 
+  public PlayerResponse getPlayerResponse() {
+    return response.PlayerResponse;
+  }
+
   public class Response {
 
     @SerializedName("player")

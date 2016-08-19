@@ -42,7 +42,7 @@ public class Player extends PBModel {
   protected float levelPercent;
   protected String levelTitle;
   protected String levelImageUrl;
-  protected Gender gender;
+  protected int gender;
   protected ArrayList<Badge> badges;
   protected ArrayList<Goods> goods;
   protected ArrayList<Point> points;
@@ -68,10 +68,6 @@ public class Player extends PBModel {
 
   protected ArrayList<Point> createPoints(List<PointResponse> pointResponses) {
     return Point.createPoints(pointResponses);
-  }
-
-  protected Gender createGender(int gender) {
-    return new Gender(gender);
   }
 
   public Player(String playerId) {
@@ -100,7 +96,7 @@ public class Player extends PBModel {
     this.levelPercent = response.levelPercent;
     this.levelTitle = response.levelTitle;
     this.levelImageUrl = response.levelImageUrl;
-    this.gender = createGender(response.gender);
+    this.gender = response.gender;
     this.badges = createBadges(response.playerBadgesResponses);
     this.goods = createGoods(response.playerGoodsResponses);
     this.points = createPoints(response.playerPointsResponses);
@@ -174,11 +170,11 @@ public class Player extends PBModel {
     return levelTitle;
   }
 
-  public Gender getGender() {
+  public int getGender() {
     return gender;
   }
 
-  public void setGender(Gender gender) {
+  public void setGender(int gender) {
     this.gender = gender;
   }
 

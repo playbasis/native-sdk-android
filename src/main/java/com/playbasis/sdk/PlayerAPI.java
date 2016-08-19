@@ -8,7 +8,7 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllPointsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerEarnedBadgesInteractor;
-import com.playbasis.pbcore.domain.interactor.player.GetPlayerInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerPrivateInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerPointInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
@@ -41,7 +41,7 @@ public class PlayerAPI {
   @Inject
   protected GetPlayerEarnedBadgesInteractor getPlayerEarnedBadgesInteractor;
   @Inject
-  protected GetPlayerInteractor getPlayerInteractor;
+  protected GetPlayerPrivateInfoInteractor getPlayerPrivateInfoInteractor;
   @Inject
   protected GetPlayerJoinedQuestInteractor getPlayerJoinedQuestInteractor;
   @Inject

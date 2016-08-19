@@ -74,7 +74,7 @@ public interface PlayerService {
    */
   @FormUrlEncoded
   @POST("Player/{id}/data/all")
-  Observable<GetPlayerDetailApiResult> getPlayerDetail(
+  Observable<GetPlayerDetailApiResult> getPlayerPrivateInfo(
       @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token,
       @FieldMap ParamsMap fields
