@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.dependency.module;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.quest.CancelQuestInteractor;
 import com.playbasis.pbcore.domain.interactor.quest.GetMissionInfoInteractor;
@@ -8,9 +10,7 @@ import com.playbasis.pbcore.domain.interactor.quest.GetQuestLeaderboardInteracto
 import com.playbasis.pbcore.domain.interactor.quest.GetQuestListInteractor;
 import com.playbasis.pbcore.domain.interactor.quest.JoinQuestInteractor;
 import com.playbasis.pbcore.rest.RestClient;
-import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.dependency.component.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,8 +23,8 @@ public class QuestModule {
 
   @Provides
   @PerActivity
-  GetQuestListInteractor provideGetQuestListInteractor(ThreadExecutor threadExecutor,
-                                                       PostExecutionThread postExecutionThread,
+  GetQuestListInteractor provideGetQuestListInteractor(PBThreadExecutor threadExecutor,
+                                                       PBPostExecutionThread postExecutionThread,
                                                        RestClient restClient,
                                                        RequestTokenInteractor requestTokenInteractor) {
     return new GetQuestListInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -32,8 +32,8 @@ public class QuestModule {
 
   @Provides
   @PerActivity
-  GetQuestInfoInteractor provideGetQuestInfoInteractor(ThreadExecutor threadExecutor,
-                                                       PostExecutionThread postExecutionThread,
+  GetQuestInfoInteractor provideGetQuestInfoInteractor(PBThreadExecutor threadExecutor,
+                                                       PBPostExecutionThread postExecutionThread,
                                                        RestClient restClient,
                                                        RequestTokenInteractor requestTokenInteractor) {
     return new GetQuestInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -41,8 +41,8 @@ public class QuestModule {
 
   @Provides
   @PerActivity
-  GetMissionInfoInteractor provideGetMissionInfoInteractor(ThreadExecutor threadExecutor,
-                                                           PostExecutionThread postExecutionThread,
+  GetMissionInfoInteractor provideGetMissionInfoInteractor(PBThreadExecutor threadExecutor,
+                                                           PBPostExecutionThread postExecutionThread,
                                                            RestClient restClient,
                                                            RequestTokenInteractor requestTokenInteractor) {
     return new GetMissionInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -50,8 +50,8 @@ public class QuestModule {
 
   @Provides
   @PerActivity
-  JoinQuestInteractor provideJoinQuestInteractor(ThreadExecutor threadExecutor,
-                                                 PostExecutionThread postExecutionThread,
+  JoinQuestInteractor provideJoinQuestInteractor(PBThreadExecutor threadExecutor,
+                                                 PBPostExecutionThread postExecutionThread,
                                                  RestClient restClient,
                                                  RequestTokenInteractor requestTokenInteractor) {
     return new JoinQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -59,8 +59,8 @@ public class QuestModule {
 
   @Provides
   @PerActivity
-  CancelQuestInteractor provideCancelQuestInteractor(ThreadExecutor threadExecutor,
-                                                     PostExecutionThread postExecutionThread,
+  CancelQuestInteractor provideCancelQuestInteractor(PBThreadExecutor threadExecutor,
+                                                     PBPostExecutionThread postExecutionThread,
                                                      RestClient restClient,
                                                      RequestTokenInteractor requestTokenInteractor) {
     return new CancelQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -68,8 +68,8 @@ public class QuestModule {
 
   @Provides
   @PerActivity
-  GetQuestLeaderboardInteractor provideGetQuestLeaderboardInteractor(ThreadExecutor threadExecutor,
-                                                                     PostExecutionThread postExecutionThread,
+  GetQuestLeaderboardInteractor provideGetQuestLeaderboardInteractor(PBThreadExecutor threadExecutor,
+                                                                     PBPostExecutionThread postExecutionThread,
                                                                      RestClient restClient,
                                                                      RequestTokenInteractor requestTokenInteractor) {
     return new GetQuestLeaderboardInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

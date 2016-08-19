@@ -9,8 +9,8 @@ import com.playbasis.pbcore.rest.form.player.UpdatePlayerOrganizationForm;
 import com.playbasis.pbcore.rest.result.organize.RemovePlayerFromOrganizeApiResult;
 import com.playbasis.pbcore.rest.result.organize.UpdatePlayerOrganizationApiResult;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +31,8 @@ public class UpdatePlayerOrganizableModelInteractor extends PlayBasisApiInteract
   protected UpdatePlayerOrganizationForm updatePlayerOrganizationForm;
 
   @Inject
-  public UpdatePlayerOrganizableModelInteractor(ThreadExecutor threadExecutor,
-                                                PostExecutionThread postExecutionThread,
+  public UpdatePlayerOrganizableModelInteractor(PBThreadExecutor threadExecutor,
+                                                PBPostExecutionThread postExecutionThread,
                                                 RestClient restClient,
                                                 RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

@@ -4,8 +4,8 @@ import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.PlayerAuthenticationForm;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -21,8 +21,8 @@ public class PlayerAuthenticationInteractor extends PlayBasisApiInteractor {
   protected PlayerAuthenticationForm mPlayerAuthenticationForm;
 
   @Inject
-  public PlayerAuthenticationInteractor(ThreadExecutor threadExecutor,
-                                        PostExecutionThread postExecutionThread,
+  public PlayerAuthenticationInteractor(PBThreadExecutor threadExecutor,
+                                        PBPostExecutionThread postExecutionThread,
                                         RestClient restClient,
                                         RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

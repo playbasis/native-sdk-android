@@ -1,9 +1,9 @@
 package com.playbasis.pbcore.domain.interactor;
 
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.Token;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 
 import rx.Observable;
 import rx.functions.Func1;
@@ -16,8 +16,8 @@ public abstract class PlayBasisApiInteractor extends RestInteractor {
   protected RequestTokenInteractor requestTokenInteractor;
   protected Token token;
 
-  public PlayBasisApiInteractor(ThreadExecutor threadExecutor,
-                                PostExecutionThread postExecutionThread,
+  public PlayBasisApiInteractor(PBThreadExecutor threadExecutor,
+                                PBPostExecutionThread postExecutionThread,
                                 RestClient restClient,
                                 RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient);

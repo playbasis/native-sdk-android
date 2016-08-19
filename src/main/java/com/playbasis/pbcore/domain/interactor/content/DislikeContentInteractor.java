@@ -4,8 +4,8 @@ import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.result.content.ContentOpinionApiResult;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -19,8 +19,8 @@ public class DislikeContentInteractor extends ContentOpinionInteractor {
   public static final String TAG = "DislikeContentInteractor";
 
   @Inject
-  public DislikeContentInteractor(ThreadExecutor threadExecutor,
-                                  PostExecutionThread postExecutionThread,
+  public DislikeContentInteractor(PBThreadExecutor threadExecutor,
+                                  PBPostExecutionThread postExecutionThread,
                                   RestClient restClient,
                                   RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

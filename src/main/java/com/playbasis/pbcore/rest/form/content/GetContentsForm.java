@@ -2,7 +2,7 @@ package com.playbasis.pbcore.rest.form.content;
 
 import com.playbasis.pbcore.rest.form.PBForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
-import com.smartsoftasia.ssalibrary.helper.Validator;
+import com.playbasis.pbcore.helper.Validator;
 
 /**
  * Created by Tar on 6/9/16 AD.

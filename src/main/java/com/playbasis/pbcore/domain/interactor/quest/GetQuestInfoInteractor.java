@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.interactor.quest;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Quest;
@@ -7,8 +9,6 @@ import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.quest.GetQuestInfoForm;
 import com.playbasis.pbcore.rest.result.quest.QuestInfoApiResult;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -25,8 +25,8 @@ public class GetQuestInfoInteractor extends PlayBasisApiInteractor {
   protected GetQuestInfoForm getQuestInfoForm;
 
   @Inject
-  public GetQuestInfoInteractor(ThreadExecutor threadExecutor,
-                                PostExecutionThread postExecutionThread,
+  public GetQuestInfoInteractor(PBThreadExecutor threadExecutor,
+                                PBPostExecutionThread postExecutionThread,
                                 RestClient restClient,
                                 RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

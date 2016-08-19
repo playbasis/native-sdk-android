@@ -1,13 +1,13 @@
 package com.playbasis.pbcore.domain.interactor.file;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.file.UploadImageForm;
 import com.playbasis.pbcore.rest.result.file.UploadImageApiResult;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -26,8 +26,8 @@ public class UploadImageInteractor extends PlayBasisApiInteractor {
   protected UploadImageForm uploadImageForm;
 
   @Inject
-  public UploadImageInteractor(ThreadExecutor threadExecutor,
-                               PostExecutionThread postExecutionThread,
+  public UploadImageInteractor(PBThreadExecutor threadExecutor,
+                               PBPostExecutionThread postExecutionThread,
                                RestClient restClient,
                                RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

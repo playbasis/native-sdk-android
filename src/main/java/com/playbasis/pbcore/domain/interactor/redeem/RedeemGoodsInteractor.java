@@ -1,13 +1,13 @@
 package com.playbasis.pbcore.domain.interactor.redeem;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.redem.RedeemGoodsForm;
 import com.playbasis.pbcore.rest.result.redeem.RedeemGoodsApiResult;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -23,8 +23,8 @@ public class RedeemGoodsInteractor extends PlayBasisApiInteractor {
   protected RedeemGoodsForm redeemGoodsForm;
 
   @Inject
-  public RedeemGoodsInteractor(ThreadExecutor threadExecutor,
-                               PostExecutionThread postExecutionThread,
+  public RedeemGoodsInteractor(PBThreadExecutor threadExecutor,
+                               PBPostExecutionThread postExecutionThread,
                                RestClient restClient,
                                RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

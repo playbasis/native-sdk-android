@@ -1,6 +1,6 @@
 package com.playbasis.pbcore.rest.form;
 
-import com.smartsoftasia.ssalibrary.helper.Validator;
+import com.playbasis.pbcore.helper.Validator;
 
 /**
  * Created by Tar on 4/21/16 AD.

@@ -1,11 +1,11 @@
 package com.playbasis.pbcore.domain.interactor;
 
 import com.playbasis.pbcore.domain.controller.PBSharedPreference;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.Token;
 import com.playbasis.pbcore.rest.result.RequestTokenApiResult;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 
 import java.util.Date;
 
@@ -22,8 +22,8 @@ public class RequestTokenInteractor extends RestInteractor {
   protected PBSharedPreference sharedPreference;
 
   @Inject
-  public RequestTokenInteractor(ThreadExecutor threadExecutor,
-                                PostExecutionThread postExecutionThread,
+  public RequestTokenInteractor(PBThreadExecutor threadExecutor,
+                                PBPostExecutionThread postExecutionThread,
                                 RestClient restClient,
                                 PBSharedPreference sharedPreference) {
     super(threadExecutor, postExecutionThread, restClient);

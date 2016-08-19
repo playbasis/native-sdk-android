@@ -7,8 +7,8 @@ import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.content.GetContentsForm;
 import com.playbasis.pbcore.rest.result.content.ContentsApiResult;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import java.util.List;
 
@@ -27,8 +27,8 @@ public class GetContentsInteractor extends PlayBasisApiInteractor {
   protected GetContentsForm getContentsForm;
 
   @Inject
-  public GetContentsInteractor(ThreadExecutor threadExecutor,
-                               PostExecutionThread postExecutionThread,
+  public GetContentsInteractor(PBThreadExecutor threadExecutor,
+                               PBPostExecutionThread postExecutionThread,
                                RestClient restClient,
                                RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

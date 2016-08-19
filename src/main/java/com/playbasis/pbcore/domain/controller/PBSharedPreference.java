@@ -10,9 +10,8 @@ import com.google.gson.JsonParser;
 import com.playbasis.pbcore.domain.model.Organization;
 import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.Token;
-import com.smartsoftasia.ssalibrary.domain.controller.BaseSharedPreference;
-import com.smartsoftasia.ssalibrary.helper.MD5;
-import com.smartsoftasia.ssalibrary.helper.SharedPreferenceHelper;
+import com.playbasis.pbcore.helper.MD5;
+import com.playbasis.pbcore.helper.SharedPreferenceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +21,17 @@ import javax.inject.Inject;
 /**
  * Created by Tar on 4/20/16 AD.
  */
-public class PBSharedPreference extends BaseSharedPreference {
+public class PBSharedPreference {
 
   public static final String TAG = "SharedPreference";
   public static final String TOKEN = "TokenKey";
   public static final String USER = "User";
 
+  protected Context mContext;
+
   @Inject
   public PBSharedPreference(Context context) {
-    super(context);
+    mContext = context;
   }
 
   public String tokenKey() {

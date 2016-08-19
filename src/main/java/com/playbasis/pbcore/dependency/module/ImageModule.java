@@ -3,9 +3,9 @@ package com.playbasis.pbcore.dependency.module;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.rest.RestClient;
-import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.dependency.component.PerActivity;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,8 +18,8 @@ public class ImageModule {
 
   @Provides
   @PerActivity
-  UploadImageInteractor provideUploadImageInteractor(ThreadExecutor threadExecutor,
-                                                     PostExecutionThread postExecutionThread,
+  UploadImageInteractor provideUploadImageInteractor(PBThreadExecutor threadExecutor,
+                                                     PBPostExecutionThread postExecutionThread,
                                                      RestClient restClient,
                                                      RequestTokenInteractor requestTokenInteractor) {
     return new UploadImageInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

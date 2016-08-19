@@ -1,9 +1,9 @@
 package com.playbasis.pbcore.domain.interactor;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.interactor.interactorInterface.NoInternetConnectionInterface;
 import com.playbasis.pbcore.rest.RestClient;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -21,8 +21,8 @@ public abstract class RestInteractor extends BaseInteractor {
 
   protected NoInternetConnectionInterface noInternetConnectionInterface;
 
-  public RestInteractor(ThreadExecutor threadExecutor,
-                        PostExecutionThread postExecutionThread,
+  public RestInteractor(PBThreadExecutor threadExecutor,
+                        PBPostExecutionThread postExecutionThread,
                         RestClient restClient) {
     super(threadExecutor, postExecutionThread);
     this.restClient = restClient;

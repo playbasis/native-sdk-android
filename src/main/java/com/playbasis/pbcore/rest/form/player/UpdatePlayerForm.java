@@ -5,7 +5,7 @@ import com.playbasis.pbcore.domain.model.Gender;
 import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.rest.form.PBForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
-import com.smartsoftasia.ssalibrary.helper.Validator;
+import com.playbasis.pbcore.helper.Validator;
 
 import java.io.File;
 

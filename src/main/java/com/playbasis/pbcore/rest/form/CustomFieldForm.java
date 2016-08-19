@@ -2,7 +2,7 @@ package com.playbasis.pbcore.rest.form;
 
 import android.text.TextUtils;
 
-import com.smartsoftasia.ssalibrary.helper.Validator;
+import com.playbasis.pbcore.helper.Validator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

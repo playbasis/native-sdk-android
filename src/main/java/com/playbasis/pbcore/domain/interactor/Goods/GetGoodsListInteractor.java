@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.interactor.goods;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Goods;
@@ -7,8 +9,6 @@ import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.goods.GetGoodsListForm;
 import com.playbasis.pbcore.rest.result.goods.GoodsListApiResult;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
 import java.util.List;
 
@@ -27,8 +27,8 @@ public class GetGoodsListInteractor extends PlayBasisApiInteractor {
   protected GetGoodsListForm getGoodsListForm;
 
   @Inject
-  public GetGoodsListInteractor(ThreadExecutor threadExecutor,
-                                PostExecutionThread postExecutionThread,
+  public GetGoodsListInteractor(PBThreadExecutor threadExecutor,
+                                PBPostExecutionThread postExecutionThread,
                                 RestClient restClient,
                                 RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

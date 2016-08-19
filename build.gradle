@@ -1,4 +1,14 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+  }
+}
+
 apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
   compileSdkVersion 23
@@ -22,5 +32,36 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
   compile 'com.android.support:appcompat-v7:23.4.0'
-  compile project(':core')
+
+  // Dagger 2
+  apt 'com.google.dagger:dagger-compiler:2.0'
+  compile 'com.google.dagger:dagger:2.0'
+  provided 'javax.annotation:jsr250-api:1.0'
+
+  // Butterknife
+  compile 'com.jakewharton:butterknife:8.0.1'
+  apt 'com.jakewharton:butterknife-compiler:8.0.1'
+
+  // Retrofit
+  compile 'com.squareup.retrofit2:retrofit:2.0.2'
+  compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+  compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+  compile 'com.squareup.okhttp3:okhttp:3.2.0'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+
+  // Glide
+  compile 'com.github.bumptech.glide:glide:3.7.0'
+
+  // GSON
+  compile 'com.google.code.gson:gson:2.4'
+
+  // RxAndroid + RxJava
+  compile 'io.reactivex:rxandroid:1.1.0'
+  compile 'io.reactivex:rxjava:1.1.0'
+
+  // BlurDialogFragment
+  compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
+
+  compile 'joda-time:joda-time:2.9.4'
 }

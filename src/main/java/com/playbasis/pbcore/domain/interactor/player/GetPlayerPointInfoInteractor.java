@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.interactor.player;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Point;
@@ -7,8 +9,6 @@ import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.GetPlayerPointInfoForm;
 import com.playbasis.pbcore.rest.result.player.PlayerPointApiResult;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -25,8 +25,8 @@ public class GetPlayerPointInfoInteractor extends PlayBasisApiInteractor {
   private GetPlayerPointInfoForm getPlayerPointInfoForm;
 
   @Inject
-  public GetPlayerPointInfoInteractor(ThreadExecutor threadExecutor,
-                                      PostExecutionThread postExecutionThread,
+  public GetPlayerPointInfoInteractor(PBThreadExecutor threadExecutor,
+                                      PBPostExecutionThread postExecutionThread,
                                       RestClient restClient,
                                       RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

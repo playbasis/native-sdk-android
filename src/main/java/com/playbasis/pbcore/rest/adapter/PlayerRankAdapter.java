@@ -6,7 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
 import com.playbasis.pbcore.rest.response.PlayerResponse;
-import com.smartsoftasia.ssalibrary.helper.Validator;
+import com.playbasis.pbcore.helper.Validator;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

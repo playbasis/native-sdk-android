@@ -1,8 +1,14 @@
 package com.playbasis.pbcore.rest;
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+
 import com.google.gson.Gson;
-import com.playbasis.pbcore.domain.controller.PBSharedPreference;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.model.Birthdate;
+import com.playbasis.pbcore.helper.GsonHelper;
 import com.playbasis.pbcore.rest.adapter.CodesAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerCustomFieldAdapter;
@@ -22,9 +28,6 @@ import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.RedeemService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
-import com.smartsoftasia.ssalibrary.bus.ApplicationBus;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
-import com.smartsoftasia.ssalibrary.helper.GsonHelper;
 
 import javax.inject.Inject;
 
@@ -40,12 +43,10 @@ import rx.schedulers.Schedulers;
  * For Stroll Guam project.
  */
 public class RestClient {
+
   public static final String TAG = "RestClient";
 
-  // private LanguageController mLanguageController;
-  protected PBSharedPreference mSharedPreference;
-  protected ApplicationBus mApplicationBus;
-  protected RestClientConfiguration mRestClientConfiguration;
+  protected Context context;
   protected Retrofit retrofit;
 
   protected TokenService tokenService;
@@ -57,14 +58,12 @@ public class RestClient {
   protected QuestService questService;
   protected RedeemService redeemService;
 
+  protected String apiKey;
+  protected String apiSecret;
+
   @Inject
-  public RestClient(ThreadExecutor threadExecutor,
-                    PBSharedPreference sharedPreference,
-                    ApplicationBus applicationBus,
-                    RestClientConfiguration restClientConfiguration) {
-    mSharedPreference = sharedPreference;
-    mApplicationBus = applicationBus;
-    mRestClientConfiguration = restClientConfiguration;
+  public RestClient(Context context, PBThreadExecutor threadExecutor) {
+    this.context = context;
 
     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -158,14 +157,53 @@ public class RestClient {
   }
 
   public String getBaseUrl() {
-    return mRestClientConfiguration.baseUrl;
+    return "https://api.pbapp.net/";
   }
 
   public String getApiKey() {
-    return mRestClientConfiguration.apiKey;
+    if (apiKey != null) {
+      return apiKey;
+    }
+
+    Bundle metadata = getMetadata();
+
+    if (metadata == null) {
+      return null;
+    }
+
+    apiKey = metadata.getString("playbasis_api_key");
+
+    if (apiKey == null) {
+      apiKey = String.valueOf(metadata.getInt("playbasis_api_key"));
+    }
+
+    return apiKey;
   }
 
   public String getApiSecret() {
-    return mRestClientConfiguration.apiSecret;
+    if (apiSecret != null) {
+      return apiSecret;
+    }
+
+    Bundle metadata = getMetadata();
+
+    if (metadata == null) {
+      return null;
+    }
+
+    apiSecret = metadata.getString("playbasis_api_secret");
+    return apiSecret;
+  }
+
+  private Bundle getMetadata() {
+    ApplicationInfo ai = null;
+
+    try {
+      ai = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+
+    return ai.metaData;
   }
 }

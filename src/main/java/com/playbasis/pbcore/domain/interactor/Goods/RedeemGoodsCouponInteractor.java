@@ -6,8 +6,8 @@ import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.goods.RedeemGoodsCouponForm;
 import com.playbasis.pbcore.rest.result.goods.RedeemGoodsCouponApiResult;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -23,8 +23,8 @@ public class RedeemGoodsCouponInteractor extends PlayBasisApiInteractor {
   protected RedeemGoodsCouponForm redeemGoodsCouponForm;
 
   @Inject
-  public RedeemGoodsCouponInteractor(ThreadExecutor threadExecutor,
-                                     PostExecutionThread postExecutionThread,
+  public RedeemGoodsCouponInteractor(PBThreadExecutor threadExecutor,
+                                     PBPostExecutionThread postExecutionThread,
                                      RestClient restClient,
                                      RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

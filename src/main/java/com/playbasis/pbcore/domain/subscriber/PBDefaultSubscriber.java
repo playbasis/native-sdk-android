@@ -2,12 +2,13 @@ package com.playbasis.pbcore.domain.subscriber;
 
 import com.playbasis.pbcore.rest.error.PBApiError;
 import com.playbasis.pbcore.rest.error.UserAbortError;
-import com.smartsoftasia.ssalibrary.domain.subscriber.DefaultSubscriber;
+
+import rx.Subscriber;
 
 /**
  * Created by Tar on 5/4/16 AD.
  */
-public abstract class PBDefaultSubscriber<T> extends DefaultSubscriber<T> {
+public abstract class PBDefaultSubscriber<T> extends Subscriber<T> {
   public T resultObj;
   public Throwable error;
 

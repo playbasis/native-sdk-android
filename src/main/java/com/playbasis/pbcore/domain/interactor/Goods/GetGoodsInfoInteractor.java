@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.domain.interactor.goods;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Goods;
@@ -7,8 +8,7 @@ import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.goods.GetGoodsInfoForm;
 import com.playbasis.pbcore.rest.result.goods.GoodsInfoApiResult;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 
 import javax.inject.Inject;
 
@@ -25,8 +25,8 @@ public class GetGoodsInfoInteractor extends PlayBasisApiInteractor {
   protected GetGoodsInfoForm getGoodsInfoForm;
 
   @Inject
-  public GetGoodsInfoInteractor(ThreadExecutor threadExecutor,
-                                PostExecutionThread postExecutionThread,
+  public GetGoodsInfoInteractor(PBThreadExecutor threadExecutor,
+                                PBPostExecutionThread postExecutionThread,
                                 RestClient restClient,
                                 RequestTokenInteractor requestTokenInteractor) {
     super(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

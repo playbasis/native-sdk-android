@@ -1,13 +1,13 @@
 package com.playbasis.pbcore.dependency.module;
 
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.goods.GetGoodsInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.goods.GetGoodsListInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.goods.VerifyGoodsCouponInteractor;
 import com.playbasis.pbcore.rest.RestClient;
-import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.dependency.component.PerActivity;
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,8 +20,8 @@ public class GoodsModule {
 
   @Provides
   @PerActivity
-  GetGoodsListInteractor provideGetGoodsListInteractor(ThreadExecutor threadExecutor,
-                                                       PostExecutionThread postExecutionThread,
+  GetGoodsListInteractor provideGetGoodsListInteractor(PBThreadExecutor threadExecutor,
+                                                       PBPostExecutionThread postExecutionThread,
                                                        RestClient restClient,
                                                        RequestTokenInteractor requestTokenInteractor) {
     return new GetGoodsListInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -29,8 +29,8 @@ public class GoodsModule {
 
   @Provides
   @PerActivity
-  GetGoodsInfoInteractor provideGetGoodsInfoInteractor(ThreadExecutor threadExecutor,
-                                                       PostExecutionThread postExecutionThread,
+  GetGoodsInfoInteractor provideGetGoodsInfoInteractor(PBThreadExecutor threadExecutor,
+                                                       PBPostExecutionThread postExecutionThread,
                                                        RestClient restClient,
                                                        RequestTokenInteractor requestTokenInteractor) {
     return new GetGoodsInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -38,8 +38,8 @@ public class GoodsModule {
 
   @Provides
   @PerActivity
-  VerifyGoodsCouponInteractor provideVerifyGoodsCouponInteractor(ThreadExecutor threadExecutor,
-                                                                 PostExecutionThread postExecutionThread,
+  VerifyGoodsCouponInteractor provideVerifyGoodsCouponInteractor(PBThreadExecutor threadExecutor,
+                                                                 PBPostExecutionThread postExecutionThread,
                                                                  RestClient restClient,
                                                                  RequestTokenInteractor requestTokenInteractor) {
     return new VerifyGoodsCouponInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);

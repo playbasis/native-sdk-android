@@ -1,8 +1,5 @@
 package com.playbasis.pbcore.domain.model;
 
-import com.playbasis.pbcore.R;
-import com.smartsoftasia.ssalibrary.helper.TranslationHelper;
-
 /**
  * Created by Tar on 6/9/16 AD.
  */
@@ -23,9 +20,9 @@ public class Gender extends PBModel {
     this.value = value;
 
     if (value.equalsIgnoreCase(MALE)) {
-      this.title = TranslationHelper.get(R.string.global_male);
+      this.title = "Male";
     } else if (value.equalsIgnoreCase(FEMALE)) {
-      this.title = TranslationHelper.get(R.string.global_female);
+      this.title = "Female";
     }
   }
 

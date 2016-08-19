@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.dependency.module;
 
+import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.file.UploadImageInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
@@ -21,9 +23,7 @@ import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsIntera
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
 import com.playbasis.pbcore.rest.RestClient;
-import com.smartsoftasia.ssalibrary.dependency.component.PerActivity;
-import com.smartsoftasia.ssalibrary.domain.executor.PostExecutionThread;
-import com.smartsoftasia.ssalibrary.domain.executor.ThreadExecutor;
+import com.playbasis.pbcore.dependency.component.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -36,8 +36,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  RegisterPlayerInteractor provideRegisterUserInteractor(ThreadExecutor threadExecutor,
-                                                         PostExecutionThread postExecutionThread,
+  RegisterPlayerInteractor provideRegisterUserInteractor(PBThreadExecutor threadExecutor,
+                                                         PBPostExecutionThread postExecutionThread,
                                                          RestClient restClient,
                                                          RequestTokenInteractor requestTokenInteractor) {
     return new RegisterPlayerInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -45,8 +45,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  SendPlayerEmailVerificationInteractor provideVerifyUserEmailInteractor(ThreadExecutor threadExecutor,
-                                                                         PostExecutionThread postExecutionThread,
+  SendPlayerEmailVerificationInteractor provideVerifyUserEmailInteractor(PBThreadExecutor threadExecutor,
+                                                                         PBPostExecutionThread postExecutionThread,
                                                                          RestClient restClient,
                                                                          RequestTokenInteractor requestTokenInteractor) {
     return new SendPlayerEmailVerificationInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -54,8 +54,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  ForgetPasswordInteractor provideForgetPasswordInteractor(ThreadExecutor threadExecutor,
-                                                           PostExecutionThread postExecutionThread,
+  ForgetPasswordInteractor provideForgetPasswordInteractor(PBThreadExecutor threadExecutor,
+                                                           PBPostExecutionThread postExecutionThread,
                                                            RestClient restClient,
                                                            RequestTokenInteractor requestTokenInteractor) {
     return new ForgetPasswordInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -63,8 +63,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  PlayerAuthenticationInteractor providePlayerAuthenticationInteractor(ThreadExecutor threadExecutor,
-                                                                       PostExecutionThread postExecutionThread,
+  PlayerAuthenticationInteractor providePlayerAuthenticationInteractor(PBThreadExecutor threadExecutor,
+                                                                       PBPostExecutionThread postExecutionThread,
                                                                        RestClient restClient,
                                                                        RequestTokenInteractor requestTokenInteractor) {
     return new PlayerAuthenticationInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -72,8 +72,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerInteractor provideGetPlayerInteractor(ThreadExecutor threadExecutor,
-                                                 PostExecutionThread postExecutionThread,
+  GetPlayerInteractor provideGetPlayerInteractor(PBThreadExecutor threadExecutor,
+                                                 PBPostExecutionThread postExecutionThread,
                                                  RestClient restClient,
                                                  RequestTokenInteractor requestTokenInteractor,
                                                  GetPlayerCustomFieldsInteractor getPlayerCustomFieldsInteractor) {
@@ -82,8 +82,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerCustomFieldsInteractor provideGetUserCustomFieldsInteractor(ThreadExecutor threadExecutor,
-                                                                       PostExecutionThread postExecutionThread,
+  GetPlayerCustomFieldsInteractor provideGetUserCustomFieldsInteractor(PBThreadExecutor threadExecutor,
+                                                                       PBPostExecutionThread postExecutionThread,
                                                                        RestClient restClient,
                                                                        RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerCustomFieldsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -91,8 +91,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  UpdatePlayerInteractor provideUpdateUserInteractor(ThreadExecutor threadExecutor,
-                                                     PostExecutionThread postExecutionThread,
+  UpdatePlayerInteractor provideUpdateUserInteractor(PBThreadExecutor threadExecutor,
+                                                     PBPostExecutionThread postExecutionThread,
                                                      RestClient restClient,
                                                      RequestTokenInteractor requestTokenInteractor,
                                                      UploadImageInteractor uploadImageInteractor) {
@@ -101,8 +101,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  SetPlayerCustomFieldsInteractor provideSetUserCustomFieldInteractor(ThreadExecutor threadExecutor,
-                                                                      PostExecutionThread postExecutionThread,
+  SetPlayerCustomFieldsInteractor provideSetUserCustomFieldInteractor(PBThreadExecutor threadExecutor,
+                                                                      PBPostExecutionThread postExecutionThread,
                                                                       RestClient restClient,
                                                                       RequestTokenInteractor requestTokenInteractor) {
     return new SetPlayerCustomFieldsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -110,8 +110,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  UpdatePlayerOrganizableModelInteractor provideUpdateUserOrganizableModelInteractor(ThreadExecutor threadExecutor,
-                                                                                     PostExecutionThread postExecutionThread,
+  UpdatePlayerOrganizableModelInteractor provideUpdateUserOrganizableModelInteractor(PBThreadExecutor threadExecutor,
+                                                                                     PBPostExecutionThread postExecutionThread,
                                                                                      RestClient restClient,
                                                                                      RequestTokenInteractor requestTokenInteractor) {
     return new UpdatePlayerOrganizableModelInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -119,8 +119,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerEarnedBadgesInteractor provideGetPlayerEarnedBadgesInteractor(ThreadExecutor threadExecutor,
-                                                                         PostExecutionThread postExecutionThread,
+  GetPlayerEarnedBadgesInteractor provideGetPlayerEarnedBadgesInteractor(PBThreadExecutor threadExecutor,
+                                                                         PBPostExecutionThread postExecutionThread,
                                                                          RestClient restClient,
                                                                          RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerEarnedBadgesInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -128,8 +128,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerAllBadgesInteractor provideGetPlayerAllBadgesInteractor(ThreadExecutor threadExecutor,
-                                                                   PostExecutionThread postExecutionThread,
+  GetPlayerAllBadgesInteractor provideGetPlayerAllBadgesInteractor(PBThreadExecutor threadExecutor,
+                                                                   PBPostExecutionThread postExecutionThread,
                                                                    RestClient restClient,
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerAllBadgesInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -137,8 +137,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerAllGoodsInteractor provideGetPlayerAllGoodsInteractor(ThreadExecutor threadExecutor,
-                                                                 PostExecutionThread postExecutionThread,
+  GetPlayerAllGoodsInteractor provideGetPlayerAllGoodsInteractor(PBThreadExecutor threadExecutor,
+                                                                 PBPostExecutionThread postExecutionThread,
                                                                  RestClient restClient,
                                                                  RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerAllGoodsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -146,8 +146,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerAllQuestInteractor provideGetPlayerAllQuestInteractor(ThreadExecutor threadExecutor,
-                                                                 PostExecutionThread postExecutionThread,
+  GetPlayerAllQuestInteractor provideGetPlayerAllQuestInteractor(PBThreadExecutor threadExecutor,
+                                                                 PBPostExecutionThread postExecutionThread,
                                                                  RestClient restClient,
                                                                  RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerAllQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -155,8 +155,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerJoinedQuestInteractor provideGetPlayerJoinedQuestInteractor(ThreadExecutor threadExecutor,
-                                                                       PostExecutionThread postExecutionThread,
+  GetPlayerJoinedQuestInteractor provideGetPlayerJoinedQuestInteractor(PBThreadExecutor threadExecutor,
+                                                                       PBPostExecutionThread postExecutionThread,
                                                                        RestClient restClient,
                                                                        RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerJoinedQuestInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -164,8 +164,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerQuestInfoInteractor provideGetPlayerQuestInfoInteractor(ThreadExecutor threadExecutor,
-                                                                   PostExecutionThread postExecutionThread,
+  GetPlayerQuestInfoInteractor provideGetPlayerQuestInfoInteractor(PBThreadExecutor threadExecutor,
+                                                                   PBPostExecutionThread postExecutionThread,
                                                                    RestClient restClient,
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerQuestInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -173,8 +173,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerAllPointsInteractor provideGetPlayerAllPointsInteractor(ThreadExecutor threadExecutor,
-                                                                   PostExecutionThread postExecutionThread,
+  GetPlayerAllPointsInteractor provideGetPlayerAllPointsInteractor(PBThreadExecutor threadExecutor,
+                                                                   PBPostExecutionThread postExecutionThread,
                                                                    RestClient restClient,
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerAllPointsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -182,8 +182,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerPointInfoInteractor provideGetPlayerPointInfoInteractor(ThreadExecutor threadExecutor,
-                                                                   PostExecutionThread postExecutionThread,
+  GetPlayerPointInfoInteractor provideGetPlayerPointInfoInteractor(PBThreadExecutor threadExecutor,
+                                                                   PBPostExecutionThread postExecutionThread,
                                                                    RestClient restClient,
                                                                    RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerPointInfoInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
@@ -191,8 +191,8 @@ public class PlayerModule {
 
   @Provides
   @PerActivity
-  GetPlayerRankingInteractor provideGetPlayerRankingInteractor(ThreadExecutor threadExecutor,
-                                                               PostExecutionThread postExecutionThread,
+  GetPlayerRankingInteractor provideGetPlayerRankingInteractor(PBThreadExecutor threadExecutor,
+                                                               PBPostExecutionThread postExecutionThread,
                                                                RestClient restClient,
                                                                RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerRankingInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
