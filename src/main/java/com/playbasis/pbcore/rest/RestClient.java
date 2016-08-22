@@ -160,6 +160,10 @@ public class RestClient {
     return "https://api.pbapp.net/";
   }
 
+  public void setApiKey(String apiKey) {
+    this.apiKey = apiKey;
+  }
+
   public String getApiKey() {
     if (apiKey != null) {
       return apiKey;
@@ -178,6 +182,10 @@ public class RestClient {
     }
 
     return apiKey;
+  }
+
+  public void setApiSecret(String apiSecret) {
+    this.apiSecret = apiSecret;
   }
 
   public String getApiSecret() {

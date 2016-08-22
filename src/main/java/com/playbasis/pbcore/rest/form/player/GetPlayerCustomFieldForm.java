@@ -9,9 +9,15 @@ import com.playbasis.pbcore.rest.form.PBForm;
 public class GetPlayerCustomFieldForm extends PBForm {
 
   protected Player player;
+  protected String playerId;
 
   public GetPlayerCustomFieldForm(Player player) {
     this.player = player;
+    this.playerId = player.getPlayerId();
+  }
+
+  public GetPlayerCustomFieldForm(String playerId) {
+    this.playerId = playerId;
   }
 
   public Player getPlayer() {
@@ -19,6 +25,6 @@ public class GetPlayerCustomFieldForm extends PBForm {
   }
 
   public String getPlayerId() {
-    return player.getPlayerId();
+    return playerId;
   }
 }

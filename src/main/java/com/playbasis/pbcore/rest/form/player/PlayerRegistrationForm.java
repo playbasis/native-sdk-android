@@ -20,10 +20,11 @@ public class PlayerRegistrationForm extends BaseUserForm {
   protected String imageUrl;
   protected String status = "approved";
 
-  public PlayerRegistrationForm(String email, String userName, String password) {
-    this.email = email;
+  public PlayerRegistrationForm(String playerId, String userName, String email) {
+    this.playerId = playerId;
     this.userName = userName;
-    this.password = password;
+    this.email = email;
+    this.status = "approved";
   }
 
   public String getPlayerId(){

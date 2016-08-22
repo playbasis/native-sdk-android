@@ -1,15 +1,14 @@
 package com.playbasis.pbcore.domain.interactor.player;
 
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
+import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.Player;
+import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.GetPlayerCustomFieldForm;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
-import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
-import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
-import com.playbasis.pbcore.helper.Validator;
 
 import javax.inject.Inject;
 
@@ -35,19 +34,19 @@ public class GetPlayerCustomFieldsInteractor extends PlayBasisApiInteractor {
 
   @Override
   public Observable buildApiUseCaseObservable() {
-    final Player player = getPlayerCustomFieldForm.getPlayer();
-    if (player == null || !Validator.isValid(player.getPlayerId())) {
-      return Observable.just(player);
-    }
-
-    return restClient.getPlayerService()
+    Observable observable = restClient.getPlayerService()
         .getPlayerCustomFields(
             getPlayerCustomFieldForm.getPlayerId(),
             getApiKey(),
             getPlayerCustomFieldForm.getFields()
 
-        ).map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>())
-        .map(getResultMapFunction());
+        ).map(new PBApiErrorCheckFunc<GetUserCustomFieldsApiResult>());
+
+    if (getPlayerCustomFieldForm.getPlayer() != null) {
+      observable = observable.map(getResultMapFunction());
+    }
+
+    return observable;
   }
 
   public void setGetPlayerCustomFieldForm(GetPlayerCustomFieldForm getPlayerCustomFieldForm) {

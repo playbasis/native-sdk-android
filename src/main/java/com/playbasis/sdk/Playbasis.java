@@ -31,11 +31,17 @@ public class Playbasis {
   }
 
   public static void init(Application application) {
+    init(application, null, null);
+  }
+
+  public static void init(Application application, String apiKey, String apiSecret) {
     playbasisComponent = DaggerPlaybasisComponent.builder()
         .playbasisModule(new PlaybasisModule(application))
         .build();
 
-    instance();
+    Playbasis playbasis = instance();
+    playbasis.restClient.setApiKey(apiKey);
+    playbasis.restClient.setApiSecret(apiSecret);
   }
 
   public static PlaybasisComponent getPlaybasisComponent() {

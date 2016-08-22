@@ -23,6 +23,10 @@ public class VerifyGoodsCouponForm extends PBForm {
     this.code = code;
   }
 
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
+  }
+
   public String getGoodsId() {
     return goodsId;
   }

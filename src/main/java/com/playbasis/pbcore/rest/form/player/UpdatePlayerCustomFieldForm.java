@@ -17,6 +17,10 @@ public class UpdatePlayerCustomFieldForm extends CustomFieldForm {
     this.customFieldMap = player.getCustomFields();
   }
 
+  public UpdatePlayerCustomFieldForm(String playerId) {
+    this.playerId = playerId;
+  }
+
   public UpdatePlayerCustomFieldForm(String playerId, HashMap<String, String> customFields) {
     this.playerId = playerId;
     this.customFieldMap = customFields;

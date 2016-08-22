@@ -2,6 +2,7 @@ package com.playbasis.pbcore.domain.interactor.player;
 
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
+import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.player.PlayerAuthenticationForm;
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
@@ -35,7 +36,7 @@ public class PlayerAuthenticationInteractor extends PlayBasisApiInteractor {
             getApiToken(),
             mPlayerAuthenticationForm.getPassword(),
             mPlayerAuthenticationForm.getFields()
-        );
+        ).map(new PBApiErrorCheckFunc());
   }
 
   public void setPlayerAuthenticationForm(PlayerAuthenticationForm playerAuthenticationForm) {
