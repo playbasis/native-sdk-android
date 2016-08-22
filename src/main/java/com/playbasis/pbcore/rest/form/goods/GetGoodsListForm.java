@@ -20,6 +20,14 @@ public class GetGoodsListForm extends PBForm {
     this.tags = tags;
   }
 
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
+  }
+
+  public void setTags(String tags) {
+    this.tags = tags;
+  }
+
   public String getPlayerId() {
     return playerId;
   }

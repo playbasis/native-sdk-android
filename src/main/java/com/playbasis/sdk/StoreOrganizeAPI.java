@@ -3,6 +3,10 @@ package com.playbasis.sdk;
 import com.playbasis.pbcore.dependency.component.DaggerStoreOrganizeAPIComponent;
 import com.playbasis.pbcore.dependency.module.OrganizationModule;
 import com.playbasis.pbcore.domain.interactor.organize.GetOrganizationInteractor;
+import com.playbasis.pbcore.domain.model.Organization;
+import com.playbasis.pbcore.rest.form.organize.GetStoreOrganizationForm;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -28,5 +32,18 @@ public class StoreOrganizeAPI {
     }
 
     return storeOrganizeAPI;
+  }
+
+  public static void listNodes(ListNodesForm form, ListNodesCallback callback) {
+    instance().getOrganizationInteractor.setGetStoreOrganizationForm(form);
+    instance().getOrganizationInteractor.execute(new APIDefaultSubscriber<>(callback));
+  }
+
+  public static class ListNodesForm extends GetStoreOrganizationForm {
+
+  }
+
+  public interface ListNodesCallback extends BaseApiCallback<List<Organization>> {
+
   }
 }
