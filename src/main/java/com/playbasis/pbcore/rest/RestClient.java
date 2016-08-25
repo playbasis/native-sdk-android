@@ -22,6 +22,7 @@ import com.playbasis.pbcore.rest.response.PlayerRankResponse;
 import com.playbasis.pbcore.rest.response.RewardResponse;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
+import com.playbasis.pbcore.rest.service.CommunicationService;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.EngineService;
 import com.playbasis.pbcore.rest.service.GoodsService;
@@ -57,6 +58,7 @@ public class RestClient {
   protected EngineService engineService;
   protected ImageService imageService;
   protected ContentService contentService;
+  protected CommunicationService communicationService;
   protected StoreOrganizeService storeOrganizeService;
   protected GoodsService goodsService;
   protected QuestService questService;
@@ -85,6 +87,7 @@ public class RestClient {
     engineService = retrofit.create(EngineService.class);
     imageService = retrofit.create(ImageService.class);
     contentService = retrofit.create(ContentService.class);
+    communicationService = retrofit.create(CommunicationService.class);
     storeOrganizeService = retrofit.create(StoreOrganizeService.class);
     goodsService = retrofit.create(GoodsService.class);
     questService = retrofit.create(QuestService.class);
@@ -143,6 +146,10 @@ public class RestClient {
    */
   public ContentService getContentService() {
     return contentService;
+  }
+
+  public CommunicationService getCommunicationService() {
+    return communicationService;
   }
 
   /**
