@@ -13,9 +13,9 @@ public class RewardResponse {
   @SerializedName("reward_id")
   public String rewardId;
   @SerializedName("reward_type")
-  public String type;
+  public String rewardType;
   @SerializedName("reward_value")
-  public String value;
+  public String rewardValue;
   @SerializedName("reward_data")
   public RewardDataInterface data;
 

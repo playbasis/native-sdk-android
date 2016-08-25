@@ -46,8 +46,8 @@ public class Reward extends PBModel {
     }
 
     this.rewardId = valueOrDefault(response.rewardId, rewardId);
-    this.type = response.type;
-    this.value = response.value;
+    this.type = response.rewardType;
+    this.value = response.rewardValue;
 
     if (response.data instanceof RewardResponse.RewardGoodsResponse) {
       this.redeemable = new Goods((RewardResponse.RewardGoodsResponse) response.data);
