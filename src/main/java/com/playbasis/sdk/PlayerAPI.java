@@ -128,8 +128,6 @@ public class PlayerAPI {
     instance().getPlayerCustomFieldsInteractor.execute(new BaseApiSubscriber<GetUserCustomFieldsApiResult>(callback) {
       @Override
       public void onCompleted() {
-        super.onCompleted();
-
         if (callback != null) {
           callback.onSuccess(resultObj.getCustomFieldMap());
         }
@@ -167,8 +165,6 @@ public class PlayerAPI {
     instance().playerAuthenticationInteractor.execute(new BaseApiSubscriber<LoginPlayerApiResult>(callback) {
       @Override
       public void onCompleted() {
-        super.onCompleted();
-
         if (callback != null) {
           callback.onSuccess(resultObj.getUserId());
         }

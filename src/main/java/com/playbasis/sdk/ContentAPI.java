@@ -54,16 +54,7 @@ public class ContentAPI {
 
   public static void retrieveContent(RetrieveContentForm form, final RetrieveContentCallback callback) {
     instance().getContentsInteractor.setGetContentsForm(form);
-    instance().getContentsInteractor.execute(new BaseApiSubscriber<List<Content>>(callback) {
-      @Override
-      public void onCompleted() {
-        super.onCompleted();
-
-        if (callback != null) {
-          callback.onSuccess(resultObj);
-        }
-      }
-    });
+    instance().getContentsInteractor.execute(new BaseApiSubscriber<List<Content>>(callback));
   }
 
   public static void countContent(CountContentForm form, final CountContentCallback callback) {
@@ -71,8 +62,6 @@ public class ContentAPI {
     instance().countContentInteractor.execute(new BaseApiSubscriber<CountContentApiResult>(callback) {
       @Override
       public void onCompleted() {
-        super.onCompleted();
-
         if (callback != null) {
           callback.onSuccess(resultObj.getContentCount());
         }
