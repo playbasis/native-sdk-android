@@ -31,7 +31,7 @@ public class Mission extends PBModel {
     update(response);
   }
 
-  public static <T extends BaseMissionResponse> ArrayList<Mission> create(List<T> responses) {
+  public static <T extends BaseMissionResponse> ArrayList<Mission> createMissions(List<T> responses) {
     ArrayList<Mission> missions = new ArrayList<>();
 
     if (responses == null || responses.size() == 0) {
@@ -62,7 +62,7 @@ public class Mission extends PBModel {
     this.description = response.description;
     this.hint = response.hint;
     this.imageUrl = response.imageUrl;
-    this.completions = Completion.create(response.completionResponse);
+    this.completions = Completion.createCompletions(response.completionResponse);
 
     if (response instanceof PlayerMissionResponse) {
       PlayerMissionResponse playerMissionResponse = (PlayerMissionResponse) response;

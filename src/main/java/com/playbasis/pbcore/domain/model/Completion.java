@@ -28,7 +28,7 @@ public class Completion extends PBModel {
     update(response);
   }
 
-  public static ArrayList<Completion> create(List<BaseMissionResponse.CompletionResponse> responses) {
+  public static ArrayList<Completion> createCompletions(List<BaseMissionResponse.CompletionResponse> responses) {
     ArrayList<Completion> completions = new ArrayList<>();
 
     if (responses == null || responses.size() == 0) {

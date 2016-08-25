@@ -88,8 +88,8 @@ public class Quest extends PBModel {
     this.organizeId = response.organizeId;
     this.organizeRole = response.organizeRole;
     this.modifiedDate = response.modifiedDate;
-    this.missions = Mission.create(response.missionResponses);
-    this.conditions = Condition.create(response.conditionResponses);
+    this.missions = Mission.createMissions(response.missionResponses);
+    this.conditions = Condition.createConditions(response.conditionResponses);
     this.rewards = Reward.create(response.rewardResponses);
 
     if (response instanceof PlayerQuestResponse) {
@@ -196,7 +196,7 @@ public class Quest extends PBModel {
     public Condition() {
     }
 
-    public static ArrayList<Condition> create(List<BaseQuestResponse.ConditionResponse> responses) {
+    public static ArrayList<Condition> createConditions(List<BaseQuestResponse.ConditionResponse> responses) {
       ArrayList<Condition> ondition = new ArrayList<>();
 
       if (responses == null || responses.size() == 0) {
