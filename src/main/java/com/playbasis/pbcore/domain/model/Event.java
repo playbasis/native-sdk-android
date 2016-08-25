@@ -40,4 +40,19 @@ public class Event extends PBModel {
     reward = new Reward(eventResponse.rewardResponse);
   }
 
+  public String getType() {
+    return type;
+  }
+
+  public String getLogId() {
+    return logId;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public Reward getReward() {
+    return reward;
+  }
 }

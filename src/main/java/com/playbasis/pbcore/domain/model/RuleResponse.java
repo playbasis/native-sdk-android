@@ -11,13 +11,25 @@ import java.util.List;
  */
 public class RuleResponse {
 
-  List<? extends Event> events;
-  List<? extends Mission> missions;
-  List<? extends Quest> quests;
+  protected List<? extends Event> events;
+  protected List<? extends Mission> missions;
+  protected List<? extends Quest> quests;
 
   public RuleResponse(List<EventResponse> eventResponses, List<EventMissionResponse> missionResponses, List<EventQuestResponse> questResponses) {
     events = Event.createEvents(eventResponses);
     missions = Mission.createMissions(missionResponses);
     quests = Quest.createQuests(questResponses);
+  }
+
+  public List<? extends Event> getEvents() {
+    return events;
+  }
+
+  public List<? extends Mission> getMissions() {
+    return missions;
+  }
+
+  public List<? extends Quest> getQuests() {
+    return quests;
   }
 }
