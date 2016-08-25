@@ -10,17 +10,20 @@ import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.helper.GsonHelper;
 import com.playbasis.pbcore.rest.adapter.CodesAdapter;
+import com.playbasis.pbcore.rest.adapter.EventAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerCustomFieldAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerRankAdapter;
 import com.playbasis.pbcore.rest.adapter.QuestLeaderboardCurrentPlayerAdapter;
 import com.playbasis.pbcore.rest.adapter.RewardDataAdapter;
+import com.playbasis.pbcore.rest.response.EventResponse;
 import com.playbasis.pbcore.rest.response.GoodsResponse;
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
 import com.playbasis.pbcore.rest.response.RewardResponse;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
 import com.playbasis.pbcore.rest.service.ContentService;
+import com.playbasis.pbcore.rest.service.EngineService;
 import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.ImageService;
 import com.playbasis.pbcore.rest.service.PlayerService;
@@ -51,6 +54,7 @@ public class RestClient {
 
   protected TokenService tokenService;
   protected PlayerService playerService;
+  protected EngineService engineService;
   protected ImageService imageService;
   protected ContentService contentService;
   protected StoreOrganizeService storeOrganizeService;
@@ -78,6 +82,7 @@ public class RestClient {
 
     tokenService = retrofit.create(TokenService.class);
     playerService = retrofit.create(PlayerService.class);
+    engineService = retrofit.create(EngineService.class);
     imageService = retrofit.create(ImageService.class);
     contentService = retrofit.create(ContentService.class);
     storeOrganizeService = retrofit.create(StoreOrganizeService.class);
@@ -100,6 +105,7 @@ public class RestClient {
         .registerTypeAdapter(GetUserCustomFieldsApiResult.PlayerCustomFieldResponse.class, new PlayerCustomFieldAdapter())
         .registerTypeAdapter(PlayerRankResponse.class, new PlayerRankAdapter())
         .registerTypeAdapter(QuestLeaderboardApiResult.Response.class, new QuestLeaderboardCurrentPlayerAdapter())
+        .registerTypeAdapter(EventResponse.class, new EventAdapter())
         .registerTypeAdapter(RewardResponse.RewardDataInterface.class, new RewardDataAdapter())
         .create();
   }
@@ -120,6 +126,10 @@ public class RestClient {
    */
   public PlayerService getPlayerService() {
     return playerService;
+  }
+
+  public EngineService getEngineService() {
+    return engineService;
   }
 
   public ImageService getImageService() {
