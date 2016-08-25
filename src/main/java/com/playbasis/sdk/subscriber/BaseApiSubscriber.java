@@ -32,7 +32,7 @@ public class BaseApiSubscriber<T> extends PBDefaultSubscriber<T> {
   @Override
   public void onUseCaseError(Throwable e, PBErrorType errorType) {
     if (c != null) {
-      c.onFailed(e, errorType);
+      c.onFailed(e);
     }
   }
 }
