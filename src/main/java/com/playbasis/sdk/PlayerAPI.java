@@ -140,7 +140,7 @@ public class PlayerAPI {
     instance().getPlayerAllBadgesInteractor.execute(new BaseApiSubscriber<>(callback));
   }
 
-  public static void detailedPlayerInfoPri(DetailedPlayerInfoPrivate form, DetailedPlayerInfoPriCallback callback) {
+  public static void detailedPlayerInfoPrivate(DetailedPlayerInfoPrivate form, DetailedPlayerInfoPrivateCallback callback) {
     instance().getPlayerPrivateInfoInteractor.setGetPlayerForm(form);
     instance().getPlayerPrivateInfoInteractor.execute(new BaseApiSubscriber<>(callback));
   }
@@ -323,7 +323,7 @@ public class PlayerAPI {
 
   }
 
-  public interface DetailedPlayerInfoPriCallback extends BasicApiCallbackWithResult<Player> {
+  public interface DetailedPlayerInfoPrivateCallback extends BasicApiCallbackWithResult<Player> {
 
   }
 
