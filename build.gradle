@@ -20,10 +20,10 @@ ext {
 
   libraryDescription = 'The SDK to connect to playbasis API'
 
-  siteUrl = 'https://bitbucket.org/smartsoftasia/playbasis-android-sdk'
-  gitUrl = 'https://bitbucket.org/smartsoftasia/playbasis-android-sdk.git'
+  siteUrl = 'https://github.com/playbasis/native-sdk-android'
+  gitUrl = 'https://github.com/playbasis/native-sdk-android.git'
 
-  libraryVersion = '0.0.2'
+  libraryVersion = '0.0.4'
 
   developerId = 'Thaninrat'
   developerName = 'Thaninrat Pipitcharulerd'
