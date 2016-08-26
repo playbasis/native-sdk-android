@@ -2,8 +2,10 @@ package com.playbasis.sdk;
 
 import com.playbasis.pbcore.dependency.component.DaggerCommunicationAPIComponent;
 import com.playbasis.pbcore.dependency.module.CommunicationModule;
+import com.playbasis.pbcore.domain.interactor.communication.SendEmailCouponInteractor;
 import com.playbasis.pbcore.domain.interactor.communication.SendEmailInteractor;
 import com.playbasis.pbcore.rest.result.communication.SendEmailApiResult;
+import com.playbasis.pbcore.rest.result.communication.SendEmailCouponApiResult;
 import com.playbasis.sdk.callback.BasicApiCallbackWithResult;
 import com.playbasis.sdk.subscriber.BaseApiSubscriber;
 
@@ -21,6 +23,9 @@ public class CommunicationAPI {
   @Inject
   protected SendEmailInteractor sendEmailInteractor;
 
+  @Inject
+  protected SendEmailCouponInteractor sendEmailCouponInteractor;
+
   public static CommunicationAPI instance() {
     if (communicationAPI == null) {
       communicationAPI = new CommunicationAPI();
@@ -37,7 +42,19 @@ public class CommunicationAPI {
 
   public static void sendEmail(SendEmailForm form, final SendEmailCallback callback) {
     instance().sendEmailInteractor.setSendEmailForm(form);
-    instance().sendEmailInteractor.execute(new BaseApiSubscriber<SendEmailApiResult>(callback){
+    instance().sendEmailInteractor.execute(new BaseApiSubscriber<SendEmailApiResult>(callback) {
+      @Override
+      public void onCompleted() {
+        if (callback != null) {
+          callback.onSuccess(resultObj.response);
+        }
+      }
+    });
+  }
+
+  public static void sendEmailCoupon(SendEmailCouponForm form, final SendEmailCouponCallback callback) {
+    instance().sendEmailCouponInteractor.setSendEmailCouponForm(form);
+    instance().sendEmailCouponInteractor.execute(new BaseApiSubscriber<SendEmailCouponApiResult>(callback) {
       @Override
       public void onCompleted() {
         if (callback != null) {
@@ -54,7 +71,18 @@ public class CommunicationAPI {
     }
   }
 
+  public static class SendEmailCouponForm extends com.playbasis.pbcore.rest.form.communication.SendEmailCouponForm {
+
+    public SendEmailCouponForm(String playerId, String subject, String refId) {
+      super(playerId, subject, refId);
+    }
+  }
+
   public interface SendEmailCallback extends BasicApiCallbackWithResult<List<String>> {
+
+  }
+
+  public interface SendEmailCouponCallback extends BasicApiCallbackWithResult<List<String>> {
 
   }
 }

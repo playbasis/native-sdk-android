@@ -23,7 +23,7 @@ ext {
   siteUrl = 'https://bitbucket.org/smartsoftasia/playbasis-android-sdk'
   gitUrl = 'https://bitbucket.org/smartsoftasia/playbasis-android-sdk.git'
 
-  libraryVersion = '0.0.1'
+  libraryVersion = '0.0.2'
 
   developerId = 'Thaninrat'
   developerName = 'Thaninrat Pipitcharulerd'

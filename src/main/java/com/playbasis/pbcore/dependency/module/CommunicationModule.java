@@ -4,6 +4,7 @@ import com.playbasis.pbcore.dependency.component.PerActivity;
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
+import com.playbasis.pbcore.domain.interactor.communication.SendEmailCouponInteractor;
 import com.playbasis.pbcore.domain.interactor.communication.SendEmailInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 
@@ -23,6 +24,15 @@ public class CommunicationModule {
                                                  RestClient restClient,
                                                  RequestTokenInteractor requestTokenInteractor) {
     return new SendEmailInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  SendEmailCouponInteractor provideSendEmailCouponInteractor(PBThreadExecutor threadExecutor,
+                                                             PBPostExecutionThread postExecutionThread,
+                                                             RestClient restClient,
+                                                             RequestTokenInteractor requestTokenInteractor) {
+    return new SendEmailCouponInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
 }

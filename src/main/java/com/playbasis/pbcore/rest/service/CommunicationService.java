@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.playbasis.pbcore.rest.form.ParamsMap;
 import com.playbasis.pbcore.rest.result.communication.SendEmailApiResult;
+import com.playbasis.pbcore.rest.result.communication.SendEmailCouponApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -23,6 +24,16 @@ public interface CommunicationService {
       @NonNull @Field("player_id") String playerId,
       @NonNull @Field("subject") String subject,
       @NonNull @Field("message") String message,
+      @FieldMap ParamsMap fields
+  );
+
+  @FormUrlEncoded
+  @POST("Email/goods")
+  Observable<SendEmailCouponApiResult> sendEmailCoupon(
+      @NonNull @Field("token") String token,
+      @NonNull @Field("player_id") String playerId,
+      @NonNull @Field("subject") String subject,
+      @NonNull @Field("ref_id") String refId,
       @FieldMap ParamsMap fields
   );
 }
