@@ -12,11 +12,11 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 ext {
   bintrayRepo = 'playbasis'
-  bintrayName = 'playbasis-sdk'
+  bintrayName = 'sdk'
 
   publishedGroupId = 'com.playbasis.sdk'
-  libraryName = 'playbasis-sdk'
-  artifact = 'playbasis-sdk'
+  libraryName = 'sdk'
+  artifact = 'sdk'
 
   libraryDescription = 'The SDK to connect to playbasis API'
 
