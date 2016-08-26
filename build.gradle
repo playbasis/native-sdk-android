@@ -10,6 +10,31 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'playbasis-sdk'
+
+  publishedGroupId = 'com.playbasis.sdk'
+  libraryName = 'PlaybasisSDK'
+  artifact = 'playbasis-sdk'
+
+  libraryDescription = 'A SDK to connect to playbasis API'
+
+  siteUrl = 'https://bitbucket.org/smartsoftasia/playbasisandroidcore'
+  gitUrl = 'https://bitbucket.org/smartsoftasia/playbasisandroidcore.git'
+
+  libraryVersion = '0.0.1'
+
+  developerId = 'Thaninrat'
+  developerName = 'Thaninrat Pipitcharulerd'
+  developerEmail = 'tar@smartsoftasia.com'
+
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
+}
+
+
 android {
   compileSdkVersion 23
   buildToolsVersion "23.0.3"
@@ -65,3 +90,6 @@ dependencies {
 
   compile 'joda-time:joda-time:2.9.4'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
