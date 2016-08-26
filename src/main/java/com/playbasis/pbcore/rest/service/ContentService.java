@@ -18,9 +18,6 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
-/**
- * Created by androiddev01 on 5/11/2016 AD.
- */
 public interface ContentService {
 
   @GET("Content")
@@ -63,18 +60,6 @@ public interface ContentService {
       @FieldMap ParamsMap fields
   );
 
-  /**
-   * Send an additional idea to the backend
-   *
-   * @param token     application token
-   * @param title     title of the idea
-   * @param summary   summary of the idea
-   * @param detail    detail of the idea
-   * @param dateStart date of start
-   * @param dateEnd   date of end
-   * @param status    alway false
-   * @return observable
-   */
   @FormUrlEncoded
   @POST("Content/addContent")
   Observable<CreateContentApiResult> createContent(
