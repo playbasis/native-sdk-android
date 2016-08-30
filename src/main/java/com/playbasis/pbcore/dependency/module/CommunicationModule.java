@@ -4,6 +4,7 @@ import com.playbasis.pbcore.dependency.component.PerActivity;
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
+import com.playbasis.pbcore.domain.interactor.communication.DeviceRegistrationInteractor;
 import com.playbasis.pbcore.domain.interactor.communication.SendEmailCouponInteractor;
 import com.playbasis.pbcore.domain.interactor.communication.SendEmailInteractor;
 import com.playbasis.pbcore.rest.RestClient;
@@ -35,4 +36,12 @@ public class CommunicationModule {
     return new SendEmailCouponInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
+  @Provides
+  @PerActivity
+  DeviceRegistrationInteractor provideDeviceRegistrationInteractor(PBThreadExecutor threadExecutor,
+                                                                   PBPostExecutionThread postExecutionThread,
+                                                                   RestClient restClient,
+                                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new DeviceRegistrationInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
 }

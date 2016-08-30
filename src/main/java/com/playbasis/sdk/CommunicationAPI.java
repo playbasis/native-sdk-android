@@ -2,10 +2,12 @@ package com.playbasis.sdk;
 
 import com.playbasis.pbcore.dependency.component.DaggerCommunicationAPIComponent;
 import com.playbasis.pbcore.dependency.module.CommunicationModule;
+import com.playbasis.pbcore.domain.interactor.communication.DeviceRegistrationInteractor;
 import com.playbasis.pbcore.domain.interactor.communication.SendEmailCouponInteractor;
 import com.playbasis.pbcore.domain.interactor.communication.SendEmailInteractor;
 import com.playbasis.pbcore.rest.result.communication.SendEmailApiResult;
 import com.playbasis.pbcore.rest.result.communication.SendEmailCouponApiResult;
+import com.playbasis.sdk.callback.BasicApiCallback;
 import com.playbasis.sdk.callback.BasicApiCallbackWithResult;
 import com.playbasis.sdk.subscriber.BaseApiSubscriber;
 
@@ -22,9 +24,10 @@ public class CommunicationAPI {
 
   @Inject
   protected SendEmailInteractor sendEmailInteractor;
-
   @Inject
   protected SendEmailCouponInteractor sendEmailCouponInteractor;
+  @Inject
+  protected DeviceRegistrationInteractor deviceRegistrationInteractor;
 
   public static CommunicationAPI instance() {
     if (communicationAPI == null) {
@@ -64,6 +67,11 @@ public class CommunicationAPI {
     });
   }
 
+  public static void deviceRegistration(DeviceRegistrationForm form, DeviceRegistrationCallback callback) {
+    instance().deviceRegistrationInteractor.setDeviceRegistrationForm(form);
+    instance().deviceRegistrationInteractor.execute(new BaseApiSubscriber<>(callback));
+  }
+
   public static class SendEmailForm extends com.playbasis.pbcore.rest.form.communication.SendEmailForm {
 
     public SendEmailForm(String playerId, String subject, String message) {
@@ -78,11 +86,22 @@ public class CommunicationAPI {
     }
   }
 
+  public static class DeviceRegistrationForm extends com.playbasis.pbcore.rest.form.communication.DeviceRegistrationForm {
+
+    public DeviceRegistrationForm(String playerId, String deviceToken, String deviceDescription, String deviceName) {
+      super(playerId, deviceToken, deviceDescription, deviceName);
+    }
+  }
+
   public interface SendEmailCallback extends BasicApiCallbackWithResult<List<String>> {
 
   }
 
   public interface SendEmailCouponCallback extends BasicApiCallbackWithResult<List<String>> {
+
+  }
+
+  public interface DeviceRegistrationCallback extends BasicApiCallback {
 
   }
 }
