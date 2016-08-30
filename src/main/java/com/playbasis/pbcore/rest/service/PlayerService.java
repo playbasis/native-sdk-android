@@ -16,8 +16,10 @@ import com.playbasis.pbcore.rest.result.player.PlayerQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerRankApiResult;
 import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
+import com.playbasis.pbcore.rest.result.player.RequestOTPCodeApiResult;
 import com.playbasis.pbcore.rest.result.player.SetPlayerCustomFieldApiResult;
 import com.playbasis.pbcore.rest.result.player.UpdatePlayerDetailApiResult;
+import com.playbasis.pbcore.rest.result.player.VerifyOTPCodeApiResult;
 import com.playbasis.pbcore.rest.result.player.VerifyPlayerEmailApiResult;
 
 import retrofit2.http.Field;
@@ -197,5 +199,22 @@ public interface PlayerService {
       @NonNull @Path("limit") int limit,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
+  );
+
+  @FormUrlEncoded
+  @POST("Player/auth/{id}/requestOTPCode")
+  Observable<RequestOTPCodeApiResult> requestOTPCode(
+      @NonNull @Path("id") String userId,
+      @NonNull @Field("token") String token,
+      @FieldMap ParamsMap fields
+  );
+
+  @FormUrlEncoded
+  @POST("Player/auth/{id}/verifyOTPCode")
+  Observable<VerifyOTPCodeApiResult> verifyOTPCode(
+      @NonNull @Path("id") String userId,
+      @NonNull @Field("token") String token,
+      @NonNull @Field("code") String code,
+      @FieldMap ParamsMap fields
   );
 }

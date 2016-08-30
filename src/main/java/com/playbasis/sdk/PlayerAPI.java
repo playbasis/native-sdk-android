@@ -14,10 +14,12 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerPrivateInfoInterac
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
+import com.playbasis.pbcore.domain.interactor.player.RequestOTPCodeInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SendPlayerEmailVerificationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
+import com.playbasis.pbcore.domain.interactor.player.VerifyOTPCodeInteractor;
 import com.playbasis.pbcore.domain.model.Badge;
 import com.playbasis.pbcore.domain.model.Goods;
 import com.playbasis.pbcore.domain.model.Player;
@@ -88,6 +90,10 @@ public class PlayerAPI {
   protected UpdatePlayerInteractor updatePlayerInteractor;
   @Inject
   protected UpdatePlayerOrganizableModelInteractor updatePlayerOrganizableModelInteractor;
+  @Inject
+  protected RequestOTPCodeInteractor requestOTPCodeInteractor;
+  @Inject
+  protected VerifyOTPCodeInteractor verifyOTPCodeInteractor;
 
   public static PlayerAPI instance() {
     if (playerAPI == null) {
@@ -190,6 +196,16 @@ public class PlayerAPI {
   public static void update(UpdateForm form, UpdateCallback callback) {
     instance().updatePlayerInteractor.setUpdateUserForm(form);
     instance().updatePlayerInteractor.execute(new BaseApiSubscriber<>(callback));
+  }
+
+  public static void requestOTPCode(RequestOTPCodeForm form, RequestOTPCodeCallback callback) {
+    instance().requestOTPCodeInteractor.setRequestOTPCodeForm(form);
+    instance().requestOTPCodeInteractor.execute(new BaseApiSubscriber<>(callback));
+  }
+
+  public static void verifyOTPCode(VerifyOTPCodeForm form, VerifyOTPCodeCallback callback) {
+    instance().verifyOTPCodeInteractor.setVerifyOTPCodeForm(form);
+    instance().verifyOTPCodeInteractor.execute(new BaseApiSubscriber<>(callback));
   }
 
   public static class ResetPlayerPasswordForm extends ForgetPlayerPasswordForm {
@@ -299,6 +315,20 @@ public class PlayerAPI {
     }
   }
 
+  public static class RequestOTPCodeForm extends com.playbasis.pbcore.rest.form.player.RequestOTPCodeForm {
+
+    public RequestOTPCodeForm(String playerId) {
+      super(playerId);
+    }
+  }
+
+  public static class VerifyOTPCodeForm extends com.playbasis.pbcore.rest.form.player.VerifyOTPCodeForm {
+
+    public VerifyOTPCodeForm(String playerId, String code) {
+      super(playerId, code);
+    }
+  }
+
   public interface ResetPlayerPasswordCallback extends BasicApiCallback {
 
   }
@@ -356,6 +386,14 @@ public class PlayerAPI {
   }
 
   public interface UpdateCallback extends BasicApiCallback {
+
+  }
+
+  public interface RequestOTPCodeCallback extends BasicApiCallback {
+
+  }
+
+  public interface VerifyOTPCodeCallback extends BasicApiCallback {
 
   }
 }

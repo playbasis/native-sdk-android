@@ -18,10 +18,12 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteracto
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
+import com.playbasis.pbcore.domain.interactor.player.RequestOTPCodeInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SendPlayerEmailVerificationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
+import com.playbasis.pbcore.domain.interactor.player.VerifyOTPCodeInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 
 import dagger.Module;
@@ -193,5 +195,23 @@ public class PlayerModule {
                                                                RestClient restClient,
                                                                RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerRankingInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  RequestOTPCodeInteractor provideRequestOTPCodeInteractor(PBThreadExecutor threadExecutor,
+                                                           PBPostExecutionThread postExecutionThread,
+                                                           RestClient restClient,
+                                                           RequestTokenInteractor requestTokenInteractor) {
+    return new RequestOTPCodeInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  VerifyOTPCodeInteractor provideVerifyOTPCodeInteractor(PBThreadExecutor threadExecutor,
+                                                         PBPostExecutionThread postExecutionThread,
+                                                         RestClient restClient,
+                                                         RequestTokenInteractor requestTokenInteractor) {
+    return new VerifyOTPCodeInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 }
