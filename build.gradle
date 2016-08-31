@@ -23,11 +23,11 @@ ext {
   siteUrl = 'https://github.com/playbasis/native-sdk-android'
   gitUrl = 'https://github.com/playbasis/native-sdk-android.git'
 
-  libraryVersion = '0.0.4'
+  libraryVersion = '0.0.5'
 
-  developerId = 'Thaninrat'
-  developerName = 'Thaninrat Pipitcharulerd'
-  developerEmail = 'tar@smartsoftasia.com'
+  developerId = 'Thanakij'
+  developerName = 'Thanakij Pechprasarn'
+  developerEmail = 'pechpras@playbasis.com'
 
   licenseName = 'The Apache Software License, Version 2.0'
   licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
