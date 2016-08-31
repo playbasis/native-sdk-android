@@ -27,6 +27,7 @@ import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.EngineService;
 import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.ImageService;
+import com.playbasis.pbcore.rest.service.MerchantService;
 import com.playbasis.pbcore.rest.service.PlayerService;
 import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.RedeemService;
@@ -61,6 +62,7 @@ public class RestClient {
   protected CommunicationService communicationService;
   protected StoreOrganizeService storeOrganizeService;
   protected GoodsService goodsService;
+  protected MerchantService merchantService;
   protected QuestService questService;
   protected RedeemService redeemService;
 
@@ -90,6 +92,7 @@ public class RestClient {
     communicationService = retrofit.create(CommunicationService.class);
     storeOrganizeService = retrofit.create(StoreOrganizeService.class);
     goodsService = retrofit.create(GoodsService.class);
+    merchantService = retrofit.create(MerchantService.class);
     questService = retrofit.create(QuestService.class);
     redeemService = retrofit.create(RedeemService.class);
   }
@@ -163,6 +166,10 @@ public class RestClient {
 
   public GoodsService getGoodsService() {
     return goodsService;
+  }
+
+  public MerchantService getMerchantService() {
+    return merchantService;
   }
 
   public QuestService getQuestService() {
