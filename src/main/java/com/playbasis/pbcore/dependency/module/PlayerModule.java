@@ -5,6 +5,7 @@ import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerActionReportInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllPointsInteractor;
@@ -213,5 +214,14 @@ public class PlayerModule {
                                                          RestClient restClient,
                                                          RequestTokenInteractor requestTokenInteractor) {
     return new VerifyOTPCodeInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerActionReportInteractor provideGetPlayerActionReportInteractor(PBThreadExecutor threadExecutor,
+                                                                         PBPostExecutionThread postExecutionThread,
+                                                                         RestClient restClient,
+                                                                         RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerActionReportInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 }

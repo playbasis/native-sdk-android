@@ -3,6 +3,7 @@ package com.playbasis.pbcore.rest.service;
 import android.support.annotation.NonNull;
 
 import com.playbasis.pbcore.rest.form.ParamsMap;
+import com.playbasis.pbcore.rest.result.player.ActionReportApiResult;
 import com.playbasis.pbcore.rest.result.player.ForgetPasswordApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerBadgesApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerDetailApiResult;
@@ -204,7 +205,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/auth/{id}/requestOTPCode")
   Observable<RequestOTPCodeApiResult> requestOTPCode(
-      @NonNull @Path("id") String userId,
+      @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token,
       @FieldMap ParamsMap fields
   );
@@ -212,9 +213,16 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/auth/{id}/verifyOTPCode")
   Observable<VerifyOTPCodeApiResult> verifyOTPCode(
-      @NonNull @Path("id") String userId,
+      @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("code") String code,
       @FieldMap ParamsMap fields
+  );
+
+  @GET("Player/{id}/actionReport")
+  Observable<ActionReportApiResult> actionReport(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
   );
 }
