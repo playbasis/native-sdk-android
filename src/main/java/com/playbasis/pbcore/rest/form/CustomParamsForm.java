@@ -11,18 +11,26 @@ public class CustomParamsForm extends PBForm {
 
   public void addParam(String key, String value) {
     if (key != null && value != null) {
-      customParams.put(key, value);
+      getCustomParams().put(key, value);
     }
   }
 
   public void removeParam(String key) {
     if (key != null) {
-      customParams.remove(key);
+      getCustomParams().remove(key);
     }
   }
 
   public void setCustomParams(HashMap<String, String> customParams) {
     this.customParams = customParams;
+  }
+
+  private HashMap<String, String> getCustomParams() {
+    if (customParams == null) {
+      customParams = new HashMap<>();
+    }
+
+    return customParams;
   }
 
   @Override
