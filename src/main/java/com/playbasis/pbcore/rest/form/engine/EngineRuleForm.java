@@ -1,12 +1,12 @@
 package com.playbasis.pbcore.rest.form.engine;
 
-import com.playbasis.pbcore.rest.form.PBForm;
+import com.playbasis.pbcore.rest.form.CustomParamsForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 8/25/16 AD.
  */
-public class EngineRuleForm extends PBForm {
+public class EngineRuleForm extends CustomParamsForm {
 
   protected String action;
   protected String playerId;
