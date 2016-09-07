@@ -8,14 +8,10 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
  */
 public class GetQuestListForm extends PBForm {
 
-  private String tags;
+  private String tags = null;
 
   public GetQuestListForm() {
 
-  }
-
-  public GetQuestListForm(String tags) {
-    this.tags = tags;
   }
 
   public void setTags(String tags) {

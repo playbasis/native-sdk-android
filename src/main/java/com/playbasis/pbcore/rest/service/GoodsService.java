@@ -26,7 +26,6 @@ public interface GoodsService {
   @GET("Goods")
   Observable<GoodsListApiResult> getGoods(
       @NonNull @Query("api_key") String apiKey,
-      @NonNull @Query("player_id") String playerId,
       @QueryMap ParamsMap params
   );
 

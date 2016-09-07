@@ -9,39 +9,30 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 public class QuestLeaderboardForm extends PBForm {
 
   private String questId;
-  private String completionElementId;
-  private int limit = 100;
+  private String completionElementId = null;
   private int offset = 0;
-  private String status;
-  private String playerId;
+  private int limit = 20;
+  private String status = null;
+  private String playerId = null;
 
   public QuestLeaderboardForm(String questId) {
     this.questId = questId;
-  }
-
-  public QuestLeaderboardForm(String questId, String completionElementId) {
-    this.questId = questId;
-    this.completionElementId = completionElementId;
   }
 
   public String getQuestId() {
     return questId;
   }
 
-  public int getLimit() {
-    return limit;
-  }
-
-  public int getOffset() {
-    return offset;
-  }
-
-  public void setLimit(int limit) {
-    this.limit = limit;
+  public void setCompletionElementId(String completionElementId) {
+    this.completionElementId = completionElementId;
   }
 
   public void setOffset(int offset) {
     this.offset = offset;
+  }
+
+  public void setLimit(int limit) {
+    this.limit = limit;
   }
 
   public void setStatus(String status) {
@@ -60,7 +51,7 @@ public class QuestLeaderboardForm extends PBForm {
     map.put("player_id", playerId);
     map.put("offset", offset);
     map.put("limit", limit);
-    map.put("status", null);
+    map.put("status", status);
 
     return map;
   }

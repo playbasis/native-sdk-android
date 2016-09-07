@@ -9,12 +9,11 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 public class GetPlayerRankingForm extends PBForm {
 
   protected String rankBy;
-  protected int limit;
+  protected int limit = 20;
   protected String mode = null;
 
   public GetPlayerRankingForm(String rankBy) {
     this.rankBy = rankBy;
-    this.limit = 100;
   }
 
   public GetPlayerRankingForm(String rankBy, int limit) {

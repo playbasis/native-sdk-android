@@ -16,12 +16,6 @@ public class GetPlayerJoinedQuestListForm extends PBForm {
     this.playerId = playerId;
   }
 
-  public GetPlayerJoinedQuestListForm(String playerId, String filter, String tags) {
-    this.playerId = playerId;
-    this.filter = filter;
-    this.tags = tags;
-  }
-
   public String getPlayerId() {
     return playerId;
   }

@@ -291,7 +291,7 @@ public class PlayerAPI {
   public static class PlayerAuthForm extends PlayerAuthenticationForm {
 
     public PlayerAuthForm(String password) {
-      this.password = password;
+      super(password);
     }
   }
 

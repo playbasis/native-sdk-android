@@ -17,12 +17,6 @@ public class VerifyGoodsCouponForm extends PBForm {
     this.code = code;
   }
 
-  public VerifyGoodsCouponForm(String goodsId, String code, String playerId) {
-    this.goodsId = goodsId;
-    this.playerId = playerId;
-    this.code = code;
-  }
-
   public void setPlayerId(String playerId) {
     this.playerId = playerId;
   }

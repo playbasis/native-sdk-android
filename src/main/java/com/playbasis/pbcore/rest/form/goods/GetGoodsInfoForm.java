@@ -15,17 +15,12 @@ public class GetGoodsInfoForm extends PBForm {
     this.goodsId = goodsId;
   }
 
-  public GetGoodsInfoForm(String goodsId, String playerId) {
-    this.goodsId = goodsId;
-    this.playerId = playerId;
-  }
-
   public String getGoodsId() {
     return goodsId;
   }
 
-  public String getPlayerId() {
-    return playerId;
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
   }
 
   @Override

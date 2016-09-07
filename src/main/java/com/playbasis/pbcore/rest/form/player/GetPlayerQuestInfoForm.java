@@ -17,12 +17,6 @@ public class GetPlayerQuestInfoForm extends PBForm {
     this.playerId = playerId;
   }
 
-  public GetPlayerQuestInfoForm(String questId, String playerId, String filter) {
-    this.questId = questId;
-    this.playerId = playerId;
-    this.filter = filter;
-  }
-
   public String getQuestId() {
     return questId;
   }

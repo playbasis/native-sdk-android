@@ -1,42 +1,95 @@
 package com.playbasis.pbcore.rest.form.player;
 
 import com.playbasis.pbcore.domain.model.Birthdate;
-import com.playbasis.pbcore.rest.form.BaseUserForm;
+import com.playbasis.pbcore.rest.form.PBForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class PlayerRegistrationForm extends BaseUserForm {
+public class PlayerRegistrationForm extends PBForm {
 
   protected String playerId;
-  protected String firstName;
-  protected String lastName;
-  protected String facebookId;
-  protected String twitterId;
-  protected String phoneNumber;
+  protected String userName;
+  protected String email;
+  protected String image = "https://www.pbapp.net/images/default_profile.jpg";
+  protected String phoneNumber = null;
+  protected String facebookId = null;
+  protected String twitterId = null;
+  protected String password = null;
+  protected String firstName = null;
+  protected String lastName = null;
+  protected int gender = 0;
   protected Birthdate birthDate;
-  protected int gender;
-  protected String imageUrl;
-  protected String status = "approved";
+  protected String code = null;
+  protected int anonymous = -1;
+  protected String deviceId = null;
+  protected String status = null;
 
   public PlayerRegistrationForm(String playerId, String userName, String email) {
     this.playerId = playerId;
     this.userName = userName;
     this.email = email;
-    this.status = "approved";
   }
 
   public String getPlayerId(){
     return playerId;
   }
 
-  public void setPlayerId(String playerId) {
-    this.playerId = playerId;
+  public String getUserName() {
+    return userName;
   }
 
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
+  public String getEmail() {
+    return email;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public void setFacebookId(String facebookId) {
+    this.facebookId = facebookId;
+  }
+
+  public void setTwitterId(String twitterId) {
+    this.twitterId = twitterId;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setGender(int gender) {
+    this.gender = gender;
+  }
+
+  public void setBirthDate(Birthdate birthDate) {
+    this.birthDate = birthDate;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  public void setAnonymous(int anonymous) {
+    this.anonymous = anonymous;
+  }
+
+  public void setDeviceId(String deviceId) {
+    this.deviceId = deviceId;
   }
 
   public void setStatus(String status) {
@@ -47,18 +100,26 @@ public class PlayerRegistrationForm extends BaseUserForm {
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
-    map.put("image", imageUrl);
+    map.put("image", image);
     map.put("phone_number", phoneNumber);
     map.put("facebook_id", facebookId);
     map.put("twitter_id", twitterId);
     map.put("password", password);
     map.put("first_name", firstName);
     map.put("last_name", lastName);
-    map.put("gender", gender);
+
+    if (gender == 1 || gender == 2) {
+      map.put("gender", gender);
+    }
+
     map.put("birth_date", getBirthdateValue());
-    map.put("code", null);
-    map.put("anonymous", null);
-    map.put("device_id", null);
+    map.put("code", code);
+
+    if (anonymous == 0 || anonymous == 1) {
+      map.put("anonymous", anonymous);
+    }
+
+    map.put("device_id", deviceId);
     map.put("approve_status", status);
 
     return map;

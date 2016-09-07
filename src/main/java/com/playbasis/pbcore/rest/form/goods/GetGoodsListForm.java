@@ -15,11 +15,6 @@ public class GetGoodsListForm extends PBForm {
 
   }
 
-  public GetGoodsListForm(String playerId, String tags) {
-    this.playerId = playerId;
-    this.tags = tags;
-  }
-
   public void setPlayerId(String playerId) {
     this.playerId = playerId;
   }
@@ -28,14 +23,11 @@ public class GetGoodsListForm extends PBForm {
     this.tags = tags;
   }
 
-  public String getPlayerId() {
-    return playerId;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
+    map.put("player_id", playerId);
     map.put("tags", tags);
 
     return map;

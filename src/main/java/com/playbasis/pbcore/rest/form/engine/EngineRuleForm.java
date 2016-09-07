@@ -30,6 +30,30 @@ public class EngineRuleForm extends PBForm {
     return playerId;
   }
 
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public void setReward(String reward) {
+    this.reward = reward;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public void setRuleId(String ruleId) {
+    this.ruleId = ruleId;
+  }
+
+  public void setNodeId(String nodeId) {
+    this.nodeId = nodeId;
+  }
+
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
+  }
+
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();

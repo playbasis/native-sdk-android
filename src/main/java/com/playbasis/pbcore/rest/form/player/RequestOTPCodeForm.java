@@ -9,19 +9,44 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 public class RequestOTPCodeForm extends PBForm {
 
   protected String playerId;
+  protected String deviceToken = null;
+  protected String deviceDescription = null;
+  protected String deviceName = null;
+  protected String osType = null;
 
   public RequestOTPCodeForm(String playerId) {
     this.playerId = playerId;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public void setDeviceToken(String deviceToken) {
+    this.deviceToken = deviceToken;
+  }
+
+  public void setDeviceDescription(String deviceDescription) {
+    this.deviceDescription = deviceDescription;
+  }
+
+  public void setDeviceName(String deviceName) {
+    this.deviceName = deviceName;
+  }
+
+  public void setOsType(String osType) {
+    this.osType = osType;
   }
 
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
-    return map;
-  }
+    map.put("device_token", deviceToken);
+    map.put("device_description", deviceDescription);
+    map.put("device_name", deviceName);
+    map.put("os_type", osType);
 
-  public String getPlayerId() {
-    return playerId;
+    return map;
   }
 }

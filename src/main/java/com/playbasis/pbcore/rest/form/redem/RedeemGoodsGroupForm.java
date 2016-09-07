@@ -33,7 +33,7 @@ public class RedeemGoodsGroupForm extends PBForm {
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
-    if (amount != -1) {
+    if (amount >= 0) {
       map.put("amount", amount);
     }
 

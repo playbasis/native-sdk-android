@@ -31,6 +31,10 @@ public class SendEmailForm extends PBForm {
     return message;
   }
 
+  public String getTemplateId() {
+    return templateId;
+  }
+
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();

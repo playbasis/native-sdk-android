@@ -9,6 +9,7 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 public class GetPlayerBadgesForm extends PBForm {
 
   public String playerId;
+  public String tags = null;
 
   public GetPlayerBadgesForm(String playerId) {
     this.playerId = playerId;
@@ -18,11 +19,15 @@ public class GetPlayerBadgesForm extends PBForm {
     return playerId;
   }
 
+  public String getTags() {
+    return tags;
+  }
+
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
-    map.put("tags", null);
+    map.put("tags", tags);
 
     return map;
   }
