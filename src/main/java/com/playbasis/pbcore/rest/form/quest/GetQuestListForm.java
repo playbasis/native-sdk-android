@@ -14,14 +14,6 @@ public class GetQuestListForm extends PBForm {
 
   }
 
-  public void setTags(String tags) {
-    this.tags = tags;
-  }
-
-  public String getTags() {
-    return tags;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
@@ -29,5 +21,13 @@ public class GetQuestListForm extends PBForm {
     map.put("tags", tags);
 
     return map;
+  }
+
+  public String getTags() {
+    return tags;
+  }
+
+  public void setTags(String tags) {
+    this.tags = tags;
   }
 }

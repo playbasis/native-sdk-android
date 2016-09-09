@@ -14,14 +14,14 @@ public class GetPlayerAllQuestListForm extends PBForm {
     this.playerId = playerId;
   }
 
-  public String getPlayerId() {
-    return playerId;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
     return map;
+  }
+
+  public String getPlayerId() {
+    return playerId;
   }
 }

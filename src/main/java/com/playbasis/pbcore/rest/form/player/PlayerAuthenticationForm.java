@@ -18,22 +18,6 @@ public class PlayerAuthenticationForm extends PBForm {
     this.password = password;
   }
 
-  public String getPassword() {
-    return password;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  public void setDeviceToken(String deviceToken) {
-    this.deviceToken = deviceToken;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
@@ -49,4 +33,31 @@ public class PlayerAuthenticationForm extends PBForm {
     return map;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public String getDeviceToken() {
+    return deviceToken;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
+  public void setDeviceToken(String deviceToken) {
+    this.deviceToken = deviceToken;
+  }
 }

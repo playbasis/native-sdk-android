@@ -30,8 +30,103 @@ public class UpdatePlayerForm extends PBForm {
     this.playerId = playerId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("username", userName);
+    map.put("email", email);
+    map.put("image", image);
+    map.put("phone_number", phoneNumber);
+    map.put("exp", exp);
+    map.put("level", level);
+    map.put("facebook_id", facebookId);
+    map.put("twitter_id", twitterId);
+    map.put("password", password);
+    map.put("first_name", firstName);
+    map.put("last_name", lastName);
+
+    if (gender == 1 || gender == 2) {
+      map.put("gender", gender);
+    }
+
+    map.put("birth_date", getBirthdateValue());
+    map.put("device_id", deviceId);
+    map.put("approve_status", approveStatus);
+
+    return map;
+  }
+
+  public String getBirthdateValue() {
+    if (birthDate != null) {
+      return birthDate.getParamValue();
+    }
+
+    return null;
+  }
+
   public String getPlayerId() {
     return playerId;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public String getExp() {
+    return exp;
+  }
+
+  public String getLevel() {
+    return level;
+  }
+
+  public String getFacebookId() {
+    return facebookId;
+  }
+
+  public String getTwitterId() {
+    return twitterId;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public int getGender() {
+    return gender;
+  }
+
+  public Birthdate getBirthDate() {
+    return birthDate;
+  }
+
+  public String getDeviceId() {
+    return deviceId;
+  }
+
+  public String getApproveStatus() {
+    return approveStatus;
   }
 
   public void setUserName(String userName) {
@@ -92,40 +187,5 @@ public class UpdatePlayerForm extends PBForm {
 
   public void setApproveStatus(String approveStatus) {
     this.approveStatus = approveStatus;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("username", userName);
-    map.put("email", email);
-    map.put("image", image);
-    map.put("phone_number", phoneNumber);
-    map.put("exp", exp);
-    map.put("level", level);
-    map.put("facebook_id", facebookId);
-    map.put("twitter_id", twitterId);
-    map.put("password", password);
-    map.put("first_name", firstName);
-    map.put("last_name", lastName);
-
-    if (gender == 1 || gender == 2) {
-      map.put("gender", gender);
-    }
-
-    map.put("birth_date", getBirthdateValue());
-    map.put("device_id", deviceId);
-    map.put("approve_status", approveStatus);
-
-    return map;
-  }
-
-  public String getBirthdateValue() {
-    if (birthDate != null) {
-      return birthDate.getParamValue();
-    }
-
-    return null;
   }
 }

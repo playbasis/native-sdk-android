@@ -14,14 +14,14 @@ public class AvailableBranchForGoodsGroupForm extends PBForm {
     this.goodsGroup = goodsGroup;
   }
 
-  public String getGoodsGroup() {
-    return goodsGroup;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
 
     return map;
+  }
+
+  public String getGoodsGroup() {
+    return goodsGroup;
   }
 }

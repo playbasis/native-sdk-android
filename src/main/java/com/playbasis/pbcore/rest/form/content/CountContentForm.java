@@ -24,6 +24,63 @@ public class CountContentForm extends PBForm {
 
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap fields = super.getFields();
+
+    fields.put("title", title);
+    fields.put("category", category);
+    fields.put("date_check", dateCheck);
+    fields.put("pin", pin);
+    fields.put("tags", tags);
+    fields.put("status", status);
+    fields.put("player_id", playerId);
+    fields.put("only_new_content", onlyNewContent);
+    fields.put("only_new_feedback", onlyNewFeedback);
+
+    return fields;
+  }
+
+  public static String getTAG() {
+    return TAG;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public boolean isDateCheck() {
+    return dateCheck;
+  }
+
+  public String getPin() {
+    return pin;
+  }
+
+  public String getTags() {
+    return tags;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public boolean isOnlyNewContent() {
+    return onlyNewContent;
+  }
+
+  public boolean isOnlyNewFeedback() {
+    return onlyNewFeedback;
+  }
+
   public void setTitle(String title) {
     this.title = title;
   }
@@ -58,22 +115,5 @@ public class CountContentForm extends PBForm {
 
   public void setOnlyNewFeedback(boolean onlyNewFeedback) {
     this.onlyNewFeedback = onlyNewFeedback;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap fields = super.getFields();
-
-    fields.put("title", title);
-    fields.put("category", category);
-    fields.put("date_check", dateCheck);
-    fields.put("pin", pin);
-    fields.put("tags", tags);
-    fields.put("status", status);
-    fields.put("player_id", playerId);
-    fields.put("only_new_content", onlyNewContent);
-    fields.put("only_new_feedback", onlyNewFeedback);
-
-    return fields;
   }
 }

@@ -21,6 +21,54 @@ public class GetStoreOrganizationForm extends PBForm {
 
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("id", id);
+    map.put("organize_id", organizationId);
+    map.put("parent_id", parentId);
+    map.put("search", search);
+    map.put("sort", sort);
+    map.put("order", order);
+    map.put("offset", offset);
+    map.put("limit", limit);
+
+    return map;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getOrganizationId() {
+    return organizationId;
+  }
+
+  public String getParentId() {
+    return parentId;
+  }
+
+  public String getSearch() {
+    return search;
+  }
+
+  public String getSort() {
+    return sort;
+  }
+
+  public String getOrder() {
+    return order;
+  }
+
+  public int getOffset() {
+    return offset;
+  }
+
+  public int getLimit() {
+    return limit;
+  }
+
   public void setId(String id) {
     this.id = id;
   }
@@ -51,21 +99,5 @@ public class GetStoreOrganizationForm extends PBForm {
 
   public void setLimit(int limit) {
     this.limit = limit;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("id", id);
-    map.put("organize_id", organizationId);
-    map.put("parent_id", parentId);
-    map.put("search", search);
-    map.put("sort", sort);
-    map.put("order", order);
-    map.put("offset", offset);
-    map.put("limit", limit);
-
-    return map;
   }
 }

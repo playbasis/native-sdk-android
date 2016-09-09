@@ -19,6 +19,15 @@ public class SendEmailForm extends PBForm {
     this.message = message;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("template_id", templateId);
+
+    return map;
+  }
+
   public String getPlayerId() {
     return playerId;
   }
@@ -35,12 +44,7 @@ public class SendEmailForm extends PBForm {
     return templateId;
   }
 
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("template_id", templateId);
-
-    return map;
+  public void setTemplateId(String templateId) {
+    this.templateId = templateId;
   }
 }

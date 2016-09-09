@@ -17,6 +17,15 @@ public class GetPlayerQuestInfoForm extends PBForm {
     this.playerId = playerId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("filter", filter);
+
+    return map;
+  }
+
   public String getQuestId() {
     return questId;
   }
@@ -25,16 +34,11 @@ public class GetPlayerQuestInfoForm extends PBForm {
     return playerId;
   }
 
-  public void setFilter(String filter) {
-    this.filter = filter;
+  public String getFilter() {
+    return filter;
   }
 
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("filter", filter);
-
-    return map;
+  public void setFilter(String filter) {
+    this.filter = filter;
   }
 }

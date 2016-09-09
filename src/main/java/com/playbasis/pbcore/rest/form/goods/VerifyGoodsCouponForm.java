@@ -17,8 +17,13 @@ public class VerifyGoodsCouponForm extends PBForm {
     this.code = code;
   }
 
-  public void setPlayerId(String playerId) {
-    this.playerId = playerId;
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("player_id", playerId);
+
+    return map;
   }
 
   public String getGoodsId() {
@@ -29,12 +34,11 @@ public class VerifyGoodsCouponForm extends PBForm {
     return code;
   }
 
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
+  public String getPlayerId() {
+    return playerId;
+  }
 
-    map.put("player_id", playerId);
-
-    return map;
+  public void setPlayerId(String playerId) {
+    this.playerId = playerId;
   }
 }

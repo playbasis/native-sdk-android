@@ -16,18 +16,6 @@ public class GetPlayerJoinedQuestListForm extends PBForm {
     this.playerId = playerId;
   }
 
-  public String getPlayerId() {
-    return playerId;
-  }
-
-  public void setFilter(String filter) {
-    this.filter = filter;
-  }
-
-  public void setTags(String tags) {
-    this.tags = tags;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
@@ -36,5 +24,25 @@ public class GetPlayerJoinedQuestListForm extends PBForm {
     map.put("filter", filter);
 
     return map;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public String getFilter() {
+    return filter;
+  }
+
+  public String getTags() {
+    return tags;
+  }
+
+  public void setFilter(String filter) {
+    this.filter = filter;
+  }
+
+  public void setTags(String tags) {
+    this.tags = tags;
   }
 }

@@ -17,18 +17,6 @@ public class RedeemGoodsGroupForm extends PBForm {
     this.playerId = playerId;
   }
 
-  public String getGroup() {
-    return group;
-  }
-
-  public String getPlayerId() {
-    return playerId;
-  }
-
-  public void setAmount(int amount) {
-    this.amount = amount;
-  }
-
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
@@ -38,5 +26,21 @@ public class RedeemGoodsGroupForm extends PBForm {
     }
 
     return map;
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public int getAmount() {
+    return amount;
+  }
+
+  public void setAmount(int amount) {
+    this.amount = amount;
   }
 }

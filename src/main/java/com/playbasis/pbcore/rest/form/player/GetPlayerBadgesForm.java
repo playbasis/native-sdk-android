@@ -15,6 +15,15 @@ public class GetPlayerBadgesForm extends PBForm {
     this.playerId = playerId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("tags", tags);
+
+    return map;
+  }
+
   public String getPlayerId() {
     return playerId;
   }
@@ -23,12 +32,7 @@ public class GetPlayerBadgesForm extends PBForm {
     return tags;
   }
 
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("tags", tags);
-
-    return map;
+  public void setTags(String tags) {
+    this.tags = tags;
   }
 }

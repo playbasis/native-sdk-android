@@ -18,8 +18,36 @@ public class RequestOTPCodeForm extends PBForm {
     this.playerId = playerId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("device_token", deviceToken);
+    map.put("device_description", deviceDescription);
+    map.put("device_name", deviceName);
+    map.put("os_type", osType);
+
+    return map;
+  }
+
   public String getPlayerId() {
     return playerId;
+  }
+
+  public String getDeviceToken() {
+    return deviceToken;
+  }
+
+  public String getDeviceDescription() {
+    return deviceDescription;
+  }
+
+  public String getDeviceName() {
+    return deviceName;
+  }
+
+  public String getOsType() {
+    return osType;
   }
 
   public void setDeviceToken(String deviceToken) {
@@ -36,17 +64,5 @@ public class RequestOTPCodeForm extends PBForm {
 
   public void setOsType(String osType) {
     this.osType = osType;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("device_token", deviceToken);
-    map.put("device_description", deviceDescription);
-    map.put("device_name", deviceName);
-    map.put("os_type", osType);
-
-    return map;
   }
 }

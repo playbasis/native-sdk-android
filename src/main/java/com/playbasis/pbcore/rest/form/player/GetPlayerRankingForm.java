@@ -21,6 +21,15 @@ public class GetPlayerRankingForm extends PBForm {
     this.limit = limit;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("mode", mode);
+
+    return map;
+  }
+
   public String getRankBy() {
     return rankBy;
   }
@@ -29,16 +38,15 @@ public class GetPlayerRankingForm extends PBForm {
     return limit;
   }
 
-  public void setMode(String mode) {
-    this.mode = mode;
+  public String getMode() {
+    return mode;
   }
 
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
+  public void setLimit(int limit) {
+    this.limit = limit;
+  }
 
-    map.put("mode", mode);
-
-    return map;
+  public void setMode(String mode) {
+    this.mode = mode;
   }
 }

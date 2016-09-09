@@ -19,6 +19,46 @@ public class GetPlayerActionReportForm extends PBForm {
     this.playerId = playerId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("month", month);
+    map.put("year", year);
+    map.put("action", action);
+    map.put("parameter", parameter);
+
+    if (count != -1) {
+      map.put("count", count);
+    }
+
+    return map;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public String getMonth() {
+    return month;
+  }
+
+  public String getYear() {
+    return year;
+  }
+
+  public String getAction() {
+    return action;
+  }
+
+  public String getParameter() {
+    return parameter;
+  }
+
+  public int getCount() {
+    return count;
+  }
+
   public void setMonth(String month) {
     this.month = month;
   }
@@ -37,25 +77,5 @@ public class GetPlayerActionReportForm extends PBForm {
 
   public void setCount(int count) {
     this.count = count;
-  }
-
-  public String getPlayerId() {
-    return playerId;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("month", month);
-    map.put("year", year);
-    map.put("action", action);
-    map.put("parameter", parameter);
-
-    if (count != -1) {
-      map.put("count", count);
-    }
-
-    return map;
   }
 }

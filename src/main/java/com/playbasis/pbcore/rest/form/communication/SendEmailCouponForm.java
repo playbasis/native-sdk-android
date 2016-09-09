@@ -20,6 +20,16 @@ public class SendEmailCouponForm extends PBForm {
     this.refId = refId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("message", message);
+    map.put("template_id", templateId);
+
+    return map;
+  }
+
   public String getPlayerId() {
     return playerId;
   }
@@ -32,21 +42,19 @@ public class SendEmailCouponForm extends PBForm {
     return refId;
   }
 
+  public String getMessage() {
+    return message;
+  }
+
+  public String getTemplateId() {
+    return templateId;
+  }
+
   public void setTemplateId(String templateId) {
     this.templateId = templateId;
   }
 
   public void setMessage(String message) {
     this.message = message;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("message", message);
-    map.put("template_id", templateId);
-
-    return map;
   }
 }

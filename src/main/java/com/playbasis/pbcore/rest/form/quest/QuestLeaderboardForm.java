@@ -19,8 +19,41 @@ public class QuestLeaderboardForm extends PBForm {
     this.questId = questId;
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("completion_element_id", completionElementId);
+    map.put("player_id", playerId);
+    map.put("offset", offset);
+    map.put("limit", limit);
+    map.put("status", status);
+
+    return map;
+  }
+
   public String getQuestId() {
     return questId;
+  }
+
+  public String getCompletionElementId() {
+    return completionElementId;
+  }
+
+  public int getOffset() {
+    return offset;
+  }
+
+  public int getLimit() {
+    return limit;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public String getPlayerId() {
+    return playerId;
   }
 
   public void setCompletionElementId(String completionElementId) {
@@ -41,18 +74,5 @@ public class QuestLeaderboardForm extends PBForm {
 
   public void setPlayerId(String playerId) {
     this.playerId = playerId;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("completion_element_id", completionElementId);
-    map.put("player_id", playerId);
-    map.put("offset", offset);
-    map.put("limit", limit);
-    map.put("status", status);
-
-    return map;
   }
 }

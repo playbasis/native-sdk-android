@@ -32,7 +32,44 @@ public class PlayerRegistrationForm extends PBForm {
     this.email = email;
   }
 
-  public String getPlayerId(){
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("image", image);
+    map.put("phone_number", phoneNumber);
+    map.put("facebook_id", facebookId);
+    map.put("twitter_id", twitterId);
+    map.put("password", password);
+    map.put("first_name", firstName);
+    map.put("last_name", lastName);
+
+    if (gender == 1 || gender == 2) {
+      map.put("gender", gender);
+    }
+
+    map.put("birth_date", getBirthdateValue());
+    map.put("code", code);
+
+    if (anonymous == 0 || anonymous == 1) {
+      map.put("anonymous", anonymous);
+    }
+
+    map.put("device_id", deviceId);
+    map.put("approve_status", status);
+
+    return map;
+  }
+
+  public String getBirthdateValue() {
+    if (birthDate != null) {
+      return birthDate.getParamValue();
+    }
+
+    return null;
+  }
+
+  public String getPlayerId() {
     return playerId;
   }
 
@@ -42,6 +79,58 @@ public class PlayerRegistrationForm extends PBForm {
 
   public String getEmail() {
     return email;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public String getFacebookId() {
+    return facebookId;
+  }
+
+  public String getTwitterId() {
+    return twitterId;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public int getGender() {
+    return gender;
+  }
+
+  public Birthdate getBirthDate() {
+    return birthDate;
+  }
+
+  public String getCode() {
+    return code;
+  }
+
+  public int getAnonymous() {
+    return anonymous;
+  }
+
+  public String getDeviceId() {
+    return deviceId;
+  }
+
+  public String getStatus() {
+    return status;
   }
 
   public void setImage(String image) {
@@ -94,42 +183,5 @@ public class PlayerRegistrationForm extends PBForm {
 
   public void setStatus(String status) {
     this.status = status;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap map = super.getFields();
-
-    map.put("image", image);
-    map.put("phone_number", phoneNumber);
-    map.put("facebook_id", facebookId);
-    map.put("twitter_id", twitterId);
-    map.put("password", password);
-    map.put("first_name", firstName);
-    map.put("last_name", lastName);
-
-    if (gender == 1 || gender == 2) {
-      map.put("gender", gender);
-    }
-
-    map.put("birth_date", getBirthdateValue());
-    map.put("code", code);
-
-    if (anonymous == 0 || anonymous == 1) {
-      map.put("anonymous", anonymous);
-    }
-
-    map.put("device_id", deviceId);
-    map.put("approve_status", status);
-
-    return map;
-  }
-
-  public String getBirthdateValue() {
-    if (birthDate != null) {
-      return birthDate.getParamValue();
-    }
-
-    return null;
   }
 }

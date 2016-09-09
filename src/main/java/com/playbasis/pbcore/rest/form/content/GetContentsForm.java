@@ -30,6 +30,96 @@ public class GetContentsForm extends PBForm {
 
   }
 
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap fields = super.getFields();
+
+    fields.put("node_id", nodeId);
+    fields.put("title", title);
+    fields.put("category", category);
+    fields.put("date_check", dateCheck);
+    fields.put("sort", sort);
+    fields.put("order", order);
+    fields.put("offset", offset);
+    fields.put("limit", limit);
+    fields.put("full_html", fullHtml);
+    fields.put("pin", pin);
+    fields.put("tags", tags);
+    fields.put("status", status);
+
+    if (Validator.isValid(playerId)) {
+      fields.put("player_id", playerId);
+      fields.put("only_new_content", onlyNewContents);
+      fields.put("only_new_feedback", onlyNewFeedbacks);
+    }
+
+    return fields;
+  }
+
+  public static String getTAG() {
+    return TAG;
+  }
+
+  public String getNodeId() {
+    return nodeId;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public boolean isDateCheck() {
+    return dateCheck;
+  }
+
+  public String getSort() {
+    return sort;
+  }
+
+  public String getOrder() {
+    return order;
+  }
+
+  public int getOffset() {
+    return offset;
+  }
+
+  public int getLimit() {
+    return limit;
+  }
+
+  public boolean isFullHtml() {
+    return fullHtml;
+  }
+
+  public String getPin() {
+    return pin;
+  }
+
+  public String getTags() {
+    return tags;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public String getPlayerId() {
+    return playerId;
+  }
+
+  public boolean isOnlyNewContents() {
+    return onlyNewContents;
+  }
+
+  public boolean isOnlyNewFeedbacks() {
+    return onlyNewFeedbacks;
+  }
+
   public void setNodeId(String nodeId) {
     this.nodeId = nodeId;
   }
@@ -88,31 +178,5 @@ public class GetContentsForm extends PBForm {
 
   public void setOnlyNewFeedbacks(boolean onlyNewFeedbacks) {
     this.onlyNewFeedbacks = onlyNewFeedbacks;
-  }
-
-  @Override
-  public ParamsMap getFields() {
-    ParamsMap fields = super.getFields();
-
-    fields.put("node_id", nodeId);
-    fields.put("title", title);
-    fields.put("category", category);
-    fields.put("date_check", dateCheck);
-    fields.put("sort", sort);
-    fields.put("order", order);
-    fields.put("offset", offset);
-    fields.put("limit", limit);
-    fields.put("full_html", fullHtml);
-    fields.put("pin", pin);
-    fields.put("tags", tags);
-    fields.put("status", status);
-
-    if (Validator.isValid(playerId)) {
-      fields.put("player_id", playerId);
-      fields.put("only_new_content", onlyNewContents);
-      fields.put("only_new_feedback", onlyNewFeedbacks);
-    }
-
-    return fields;
   }
 }
