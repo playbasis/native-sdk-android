@@ -13,10 +13,10 @@ public class ActionReportApiResult extends PBApiResult<HashMap<String, HashMap<S
   public class Response {
 
     @SerializedName("quantity")
-    public int quantity;
+    public double quantity;
     @SerializedName("previous_quantity")
-    public int previousQuantity;
+    public double previousQuantity;
     @SerializedName("percent_changed")
-    public int percentChanged;
+    public double percentChanged;
   }
 }

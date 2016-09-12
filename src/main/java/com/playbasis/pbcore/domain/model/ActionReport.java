@@ -12,9 +12,9 @@ public class ActionReport extends PBModel {
 
   protected String year;
   protected String month;
-  protected int quantity;
-  protected int previousQuantity;
-  protected int percentChanged;
+  protected double quantity;
+  protected double previousQuantity;
+  protected double percentChanged;
 
   public ActionReport(String year, String month, ActionReportApiResult.Response response) {
     this.year = year;
@@ -47,15 +47,15 @@ public class ActionReport extends PBModel {
     return month;
   }
 
-  public int getQuantity() {
+  public double getQuantity() {
     return quantity;
   }
 
-  public int getPreviousQuantity() {
+  public double getPreviousQuantity() {
     return previousQuantity;
   }
 
-  public int getPercentChanged() {
+  public double getPercentChanged() {
     return percentChanged;
   }
 }
