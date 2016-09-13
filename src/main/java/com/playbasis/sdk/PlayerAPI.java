@@ -15,6 +15,7 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerPrivateInfoInterac
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
+import com.playbasis.pbcore.domain.interactor.player.SetupPhoneInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RequestOTPCodeInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SendPlayerEmailVerificationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsInteractor;
@@ -95,6 +96,8 @@ public class PlayerAPI {
   protected UpdatePlayerOrganizableModelInteractor updatePlayerOrganizableModelInteractor;
   @Inject
   protected RequestOTPCodeInteractor requestOTPCodeInteractor;
+  @Inject
+  protected SetupPhoneInteractor setupPhoneInteractor;
   @Inject
   protected VerifyOTPCodeInteractor verifyOTPCodeInteractor;
   @Inject
@@ -206,6 +209,11 @@ public class PlayerAPI {
   public static void requestOTPCode(RequestOTPCodeForm form, RequestOTPCodeCallback callback) {
     instance().requestOTPCodeInteractor.setRequestOTPCodeForm(form);
     instance().requestOTPCodeInteractor.execute(new BaseApiSubscriber<>(callback));
+  }
+
+  public static void setupPhone(SetupPhoneForm form, SetupPhoneCallback callback) {
+    instance().setupPhoneInteractor.setSetupPhoneForm(form);
+    instance().setupPhoneInteractor.execute(new BaseApiSubscriber<>(callback));
   }
 
   public static void verifyOTPCode(VerifyOTPCodeForm form, VerifyOTPCodeCallback callback) {
@@ -332,6 +340,13 @@ public class PlayerAPI {
     }
   }
 
+  public static class SetupPhoneForm extends com.playbasis.pbcore.rest.form.player.SetupPhoneForm {
+
+    public SetupPhoneForm(String playerId, String phoneNumber, String deviceToken, String deviceDescription, String deviceName) {
+      super(playerId, phoneNumber, deviceToken, deviceDescription, deviceName);
+    }
+  }
+
   public static class VerifyOTPCodeForm extends com.playbasis.pbcore.rest.form.player.VerifyOTPCodeForm {
 
     public VerifyOTPCodeForm(String playerId, String code) {
@@ -409,6 +424,10 @@ public class PlayerAPI {
   }
 
   public interface RequestOTPCodeCallback extends BasicApiCallback {
+
+  }
+
+  public interface SetupPhoneCallback extends BasicApiCallback {
 
   }
 

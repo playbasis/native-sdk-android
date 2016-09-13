@@ -18,6 +18,7 @@ import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerRankApiResult;
 import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
 import com.playbasis.pbcore.rest.result.player.RequestOTPCodeApiResult;
+import com.playbasis.pbcore.rest.result.player.SetupPhoneApiResult;
 import com.playbasis.pbcore.rest.result.player.SetPlayerCustomFieldApiResult;
 import com.playbasis.pbcore.rest.result.player.UpdatePlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.player.VerifyOTPCodeApiResult;
@@ -207,6 +208,19 @@ public interface PlayerService {
   Observable<RequestOTPCodeApiResult> requestOTPCode(
       @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token,
+      @FieldMap ParamsMap fields
+  );
+
+  @FormUrlEncoded
+  @POST("Player/auth/{id}/setupPhone")
+  Observable<SetupPhoneApiResult> setupPhone(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Field("token") String token,
+      @NonNull @Field("phone_number") String phoneNumber,
+      @NonNull @Field("device_token") String deviceToken,
+      @NonNull @Field("device_name") String deviceName,
+      @NonNull @Field("device_description") String deviceDescription,
+      @NonNull @Field("os_type") String osType,
       @FieldMap ParamsMap fields
   );
 

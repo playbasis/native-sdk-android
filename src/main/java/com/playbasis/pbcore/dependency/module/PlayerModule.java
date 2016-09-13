@@ -22,6 +22,7 @@ import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RequestOTPCodeInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SendPlayerEmailVerificationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetPlayerCustomFieldsInteractor;
+import com.playbasis.pbcore.domain.interactor.player.SetupPhoneInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.UpdatePlayerOrganizableModelInteractor;
 import com.playbasis.pbcore.domain.interactor.player.VerifyOTPCodeInteractor;
@@ -205,6 +206,15 @@ public class PlayerModule {
                                                            RestClient restClient,
                                                            RequestTokenInteractor requestTokenInteractor) {
     return new RequestOTPCodeInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  SetupPhoneInteractor provideSetupPhoneInteractor(PBThreadExecutor threadExecutor,
+                                                   PBPostExecutionThread postExecutionThread,
+                                                   RestClient restClient,
+                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new SetupPhoneInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
   @Provides
