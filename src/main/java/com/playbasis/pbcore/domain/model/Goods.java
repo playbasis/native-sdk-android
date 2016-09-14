@@ -141,6 +141,10 @@ public class Goods extends PBModel {
     return amount;
   }
 
+  public RedeemCondition getRedeemCondition() {
+    return redeemCondition;
+  }
+
   public static class RedeemCondition {
 
     protected PointCondition pointCondition;
