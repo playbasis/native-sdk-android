@@ -217,10 +217,6 @@ public interface PlayerService {
       @NonNull @Path("id") String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("phone_number") String phoneNumber,
-      @NonNull @Field("device_token") String deviceToken,
-      @NonNull @Field("device_name") String deviceName,
-      @NonNull @Field("device_description") String deviceDescription,
-      @NonNull @Field("os_type") String osType,
       @FieldMap ParamsMap fields
   );
 

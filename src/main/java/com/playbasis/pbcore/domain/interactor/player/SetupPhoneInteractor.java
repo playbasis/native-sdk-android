@@ -37,10 +37,6 @@ public class SetupPhoneInteractor extends PlayBasisApiInteractor {
             setupPhoneForm.getPlayerId(),
             getApiToken(),
             setupPhoneForm.getPhoneNumber(),
-            setupPhoneForm.getDeviceToken(),
-            setupPhoneForm.getDeviceName(),
-            setupPhoneForm.getDeviceDescription(),
-            setupPhoneForm.getOSType(),
             setupPhoneForm.getFields()
         ).map(new PBApiErrorCheckFunc<SetupPhoneApiResult>());
   }

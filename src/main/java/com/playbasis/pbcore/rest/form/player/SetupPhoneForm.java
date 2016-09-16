@@ -15,17 +15,19 @@ public class SetupPhoneForm extends PBForm {
   protected String deviceName = null;
   protected final String osType = "Android";
 
-  public SetupPhoneForm(String playerId, String phoneNumber, String deviceToken, String deviceDescription, String deviceName) {
+  public SetupPhoneForm(String playerId, String phoneNumber) {
     this.playerId = playerId;
     this.phoneNumber = phoneNumber;
-    this.deviceToken = deviceToken;
-    this.deviceDescription = deviceDescription;
-    this.deviceName = deviceName;
   }
 
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
+
+    map.put("device_token", deviceToken);
+    map.put("device_name", deviceName);
+    map.put("device_description", deviceDescription);
+    map.put("os_type", osType);
 
     return map;
   }

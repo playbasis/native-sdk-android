@@ -7,6 +7,7 @@ public class EventResponse {
 
   public String eventType;
   public String logId;
+  public String value;
   public int index;
   public RewardResponse rewardResponse;
 

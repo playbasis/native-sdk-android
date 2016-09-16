@@ -342,8 +342,8 @@ public class PlayerAPI {
 
   public static class SetupPhoneForm extends com.playbasis.pbcore.rest.form.player.SetupPhoneForm {
 
-    public SetupPhoneForm(String playerId, String phoneNumber, String deviceToken, String deviceDescription, String deviceName) {
-      super(playerId, phoneNumber, deviceToken, deviceDescription, deviceName);
+    public SetupPhoneForm(String playerId, String phoneNumber) {
+      super(playerId, phoneNumber);
     }
   }
 
