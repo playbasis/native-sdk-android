@@ -187,6 +187,10 @@ public class Player extends PBModel {
     return goods;
   }
 
+  public ArrayList<Point> getPoints() {
+    return points;
+  }
+
   public HashMap<String, String> getCustomFields() {
     return customFields;
   }
