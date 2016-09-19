@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.BaseQuestResponse;
 import com.playbasis.pbcore.rest.response.PlayerQuestResponse;
 
@@ -187,7 +189,75 @@ public class Quest extends PBModel {
     return numMissions;
   }
 
-  public static class Condition {
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.questId);
+    dest.writeString(this.name);
+    dest.writeString(this.description);
+    dest.writeString(this.hint);
+    dest.writeString(this.imageUrl);
+    dest.writeString(this.sortOrder);
+    dest.writeString(this.clientId);
+    dest.writeString(this.siteId);
+    dest.writeString(this.feedbacks);
+    dest.writeString(this.organizeId);
+    dest.writeString(this.organizeRole);
+    dest.writeLong(this.addedDate != null ? this.addedDate.getTime() : -1);
+    dest.writeLong(this.modifiedDate != null ? this.modifiedDate.getTime() : -1);
+    dest.writeStringList(this.tags);
+    dest.writeByte(this.status ? (byte) 1 : (byte) 0);
+    dest.writeByte(this.missionOrder ? (byte) 1 : (byte) 0);
+    dest.writeTypedList(this.missions);
+    dest.writeTypedList(this.conditions);
+    dest.writeTypedList(this.rewards);
+    dest.writeString(this.playerStatus);
+    dest.writeParcelable(this.numMissions, flags);
+  }
+
+  protected Quest(Parcel in) {
+    this.questId = in.readString();
+    this.name = in.readString();
+    this.description = in.readString();
+    this.hint = in.readString();
+    this.imageUrl = in.readString();
+    this.sortOrder = in.readString();
+    this.clientId = in.readString();
+    this.siteId = in.readString();
+    this.feedbacks = in.readString();
+    this.organizeId = in.readString();
+    this.organizeRole = in.readString();
+    long tmpAddedDate = in.readLong();
+    this.addedDate = tmpAddedDate == -1 ? null : new Date(tmpAddedDate);
+    long tmpModifiedDate = in.readLong();
+    this.modifiedDate = tmpModifiedDate == -1 ? null : new Date(tmpModifiedDate);
+    this.tags = in.createStringArrayList();
+    this.status = in.readByte() != 0;
+    this.missionOrder = in.readByte() != 0;
+    this.missions = in.createTypedArrayList(Mission.CREATOR);
+    this.conditions = in.createTypedArrayList(Condition.CREATOR);
+    this.rewards = in.createTypedArrayList(Reward.CREATOR);
+    this.playerStatus = in.readString();
+    this.numMissions = in.readParcelable(NumMissions.class.getClassLoader());
+  }
+
+  public static final Creator<Quest> CREATOR = new Creator<Quest>() {
+    @Override
+    public Quest createFromParcel(Parcel source) {
+      return new Quest(source);
+    }
+
+    @Override
+    public Quest[] newArray(int size) {
+      return new Quest[size];
+    }
+  };
+
+  public static class Condition implements android.os.Parcelable {
 
     protected String conditionId;
     protected String value;
@@ -229,9 +299,39 @@ public class Quest extends PBModel {
     public String getType() {
       return type;
     }
+
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeString(this.conditionId);
+      dest.writeString(this.value);
+      dest.writeString(this.type);
+    }
+
+    protected Condition(Parcel in) {
+      this.conditionId = in.readString();
+      this.value = in.readString();
+      this.type = in.readString();
+    }
+
+    public static final Creator<Condition> CREATOR = new Creator<Condition>() {
+      @Override
+      public Condition createFromParcel(Parcel source) {
+        return new Condition(source);
+      }
+
+      @Override
+      public Condition[] newArray(int size) {
+        return new Condition[size];
+      }
+    };
   }
 
-  public static class NumMissions {
+  public static class NumMissions extends PBModel {
 
     protected int total;
     protected int join;
@@ -260,5 +360,37 @@ public class Quest extends PBModel {
     public int getFinish() {
       return finish;
     }
+
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeInt(this.total);
+      dest.writeInt(this.join);
+      dest.writeInt(this.unjoin);
+      dest.writeInt(this.finish);
+    }
+
+    protected NumMissions(Parcel in) {
+      this.total = in.readInt();
+      this.join = in.readInt();
+      this.unjoin = in.readInt();
+      this.finish = in.readInt();
+    }
+
+    public static final Creator<NumMissions> CREATOR = new Creator<NumMissions>() {
+      @Override
+      public NumMissions createFromParcel(Parcel source) {
+        return new NumMissions(source);
+      }
+
+      @Override
+      public NumMissions[] newArray(int size) {
+        return new NumMissions[size];
+      }
+    };
   }
 }

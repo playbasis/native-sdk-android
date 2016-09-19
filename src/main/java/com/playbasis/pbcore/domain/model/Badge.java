@@ -1,5 +1,8 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.playbasis.pbcore.rest.response.BadgeResponse;
 
 import java.util.ArrayList;
@@ -87,4 +90,44 @@ public class Badge extends PBModel {
   public int getSortOrder() {
     return sortOrder;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.badgeId);
+    dest.writeString(this.imageUrl);
+    dest.writeString(this.name);
+    dest.writeString(this.description);
+    dest.writeString(this.hint);
+    dest.writeByte(this.sponsor ? (byte) 1 : (byte) 0);
+    dest.writeInt(this.amount);
+    dest.writeInt(this.sortOrder);
+  }
+
+  protected Badge(Parcel in) {
+    this.badgeId = in.readString();
+    this.imageUrl = in.readString();
+    this.name = in.readString();
+    this.description = in.readString();
+    this.hint = in.readString();
+    this.sponsor = in.readByte() != 0;
+    this.amount = in.readInt();
+    this.sortOrder = in.readInt();
+  }
+
+  public static final Creator<Badge> CREATOR = new Creator<Badge>() {
+    @Override
+    public Badge createFromParcel(Parcel source) {
+      return new Badge(source);
+    }
+
+    @Override
+    public Badge[] newArray(int size) {
+      return new Badge[size];
+    }
+  };
 }

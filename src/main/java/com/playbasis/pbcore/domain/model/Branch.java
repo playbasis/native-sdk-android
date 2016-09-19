@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.BranchResponse;
 
 import java.util.ArrayList;
@@ -47,4 +49,32 @@ public class Branch extends PBModel {
   public String getName() {
     return name;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.branchId);
+    dest.writeString(this.name);
+  }
+
+  protected Branch(Parcel in) {
+    this.branchId = in.readString();
+    this.name = in.readString();
+  }
+
+  public static final Creator<Branch> CREATOR = new Creator<Branch>() {
+    @Override
+    public Branch createFromParcel(Parcel source) {
+      return new Branch(source);
+    }
+
+    @Override
+    public Branch[] newArray(int size) {
+      return new Branch[size];
+    }
+  };
 }

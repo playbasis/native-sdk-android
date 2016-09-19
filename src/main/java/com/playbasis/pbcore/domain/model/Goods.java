@@ -1,5 +1,8 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.playbasis.pbcore.rest.response.GoodsResponse;
 
 import java.util.ArrayList;
@@ -145,7 +148,63 @@ public class Goods extends PBModel {
     return redeemCondition;
   }
 
-  public static class RedeemCondition {
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.goodsId);
+    dest.writeString(this.name);
+    dest.writeString(this.description);
+    dest.writeString(this.imageUrl);
+    dest.writeString(this.group);
+    dest.writeStringList(this.codes);
+    dest.writeStringList(this.tags);
+    dest.writeLong(this.startDate != null ? this.startDate.getTime() : -1);
+    dest.writeLong(this.expireDate != null ? this.expireDate.getTime() : -1);
+    dest.writeInt(this.quantity);
+    dest.writeInt(this.amount);
+    dest.writeInt(this.sortOrder);
+    dest.writeByte(this.isGroup ? (byte) 1 : (byte) 0);
+    dest.writeByte(this.sponsor ? (byte) 1 : (byte) 0);
+    dest.writeParcelable(this.redeemCondition, flags);
+  }
+
+  protected Goods(Parcel in) {
+    this.goodsId = in.readString();
+    this.name = in.readString();
+    this.description = in.readString();
+    this.imageUrl = in.readString();
+    this.group = in.readString();
+    this.codes = in.createStringArrayList();
+    this.tags = in.createStringArrayList();
+    long tmpStartDate = in.readLong();
+    this.startDate = tmpStartDate == -1 ? null : new Date(tmpStartDate);
+    long tmpExpireDate = in.readLong();
+    this.expireDate = tmpExpireDate == -1 ? null : new Date(tmpExpireDate);
+    this.quantity = in.readInt();
+    this.amount = in.readInt();
+    this.sortOrder = in.readInt();
+    this.isGroup = in.readByte() != 0;
+    this.sponsor = in.readByte() != 0;
+    this.redeemCondition = in.readParcelable(RedeemCondition.class.getClassLoader());
+  }
+
+  public static final Creator<Goods> CREATOR = new Creator<Goods>() {
+    @Override
+    public Goods createFromParcel(Parcel source) {
+      return new Goods(source);
+    }
+
+    @Override
+    public Goods[] newArray(int size) {
+      return new Goods[size];
+    }
+  };
+
+  public static class RedeemCondition implements Parcelable {
 
     protected PointCondition pointCondition;
     protected ArrayList<CustomCondition> customConditions;
@@ -171,7 +230,35 @@ public class Goods extends PBModel {
       return customConditions;
     }
 
-    public static class PointCondition {
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeParcelable(this.pointCondition, flags);
+      dest.writeTypedList(this.customConditions);
+    }
+
+    protected RedeemCondition(Parcel in) {
+      this.pointCondition = in.readParcelable(PointCondition.class.getClassLoader());
+      this.customConditions = in.createTypedArrayList(CustomCondition.CREATOR);
+    }
+
+    public static final Creator<RedeemCondition> CREATOR = new Creator<RedeemCondition>() {
+      @Override
+      public RedeemCondition createFromParcel(Parcel source) {
+        return new RedeemCondition(source);
+      }
+
+      @Override
+      public RedeemCondition[] newArray(int size) {
+        return new RedeemCondition[size];
+      }
+    };
+
+    public static class PointCondition implements Parcelable {
       protected int value;
 
       public PointCondition(GoodsResponse.RedeemConditionResponse.PointCondition pointCondition) {
@@ -181,10 +268,36 @@ public class Goods extends PBModel {
       public int getValue() {
         return value;
       }
+
+      @Override
+      public int describeContents() {
+        return 0;
+      }
+
+      @Override
+      public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.value);
+      }
+
+      protected PointCondition(Parcel in) {
+        this.value = in.readInt();
+      }
+
+      public static final Creator<PointCondition> CREATOR = new Creator<PointCondition>() {
+        @Override
+        public PointCondition createFromParcel(Parcel source) {
+          return new PointCondition(source);
+        }
+
+        @Override
+        public PointCondition[] newArray(int size) {
+          return new PointCondition[size];
+        }
+      };
     }
 
 
-    public static class CustomCondition {
+    public static class CustomCondition implements Parcelable {
       protected String id;
       protected String name;
       protected int value;
@@ -206,6 +319,36 @@ public class Goods extends PBModel {
       public int getValue() {
         return value;
       }
+
+      @Override
+      public int describeContents() {
+        return 0;
+      }
+
+      @Override
+      public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.name);
+        dest.writeInt(this.value);
+      }
+
+      protected CustomCondition(Parcel in) {
+        this.id = in.readString();
+        this.name = in.readString();
+        this.value = in.readInt();
+      }
+
+      public static final Creator<CustomCondition> CREATOR = new Creator<CustomCondition>() {
+        @Override
+        public CustomCondition createFromParcel(Parcel source) {
+          return new CustomCondition(source);
+        }
+
+        @Override
+        public CustomCondition[] newArray(int size) {
+          return new CustomCondition[size];
+        }
+      };
     }
   }
 }

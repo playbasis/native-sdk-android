@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.ContentResponse;
 
 import java.util.ArrayList;
@@ -120,4 +122,46 @@ public class Content extends PBModel {
   public void setEndDate(Date endDate) {
     this.endDate = endDate;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.id);
+    dest.writeString(this.title);
+    dest.writeString(this.summary);
+    dest.writeString(this.detail);
+    dest.writeString(this.category);
+    dest.writeString(this.image);
+    dest.writeLong(this.startDate != null ? this.startDate.getTime() : -1);
+    dest.writeLong(this.endDate != null ? this.endDate.getTime() : -1);
+  }
+
+  protected Content(Parcel in) {
+    this.id = in.readString();
+    this.title = in.readString();
+    this.summary = in.readString();
+    this.detail = in.readString();
+    this.category = in.readString();
+    this.image = in.readString();
+    long tmpStartDate = in.readLong();
+    this.startDate = tmpStartDate == -1 ? null : new Date(tmpStartDate);
+    long tmpEndDate = in.readLong();
+    this.endDate = tmpEndDate == -1 ? null : new Date(tmpEndDate);
+  }
+
+  public static final Creator<Content> CREATOR = new Creator<Content>() {
+    @Override
+    public Content createFromParcel(Parcel source) {
+      return new Content(source);
+    }
+
+    @Override
+    public Content[] newArray(int size) {
+      return new Content[size];
+    }
+  };
 }

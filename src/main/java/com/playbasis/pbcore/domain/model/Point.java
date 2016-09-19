@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.PointResponse;
 
 import java.util.ArrayList;
@@ -54,4 +56,34 @@ public class Point extends PBModel {
   public int getValue() {
     return value;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.id);
+    dest.writeString(this.name);
+    dest.writeInt(this.value);
+  }
+
+  protected Point(Parcel in) {
+    this.id = in.readString();
+    this.name = in.readString();
+    this.value = in.readInt();
+  }
+
+  public static final Creator<Point> CREATOR = new Creator<Point>() {
+    @Override
+    public Point createFromParcel(Parcel source) {
+      return new Point(source);
+    }
+
+    @Override
+    public Point[] newArray(int size) {
+      return new Point[size];
+    }
+  };
 }

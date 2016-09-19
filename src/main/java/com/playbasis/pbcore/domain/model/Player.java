@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
 import android.support.annotation.StringDef;
 
 import com.playbasis.pbcore.rest.response.BadgeResponse;
@@ -193,4 +194,64 @@ public class Player extends PBModel {
   public void setCustomFields(HashMap<String, String> customFields) {
     this.customFields = customFields;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.firstName);
+    dest.writeString(this.lastName);
+    dest.writeString(this.email);
+    dest.writeSerializable(this.birthday);
+    dest.writeString(this.playerId);
+    dest.writeString(this.imageUrl);
+    dest.writeString(this.phoneNumber);
+    dest.writeString(this.registered);
+    dest.writeString(this.lastLogin);
+    dest.writeString(this.lastLogout);
+    dest.writeFloat(this.levelPercent);
+    dest.writeString(this.levelTitle);
+    dest.writeString(this.levelImageUrl);
+    dest.writeInt(this.gender);
+    dest.writeTypedList(this.badges);
+    dest.writeTypedList(this.goods);
+    dest.writeTypedList(this.points);
+    dest.writeSerializable(this.customFields);
+  }
+
+  protected Player(Parcel in) {
+    this.firstName = in.readString();
+    this.lastName = in.readString();
+    this.email = in.readString();
+    this.birthday = (Birthdate) in.readSerializable();
+    this.playerId = in.readString();
+    this.imageUrl = in.readString();
+    this.phoneNumber = in.readString();
+    this.registered = in.readString();
+    this.lastLogin = in.readString();
+    this.lastLogout = in.readString();
+    this.levelPercent = in.readFloat();
+    this.levelTitle = in.readString();
+    this.levelImageUrl = in.readString();
+    this.gender = in.readInt();
+    this.badges = in.createTypedArrayList(Badge.CREATOR);
+    this.goods = in.createTypedArrayList(Goods.CREATOR);
+    this.points = in.createTypedArrayList(Point.CREATOR);
+    this.customFields = (HashMap<String, String>) in.readSerializable();
+  }
+
+  public static final Creator<Player> CREATOR = new Creator<Player>() {
+    @Override
+    public Player createFromParcel(Parcel source) {
+      return new Player(source);
+    }
+
+    @Override
+    public Player[] newArray(int size) {
+      return new Player[size];
+    }
+  };
 }

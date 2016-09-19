@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.BranchResponse;
 import com.playbasis.pbcore.rest.response.MerchantResponse;
 import com.playbasis.pbcore.rest.result.merchant.AvailableBranchForGoodsGroupApiResult;
@@ -65,4 +67,34 @@ public class Merchant extends PBModel {
   protected List<Branch> createBranches(List<BranchResponse> branchResponses) {
     return Branch.createBranchs(branchResponses);
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.merchantId);
+    dest.writeString(this.name);
+    dest.writeTypedList(this.branches);
+  }
+
+  protected Merchant(Parcel in) {
+    this.merchantId = in.readString();
+    this.name = in.readString();
+    this.branches = in.createTypedArrayList(Branch.CREATOR);
+  }
+
+  public static final Creator<Merchant> CREATOR = new Creator<Merchant>() {
+    @Override
+    public Merchant createFromParcel(Parcel source) {
+      return new Merchant(source);
+    }
+
+    @Override
+    public Merchant[] newArray(int size) {
+      return new Merchant[size];
+    }
+  };
 }

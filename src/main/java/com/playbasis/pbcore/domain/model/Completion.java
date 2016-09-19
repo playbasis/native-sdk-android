@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.BaseMissionResponse;
 
 import java.util.ArrayList;
@@ -94,7 +96,49 @@ public class Completion extends PBModel {
     return completionData;
   }
 
-  public static class FilteredParam {
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.elementId);
+    dest.writeString(this.op);
+    dest.writeString(this.filter);
+    dest.writeString(this.value);
+    dest.writeString(this.completionId);
+    dest.writeString(this.type);
+    dest.writeString(this.title);
+    dest.writeParcelable(this.filteredParam, flags);
+    dest.writeParcelable(this.completionData, flags);
+  }
+
+  protected Completion(Parcel in) {
+    this.elementId = in.readString();
+    this.op = in.readString();
+    this.filter = in.readString();
+    this.value = in.readString();
+    this.completionId = in.readString();
+    this.type = in.readString();
+    this.title = in.readString();
+    this.filteredParam = in.readParcelable(FilteredParam.class.getClassLoader());
+    this.completionData = in.readParcelable(CompletionData.class.getClassLoader());
+  }
+
+  public static final Creator<Completion> CREATOR = new Creator<Completion>() {
+    @Override
+    public Completion createFromParcel(Parcel source) {
+      return new Completion(source);
+    }
+
+    @Override
+    public Completion[] newArray(int size) {
+      return new Completion[size];
+    }
+  };
+
+  public static class FilteredParam extends PBModel {
 
     protected Quantity quantity;
 
@@ -110,7 +154,7 @@ public class Completion extends PBModel {
       return quantity;
     }
 
-    public static class Quantity {
+    public static class Quantity extends PBModel {
 
       protected String operation;
       protected String completionString;
@@ -131,10 +175,64 @@ public class Completion extends PBModel {
       public String getCompletionString() {
         return completionString;
       }
+
+      @Override
+      public int describeContents() {
+        return 0;
+      }
+
+      @Override
+      public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.operation);
+        dest.writeString(this.completionString);
+      }
+
+      protected Quantity(Parcel in) {
+        this.operation = in.readString();
+        this.completionString = in.readString();
+      }
+
+      public static final Creator<Quantity> CREATOR = new Creator<Quantity>() {
+        @Override
+        public Quantity createFromParcel(Parcel source) {
+          return new Quantity(source);
+        }
+
+        @Override
+        public Quantity[] newArray(int size) {
+          return new Quantity[size];
+        }
+      };
     }
+
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeParcelable(this.quantity, flags);
+    }
+
+    protected FilteredParam(Parcel in) {
+      this.quantity = in.readParcelable(Quantity.class.getClassLoader());
+    }
+
+    public static final Creator<FilteredParam> CREATOR = new Creator<FilteredParam>() {
+      @Override
+      public FilteredParam createFromParcel(Parcel source) {
+        return new FilteredParam(source);
+      }
+
+      @Override
+      public FilteredParam[] newArray(int size) {
+        return new FilteredParam[size];
+      }
+    };
   }
 
-  public static class CompletionData {
+  public static class CompletionData extends PBModel {
 
     protected String actionId;
     protected String name;
@@ -173,6 +271,39 @@ public class Completion extends PBModel {
     public String getColor() {
       return color;
     }
-  }
 
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeString(this.actionId);
+      dest.writeString(this.name);
+      dest.writeString(this.description);
+      dest.writeString(this.icon);
+      dest.writeString(this.color);
+    }
+
+    protected CompletionData(Parcel in) {
+      this.actionId = in.readString();
+      this.name = in.readString();
+      this.description = in.readString();
+      this.icon = in.readString();
+      this.color = in.readString();
+    }
+
+    public static final Creator<CompletionData> CREATOR = new Creator<CompletionData>() {
+      @Override
+      public CompletionData createFromParcel(Parcel source) {
+        return new CompletionData(source);
+      }
+
+      @Override
+      public CompletionData[] newArray(int size) {
+        return new CompletionData[size];
+      }
+    };
+  }
 }

@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.PlayerResponse;
 import com.playbasis.pbcore.rest.response.QuestPlayerRankResponse;
 
@@ -91,4 +93,44 @@ public class QuestPlayerRank extends PBModel {
 
     return null;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.status);
+    dest.writeLong(this.completedDate != null ? this.completedDate.getTime() : -1);
+    dest.writeLong(this.joinedDate != null ? this.joinedDate.getTime() : -1);
+    dest.writeInt(this.goal);
+    dest.writeInt(this.current);
+    dest.writeParcelable(this.player, flags);
+    dest.writeInt(this.rank);
+  }
+
+  protected QuestPlayerRank(Parcel in) {
+    this.status = in.readString();
+    long tmpCompletedDate = in.readLong();
+    this.completedDate = tmpCompletedDate == -1 ? null : new Date(tmpCompletedDate);
+    long tmpJoinedDate = in.readLong();
+    this.joinedDate = tmpJoinedDate == -1 ? null : new Date(tmpJoinedDate);
+    this.goal = in.readInt();
+    this.current = in.readInt();
+    this.player = in.readParcelable(Player.class.getClassLoader());
+    this.rank = in.readInt();
+  }
+
+  public static final Creator<QuestPlayerRank> CREATOR = new Creator<QuestPlayerRank>() {
+    @Override
+    public QuestPlayerRank createFromParcel(Parcel source) {
+      return new QuestPlayerRank(source);
+    }
+
+    @Override
+    public QuestPlayerRank[] newArray(int size) {
+      return new QuestPlayerRank[size];
+    }
+  };
 }
