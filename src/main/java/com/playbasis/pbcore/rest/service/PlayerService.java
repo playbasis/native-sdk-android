@@ -16,6 +16,7 @@ import com.playbasis.pbcore.rest.result.player.PlayerPointsApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerQuestListApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerRankApiResult;
+import com.playbasis.pbcore.rest.result.player.ReferralCodeApiResult;
 import com.playbasis.pbcore.rest.result.player.RegisterPlayerApiResult;
 import com.playbasis.pbcore.rest.result.player.RequestOTPCodeApiResult;
 import com.playbasis.pbcore.rest.result.player.SetupPhoneApiResult;
@@ -231,6 +232,13 @@ public interface PlayerService {
 
   @GET("Player/{id}/actionReport")
   Observable<ActionReportApiResult> actionReport(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
+  );
+
+  @GET("Player/{id}/code")
+  Observable<ReferralCodeApiResult> referralCode(
       @NonNull @Path("id") String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params

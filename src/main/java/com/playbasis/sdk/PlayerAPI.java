@@ -13,6 +13,7 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerJoinedQuestInterac
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerPointInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerPrivateInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerReferralCodeInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.SetupPhoneInteractor;
@@ -41,10 +42,12 @@ import com.playbasis.pbcore.rest.form.player.GetPlayerRankingForm;
 import com.playbasis.pbcore.rest.form.player.PlayerAuthenticationForm;
 import com.playbasis.pbcore.rest.form.player.PlayerEmailVerificationForm;
 import com.playbasis.pbcore.rest.form.player.PlayerRegistrationForm;
+import com.playbasis.pbcore.rest.form.player.ReferralCodeForm;
 import com.playbasis.pbcore.rest.form.player.UpdatePlayerCustomFieldForm;
 import com.playbasis.pbcore.rest.form.player.UpdatePlayerForm;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.player.LoginPlayerApiResult;
+import com.playbasis.pbcore.rest.result.player.ReferralCodeApiResult;
 import com.playbasis.sdk.callback.BaseApiCallback;
 import com.playbasis.sdk.callback.BasicApiCallback;
 import com.playbasis.sdk.callback.BasicApiCallbackWithResult;
@@ -102,6 +105,8 @@ public class PlayerAPI {
   protected VerifyOTPCodeInteractor verifyOTPCodeInteractor;
   @Inject
   protected GetPlayerActionReportInteractor getPlayerActionReportInteractor;
+  @Inject
+  protected GetPlayerReferralCodeInteractor getPlayerReferralCodeInteractor;
 
   public static PlayerAPI instance() {
     if (playerAPI == null) {
@@ -224,6 +229,20 @@ public class PlayerAPI {
   public static void actionReport(ActionReportForm form, ActionReportCallback callback) {
     instance().getPlayerActionReportInteractor.setGetPlayerActionReportForm(form);
     instance().getPlayerActionReportInteractor.execute(new BaseApiSubscriber<>(callback));
+  }
+
+  public static void playerReferralCode(PlayerReferralCodeForm form, final PlayerReferralCodeCallback callback) {
+    instance().getPlayerReferralCodeInteractor.setReferralCodeForm(form);
+    instance().getPlayerReferralCodeInteractor.execute(new BaseApiSubscriber<ReferralCodeApiResult>(callback) {
+      @Override
+      public void onCompleted() {
+        super.onCompleted();
+
+        if (callback != null && resultObj != null && resultObj.getResponse() != null) {
+          callback.onSuccess(resultObj.getResponse().code);
+        }
+      }
+    });
   }
 
   public static class ResetPlayerPasswordForm extends ForgetPlayerPasswordForm {
@@ -361,6 +380,13 @@ public class PlayerAPI {
     }
   }
 
+  public static class PlayerReferralCodeForm extends ReferralCodeForm {
+
+    public PlayerReferralCodeForm(String playerId) {
+      super(playerId);
+    }
+  }
+
   public interface ResetPlayerPasswordCallback extends BasicApiCallback {
 
   }
@@ -437,5 +463,10 @@ public class PlayerAPI {
 
   public interface ActionReportCallback extends BasicApiCallbackWithResult<List<ActionReport>> {
 
+  }
+
+  public interface PlayerReferralCodeCallback extends BaseApiCallback {
+
+    void onSuccess(String code);
   }
 }

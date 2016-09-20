@@ -17,6 +17,7 @@ import com.playbasis.pbcore.domain.interactor.player.GetPlayerPointInfoInteracto
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerPrivateInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerQuestInfoInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerRankingInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerReferralCodeInteractor;
 import com.playbasis.pbcore.domain.interactor.player.PlayerAuthenticationInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RegisterPlayerInteractor;
 import com.playbasis.pbcore.domain.interactor.player.RequestOTPCodeInteractor;
@@ -233,5 +234,14 @@ public class PlayerModule {
                                                                          RestClient restClient,
                                                                          RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerActionReportInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerReferralCodeInteractor provideGetPlayerReferralCodeInteractor(PBThreadExecutor threadExecutor,
+                                                                         PBPostExecutionThread postExecutionThread,
+                                                                         RestClient restClient,
+                                                                         RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerReferralCodeInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 }
