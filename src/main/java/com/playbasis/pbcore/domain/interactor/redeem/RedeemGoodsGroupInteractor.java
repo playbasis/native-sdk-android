@@ -4,7 +4,7 @@ import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
-import com.playbasis.pbcore.rest.form.redem.RedeemGoodsGroupForm;
+import com.playbasis.pbcore.rest.form.redeem.RedeemGoodsGroupForm;
 import com.playbasis.pbcore.rest.result.redeem.RedeemGoodsGroupApiResult;
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;

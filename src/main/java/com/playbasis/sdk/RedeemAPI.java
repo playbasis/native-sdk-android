@@ -4,7 +4,7 @@ import com.playbasis.pbcore.dependency.component.DaggerRedeemAPIComponent;
 import com.playbasis.pbcore.dependency.module.RedeemModule;
 import com.playbasis.pbcore.domain.interactor.redeem.RedeemGoodsGroupInteractor;
 import com.playbasis.pbcore.domain.interactor.redeem.RedeemGoodsInteractor;
-import com.playbasis.pbcore.rest.form.redem.RedeemGoodsForm;
+import com.playbasis.pbcore.rest.form.redeem.RedeemGoodsForm;
 import com.playbasis.sdk.callback.BasicApiCallback;
 import com.playbasis.sdk.subscriber.BaseApiSubscriber;
 
@@ -52,7 +52,7 @@ public class RedeemAPI {
     }
   }
 
-  public static class RedeemGoodsGroupForm extends com.playbasis.pbcore.rest.form.redem.RedeemGoodsGroupForm {
+  public static class RedeemGoodsGroupForm extends com.playbasis.pbcore.rest.form.redeem.RedeemGoodsGroupForm {
 
     public RedeemGoodsGroupForm(String group, String playerId) {
       super(group, playerId);

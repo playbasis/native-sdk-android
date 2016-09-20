@@ -12,7 +12,7 @@ import java.lang.reflect.Type;
 /**
  * Created by Tar on 6/29/16 AD.
  */
-public class RewardDataAdapter implements JsonDeserializer<RewardResponse.RewardDataInterface>  {
+public class RewardDataAdapter extends BaseGsonAdapter implements JsonDeserializer<RewardResponse.RewardDataInterface>  {
 
   @Override
   public RewardResponse.RewardDataInterface deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {

@@ -1,4 +1,4 @@
-package com.playbasis.pbcore.rest.form.redem;
+package com.playbasis.pbcore.rest.form.redeem;
 
 import com.playbasis.pbcore.rest.form.PBForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
@@ -6,14 +6,14 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class RedeemGoodsForm extends PBForm {
+public class RedeemGoodsGroupForm extends PBForm {
 
-  private String goodsId;
+  private String group;
   private String playerId;
   private int amount = -1;
 
-  public RedeemGoodsForm(String goodsId, String playerId) {
-    this.goodsId = goodsId;
+  public RedeemGoodsGroupForm(String group, String playerId) {
+    this.group = group;
     this.playerId = playerId;
   }
 
@@ -28,8 +28,8 @@ public class RedeemGoodsForm extends PBForm {
     return map;
   }
 
-  public String getGoodsId() {
-    return goodsId;
+  public String getGroup() {
+    return group;
   }
 
   public String getPlayerId() {
