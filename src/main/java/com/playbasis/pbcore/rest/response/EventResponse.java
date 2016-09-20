@@ -5,6 +5,7 @@ package com.playbasis.pbcore.rest.response;
  */
 public class EventResponse {
 
+  // TODO, make this class an inner class of RuleApiResult
   public String eventType;
   public String logId;
   public String value;

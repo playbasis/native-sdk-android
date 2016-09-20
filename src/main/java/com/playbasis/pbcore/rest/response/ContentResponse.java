@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public class ContentResponse {
 
+  // TODO, make this class an inner class of ContentApiResult
   @SerializedName("node_id")
   public String id;
   @SerializedName("title")
@@ -40,6 +41,7 @@ public class ContentResponse {
 
   private class Custom {
 
+    // TODO, serialize key-value into hashmap
     @SerializedName("follow_up_question_count")
     private int numberOfFollowUpQuestions;
 

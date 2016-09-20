@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class BaseMissionResponse {
 
+  // TODO, merge this class with MissionResposne
   @Expose
   @SerializedName("mission_id")
   public String missionId;

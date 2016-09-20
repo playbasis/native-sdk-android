@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class BaseQuestResponse<T extends BaseMissionResponse> {
 
+  // TODO, merge this class with QuestResponse
   @Expose
   @SerializedName("quest_id")
   public String questId;

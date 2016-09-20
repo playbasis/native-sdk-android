@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class OrganizeResponse {
 
+  // TODO, make this class an inner class of StoreOrganizeApiResult
   @SerializedName("_id")
   public String id;
   @SerializedName("name")
