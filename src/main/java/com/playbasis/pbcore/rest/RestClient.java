@@ -29,6 +29,7 @@ import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.EngineService;
 import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.ImageService;
+import com.playbasis.pbcore.rest.service.LinkService;
 import com.playbasis.pbcore.rest.service.MerchantService;
 import com.playbasis.pbcore.rest.service.PlayerService;
 import com.playbasis.pbcore.rest.service.QuestService;
@@ -69,6 +70,7 @@ public class RestClient {
   protected QuestService questService;
   protected RedeemService redeemService;
   protected ServiceService serviceService;
+  protected LinkService linkService;
 
   protected String apiKey;
   protected String apiSecret;
@@ -100,6 +102,7 @@ public class RestClient {
     questService = retrofit.create(QuestService.class);
     redeemService = retrofit.create(RedeemService.class);
     serviceService = retrofit.create(ServiceService.class);
+    linkService = retrofit.create(LinkService.class);
   }
 
   public RestClient(String url) {
@@ -188,6 +191,10 @@ public class RestClient {
 
   public ServiceService getServiceService() {
     return serviceService;
+  }
+
+  public LinkService getLinkService() {
+    return linkService;
   }
 
   public String getBaseUrl() {
