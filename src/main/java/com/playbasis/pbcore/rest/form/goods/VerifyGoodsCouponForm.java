@@ -8,9 +8,9 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
  */
 public class VerifyGoodsCouponForm extends PBForm {
 
-  private String goodsId;
-  private String code;
-  private String playerId;
+  protected String goodsId;
+  protected String code;
+  protected String playerId;
 
   public VerifyGoodsCouponForm(String goodsId, String code) {
     this.goodsId = goodsId;

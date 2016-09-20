@@ -8,12 +8,12 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
  */
 public class QuestLeaderboardForm extends PBForm {
 
-  private String questId;
-  private String completionElementId = null;
-  private int offset = 0;
-  private int limit = 20;
-  private String status = null;
-  private String playerId = null;
+  protected String questId;
+  protected String completionElementId = null;
+  protected int offset = 0;
+  protected int limit = 20;
+  protected String status = null;
+  protected String playerId = null;
 
   public QuestLeaderboardForm(String questId) {
     this.questId = questId;

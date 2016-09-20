@@ -7,8 +7,8 @@ import com.playbasis.pbcore.rest.form.PBForm;
  */
 public class GetMissionInfoForm extends PBForm {
 
-  private String missionId;
-  private String questId;
+  protected String missionId;
+  protected String questId;
 
   public GetMissionInfoForm(String questId, String missionId) {
     this.questId = questId;

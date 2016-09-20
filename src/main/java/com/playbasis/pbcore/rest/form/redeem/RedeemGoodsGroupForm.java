@@ -8,9 +8,9 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
  */
 public class RedeemGoodsGroupForm extends PBForm {
 
-  private String group;
-  private String playerId;
-  private int amount = -1;
+  protected String group;
+  protected String playerId;
+  protected int amount = -1;
 
   public RedeemGoodsGroupForm(String group, String playerId) {
     this.group = group;

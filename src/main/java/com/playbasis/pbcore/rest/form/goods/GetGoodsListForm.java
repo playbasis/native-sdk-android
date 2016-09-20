@@ -8,8 +8,8 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
  */
 public class GetGoodsListForm extends PBForm {
 
-  private String playerId;
-  private String tags;
+  protected String playerId;
+  protected String tags;
 
   public GetGoodsListForm() {
 

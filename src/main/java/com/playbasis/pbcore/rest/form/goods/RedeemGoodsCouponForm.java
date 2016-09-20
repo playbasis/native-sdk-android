@@ -7,9 +7,9 @@ import com.playbasis.pbcore.rest.form.PBForm;
  */
 public class RedeemGoodsCouponForm extends PBForm {
 
-  private String goodsId;
-  private String code;
-  private String playerId;
+  protected String goodsId;
+  protected String code;
+  protected String playerId;
 
   public RedeemGoodsCouponForm(String goodsId, String code, String playerId) {
     this.goodsId = goodsId;

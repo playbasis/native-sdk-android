@@ -7,8 +7,8 @@ import com.playbasis.pbcore.rest.form.PBForm;
  */
 public class CancelQuestForm extends PBForm {
 
-  private String questId;
-  private String playerId;
+  protected String questId;
+  protected String playerId;
 
   public CancelQuestForm(String questId, String playerId) {
     this.questId = questId;

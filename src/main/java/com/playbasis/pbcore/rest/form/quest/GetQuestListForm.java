@@ -8,7 +8,7 @@ import com.playbasis.pbcore.rest.form.ParamsMap;
  */
 public class GetQuestListForm extends PBForm {
 
-  private String tags = null;
+  protected String tags = null;
 
   public GetQuestListForm() {
 
