@@ -14,7 +14,7 @@ import java.util.HashMap;
 /**
  * Created by androiddev01 on 5/12/2016 AD.
  */
-public class PlayerRankAdapter implements JsonDeserializer<PlayerRankResponse> {
+public class PlayerRankAdapter extends BaseGsonAdapter implements JsonDeserializer<PlayerRankResponse> {
 
   public PlayerRankResponse deserialize(JsonElement json, Type typeOfT,
                                                JsonDeserializationContext context) {

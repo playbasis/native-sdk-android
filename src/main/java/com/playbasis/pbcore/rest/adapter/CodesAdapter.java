@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by androiddev01 on 5/12/2016 AD.
  */
-public class CodesAdapter implements JsonDeserializer<GoodsResponse.CodeResponse> {
+public class CodesAdapter extends BaseGsonAdapter implements JsonDeserializer<GoodsResponse.CodeResponse> {
 
   public GoodsResponse.CodeResponse deserialize(JsonElement json, Type typeOfT,
                                                 JsonDeserializationContext context) {

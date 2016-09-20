@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class GsonDateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
+public class GsonDateAdapter extends BaseGsonAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
 
   public static final String TAG = "GsonDateAdapter";
   private final DateFormat dateFormat;

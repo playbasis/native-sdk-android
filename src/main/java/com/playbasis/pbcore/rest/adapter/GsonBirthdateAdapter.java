@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class GsonBirthdateAdapter implements JsonSerializer<Birthdate>, JsonDeserializer<Birthdate> {
+public class GsonBirthdateAdapter extends BaseGsonAdapter implements JsonSerializer<Birthdate>, JsonDeserializer<Birthdate> {
 
   public static final String TAG = "GsonBirthdateAdapter";
   private final DateFormat dateFormat;

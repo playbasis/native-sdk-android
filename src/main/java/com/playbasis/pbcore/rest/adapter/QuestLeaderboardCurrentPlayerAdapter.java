@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by androiddev01 on 5/12/2016 AD.
  */
-public class QuestLeaderboardCurrentPlayerAdapter implements JsonDeserializer<QuestLeaderboardApiResult.Response> {
+public class QuestLeaderboardCurrentPlayerAdapter extends BaseGsonAdapter implements JsonDeserializer<QuestLeaderboardApiResult.Response> {
 
   public QuestLeaderboardApiResult.Response deserialize(JsonElement json, Type typeOfT,
                                                         JsonDeserializationContext context) {
