@@ -15,10 +15,12 @@ import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerCustomFieldAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerRankAdapter;
 import com.playbasis.pbcore.rest.adapter.QuestLeaderboardCurrentPlayerAdapter;
+import com.playbasis.pbcore.rest.adapter.RecentActivityDataAdapter;
 import com.playbasis.pbcore.rest.adapter.RewardDataAdapter;
 import com.playbasis.pbcore.rest.response.EventResponse;
 import com.playbasis.pbcore.rest.response.GoodsResponse;
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
+import com.playbasis.pbcore.rest.response.RecentActivityResponse;
 import com.playbasis.pbcore.rest.response.RewardResponse;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
@@ -31,6 +33,7 @@ import com.playbasis.pbcore.rest.service.MerchantService;
 import com.playbasis.pbcore.rest.service.PlayerService;
 import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.RedeemService;
+import com.playbasis.pbcore.rest.service.ServiceService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
 
@@ -65,6 +68,7 @@ public class RestClient {
   protected MerchantService merchantService;
   protected QuestService questService;
   protected RedeemService redeemService;
+  protected ServiceService serviceService;
 
   protected String apiKey;
   protected String apiSecret;
@@ -95,6 +99,7 @@ public class RestClient {
     merchantService = retrofit.create(MerchantService.class);
     questService = retrofit.create(QuestService.class);
     redeemService = retrofit.create(RedeemService.class);
+    serviceService = retrofit.create(ServiceService.class);
   }
 
   public RestClient(String url) {
@@ -112,6 +117,7 @@ public class RestClient {
         .registerTypeAdapter(PlayerRankResponse.class, new PlayerRankAdapter())
         .registerTypeAdapter(QuestLeaderboardApiResult.Response.class, new QuestLeaderboardCurrentPlayerAdapter())
         .registerTypeAdapter(EventResponse.class, new EventAdapter())
+        .registerTypeAdapter(RecentActivityResponse.class, new RecentActivityDataAdapter())
         .registerTypeAdapter(RewardResponse.RewardDataInterface.class, new RewardDataAdapter())
         .create();
   }
@@ -178,6 +184,10 @@ public class RestClient {
 
   public RedeemService getRedeemService() {
     return redeemService;
+  }
+
+  public ServiceService getServiceService() {
+    return serviceService;
   }
 
   public String getBaseUrl() {
