@@ -33,7 +33,7 @@ public class LinkAPI {
     return liveFeedAPI;
   }
 
-  public static void generateLink(GenerateLinkForm form, final RecentActivitiesCallback callback) {
+  public static void generateLink(GenerateLinkForm form, final GenerateLinkCallback callback) {
     instance().getRecentActivitiesInteractor.setGenerateLinkForm(form);
     instance().getRecentActivitiesInteractor.execute(new BaseApiSubscriber<GenerateLinkApiResult>(callback) {
       @Override
@@ -51,7 +51,7 @@ public class LinkAPI {
 
   }
 
-  public interface RecentActivitiesCallback extends BaseApiCallback {
+  public interface GenerateLinkCallback extends BaseApiCallback {
     void onSuccess(String link);
   }
 }
