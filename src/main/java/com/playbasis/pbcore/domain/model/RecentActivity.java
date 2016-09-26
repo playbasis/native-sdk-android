@@ -188,7 +188,7 @@ public class RecentActivity extends PBModel {
     };
   }
 
-  private static abstract class BaseReward extends PBModel implements Eventable {
+  public static abstract class BaseReward extends PBModel implements Eventable {
 
     public String rewardId;
     public int value;
