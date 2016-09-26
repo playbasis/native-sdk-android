@@ -29,7 +29,7 @@ public class RecentActivityDataAdapter  extends BaseGsonAdapter implements JsonD
     recentActivityResponse.dateAdded = getDate(jsonObject, "date_added", context);
 
     if (jsonObject.has("player")) {
-      recentActivityResponse.player = context.deserialize(jsonObject.get("player"), PlayerResponse.class);
+      recentActivityResponse.playerResponse = context.deserialize(jsonObject.get("player"), PlayerResponse.class);
     }
 
     if (recentActivityResponse.eventType != null) {
@@ -39,6 +39,8 @@ public class RecentActivityDataAdapter  extends BaseGsonAdapter implements JsonD
         recentActivityResponse.data = context.deserialize(json, RecentActivityResponse.RewardResponse.class);
       } else if (recentActivityResponse.eventType.equalsIgnoreCase("redeem")) {
         recentActivityResponse.data = context.deserialize(json, RecentActivityResponse.RedeemResponse.class);
+      } else if (recentActivityResponse.eventType.equalsIgnoreCase("level")) {
+        recentActivityResponse.data = context.deserialize(json, RecentActivityResponse.LevelResponse.class);
       }
     }
 

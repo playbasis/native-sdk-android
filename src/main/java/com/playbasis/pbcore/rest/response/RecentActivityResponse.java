@@ -15,7 +15,7 @@ public class RecentActivityResponse {
   public Date dateAdded;
   public String eventType;
   public String stringFilter;
-  public PlayerResponse player;
+  public PlayerResponse playerResponse;
   public RecentActivityDataInterface data;
 
   public interface RecentActivityDataInterface {
@@ -26,7 +26,8 @@ public class RecentActivityResponse {
 
     @SerializedName("url")
     public String url;
-
+    @SerializedName("player-2")
+    public PlayerResponse secondPlayerResponse;
   }
 
   public abstract class BaseRewardResponse implements RecentActivityDataInterface {
@@ -45,7 +46,8 @@ public class RecentActivityResponse {
     public String missionid;
     @SerializedName("quiz_id")
     public String quizId;
-
+    @SerializedName("message")
+    public String message;
   }
 
   public class RewardResponse extends BaseRewardResponse {
@@ -58,6 +60,10 @@ public class RecentActivityResponse {
     public String actionLogId;
     @SerializedName("goods")
     public GoodsResponse goodsResponse;
+
+  }
+
+  public class LevelResponse extends BaseRewardResponse {
 
   }
 }

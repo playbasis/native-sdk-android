@@ -52,7 +52,7 @@ public class RecentActivity extends PBModel {
     this.dateAdded = response.dateAdded;
     this.eventType = response.eventType;
     this.stringFilter = response.stringFilter;
-    this.player = new Player(response.player);
+    this.player = new Player(response.playerResponse);
 
     if (response.data instanceof RecentActivityResponse.ActionResponse) {
       this.eventable = new Action((RecentActivityResponse.ActionResponse) response.data);
@@ -60,6 +60,8 @@ public class RecentActivity extends PBModel {
       this.eventable = new Redeem((RecentActivityResponse.RedeemResponse) response.data);
     } else if (response.data instanceof RecentActivityResponse.RewardResponse) {
       this.eventable = new Reward((RecentActivityResponse.RewardResponse) response.data);
+    } else if (response.data instanceof RecentActivityResponse.LevelResponse) {
+      this.eventable = new Level((RecentActivityResponse.LevelResponse) response.data);
     }
   }
 
@@ -143,9 +145,14 @@ public class RecentActivity extends PBModel {
   public static class Action extends PBModel implements Eventable {
 
     protected String url;
+    protected Player secondPlayer;
 
     public Action(RecentActivityResponse.ActionResponse response) {
       this.url = response.url;
+
+      if (response.secondPlayerResponse != null) {
+        this.secondPlayer = new Player(response.secondPlayerResponse);
+      }
     }
 
     public String getUrl() {
@@ -160,10 +167,12 @@ public class RecentActivity extends PBModel {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
       dest.writeString(this.url);
+      dest.writeParcelable(this.secondPlayer, flags);
     }
 
     protected Action(Parcel in) {
       this.url = in.readString();
+      this.secondPlayer = in.readParcelable(Player.class.getClassLoader());
     }
 
     public static final Creator<Action> CREATOR = new Creator<Action>() {
@@ -188,6 +197,7 @@ public class RecentActivity extends PBModel {
     public String questId;
     public String missionid;
     public String quizId;
+    public String message;
 
     public BaseReward() {
 
@@ -202,6 +212,7 @@ public class RecentActivity extends PBModel {
       this.questId = rewardResponse.questId;
       this.missionid = rewardResponse.questId;
       this.quizId = rewardResponse.quizId;
+      this.message = rewardResponse.message;
     }
 
     public String getRewardId() {
@@ -231,6 +242,10 @@ public class RecentActivity extends PBModel {
     public String getQuizId() {
       return quizId;
     }
+
+    public String getMessage() {
+      return message;
+    }
   }
 
   public static class Reward extends BaseReward {
@@ -253,6 +268,7 @@ public class RecentActivity extends PBModel {
       dest.writeString(this.questId);
       dest.writeString(this.missionid);
       dest.writeString(this.quizId);
+      dest.writeString(this.message);
     }
 
     protected Reward(Parcel in) {
@@ -263,6 +279,7 @@ public class RecentActivity extends PBModel {
       this.questId = in.readString();
       this.missionid = in.readString();
       this.quizId = in.readString();
+      this.message = in.readString();
     }
 
     public static final Creator<Reward> CREATOR = new Creator<Reward>() {
@@ -314,6 +331,7 @@ public class RecentActivity extends PBModel {
       dest.writeString(this.questId);
       dest.writeString(this.missionid);
       dest.writeString(this.quizId);
+      dest.writeString(this.message);
     }
 
     protected Redeem(Parcel in) {
@@ -326,6 +344,7 @@ public class RecentActivity extends PBModel {
       this.questId = in.readString();
       this.missionid = in.readString();
       this.quizId = in.readString();
+      this.message = in.readString();
     }
 
     public static final Creator<Redeem> CREATOR = new Creator<Redeem>() {
@@ -337,6 +356,53 @@ public class RecentActivity extends PBModel {
       @Override
       public Redeem[] newArray(int size) {
         return new Redeem[size];
+      }
+    };
+  }
+
+  public static class Level extends BaseReward {
+
+    public Level(RecentActivityResponse.BaseRewardResponse rewardResponse) {
+      super(rewardResponse);
+    }
+
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeString(this.rewardId);
+      dest.writeInt(this.value);
+      dest.writeString(this.name);
+      dest.writeString(this.goodsId);
+      dest.writeString(this.questId);
+      dest.writeString(this.missionid);
+      dest.writeString(this.quizId);
+      dest.writeString(this.message);
+    }
+
+    protected Level(Parcel in) {
+      this.rewardId = in.readString();
+      this.value = in.readInt();
+      this.name = in.readString();
+      this.goodsId = in.readString();
+      this.questId = in.readString();
+      this.missionid = in.readString();
+      this.quizId = in.readString();
+      this.message = in.readString();
+    }
+
+    public static final Creator<Level> CREATOR = new Creator<Level>() {
+      @Override
+      public Level createFromParcel(Parcel source) {
+        return new Level(source);
+      }
+
+      @Override
+      public Level[] newArray(int size) {
+        return new Level[size];
       }
     };
   }
