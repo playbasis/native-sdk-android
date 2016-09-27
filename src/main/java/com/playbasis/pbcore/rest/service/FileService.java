@@ -19,7 +19,7 @@ import rx.Observable;
 /**
  * Created by Tar on 5/4/16 AD.
  */
-public interface ImageService {
+public interface FileService {
 
   @GET("File/list")
   Observable<ImageListApiResult> getImageList(

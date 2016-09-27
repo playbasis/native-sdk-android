@@ -24,19 +24,24 @@ import com.playbasis.pbcore.rest.response.RecentActivityResponse;
 import com.playbasis.pbcore.rest.response.RewardResponse;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
+import com.playbasis.pbcore.rest.service.BadgeService;
 import com.playbasis.pbcore.rest.service.CommunicationService;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.EngineService;
+import com.playbasis.pbcore.rest.service.GameService;
 import com.playbasis.pbcore.rest.service.GoodsService;
-import com.playbasis.pbcore.rest.service.ImageService;
+import com.playbasis.pbcore.rest.service.FileService;
+import com.playbasis.pbcore.rest.service.HealthService;
 import com.playbasis.pbcore.rest.service.LinkService;
 import com.playbasis.pbcore.rest.service.MerchantService;
 import com.playbasis.pbcore.rest.service.PlayerService;
 import com.playbasis.pbcore.rest.service.QuestService;
+import com.playbasis.pbcore.rest.service.QuizService;
 import com.playbasis.pbcore.rest.service.RedeemService;
 import com.playbasis.pbcore.rest.service.ServiceService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
+import com.playbasis.pbcore.rest.service.TripService;
 
 import javax.inject.Inject;
 
@@ -60,17 +65,22 @@ public class RestClient {
 
   protected TokenService tokenService;
   protected PlayerService playerService;
-  protected EngineService engineService;
-  protected ImageService imageService;
-  protected ContentService contentService;
-  protected CommunicationService communicationService;
-  protected StoreOrganizeService storeOrganizeService;
+  protected BadgeService badgeService;
   protected GoodsService goodsService;
   protected MerchantService merchantService;
+  protected EngineService engineService;
   protected QuestService questService;
+  protected QuizService quizService;
   protected RedeemService redeemService;
+  protected CommunicationService communicationService;
   protected ServiceService serviceService;
+  protected StoreOrganizeService storeOrganizeService;
+  protected ContentService contentService;
   protected LinkService linkService;
+  protected FileService fileService;
+  protected HealthService healthService;
+  protected TripService tripService;
+  protected GameService gameService;
 
   protected String apiKey;
   protected String apiSecret;
@@ -92,17 +102,22 @@ public class RestClient {
 
     tokenService = retrofit.create(TokenService.class);
     playerService = retrofit.create(PlayerService.class);
-    engineService = retrofit.create(EngineService.class);
-    imageService = retrofit.create(ImageService.class);
-    contentService = retrofit.create(ContentService.class);
-    communicationService = retrofit.create(CommunicationService.class);
-    storeOrganizeService = retrofit.create(StoreOrganizeService.class);
+    badgeService = retrofit.create(BadgeService.class);
     goodsService = retrofit.create(GoodsService.class);
     merchantService = retrofit.create(MerchantService.class);
+    engineService = retrofit.create(EngineService.class);
     questService = retrofit.create(QuestService.class);
+    quizService = retrofit.create(QuizService.class);
     redeemService = retrofit.create(RedeemService.class);
+    communicationService = retrofit.create(CommunicationService.class);
     serviceService = retrofit.create(ServiceService.class);
+    storeOrganizeService = retrofit.create(StoreOrganizeService.class);
+    contentService = retrofit.create(ContentService.class);
     linkService = retrofit.create(LinkService.class);
+    fileService = retrofit.create(FileService.class);
+    healthService = retrofit.create(HealthService.class);
+    tripService = retrofit.create(TripService.class);
+    gameService = retrofit.create(GameService.class);
   }
 
   public RestClient(String url) {
@@ -125,52 +140,16 @@ public class RestClient {
         .create();
   }
 
-  /**
-   * Getter for the token service
-   *
-   * @return token service
-   */
   public TokenService getTokenService() {
     return tokenService;
   }
 
-  /**
-   * Getter for the PlayerResponse service.
-   *
-   * @return PlayerResponse service
-   */
   public PlayerService getPlayerService() {
     return playerService;
   }
 
-  public EngineService getEngineService() {
-    return engineService;
-  }
-
-  public ImageService getImageService() {
-    return imageService;
-  }
-
-  /**
-   * Getter for the content service.
-   *
-   * @return content service
-   */
-  public ContentService getContentService() {
-    return contentService;
-  }
-
-  public CommunicationService getCommunicationService() {
-    return communicationService;
-  }
-
-  /**
-   * Getter for the content service.
-   *
-   * @return store org service
-   */
-  public StoreOrganizeService getStoreOrganizeService() {
-    return storeOrganizeService;
+  public BadgeService getBadgeService() {
+    return badgeService;
   }
 
   public GoodsService getGoodsService() {
@@ -181,20 +160,56 @@ public class RestClient {
     return merchantService;
   }
 
+  public EngineService getEngineService() {
+    return engineService;
+  }
+
   public QuestService getQuestService() {
     return questService;
+  }
+
+  public QuizService getQuizService() {
+    return quizService;
   }
 
   public RedeemService getRedeemService() {
     return redeemService;
   }
 
+  public CommunicationService getCommunicationService() {
+    return communicationService;
+  }
+
   public ServiceService getServiceService() {
     return serviceService;
   }
 
+  public StoreOrganizeService getStoreOrganizeService() {
+    return storeOrganizeService;
+  }
+
+  public ContentService getContentService() {
+    return contentService;
+  }
+
   public LinkService getLinkService() {
     return linkService;
+  }
+
+  public FileService getFileService() {
+    return fileService;
+  }
+
+  public HealthService getHealthService() {
+    return healthService;
+  }
+
+  public TripService getTripService() {
+    return tripService;
+  }
+
+  public GameService getGameService() {
+    return gameService;
   }
 
   public String getBaseUrl() {
