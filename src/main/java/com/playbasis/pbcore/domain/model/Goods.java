@@ -19,6 +19,7 @@ public class Goods extends PBModel {
   protected String description;
   protected String imageUrl;
   protected String group;
+  protected String status;
   protected List<String> codes;
   protected List<String> tags;
   protected Date startDate;
@@ -77,6 +78,7 @@ public class Goods extends PBModel {
     this.tags = response.tags;
     this.codes = response.getCodes();
     this.group = response.group;
+    this.status = response.status;
     this.startDate = response.startDate;
     this.expireDate = response.expireDate;
     this.isGroup = response.isGroup;
@@ -120,6 +122,10 @@ public class Goods extends PBModel {
     return group;
   }
 
+  public String getStatus() {
+    return status;
+  }
+
   public Date getStartDate() {
     return startDate;
   }
@@ -160,6 +166,7 @@ public class Goods extends PBModel {
     dest.writeString(this.description);
     dest.writeString(this.imageUrl);
     dest.writeString(this.group);
+    dest.writeString(this.status);
     dest.writeStringList(this.codes);
     dest.writeStringList(this.tags);
     dest.writeLong(this.startDate != null ? this.startDate.getTime() : -1);
@@ -178,6 +185,7 @@ public class Goods extends PBModel {
     this.description = in.readString();
     this.imageUrl = in.readString();
     this.group = in.readString();
+    this.status = in.readString();
     this.codes = in.createStringArrayList();
     this.tags = in.createStringArrayList();
     long tmpStartDate = in.readLong();

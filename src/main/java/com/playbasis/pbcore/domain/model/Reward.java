@@ -119,7 +119,6 @@ public class Reward extends PBModel {
     protected Date addedDate;
     protected Date modifiedDate;
     protected int perUser;
-    protected boolean status;
     protected boolean deleted;
 
     public Goods() {
@@ -134,7 +133,6 @@ public class Reward extends PBModel {
       this.addedDate = rewardGoodsResponse.addedDate;
       this.modifiedDate = rewardGoodsResponse.modifiedDate;
       this.perUser = rewardGoodsResponse.perUser;
-      this.status = rewardGoodsResponse.status;
       this.deleted = rewardGoodsResponse.deleted;
 
       update(rewardGoodsResponse);
@@ -152,10 +150,6 @@ public class Reward extends PBModel {
       return perUser;
     }
 
-    public boolean isStatus() {
-      return status;
-    }
-
     public boolean isDeleted() {
       return deleted;
     }
@@ -171,7 +165,6 @@ public class Reward extends PBModel {
       dest.writeLong(this.addedDate != null ? this.addedDate.getTime() : -1);
       dest.writeLong(this.modifiedDate != null ? this.modifiedDate.getTime() : -1);
       dest.writeInt(this.perUser);
-      dest.writeByte(this.status ? (byte) 1 : (byte) 0);
       dest.writeByte(this.deleted ? (byte) 1 : (byte) 0);
       dest.writeString(this.goodsId);
       dest.writeString(this.name);
@@ -197,7 +190,6 @@ public class Reward extends PBModel {
       long tmpModifiedDate = in.readLong();
       this.modifiedDate = tmpModifiedDate == -1 ? null : new Date(tmpModifiedDate);
       this.perUser = in.readInt();
-      this.status = in.readByte() != 0;
       this.deleted = in.readByte() != 0;
       this.goodsId = in.readString();
       this.name = in.readString();

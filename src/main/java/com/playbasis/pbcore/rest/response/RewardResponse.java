@@ -36,9 +36,6 @@ public class RewardResponse {
     @SerializedName("per_user")
     public int perUser;
     @Expose
-    @SerializedName("status")
-    public boolean status;
-    @Expose
     @SerializedName("deleted")
     public boolean deleted;
 

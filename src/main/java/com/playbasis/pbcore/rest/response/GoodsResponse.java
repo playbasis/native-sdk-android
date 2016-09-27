@@ -37,6 +37,9 @@ public class GoodsResponse implements RewardResponse.RewardDataInterface {
   @SerializedName("group")
   public String group;
   @Expose
+  @SerializedName("status")
+  public String status;
+  @Expose
   @SerializedName("date_start")
   public Date startDate;
   @Expose
