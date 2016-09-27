@@ -3,6 +3,7 @@ package com.playbasis.sdk;
 import com.playbasis.pbcore.dependency.component.DaggerPlayerAPIComponent;
 import com.playbasis.pbcore.dependency.module.PlayerModule;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerActionCountInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerActionReportInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor;
@@ -30,6 +31,7 @@ import com.playbasis.pbcore.domain.model.Player;
 import com.playbasis.pbcore.domain.model.PlayerRank;
 import com.playbasis.pbcore.domain.model.Point;
 import com.playbasis.pbcore.rest.form.player.ForgetPlayerPasswordForm;
+import com.playbasis.pbcore.rest.form.player.GetPlayerActionCountForm;
 import com.playbasis.pbcore.rest.form.player.GetPlayerActionReportForm;
 import com.playbasis.pbcore.rest.form.player.GetPlayerBadgesForm;
 import com.playbasis.pbcore.rest.form.player.GetPlayerCustomFieldForm;
@@ -47,6 +49,7 @@ import com.playbasis.pbcore.rest.form.player.UpdatePlayerCustomFieldForm;
 import com.playbasis.pbcore.rest.form.player.UpdatePlayerForm;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.player.LoginPlayerApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerActionCountApiResult;
 import com.playbasis.pbcore.rest.result.player.ReferralCodeApiResult;
 import com.playbasis.sdk.callback.BaseApiCallback;
 import com.playbasis.sdk.callback.BasicApiCallback;
@@ -107,6 +110,8 @@ public class PlayerAPI {
   protected GetPlayerActionReportInteractor getPlayerActionReportInteractor;
   @Inject
   protected GetPlayerReferralCodeInteractor getPlayerReferralCodeInteractor;
+  @Inject
+  protected GetPlayerActionCountInteractor getPlayerActionCountInteractor;
 
   public static PlayerAPI instance() {
     if (playerAPI == null) {
@@ -240,6 +245,24 @@ public class PlayerAPI {
 
         if (callback != null && resultObj != null && resultObj.getResponse() != null) {
           callback.onSuccess(resultObj.getResponse().code);
+        }
+      }
+    });
+  }
+
+  public static void actionCount(ActionCountForm form, final ActionCountCallback callback) {
+    instance().getPlayerActionCountInteractor.setGetPlayerActionCountForm(form);
+    instance().getPlayerActionCountInteractor.execute(new BaseApiSubscriber<PlayerActionCountApiResult>(callback) {
+      @Override
+      public void onCompleted() {
+        super.onCompleted();
+
+        if (callback != null && resultObj != null && resultObj.getActionResponse() != null) {
+          callback.onSuccess(
+              resultObj.getActionResponse().actionId,
+              resultObj.getActionResponse().actionName,
+              resultObj.getActionResponse().count
+          );
         }
       }
     });
@@ -387,6 +410,13 @@ public class PlayerAPI {
     }
   }
 
+  public static class ActionCountForm extends GetPlayerActionCountForm {
+
+    public ActionCountForm(String playerId, String actionName) {
+      super(playerId, actionName);
+    }
+  }
+
   public interface ResetPlayerPasswordCallback extends BasicApiCallback {
 
   }
@@ -468,5 +498,10 @@ public class PlayerAPI {
   public interface PlayerReferralCodeCallback extends BaseApiCallback {
 
     void onSuccess(String code);
+  }
+
+  public interface ActionCountCallback extends BaseApiCallback {
+
+    void onSuccess(String actionId, String actionName, int count);
   }
 }

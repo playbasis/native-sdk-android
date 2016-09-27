@@ -5,6 +5,7 @@ import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.player.ForgetPasswordInteractor;
+import com.playbasis.pbcore.domain.interactor.player.GetPlayerActionCountInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerActionReportInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllBadgesInteractor;
 import com.playbasis.pbcore.domain.interactor.player.GetPlayerAllGoodsInteractor;
@@ -243,5 +244,14 @@ public class PlayerModule {
                                                                          RestClient restClient,
                                                                          RequestTokenInteractor requestTokenInteractor) {
     return new GetPlayerReferralCodeInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
+
+  @Provides
+  @PerActivity
+  GetPlayerActionCountInteractor provideGetPlayerActionCountInteractor(PBThreadExecutor threadExecutor,
+                                                                       PBPostExecutionThread postExecutionThread,
+                                                                       RestClient restClient,
+                                                                       RequestTokenInteractor requestTokenInteractor) {
+    return new GetPlayerActionCountInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 }

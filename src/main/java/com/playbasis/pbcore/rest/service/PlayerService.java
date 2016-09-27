@@ -10,6 +10,7 @@ import com.playbasis.pbcore.rest.result.player.GetPlayerDetailApiResult;
 import com.playbasis.pbcore.rest.result.player.GetPlayerGoodsApiResult;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.player.LoginPlayerApiResult;
+import com.playbasis.pbcore.rest.result.player.PlayerActionCountApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerJoinedQuestApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerPointApiResult;
 import com.playbasis.pbcore.rest.result.player.PlayerPointsApiResult;
@@ -240,6 +241,14 @@ public interface PlayerService {
   @GET("Player/{id}/code")
   Observable<ReferralCodeApiResult> referralCode(
       @NonNull @Path("id") String playerId,
+      @NonNull @Query("api_key") String apiKey,
+      @QueryMap ParamsMap params
+  );
+
+  @GET("Player/{id}/action/{actionName}/count")
+  Observable<PlayerActionCountApiResult> actionCount(
+      @NonNull @Path("id") String playerId,
+      @NonNull @Path("actionName") String actionName,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
