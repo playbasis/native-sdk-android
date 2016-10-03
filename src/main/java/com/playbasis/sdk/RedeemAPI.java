@@ -70,8 +70,8 @@ public class RedeemAPI {
 
   public static class RedeemVerificationForm extends VerifyGoodsGroupForm {
 
-    public RedeemVerificationForm(String goodsGroup, String couponCode, String pinCode) {
-      super(goodsGroup, couponCode, pinCode);
+    public RedeemVerificationForm(String goodsGroup, String couponCode) {
+      super(goodsGroup, couponCode);
     }
   }
 

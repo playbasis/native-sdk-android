@@ -1,6 +1,7 @@
 package com.playbasis.pbcore.rest.form.redeem;
 
 import com.playbasis.pbcore.rest.form.CustomParamsForm;
+import com.playbasis.pbcore.rest.form.ParamsMap;
 
 /**
  * Created by Tar on 4/21/16 AD.
@@ -11,10 +12,18 @@ public class VerifyGoodsGroupForm extends CustomParamsForm {
   protected String couponCode;
   protected String pinCode;
 
-  public VerifyGoodsGroupForm(String goodsGroup, String couponCode, String pinCode) {
+  public VerifyGoodsGroupForm(String goodsGroup, String couponCode) {
     this.goodsGroup = goodsGroup;
     this.couponCode = couponCode;
-    this.pinCode = pinCode;
+  }
+
+  @Override
+  public ParamsMap getFields() {
+    ParamsMap map = super.getFields();
+
+    map.put("pin_code", pinCode);
+
+    return map;
   }
 
   public String getGoodsGroup() {
@@ -25,7 +34,7 @@ public class VerifyGoodsGroupForm extends CustomParamsForm {
     return couponCode;
   }
 
-  public String getPinCode() {
-    return pinCode;
+  public void setPinCode(String pinCode) {
+    this.pinCode = pinCode;
   }
 }

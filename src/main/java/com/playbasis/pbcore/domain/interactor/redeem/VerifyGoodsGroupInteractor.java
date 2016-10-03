@@ -38,7 +38,6 @@ public class VerifyGoodsGroupInteractor extends PlayBasisApiInteractor {
             getApiToken(),
             verifyGoodsGroupForm.getGoodsGroup(),
             verifyGoodsGroupForm.getCouponCode(),
-            verifyGoodsGroupForm.getPinCode(),
             verifyGoodsGroupForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<VerifyGoodsGroupApiResult>());

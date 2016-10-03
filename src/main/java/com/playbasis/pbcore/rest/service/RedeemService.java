@@ -42,7 +42,6 @@ public interface RedeemService {
       @NonNull @Field("token") String token,
       @NonNull @Field("goods_group") String goodsGroup,
       @NonNull @Field("coupon_code") String couponCode,
-      @NonNull @Field("pin_code") String pinCode,
       @FieldMap ParamsMap fields
   );
 }
