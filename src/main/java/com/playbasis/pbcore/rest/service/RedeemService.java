@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.playbasis.pbcore.rest.form.ParamsMap;
 import com.playbasis.pbcore.rest.result.redeem.RedeemGoodsApiResult;
 import com.playbasis.pbcore.rest.result.redeem.RedeemGoodsGroupApiResult;
+import com.playbasis.pbcore.rest.result.redeem.VerifyGoodsGroupApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -32,6 +33,16 @@ public interface RedeemService {
       @NonNull @Field("token") String token,
       @NonNull @Field("player_id") String playerId,
       @NonNull @Field("group") String group,
+      @FieldMap ParamsMap fields
+  );
+
+  @FormUrlEncoded
+  @POST("Redeem/goodsGroup/verify")
+  Observable<VerifyGoodsGroupApiResult> verifyGoodsGroup(
+      @NonNull @Field("token") String token,
+      @NonNull @Field("goods_group") String goodsGroup,
+      @NonNull @Field("coupon_code") String couponCode,
+      @NonNull @Field("pin_code") String pinCode,
       @FieldMap ParamsMap fields
   );
 }
