@@ -1,11 +1,11 @@
 package com.playbasis.pbcore.rest.form.redeem;
 
-import com.playbasis.pbcore.rest.form.PBForm;
+import com.playbasis.pbcore.rest.form.CustomParamsForm;
 
 /**
  * Created by Tar on 4/21/16 AD.
  */
-public class VerifyGoodsGroupForm extends PBForm {
+public class VerifyGoodsGroupForm extends CustomParamsForm {
 
   protected String goodsGroup;
   protected String couponCode;
