@@ -4,7 +4,6 @@ import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.interactor.redeem.RedeemGoodsGroupInteractor;
 import com.playbasis.pbcore.domain.interactor.redeem.RedeemGoodsInteractor;
-import com.playbasis.pbcore.domain.interactor.redeem.VerifyGoodsGroupInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.dependency.component.PerActivity;
 import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
@@ -34,14 +33,5 @@ public class RedeemModule {
                                                                RestClient restClient,
                                                                RequestTokenInteractor requestTokenInteractor) {
     return new RedeemGoodsGroupInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
-  }
-
-  @Provides
-  @PerActivity
-  VerifyGoodsGroupInteractor provideVerifyGoodsGroupInteractor(PBThreadExecutor threadExecutor,
-                                                               PBPostExecutionThread postExecutionThread,
-                                                               RestClient restClient,
-                                                               RequestTokenInteractor requestTokenInteractor) {
-    return new VerifyGoodsGroupInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 }

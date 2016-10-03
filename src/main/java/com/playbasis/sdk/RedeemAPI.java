@@ -4,9 +4,7 @@ import com.playbasis.pbcore.dependency.component.DaggerRedeemAPIComponent;
 import com.playbasis.pbcore.dependency.module.RedeemModule;
 import com.playbasis.pbcore.domain.interactor.redeem.RedeemGoodsGroupInteractor;
 import com.playbasis.pbcore.domain.interactor.redeem.RedeemGoodsInteractor;
-import com.playbasis.pbcore.domain.interactor.redeem.VerifyGoodsGroupInteractor;
 import com.playbasis.pbcore.rest.form.redeem.RedeemGoodsForm;
-import com.playbasis.pbcore.rest.form.redeem.VerifyGoodsGroupForm;
 import com.playbasis.sdk.callback.BasicApiCallback;
 import com.playbasis.sdk.subscriber.BaseApiSubscriber;
 
@@ -23,8 +21,6 @@ public class RedeemAPI {
   protected RedeemGoodsGroupInteractor redeemGoodsGroupInteractor;
   @Inject
   protected RedeemGoodsInteractor redeemGoodsInteractor;
-  @Inject
-  protected VerifyGoodsGroupInteractor verifyGoodsGroupInteractor;
 
   public static RedeemAPI instance() {
     if (redeemAPI == null) {
@@ -49,11 +45,6 @@ public class RedeemAPI {
     instance().redeemGoodsGroupInteractor.execute(new BaseApiSubscriber<>(callback));
   }
 
-  public static void redeemVerification(RedeemVerificationForm form, RedeemVerificationCallback callback) {
-    instance().verifyGoodsGroupInteractor.setVerifyGoodsGroupForm(form);
-    instance().verifyGoodsGroupInteractor.execute(new BaseApiSubscriber<>(callback));
-  }
-
   public static class RedeemForm extends RedeemGoodsForm {
 
     public RedeemForm(String goodsId, String playerId) {
@@ -68,22 +59,11 @@ public class RedeemAPI {
     }
   }
 
-  public static class RedeemVerificationForm extends VerifyGoodsGroupForm {
-
-    public RedeemVerificationForm(String goodsGroup, String couponCode) {
-      super(goodsGroup, couponCode);
-    }
-  }
-
   public interface RedeemCallback extends BasicApiCallback {
 
   }
 
   public interface RedeemGoodsGroupCallback extends BasicApiCallback {
-
-  }
-
-  public interface RedeemVerificationCallback extends BasicApiCallback {
 
   }
 }
