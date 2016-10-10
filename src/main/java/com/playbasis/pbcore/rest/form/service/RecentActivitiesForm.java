@@ -14,6 +14,7 @@ public class RecentActivitiesForm extends PBForm {
   protected String lastReadActivityId = null;
   protected String mode = "all";
   protected String eventType = null;
+  protected String actionName = null;
 
   public RecentActivitiesForm() {
 
@@ -43,6 +44,10 @@ public class RecentActivitiesForm extends PBForm {
     this.eventType = eventType;
   }
 
+  public void setActionName(String actionName) {
+    this.actionName = actionName;
+  }
+
   @Override
   public ParamsMap getFields() {
     ParamsMap map = super.getFields();
@@ -53,6 +58,7 @@ public class RecentActivitiesForm extends PBForm {
     map.put("last_read_activity_id", lastReadActivityId);
     map.put("mode", mode);
     map.put("event_type", eventType);
+    map.put("action_name", actionName);
 
     return map;
   }
