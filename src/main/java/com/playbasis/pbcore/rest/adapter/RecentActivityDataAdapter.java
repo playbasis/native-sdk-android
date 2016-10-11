@@ -33,9 +33,9 @@ public class RecentActivityDataAdapter  extends BaseGsonAdapter implements JsonD
     }
 
     if (recentActivityResponse.eventType != null) {
-      if (recentActivityResponse.eventType.equalsIgnoreCase("reward")) {
+      if (recentActivityResponse.eventType.equalsIgnoreCase("action")) {
         recentActivityResponse.data = context.deserialize(json, RecentActivityResponse.ActionResponse.class);
-      } else if (recentActivityResponse.eventType.equalsIgnoreCase("action")) {
+      } else if (recentActivityResponse.eventType.equalsIgnoreCase("reward")) {
         recentActivityResponse.data = context.deserialize(json, RecentActivityResponse.RewardResponse.class);
       } else if (recentActivityResponse.eventType.equalsIgnoreCase("redeem")) {
         recentActivityResponse.data = context.deserialize(json, RecentActivityResponse.RedeemResponse.class);
