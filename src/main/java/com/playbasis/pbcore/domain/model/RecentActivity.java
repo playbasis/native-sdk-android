@@ -159,6 +159,10 @@ public class RecentActivity extends PBModel {
       return url;
     }
 
+    public Player getSecondPlayer() {
+      return secondPlayer;
+    }
+
     @Override
     public int describeContents() {
       return 0;
