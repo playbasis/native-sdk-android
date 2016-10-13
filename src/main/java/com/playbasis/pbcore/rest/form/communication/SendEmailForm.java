@@ -13,7 +13,7 @@ public class SendEmailForm extends PBForm {
   protected String message;
   protected String templateId = null;
 
-  public SendEmailForm(String playerId, String subject, String message) {
+  public SendEmailForm(String playerId, String subject) {
     this.playerId = playerId;
     this.subject = subject;
     this.message = message;
@@ -24,6 +24,7 @@ public class SendEmailForm extends PBForm {
     ParamsMap map = super.getFields();
 
     map.put("template_id", templateId);
+    map.put("message", message);
 
     return map;
   }
@@ -36,12 +37,8 @@ public class SendEmailForm extends PBForm {
     return subject;
   }
 
-  public String getMessage() {
-    return message;
-  }
-
-  public String getTemplateId() {
-    return templateId;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   public void setTemplateId(String templateId) {

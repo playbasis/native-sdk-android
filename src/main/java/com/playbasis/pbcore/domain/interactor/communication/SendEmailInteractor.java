@@ -38,7 +38,6 @@ public class SendEmailInteractor extends PlayBasisApiInteractor {
             getApiToken(),
             sendEmailForm.getPlayerId(),
             sendEmailForm.getSubject(),
-            sendEmailForm.getMessage(),
             sendEmailForm.getFields()
         )
         .map(new PBApiErrorCheckFunc<SendEmailApiResult>());

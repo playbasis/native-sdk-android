@@ -24,7 +24,6 @@ public interface CommunicationService {
       @NonNull @Field("token") String token,
       @NonNull @Field("player_id") String playerId,
       @NonNull @Field("subject") String subject,
-      @NonNull @Field("message") String message,
       @FieldMap ParamsMap fields
   );
 

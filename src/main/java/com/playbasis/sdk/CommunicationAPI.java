@@ -74,8 +74,8 @@ public class CommunicationAPI {
 
   public static class SendEmailForm extends com.playbasis.pbcore.rest.form.communication.SendEmailForm {
 
-    public SendEmailForm(String playerId, String subject, String message) {
-      super(playerId, subject, message);
+    public SendEmailForm(String playerId, String subject) {
+      super(playerId, subject);
     }
   }
 
