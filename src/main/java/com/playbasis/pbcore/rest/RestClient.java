@@ -39,6 +39,7 @@ import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.QuizService;
 import com.playbasis.pbcore.rest.service.RedeemService;
 import com.playbasis.pbcore.rest.service.ServiceService;
+import com.playbasis.pbcore.rest.service.SettingService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
 import com.playbasis.pbcore.rest.service.TripService;
@@ -64,6 +65,7 @@ public class RestClient {
   protected Retrofit retrofit;
 
   protected TokenService tokenService;
+  protected SettingService settingService;
   protected PlayerService playerService;
   protected BadgeService badgeService;
   protected GoodsService goodsService;
@@ -101,6 +103,7 @@ public class RestClient {
         .build();
 
     tokenService = retrofit.create(TokenService.class);
+    settingService = retrofit.create(SettingService.class);
     playerService = retrofit.create(PlayerService.class);
     badgeService = retrofit.create(BadgeService.class);
     goodsService = retrofit.create(GoodsService.class);
@@ -142,6 +145,10 @@ public class RestClient {
 
   public TokenService getTokenService() {
     return tokenService;
+  }
+
+  public SettingService getSettingService() {
+    return settingService;
   }
 
   public PlayerService getPlayerService() {
