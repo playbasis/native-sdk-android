@@ -56,7 +56,7 @@ public class SettingAPI {
     });
   }
 
-  public class AppStatusForm extends com.playbasis.pbcore.rest.form.setting.AppStatusForm {
+  public static class AppStatusForm extends com.playbasis.pbcore.rest.form.setting.AppStatusForm {
 
   }
 
