@@ -11,6 +11,7 @@ import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.helper.GsonHelper;
 import com.playbasis.pbcore.rest.adapter.CodesAdapter;
 import com.playbasis.pbcore.rest.adapter.EventAdapter;
+import com.playbasis.pbcore.rest.adapter.GenericResponseAdapter;
 import com.playbasis.pbcore.rest.adapter.GsonBirthdateAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerCustomFieldAdapter;
 import com.playbasis.pbcore.rest.adapter.PlayerRankAdapter;
@@ -18,6 +19,7 @@ import com.playbasis.pbcore.rest.adapter.QuestLeaderboardCurrentPlayerAdapter;
 import com.playbasis.pbcore.rest.adapter.RecentActivityDataAdapter;
 import com.playbasis.pbcore.rest.adapter.RewardDataAdapter;
 import com.playbasis.pbcore.rest.response.EventResponse;
+import com.playbasis.pbcore.rest.response.GenericResponse;
 import com.playbasis.pbcore.rest.response.GoodsResponse;
 import com.playbasis.pbcore.rest.response.PlayerRankResponse;
 import com.playbasis.pbcore.rest.response.RecentActivityResponse;
@@ -28,9 +30,10 @@ import com.playbasis.pbcore.rest.service.BadgeService;
 import com.playbasis.pbcore.rest.service.CommunicationService;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.EngineService;
-import com.playbasis.pbcore.rest.service.GameService;
-import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.FileService;
+import com.playbasis.pbcore.rest.service.GameService;
+import com.playbasis.pbcore.rest.service.GenericService;
+import com.playbasis.pbcore.rest.service.GoodsService;
 import com.playbasis.pbcore.rest.service.HealthService;
 import com.playbasis.pbcore.rest.service.LinkService;
 import com.playbasis.pbcore.rest.service.MerchantService;
@@ -83,6 +86,7 @@ public class RestClient {
   protected HealthService healthService;
   protected TripService tripService;
   protected GameService gameService;
+  protected GenericService genericService;
 
   protected String apiKey;
   protected String apiSecret;
@@ -121,6 +125,7 @@ public class RestClient {
     healthService = retrofit.create(HealthService.class);
     tripService = retrofit.create(TripService.class);
     gameService = retrofit.create(GameService.class);
+    genericService = retrofit.create(GenericService.class);
   }
 
   public RestClient(String url) {
@@ -132,6 +137,7 @@ public class RestClient {
 
   public Gson getGson() {
     return GsonHelper.newBuilder()
+        .registerTypeAdapter(GenericResponse.class, new GenericResponseAdapter())
         .registerTypeAdapter(Birthdate.class, new GsonBirthdateAdapter())
         .registerTypeAdapter(GoodsResponse.CodeResponse.class, new CodesAdapter())
         .registerTypeAdapter(GetUserCustomFieldsApiResult.PlayerCustomFieldResponse.class, new PlayerCustomFieldAdapter())
@@ -217,6 +223,10 @@ public class RestClient {
 
   public GameService getGameService() {
     return gameService;
+  }
+
+  public GenericService getGenericService() {
+    return genericService;
   }
 
   public String getBaseUrl() {
