@@ -1,9 +1,10 @@
 package com.playbasis.pbcore.rest.result.generic;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.playbasis.pbcore.rest.response.GenericResponse;
 import com.playbasis.pbcore.rest.result.PBApiResult;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by Tar on 11/2/16.
@@ -11,15 +12,15 @@ import com.playbasis.pbcore.rest.result.PBApiResult;
 
 public class GenericApiResult extends PBApiResult<GenericResponse> {
 
-  public String getString() {
-    return response.str;
+  public String getResponse() {
+    return response.response;
   }
 
-  public JsonObject getJsonObject() {
+  public JSONObject getJSONObjectResponse() {
     return response.obj;
   }
 
-  public JsonArray getJsonArray() {
+  public JSONArray getJSONArrayResponse() {
     return response.arr;
   }
 
