@@ -1,7 +1,7 @@
 package com.playbasis.pbcore.rest.response;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by Tar on 11/2/16.
@@ -9,8 +9,8 @@ import com.google.gson.JsonObject;
 
 public class GenericResponse {
 
-  public String str;
-  public JsonObject obj;
-  public JsonArray arr;
+  public String response;
+  public JSONObject obj;
+  public JSONArray arr;
 
 }
