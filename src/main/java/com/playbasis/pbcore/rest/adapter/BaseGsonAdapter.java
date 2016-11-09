@@ -11,7 +11,7 @@ import java.util.Date;
 public class BaseGsonAdapter {
 
   public int getInt(JsonObject json, String key) {
-    if (json.has(key)) {
+    if (hasValueForKey(json, key)) {
       return json.get(key).getAsInt();
     }
 
@@ -19,7 +19,7 @@ public class BaseGsonAdapter {
   }
 
   public String getString(JsonObject json, String key) {
-    if (json.has(key)) {
+    if (hasValueForKey(json, key)) {
       return json.get(key).getAsString();
     }
 
@@ -27,7 +27,7 @@ public class BaseGsonAdapter {
   }
 
   public boolean getBoolean(JsonObject json, String key) {
-    if (json.has(key)) {
+    if (hasValueForKey(json, key)) {
       return json.get(key).getAsBoolean();
     }
 
@@ -35,7 +35,7 @@ public class BaseGsonAdapter {
   }
 
   public double getDouble(JsonObject json, String key) {
-    if (json.has(key)) {
+    if (hasValueForKey(json, key)) {
       return json.get(key).getAsDouble();
     }
 
@@ -43,7 +43,7 @@ public class BaseGsonAdapter {
   }
 
   public long getLong(JsonObject json, String key) {
-    if (json.has(key)) {
+    if (hasValueForKey(json, key)) {
       return json.get(key).getAsLong();
     }
 
@@ -51,7 +51,7 @@ public class BaseGsonAdapter {
   }
 
   public float getFloat(JsonObject json, String key) {
-    if (json.has(key)) {
+    if (hasValueForKey(json, key)) {
       return json.get(key).getAsFloat();
     }
 
@@ -59,10 +59,14 @@ public class BaseGsonAdapter {
   }
 
   public Date getDate(JsonObject json, String key, JsonDeserializationContext context) {
-    if (json.has("key")) {
+    if (hasValueForKey(json, key)) {
       return context.deserialize(json.get(key), Date.class);
     }
 
     return null;
+  }
+
+  private boolean hasValueForKey(JsonObject jsonObject, String key) {
+    return jsonObject.has(key) && jsonObject.get(key) != null;
   }
 }

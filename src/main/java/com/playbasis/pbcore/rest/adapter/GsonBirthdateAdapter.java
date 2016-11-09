@@ -28,14 +28,12 @@ public class GsonBirthdateAdapter extends BaseGsonAdapter implements JsonSeriali
   }
 
   @Override
-  public synchronized JsonElement serialize(Birthdate date, Type type,
-JsonSerializationContext jsonSerializationContext) {
+  public synchronized JsonElement serialize(Birthdate date, Type type, JsonSerializationContext jsonSerializationContext) {
     return new JsonPrimitive(dateFormat.format(date));
   }
 
   @Override
-  public synchronized Birthdate deserialize(JsonElement jsonElement, Type type,
-                                       JsonDeserializationContext jsonDeserializationContext) {
+  public synchronized Birthdate deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
     try {
       Date date = dateFormat.parse(jsonElement.getAsString());
       return new Birthdate(date);
