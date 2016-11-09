@@ -23,7 +23,7 @@ ext {
   siteUrl = 'https://github.com/playbasis/native-sdk-android'
   gitUrl = 'https://github.com/playbasis/native-sdk-android.git'
 
-  libraryVersion = '0.0.30a'
+  libraryVersion = '0.0.31a'
 
   developerId = 'Thanakij'
   developerName = 'Thanakij Pechprasarn'
