@@ -24,7 +24,6 @@ import javax.inject.Inject;
 public class PBSharedPreference {
 
   public static final String TAG = "SharedPreference";
-  public static final String TOKEN = "TokenKey";
   public static final String USER = "User";
 
   protected Context mContext;
@@ -34,12 +33,20 @@ public class PBSharedPreference {
     mContext = context;
   }
 
-  public String tokenKey() {
-    return MD5.encrypt(mContext.getPackageName());
+  public String tokenSaveKey() {
+    return MD5.encrypt(mContext.getPackageName() + "TOKEN");
+  }
+
+  public String apiKeySaveKey() {
+    return MD5.encrypt(mContext.getPackageName() + "API_KEY");
+  }
+
+  public String apiSecretSaveKey() {
+    return MD5.encrypt(mContext.getPackageName() + "API_SECRET");
   }
 
   public Token readToken() {
-    String tokenData = SharedPreferenceHelper.getPreferenceString(mContext, tokenKey(), null);
+    String tokenData = SharedPreferenceHelper.getPreferenceString(mContext, tokenSaveKey(), null);
 
     if (tokenData == null) {
       return null;
@@ -60,7 +67,23 @@ public class PBSharedPreference {
       tokenData = new Gson().toJson(token);
     }
 
-    SharedPreferenceHelper.setPreference(mContext, tokenKey(), tokenData);
+    SharedPreferenceHelper.setPreference(mContext, tokenSaveKey(), tokenData);
+  }
+
+  public String readApiKey() {
+    return SharedPreferenceHelper.getPreferenceString(mContext, apiKeySaveKey(), null);
+  }
+
+  public void writeApiKey(String apiKey) {
+    SharedPreferenceHelper.setPreference(mContext, apiKeySaveKey(), apiKey);
+  }
+
+  public String readApiSecret() {
+    return SharedPreferenceHelper.getPreferenceString(mContext, apiSecretSaveKey(), null);
+  }
+
+  public void writeApiSecret(String apiSecret) {
+    SharedPreferenceHelper.setPreference(mContext, apiSecretSaveKey(), apiSecret);
   }
 
   @Nullable
