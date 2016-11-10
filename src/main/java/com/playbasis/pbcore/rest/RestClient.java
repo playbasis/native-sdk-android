@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
+import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.model.Birthdate;
 import com.playbasis.pbcore.helper.GsonHelper;
@@ -64,7 +65,13 @@ public class RestClient {
 
   public static final String TAG = "RestClient";
 
+  public void tmp() {
+    apiKey = null;
+    apiSecret = null;
+  }
+
   protected Context context;
+  protected PBSharedPreference sharedPreference;
   protected Retrofit retrofit;
 
   protected TokenService tokenService;
@@ -92,8 +99,9 @@ public class RestClient {
   protected String apiSecret;
 
   @Inject
-  public RestClient(Context context, PBThreadExecutor threadExecutor) {
+  public RestClient(Context context, PBSharedPreference sharedPreference, PBThreadExecutor threadExecutor) {
     this.context = context;
+    this.sharedPreference = sharedPreference;
 
     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -235,23 +243,12 @@ public class RestClient {
 
   public void setApiKey(String apiKey) {
     this.apiKey = apiKey;
+    sharedPreference.writeApiKey(apiKey);
   }
 
   public String getApiKey() {
-    if (apiKey != null) {
-      return apiKey;
-    }
-
-    Bundle metadata = getMetadata();
-
-    if (metadata == null) {
-      return null;
-    }
-
-    apiKey = metadata.getString("playbasis_api_key");
-
     if (apiKey == null) {
-      apiKey = String.valueOf(metadata.getInt("playbasis_api_key"));
+      apiKey = sharedPreference.readApiKey();
     }
 
     return apiKey;
@@ -259,20 +256,14 @@ public class RestClient {
 
   public void setApiSecret(String apiSecret) {
     this.apiSecret = apiSecret;
+    sharedPreference.writeApiSecret(apiSecret);
   }
 
   public String getApiSecret() {
-    if (apiSecret != null) {
-      return apiSecret;
+    if (apiSecret == null) {
+      apiSecret = sharedPreference.readApiSecret();
     }
 
-    Bundle metadata = getMetadata();
-
-    if (metadata == null) {
-      return null;
-    }
-
-    apiSecret = metadata.getString("playbasis_api_secret");
     return apiSecret;
   }
 

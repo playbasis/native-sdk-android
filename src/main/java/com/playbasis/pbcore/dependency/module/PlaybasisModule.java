@@ -71,8 +71,8 @@ public class PlaybasisModule {
 
   @Provides
   @Singleton
-  RestClient provideRestClient(Context context, PBThreadExecutor threadExecutor) {
-    return new RestClient(context, threadExecutor);
+  RestClient provideRestClient(Context context, PBSharedPreference sharedPreference, PBThreadExecutor threadExecutor) {
+    return new RestClient(context, sharedPreference, threadExecutor);
   }
 
 }
