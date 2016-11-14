@@ -36,12 +36,12 @@ ext {
 
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.3"
+  compileSdkVersion 21
+  buildToolsVersion "21.1.2"
 
   defaultConfig {
-    minSdkVersion 9
-    targetSdkVersion 23
+    minSdkVersion 15
+    targetSdkVersion 21
     versionCode 1
     versionName "0.1"
   }
@@ -56,7 +56,7 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
-  compile 'com.android.support:appcompat-v7:23.4.0'
+  compile 'com.android.support:appcompat-v7:21.0.3'
   compile 'com.google.zxing:core:3.2.1'
 
   // Dagger 2
@@ -87,7 +87,7 @@ dependencies {
   compile 'io.reactivex:rxjava:1.1.0'
 
   // BlurDialogFragment
-  compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
+  //compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
 
   compile 'joda-time:joda-time:2.9.4'
 }
