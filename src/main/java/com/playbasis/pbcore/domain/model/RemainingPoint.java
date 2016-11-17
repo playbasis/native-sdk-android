@@ -27,6 +27,12 @@ public class RemainingPoint extends PBModel {
   public RemainingPoint() {
   }
 
+
+  public RemainingPoint(String name, String quantity) {
+    this.name = name;
+    this.quantity = quantity;
+  }
+
   protected RemainingPoint(Parcel in) {
     this.name = in.readString();
     this.quantity = in.readString();
