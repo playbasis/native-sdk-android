@@ -25,6 +25,9 @@ public class GameSetting extends PBModel {
   public String actionTime;
   public List<GameStage> gameStages;
 
+  public GameSetting() {
+  }
+
   public GameSetting(RetrieveGameSettingApiResult.Response response) {
     update(response);
   }
