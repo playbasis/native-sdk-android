@@ -91,6 +91,7 @@ public class GameSetting extends PBModel {
     dest.writeLong(this.dateModified != null ? this.dateModified.getTime() : -1);
     dest.writeString(this.imageUrl);
     dest.writeString(this.duration);
+    dest.writeString(this.actionTime);
     dest.writeTypedList(this.gameStages);
   }
 
@@ -102,6 +103,7 @@ public class GameSetting extends PBModel {
     this.dateModified = tmpDateModified == -1 ? null : new Date(tmpDateModified);
     this.imageUrl = in.readString();
     this.duration = in.readString();
+    this.actionTime = in.readString();
     this.gameStages = in.createTypedArrayList(GameStage.CREATOR);
   }
 
