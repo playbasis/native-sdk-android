@@ -1,5 +1,7 @@
 package com.playbasis.pbcore.domain.model;
 
+import android.os.Parcel;
+
 import com.playbasis.pbcore.rest.response.GameStageResponse;
 import com.playbasis.pbcore.rest.result.game.RetrieveGameSettingApiResult;
 
@@ -12,7 +14,7 @@ import java.util.List;
  * DBS-SDK
  */
 
-public class GameSetting {
+public class GameSetting extends PBModel {
   public static final String TAG = "GameSetting";
 
   public String gameName;
@@ -66,4 +68,42 @@ public class GameSetting {
 
     return gameSettings;
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.gameName);
+    dest.writeLong(this.dateAdded != null ? this.dateAdded.getTime() : -1);
+    dest.writeLong(this.dateModified != null ? this.dateModified.getTime() : -1);
+    dest.writeString(this.imageUrl);
+    dest.writeString(this.duration);
+    dest.writeTypedList(this.gameStages);
+  }
+
+  protected GameSetting(Parcel in) {
+    this.gameName = in.readString();
+    long tmpDateAdded = in.readLong();
+    this.dateAdded = tmpDateAdded == -1 ? null : new Date(tmpDateAdded);
+    long tmpDateModified = in.readLong();
+    this.dateModified = tmpDateModified == -1 ? null : new Date(tmpDateModified);
+    this.imageUrl = in.readString();
+    this.duration = in.readString();
+    this.gameStages = in.createTypedArrayList(GameStage.CREATOR);
+  }
+
+  public static final Creator<GameSetting> CREATOR = new Creator<GameSetting>() {
+    @Override
+    public GameSetting createFromParcel(Parcel source) {
+      return new GameSetting(source);
+    }
+
+    @Override
+    public GameSetting[] newArray(int size) {
+      return new GameSetting[size];
+    }
+  };
 }
