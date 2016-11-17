@@ -23,7 +23,7 @@ ext {
   siteUrl = 'https://github.com/playbasis/native-sdk-android'
   gitUrl = 'https://github.com/playbasis/native-sdk-android.git'
 
-  libraryVersion = '0.0.33'
+  libraryVersion = '0.0.34'
 
   developerId = 'Thanakij'
   developerName = 'Thanakij Pechprasarn'
@@ -40,7 +40,7 @@ android {
   buildToolsVersion "23.0.3"
 
   defaultConfig {
-    minSdkVersion 15
+    minSdkVersion 9
     targetSdkVersion 23
     versionCode 1
     versionName "0.1"
