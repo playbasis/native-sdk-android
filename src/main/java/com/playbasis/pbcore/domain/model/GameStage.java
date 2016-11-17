@@ -18,6 +18,9 @@ public class GameStage extends PBModel {
   public int rangeLow;
   public int rangeHeight;
 
+  public GameStage() {
+  }
+
   public GameStage(GameStageResponse gameStageResponse) {
     update(gameStageResponse);
   }
