@@ -33,6 +33,9 @@ public class RetrieveGameSettingApiResult extends PBApiResult<List<RetrieveGameS
     @SerializedName("duration")
     public String duration;
     @Expose
+    @SerializedName("action_time")
+    public String actionTime;
+    @Expose
     @SerializedName("stage")
     public List<GameStageResponse> gameStages;
   }

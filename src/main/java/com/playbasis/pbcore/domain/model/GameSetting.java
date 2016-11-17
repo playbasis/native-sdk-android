@@ -22,6 +22,7 @@ public class GameSetting extends PBModel {
   public Date dateModified;
   public String imageUrl;
   public String duration;
+  public String actionTime;
   public List<GameStage> gameStages;
 
   public GameSetting(RetrieveGameSettingApiResult.Response response) {
@@ -38,6 +39,7 @@ public class GameSetting extends PBModel {
     this.dateModified = response.dateModified;
     this.imageUrl = response.imageUrl;
     this.duration = response.duration;
+    this.actionTime = response.actionTime;
     this.gameStages = GameSetting.createGameStages(response.gameStages);
   }
 
@@ -53,6 +55,14 @@ public class GameSetting extends PBModel {
     }
 
     return gameStages;
+  }
+
+  public String getDuration() {
+    return duration;
+  }
+
+  public String getActionTime() {
+    return actionTime;
   }
 
   public static <T extends RetrieveGameSettingApiResult.Response> ArrayList<GameSetting> createGameSettings(List<T> responses) {
