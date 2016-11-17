@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.model.Birthdate;
+import com.playbasis.pbcore.domain.model.Point;
 import com.playbasis.pbcore.helper.GsonHelper;
 import com.playbasis.pbcore.rest.adapter.CodesAdapter;
 import com.playbasis.pbcore.rest.adapter.EventAdapter;
@@ -39,6 +40,7 @@ import com.playbasis.pbcore.rest.service.HealthService;
 import com.playbasis.pbcore.rest.service.LinkService;
 import com.playbasis.pbcore.rest.service.MerchantService;
 import com.playbasis.pbcore.rest.service.PlayerService;
+import com.playbasis.pbcore.rest.service.PointService;
 import com.playbasis.pbcore.rest.service.QuestService;
 import com.playbasis.pbcore.rest.service.QuizService;
 import com.playbasis.pbcore.rest.service.RedeemService;
@@ -94,6 +96,7 @@ public class RestClient {
   protected TripService tripService;
   protected GameService gameService;
   protected GenericService genericService;
+  protected PointService pointService;
 
   protected String apiKey;
   protected String apiSecret;
@@ -134,6 +137,7 @@ public class RestClient {
     tripService = retrofit.create(TripService.class);
     gameService = retrofit.create(GameService.class);
     genericService = retrofit.create(GenericService.class);
+    pointService = retrofit.create(PointService.class);
   }
 
   public RestClient(String url) {
@@ -155,6 +159,10 @@ public class RestClient {
         .registerTypeAdapter(RecentActivityResponse.class, new RecentActivityDataAdapter())
         .registerTypeAdapter(RewardResponse.RewardDataInterface.class, new RewardDataAdapter())
         .create();
+  }
+
+  public PointService getPointService() {
+    return pointService;
   }
 
   public TokenService getTokenService() {
