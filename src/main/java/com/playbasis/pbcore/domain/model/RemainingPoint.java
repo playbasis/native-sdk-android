@@ -2,6 +2,12 @@ package com.playbasis.pbcore.domain.model;
 
 import android.os.Parcel;
 
+import com.playbasis.pbcore.rest.response.GameStageResponse;
+import com.playbasis.pbcore.rest.result.point.RemainingPointApiResult;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Nott on 16/11/2559.
  * playbasis-sdk-android-project
@@ -25,6 +31,20 @@ public class RemainingPoint extends PBModel {
   }
 
   public RemainingPoint() {
+  }
+
+  public static <T extends RemainingPointApiResult.Response> ArrayList<RemainingPoint> createRemainingPoints(List<T> responses) {
+    ArrayList<RemainingPoint> remainingPoints = new ArrayList<>();
+
+    if (responses == null || responses.size() == 0) {
+      return remainingPoints;
+    }
+
+    for (T response : responses) {
+      remainingPoints.add(new RemainingPoint(response.name, response.quantity));
+    }
+
+    return remainingPoints;
   }
 
 

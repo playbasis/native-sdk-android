@@ -10,7 +10,6 @@ import com.playbasis.pbcore.rest.RestClient;
 import com.playbasis.pbcore.rest.form.point.RetrieveRemainingPointsForm;
 import com.playbasis.pbcore.rest.result.point.RemainingPointApiResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -41,27 +40,18 @@ public class GetRemainingPointsInteractor extends PlayBasisApiInteractor {
     return restClient.getPointService()
         .getRemainingPoints(form.getName(), getApiKey())
         .map(new PBApiErrorCheckFunc<RemainingPointApiResult>())
-        .map(getResultRemainingPointsFunction());
+        .map(getResultFunction());
   }
 
   public void setForm(RetrieveRemainingPointsForm form) {
     this.form = form;
   }
 
-  public Func1<RemainingPointApiResult, List<? extends RemainingPoint>> getResultRemainingPointsFunction() {
+  public Func1<RemainingPointApiResult, List<? extends RemainingPoint>> getResultFunction() {
     return new Func1<RemainingPointApiResult, List<? extends RemainingPoint>>() {
       @Override
       public List<? extends RemainingPoint> call(RemainingPointApiResult remainingPointApiResult) {
-        if (remainingPointApiResult == null) {
-          return null;
-        }
-
-        List<RemainingPoint> points = new ArrayList<>();
-        for (int i = 0; i < remainingPointApiResult.response.size(); i++) {
-          points.add(new RemainingPoint(remainingPointApiResult.response.get(i).name,
-              remainingPointApiResult.response.get(i).quantity));
-        }
-        return points;
+        return RemainingPoint.createRemainingPoints(remainingPointApiResult.response);
       }
     };
   }
