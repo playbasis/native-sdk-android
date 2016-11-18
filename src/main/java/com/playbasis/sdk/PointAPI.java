@@ -4,6 +4,7 @@ import com.playbasis.pbcore.dependency.component.DaggerPointAPIComponent;
 import com.playbasis.pbcore.domain.interactor.point.ApproveTransactionInteractor;
 import com.playbasis.pbcore.domain.interactor.point.GetRemainingPointsInteractor;
 import com.playbasis.pbcore.domain.model.RemainingPoint;
+import com.playbasis.pbcore.domain.model.Transaction;
 import com.playbasis.sdk.callback.BasicApiCallbackWithResult;
 import com.playbasis.sdk.subscriber.BaseApiSubscriber;
 
@@ -59,7 +60,7 @@ public class PointAPI {
 
   }
 
-  public interface ApproveTransactionCustomPointCallback extends BasicApiCallbackWithResult<List<RemainingPoint>> {
+  public interface ApproveTransactionCustomPointCallback extends BasicApiCallbackWithResult<List<Transaction>> {
 
   }
 }
