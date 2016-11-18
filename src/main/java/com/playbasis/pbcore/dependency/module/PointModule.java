@@ -5,6 +5,7 @@ import com.playbasis.pbcore.domain.executor.PBPostExecutionThread;
 import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.Link.GenerateLinkInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
+import com.playbasis.pbcore.domain.interactor.point.ApproveTransactionInteractor;
 import com.playbasis.pbcore.domain.interactor.point.GetRemainingPointsInteractor;
 import com.playbasis.pbcore.rest.RestClient;
 
@@ -26,4 +27,12 @@ public class PointModule {
     return new GetRemainingPointsInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
   }
 
+  @Provides
+  @PerActivity
+  ApproveTransactionInteractor provideApproveTransactionInteractor(PBThreadExecutor threadExecutor,
+                                                                   PBPostExecutionThread postExecutionThread,
+                                                                   RestClient restClient,
+                                                                   RequestTokenInteractor requestTokenInteractor) {
+    return new ApproveTransactionInteractor(threadExecutor, postExecutionThread, restClient, requestTokenInteractor);
+  }
 }

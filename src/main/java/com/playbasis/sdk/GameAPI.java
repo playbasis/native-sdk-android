@@ -2,7 +2,9 @@ package com.playbasis.sdk;
 
 import com.playbasis.pbcore.dependency.component.DaggerGameAPIComponent;
 import com.playbasis.pbcore.dependency.module.GameModule;
+import com.playbasis.pbcore.domain.interactor.game.GetActiveCampaignInteractor;
 import com.playbasis.pbcore.domain.interactor.game.GetGameSettingInteractor;
+import com.playbasis.pbcore.domain.model.Campaign;
 import com.playbasis.pbcore.domain.model.GameSetting;
 import com.playbasis.pbcore.domain.model.RemainingPoint;
 import com.playbasis.pbcore.rest.form.game.RetrieveGameSettingsForm;
@@ -20,6 +22,8 @@ public class GameAPI {
 
   @Inject
   GetGameSettingInteractor getGameSettingInteractor;
+  @Inject
+  GetActiveCampaignInteractor getActiveCampaignInteractor;
 
   private static GameAPI gameAPI;
 
@@ -37,7 +41,7 @@ public class GameAPI {
     return gameAPI;
   }
 
-  public static void retrieveGameSettingsForm(GameAPI.RetrieveGameSettingsForm form, GameAPI.RetrieveGameSettingsCallback callback) {
+  public static void retrieveGameSettings(GameAPI.RetrieveGameSettingsForm form, GameAPI.RetrieveGameSettingsCallback callback) {
     instance().getGameSettingInteractor.setGameSettingsForm(form);
     instance().getGameSettingInteractor.execute(new BaseApiSubscriber<>(callback));
   }
@@ -47,6 +51,19 @@ public class GameAPI {
   }
 
   public interface RetrieveGameSettingsCallback extends BasicApiCallbackWithResult<List<GameSetting>> {
+
+  }
+
+  public static void retrieveActiveCampaign(GameAPI.RetrieveActiveCampaignForm form, GameAPI.RetrieveActiveCampaignCallback callback) {
+    instance().getActiveCampaignInteractor.setForm(form);
+    instance().getActiveCampaignInteractor.execute(new BaseApiSubscriber<>(callback));
+  }
+
+  public static class RetrieveActiveCampaignForm extends com.playbasis.pbcore.rest.form.game.RetrieveActiveCampaignForm {
+
+  }
+
+  public interface RetrieveActiveCampaignCallback extends BasicApiCallbackWithResult<Campaign> {
 
   }
 }
