@@ -31,6 +31,7 @@ public interface PointService {
       @NonNull @Query("name") String name,
       @NonNull @Query("api_key") String apiKey);
 
+  @FormUrlEncoded
   @POST("Point/custom/approval")
   Observable<TransactionCustomPointApiResult> pointApproval(
       @NonNull @Field("token") String token,
