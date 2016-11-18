@@ -5,10 +5,13 @@ import com.playbasis.pbcore.domain.executor.PBThreadExecutor;
 import com.playbasis.pbcore.domain.interactor.PlayBasisApiInteractor;
 import com.playbasis.pbcore.domain.interactor.RequestTokenInteractor;
 import com.playbasis.pbcore.domain.model.RemainingPoint;
+import com.playbasis.pbcore.domain.model.Transaction;
 import com.playbasis.pbcore.rest.PBApiErrorCheckFunc;
 import com.playbasis.pbcore.rest.RestClient;
+import com.playbasis.pbcore.rest.form.point.ApproveTransactionCustomPointForm;
 import com.playbasis.pbcore.rest.form.point.RetrieveRemainingPointsForm;
 import com.playbasis.pbcore.rest.result.point.RemainingPointApiResult;
+import com.playbasis.pbcore.rest.result.point.TransactionCustomPointApiResult;
 
 import java.util.List;
 
@@ -25,7 +28,7 @@ import rx.functions.Func1;
 public class ApproveTransactionInteractor extends PlayBasisApiInteractor {
   public static final String TAG = "GetRemainingPointsInter";
 
-  private RetrieveRemainingPointsForm form;
+  private ApproveTransactionCustomPointForm form;
 
   @Inject
   public ApproveTransactionInteractor(PBThreadExecutor threadExecutor,
@@ -38,20 +41,20 @@ public class ApproveTransactionInteractor extends PlayBasisApiInteractor {
   @Override
   public Observable buildApiUseCaseObservable() {
     return restClient.getPointService()
-        .getRemainingPoints(form.getName(), getApiKey())
-        .map(new PBApiErrorCheckFunc<RemainingPointApiResult>())
+        .pointApproval(getApiToken(), form.getTransaction(), form.getIsApprove())
+        .map(new PBApiErrorCheckFunc<TransactionCustomPointApiResult>())
         .map(getResultFunction());
   }
 
-  public void setForm(RetrieveRemainingPointsForm form) {
+  public void setForm(ApproveTransactionCustomPointForm form) {
     this.form = form;
   }
 
-  public Func1<RemainingPointApiResult, List<? extends RemainingPoint>> getResultFunction() {
-    return new Func1<RemainingPointApiResult, List<? extends RemainingPoint>>() {
+  public Func1<TransactionCustomPointApiResult, List<? extends Transaction>> getResultFunction() {
+    return new Func1<TransactionCustomPointApiResult, List<? extends Transaction>>() {
       @Override
-      public List<? extends RemainingPoint> call(RemainingPointApiResult remainingPointApiResult) {
-        return RemainingPoint.createRemainingPoints(remainingPointApiResult.response);
+      public List<? extends Transaction> call(TransactionCustomPointApiResult response) {
+        return Transaction.createTransactions(response.response);
       }
     };
   }

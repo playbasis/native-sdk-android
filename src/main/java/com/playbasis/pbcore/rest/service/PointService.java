@@ -3,10 +3,12 @@ package com.playbasis.pbcore.rest.service;
 import android.support.annotation.NonNull;
 
 import com.playbasis.pbcore.rest.result.point.RemainingPointApiResult;
+import com.playbasis.pbcore.rest.result.point.TransactionCustomPointApiResult;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -20,7 +22,7 @@ public interface PointService {
   /**
    * Get Remaining Points API
    *
-   * @param name query
+   * @param name   query
    * @param apiKey api key
    * @return Remaining Points Services
    */
@@ -28,4 +30,10 @@ public interface PointService {
   Observable<RemainingPointApiResult> getRemainingPoints(
       @NonNull @Query("name") String name,
       @NonNull @Query("api_key") String apiKey);
+
+  @POST("Point/custom/approval")
+  Observable<TransactionCustomPointApiResult> pointApproval(
+      @NonNull @Field("token") String token,
+      @NonNull @Field("transaction_list") String transactionId,
+      @NonNull @Query("approve") String isApprove);
 }
