@@ -36,5 +36,5 @@ public interface PointService {
   Observable<TransactionCustomPointApiResult> pointApproval(
       @NonNull @Field("token") String token,
       @NonNull @Field("transaction_list") String transactionId,
-      @NonNull @Query("approve") String isApprove);
+      @NonNull @Field("approve") String isApprove);
 }
