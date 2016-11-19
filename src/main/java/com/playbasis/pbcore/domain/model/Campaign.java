@@ -2,7 +2,7 @@ package com.playbasis.pbcore.domain.model;
 
 import android.os.Parcel;
 
-import com.playbasis.pbcore.rest.result.game.RetrieveActiveCampaignApiResult;
+import com.playbasis.pbcore.rest.response.ActiveCampaignResponse;
 
 import java.util.Date;
 
@@ -23,11 +23,11 @@ public class Campaign extends PBModel {
   public Campaign() {
   }
 
-  public Campaign(RetrieveActiveCampaignApiResult.Response response) {
+  public Campaign(ActiveCampaignResponse response) {
     update(response);
   }
 
-  public void update(RetrieveActiveCampaignApiResult.Response response) {
+  public void update(ActiveCampaignResponse response) {
     if (response == null) {
       return;
     }
