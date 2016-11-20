@@ -14,6 +14,7 @@ public class RecentActivityResponse {
   public String actionName;
   public Date dateAdded;
   public String eventType;
+  public ParameterResponse parameterResponse;
   public String stringFilter;
   public PlayerResponse playerResponse;
   public RecentActivityDataInterface data;
@@ -65,5 +66,12 @@ public class RecentActivityResponse {
 
   public class LevelResponse extends BaseRewardResponse {
 
+  }
+
+  public class ParameterResponse {
+    @SerializedName("amount")
+    public String amount;
+    @SerializedName("currency")
+    public String currency;
   }
 }

@@ -12,8 +12,9 @@ import java.lang.reflect.Type;
 
 /**
  * Created by Tar on 6/29/16 AD.
+ * RecentActivityDataAdapter
  */
-public class RecentActivityDataAdapter  extends BaseGsonAdapter implements JsonDeserializer<RecentActivityResponse>  {
+public class RecentActivityDataAdapter extends BaseGsonAdapter implements JsonDeserializer<RecentActivityResponse> {
 
   @Override
   public RecentActivityResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -30,6 +31,10 @@ public class RecentActivityDataAdapter  extends BaseGsonAdapter implements JsonD
 
     if (jsonObject.has("player")) {
       recentActivityResponse.playerResponse = context.deserialize(jsonObject.get("player"), PlayerResponse.class);
+    }
+
+    if (jsonObject.has("parameters")) {
+      recentActivityResponse.parameterResponse = context.deserialize(jsonObject.get("parameters"), RecentActivityResponse.ParameterResponse.class);
     }
 
     if (recentActivityResponse.eventType != null) {

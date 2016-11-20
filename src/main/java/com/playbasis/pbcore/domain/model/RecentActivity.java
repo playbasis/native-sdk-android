@@ -18,6 +18,7 @@ public class RecentActivity extends PBModel {
   protected String actionIcon;
   protected String actionName;
   protected Date dateAdded;
+  protected Parameter parameter;
   protected String eventType;
   protected String stringFilter;
   protected Player player;
@@ -50,6 +51,7 @@ public class RecentActivity extends PBModel {
     this.actionIcon = response.actionIcon;
     this.actionName = response.actionName;
     this.dateAdded = response.dateAdded;
+    this.parameter = new Parameter(response.parameterResponse);
     this.eventType = response.eventType;
     this.stringFilter = response.stringFilter;
     this.player = new Player(response.playerResponse);
@@ -96,47 +98,6 @@ public class RecentActivity extends PBModel {
   public Eventable getEventable() {
     return eventable;
   }
-
-  @Override
-  public int describeContents() {
-    return 0;
-  }
-
-  @Override
-  public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(this.recentActivityId);
-    dest.writeString(this.actionIcon);
-    dest.writeString(this.actionName);
-    dest.writeLong(this.dateAdded != null ? this.dateAdded.getTime() : -1);
-    dest.writeString(this.eventType);
-    dest.writeString(this.stringFilter);
-    dest.writeParcelable(this.player, flags);
-    dest.writeParcelable(this.eventable, flags);
-  }
-
-  protected RecentActivity(Parcel in) {
-    this.recentActivityId = in.readString();
-    this.actionIcon = in.readString();
-    this.actionName = in.readString();
-    long tmpDateAdded = in.readLong();
-    this.dateAdded = tmpDateAdded == -1 ? null : new Date(tmpDateAdded);
-    this.eventType = in.readString();
-    this.stringFilter = in.readString();
-    this.player = in.readParcelable(Player.class.getClassLoader());
-    this.eventable = in.readParcelable(Eventable.class.getClassLoader());
-  }
-
-  public static final Creator<RecentActivity> CREATOR = new Creator<RecentActivity>() {
-    @Override
-    public RecentActivity createFromParcel(Parcel source) {
-      return new RecentActivity(source);
-    }
-
-    @Override
-    public RecentActivity[] newArray(int size) {
-      return new RecentActivity[size];
-    }
-  };
 
   public interface Eventable extends Parcelable {
 
@@ -364,6 +325,45 @@ public class RecentActivity extends PBModel {
     };
   }
 
+  public static class Parameter implements Parcelable {
+    public String amount;
+    public String currency;
+
+    public Parameter(RecentActivityResponse.ParameterResponse parameterResponse) {
+      this.amount = parameterResponse.amount;
+      this.currency = parameterResponse.currency;
+    }
+
+
+    @Override
+    public int describeContents() {
+      return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeString(this.amount);
+      dest.writeString(this.currency);
+    }
+
+    protected Parameter(Parcel in) {
+      this.amount = in.readString();
+      this.currency = in.readString();
+    }
+
+    public static final Creator<Parameter> CREATOR = new Creator<Parameter>() {
+      @Override
+      public Parameter createFromParcel(Parcel source) {
+        return new Parameter(source);
+      }
+
+      @Override
+      public Parameter[] newArray(int size) {
+        return new Parameter[size];
+      }
+    };
+  }
+
   public static class Level extends BaseReward {
 
     public Level(RecentActivityResponse.BaseRewardResponse rewardResponse) {
@@ -410,4 +410,47 @@ public class RecentActivity extends PBModel {
       }
     };
   }
+
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.recentActivityId);
+    dest.writeString(this.actionIcon);
+    dest.writeString(this.actionName);
+    dest.writeLong(this.dateAdded != null ? this.dateAdded.getTime() : -1);
+    dest.writeParcelable(this.parameter, flags);
+    dest.writeString(this.eventType);
+    dest.writeString(this.stringFilter);
+    dest.writeParcelable(this.player, flags);
+    dest.writeParcelable(this.eventable, flags);
+  }
+
+  protected RecentActivity(Parcel in) {
+    this.recentActivityId = in.readString();
+    this.actionIcon = in.readString();
+    this.actionName = in.readString();
+    long tmpDateAdded = in.readLong();
+    this.dateAdded = tmpDateAdded == -1 ? null : new Date(tmpDateAdded);
+    this.parameter = in.readParcelable(Parameter.class.getClassLoader());
+    this.eventType = in.readString();
+    this.stringFilter = in.readString();
+    this.player = in.readParcelable(Player.class.getClassLoader());
+    this.eventable = in.readParcelable(Eventable.class.getClassLoader());
+  }
+
+  public static final Creator<RecentActivity> CREATOR = new Creator<RecentActivity>() {
+    @Override
+    public RecentActivity createFromParcel(Parcel source) {
+      return new RecentActivity(source);
+    }
+
+    @Override
+    public RecentActivity[] newArray(int size) {
+      return new RecentActivity[size];
+    }
+  };
 }
