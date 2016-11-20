@@ -1,8 +1,8 @@
 package com.playbasis.pbcore.dependency.component;
 
+import com.playbasis.pbcore.dependency.module.LiveFeedModule;
 import com.playbasis.pbcore.dependency.module.ServiceModule;
 import com.playbasis.sdk.LiveFeedAPI;
-import com.playbasis.sdk.ServiceAPI;
 
 import dagger.Component;
 
@@ -11,9 +11,9 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = PlaybasisComponent.class,
-    modules = {ServiceModule.class})
-public interface ServiceAPIComponent {
+    modules = {LiveFeedModule.class})
+public interface LiveFeedAPIComponent {
 
-  void inject(ServiceAPI serviceAPI);
+  void inject(LiveFeedAPI liveFeedAPI);
 
 }

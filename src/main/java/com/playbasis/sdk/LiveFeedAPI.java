@@ -1,7 +1,7 @@
 package com.playbasis.sdk;
 
-import com.playbasis.pbcore.dependency.component.DaggerServiceAPIComponent;
-import com.playbasis.pbcore.dependency.module.ServiceModule;
+import com.playbasis.pbcore.dependency.component.DaggerLiveFeedAPIComponent;
+import com.playbasis.pbcore.dependency.module.LiveFeedModule;
 import com.playbasis.pbcore.domain.interactor.service.GetRecentActivitiesInteractor;
 import com.playbasis.pbcore.domain.model.RecentActivity;
 import com.playbasis.sdk.callback.BasicApiCallbackWithResult;
@@ -25,9 +25,9 @@ public class LiveFeedAPI {
     if (liveFeedAPI == null) {
       liveFeedAPI = new LiveFeedAPI();
 
-      DaggerServiceAPIComponent.builder()
+      DaggerLiveFeedAPIComponent.builder()
           .playbasisComponent(Playbasis.getPlaybasisComponent())
-          .serviceModule(new ServiceModule())
+          .liveFeedModule(new LiveFeedModule())
           .build()
           .inject(liveFeedAPI);
     }
