@@ -53,7 +53,7 @@ public class GetActiveCampaignInteractor extends PlayBasisApiInteractor {
     return new Func1<RetrieveActiveCampaignApiResult, Campaign>() {
       @Override
       public Campaign call(RetrieveActiveCampaignApiResult response) {
-        return new Campaign(response.response);
+        return new Campaign(response.response.response);
       }
     };
   }
