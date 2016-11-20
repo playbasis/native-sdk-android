@@ -99,6 +99,10 @@ public class RecentActivity extends PBModel {
     return eventable;
   }
 
+  public Parameter getParameter() {
+    return parameter;
+  }
+
   public interface Eventable extends Parcelable {
 
   }
@@ -334,6 +338,13 @@ public class RecentActivity extends PBModel {
       this.currency = parameterResponse.currency;
     }
 
+    public String getAmount() {
+      return amount;
+    }
+
+    public String getCurrency() {
+      return currency;
+    }
 
     @Override
     public int describeContents() {
