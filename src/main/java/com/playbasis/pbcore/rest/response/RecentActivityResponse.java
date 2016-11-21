@@ -73,5 +73,7 @@ public class RecentActivityResponse {
     public String amount;
     @SerializedName("currency")
     public String currency;
+    @SerializedName("transaction_id")
+    public String transactionId;
   }
 }
