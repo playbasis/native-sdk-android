@@ -30,6 +30,7 @@ public class EventAdapter extends BaseGsonAdapter implements JsonDeserializer<Ev
     eventResponse.eventType = getString(jsonObject, "event_type");
     eventResponse.logId = getString(jsonObject, "log_id");
     eventResponse.index = getInt(jsonObject, "index");
+    eventResponse.transactionId = getString(jsonObject, "transaction_id");
 
     if (jsonObject.has("value")) {
       jsonObject.addProperty("reward_value", jsonObject.get("value").getAsString());

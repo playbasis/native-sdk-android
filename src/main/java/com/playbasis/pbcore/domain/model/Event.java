@@ -16,6 +16,7 @@ public class Event extends PBModel {
   protected String type;
   protected String logId;
   protected int index;
+  protected String transactionId;
   protected Reward reward;
 
   public Event(EventResponse eventResponse) {
@@ -40,6 +41,7 @@ public class Event extends PBModel {
     type = eventResponse.eventType;
     logId = eventResponse.logId;
     index = eventResponse.index;
+    transactionId = eventResponse.transactionId;
     reward = new Reward(eventResponse.rewardResponse);
   }
 
@@ -59,6 +61,10 @@ public class Event extends PBModel {
     return reward;
   }
 
+  public String getTransactionId() {
+    return transactionId;
+  }
+
   @Override
   public int describeContents() {
     return 0;
@@ -69,6 +75,7 @@ public class Event extends PBModel {
     dest.writeString(this.type);
     dest.writeString(this.logId);
     dest.writeInt(this.index);
+    dest.writeString(this.transactionId);
     dest.writeParcelable(this.reward, flags);
   }
 
@@ -76,6 +83,7 @@ public class Event extends PBModel {
     this.type = in.readString();
     this.logId = in.readString();
     this.index = in.readInt();
+    this.transactionId = in.readString();
     this.reward = in.readParcelable(Reward.class.getClassLoader());
   }
 
