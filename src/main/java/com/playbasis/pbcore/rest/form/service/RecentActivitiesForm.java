@@ -1,5 +1,6 @@
 package com.playbasis.pbcore.rest.form.service;
 
+import com.playbasis.pbcore.rest.form.CustomFieldForm;
 import com.playbasis.pbcore.rest.form.PBForm;
 import com.playbasis.pbcore.rest.form.ParamsMap;
 

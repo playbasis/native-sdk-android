@@ -332,10 +332,12 @@ public class RecentActivity extends PBModel {
   public static class Parameter implements Parcelable {
     public String amount;
     public String currency;
+    public String transactionId;
 
     public Parameter(RecentActivityResponse.ParameterResponse parameterResponse) {
       this.amount = parameterResponse.amount;
       this.currency = parameterResponse.currency;
+      this.transactionId = parameterResponse.transactionId;
     }
 
     public String getAmount() {
@@ -344,6 +346,10 @@ public class RecentActivity extends PBModel {
 
     public String getCurrency() {
       return currency;
+    }
+
+    public String getTransactionId() {
+      return transactionId;
     }
 
     @Override
@@ -355,11 +361,13 @@ public class RecentActivity extends PBModel {
     public void writeToParcel(Parcel dest, int flags) {
       dest.writeString(this.amount);
       dest.writeString(this.currency);
+      dest.writeString(this.transactionId);
     }
 
     protected Parameter(Parcel in) {
       this.amount = in.readString();
       this.currency = in.readString();
+      this.transactionId = in.readString();
     }
 
     public static final Creator<Parameter> CREATOR = new Creator<Parameter>() {

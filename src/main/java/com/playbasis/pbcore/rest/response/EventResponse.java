@@ -10,6 +10,7 @@ public class EventResponse {
   public String logId;
   public String value;
   public int index;
+  public String transactionId;
   public RewardResponse rewardResponse;
 
 }
