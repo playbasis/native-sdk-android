@@ -29,6 +29,7 @@ import com.playbasis.pbcore.rest.response.RewardResponse;
 import com.playbasis.pbcore.rest.result.player.GetUserCustomFieldsApiResult;
 import com.playbasis.pbcore.rest.result.quest.QuestLeaderboardApiResult;
 import com.playbasis.pbcore.rest.service.BadgeService;
+import com.playbasis.pbcore.rest.service.CampaignService;
 import com.playbasis.pbcore.rest.service.CommunicationService;
 import com.playbasis.pbcore.rest.service.ContentService;
 import com.playbasis.pbcore.rest.service.EngineService;
@@ -97,6 +98,7 @@ public class RestClient {
   protected GameService gameService;
   protected GenericService genericService;
   protected PointService pointService;
+  protected CampaignService campaignService;
 
   protected String apiKey;
   protected String apiSecret;
@@ -138,6 +140,7 @@ public class RestClient {
     gameService = retrofit.create(GameService.class);
     genericService = retrofit.create(GenericService.class);
     pointService = retrofit.create(PointService.class);
+    campaignService = retrofit.create(CampaignService.class);
   }
 
   public RestClient(String url) {
@@ -243,6 +246,10 @@ public class RestClient {
 
   public GenericService getGenericService() {
     return genericService;
+  }
+
+  public CampaignService getCampaignService() {
+    return campaignService;
   }
 
   public String getBaseUrl() {
