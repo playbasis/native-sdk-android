@@ -3,8 +3,11 @@ package com.playbasis.pbcore.domain.model;
 import android.os.Parcel;
 
 import com.playbasis.pbcore.rest.response.ActiveCampaignResponse;
+import com.playbasis.pbcore.rest.response.GameStageResponse;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Nott on 18/11/2559.
@@ -38,6 +41,20 @@ public class Campaign extends PBModel {
     this.imageUrl = response.imageUrl;
     this.startDate = response.startDate;
     this.endDate = response.endDate;
+  }
+
+  public static <T extends ActiveCampaignResponse> ArrayList<Campaign> createCampaigns(List<T> responses) {
+    ArrayList<Campaign> campaigns = new ArrayList<>();
+
+    if (responses == null || responses.size() == 0) {
+      return campaigns;
+    }
+
+    for (T response : responses) {
+      campaigns.add(new Campaign(response));
+    }
+
+    return campaigns;
   }
 
   public String getName() {
