@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.playbasis.pbcore.domain.controller.PBSharedPreference;
@@ -50,6 +51,7 @@ import com.playbasis.pbcore.rest.service.SettingService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
 import com.playbasis.pbcore.rest.service.TripService;
+import com.playbasis.sdk.Playbasis;
 
 import javax.inject.Inject;
 
@@ -65,7 +67,6 @@ import rx.schedulers.Schedulers;
  * For Stroll Guam project.
  */
 public class RestClient {
-
   public static final String TAG = "RestClient";
 
   public void tmp() {
@@ -113,7 +114,7 @@ public class RestClient {
     OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
     retrofit = new Retrofit.Builder()
-        .baseUrl(getBaseUrl())
+        .baseUrl(Playbasis.getBaseURL())
         .client(client)
         .addConverterFactory(GsonConverterFactory.create(getGson()))
         .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.from(threadExecutor)))
@@ -250,10 +251,6 @@ public class RestClient {
 
   public CampaignService getCampaignService() {
     return campaignService;
-  }
-
-  public String getBaseUrl() {
-    return "https://api.pbapp.net/";
   }
 
   public void setApiKey(String apiKey) {
