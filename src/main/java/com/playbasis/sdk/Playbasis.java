@@ -1,11 +1,13 @@
 package com.playbasis.sdk;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.playbasis.pbcore.dependency.component.DaggerPlaybasisComponent;
 import com.playbasis.pbcore.dependency.component.PlaybasisComponent;
 import com.playbasis.pbcore.dependency.module.PlaybasisModule;
+import com.playbasis.pbcore.domain.controller.PBSharedPreference;
 import com.playbasis.pbcore.rest.RestClient;
 
 import javax.inject.Inject;
@@ -18,11 +20,14 @@ public class Playbasis {
 
   private static Playbasis playbasis;
   private static PlaybasisComponent playbasisComponent;
-  private static final String originBaseURL = "https://api.pbapp.net/";
+  //private static final String originBaseURL = "https://api.pbapp.net/";
+  private static final String originBaseURL = "https://dbs-api.pbapp.net/";
   private static String sBaseURL;
 
   @Inject
   RestClient restClient;
+  @Inject
+  PBSharedPreference pbSharedPreference;
 
   public static Playbasis instance() {
     if (playbasis == null) {
@@ -38,20 +43,22 @@ public class Playbasis {
     init(application, null, null);
   }
 
+  public static void init(Application application, String apiKey, String apiSecret, String baseURL) {
+    sBaseURL = baseURL;
+    init(application, apiKey, apiSecret);
+  }
+
   public static void init(Application application, String apiKey, String apiSecret) {
     playbasisComponent = DaggerPlaybasisComponent.builder()
         .playbasisModule(new PlaybasisModule(application))
         .build();
 
     Playbasis playbasis = instance();
+    playbasis.pbSharedPreference.writeToken(null);
     playbasis.restClient.setApiKey(apiKey);
     playbasis.restClient.setApiSecret(apiSecret);
   }
 
-  public static void init(Application application, String apiKey, String apiSecret, String baseURL) {
-    sBaseURL = baseURL;
-    init(application, apiKey, apiSecret);
-  }
 
   public static String getBaseURL() {
     if (TextUtils.isEmpty(sBaseURL)) {
