@@ -21,7 +21,7 @@ public interface EngineService {
   Observable<RuleApiResult> rule(
       @NonNull @Field("token") String token,
       @NonNull @Field("action") String action,
-      @NonNull @Field("player_id") String playerId,
+      @NonNull @Field(value = "player_id", encoded = true) String playerId,
       @FieldMap ParamsMap fields
   );
 }
