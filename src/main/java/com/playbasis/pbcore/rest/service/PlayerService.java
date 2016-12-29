@@ -81,7 +81,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/data/all")
   Observable<GetPlayerDetailApiResult> getPlayerPrivateInfo(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Field("token") String token,
       @FieldMap ParamsMap fields
   );
@@ -98,7 +98,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/register")
   Observable<RegisterPlayerApiResult> registerPlayer(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("username") String username,
       @NonNull @Field("email") String email,
@@ -108,7 +108,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/{id}/email/verify")
   Observable<VerifyPlayerEmailApiResult> sendPlayerVerifyEmail(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Field("token") String token,
       @FieldMap ParamsMap fields
   );
@@ -124,7 +124,7 @@ public interface PlayerService {
 
   @GET("Player/{id}/custom")
   Observable<GetUserCustomFieldsApiResult> getPlayerCustomFields(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
@@ -141,28 +141,28 @@ public interface PlayerService {
 
   @GET("Player/{id}/badge")
   Observable<GetPlayerBadgesApiResult> getPlayerEarnedBadges(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/badgeAll")
   Observable<GetPlayerBadgesApiResult> getPlayerAllBadges(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/goods")
   Observable<GetPlayerGoodsApiResult> getPlayerAllGoods(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
 
   @GET("Player/questAll/{id}")
   Observable<PlayerQuestListApiResult> getAllPlayerQuest(
-      @NonNull @Path("id") String PlayerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap  ParamsMap fields
   );
@@ -184,14 +184,14 @@ public interface PlayerService {
 
   @GET("Player/{id}/points")
   Observable<PlayerPointsApiResult> getPlayerAllPoints(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/points/{point_name}")
   Observable<PlayerPointApiResult> getPlayerPoint(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Path("point_name") String pointName,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
@@ -208,7 +208,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/auth/{id}/requestOTPCode")
   Observable<RequestOTPCodeApiResult> requestOTPCode(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Field("token") String token,
       @FieldMap ParamsMap fields
   );
@@ -216,7 +216,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/auth/{id}/setupPhone")
   Observable<SetupPhoneApiResult> setupPhone(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("phone_number") String phoneNumber,
       @FieldMap ParamsMap fields
@@ -225,7 +225,7 @@ public interface PlayerService {
   @FormUrlEncoded
   @POST("Player/auth/{id}/verifyOTPCode")
   Observable<VerifyOTPCodeApiResult> verifyOTPCode(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Field("token") String token,
       @NonNull @Field("code") String code,
       @FieldMap ParamsMap fields
@@ -233,21 +233,21 @@ public interface PlayerService {
 
   @GET("Player/{id}/actionReport")
   Observable<ActionReportApiResult> actionReport(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/code")
   Observable<ReferralCodeApiResult> referralCode(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
   );
 
   @GET("Player/{id}/action/{actionName}/count")
   Observable<PlayerActionCountApiResult> actionCount(
-      @NonNull @Path("id") String playerId,
+      @NonNull @Path(value = "id", encoded = true) String playerId,
       @NonNull @Path("actionName") String actionName,
       @NonNull @Query("api_key") String apiKey,
       @QueryMap ParamsMap params
