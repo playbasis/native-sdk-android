@@ -26,15 +26,27 @@ ext {
   ...
 }
 ```
-4.) Open a terminal session on the app folder.
 
-5.) Run gradle install script
+5.) Add bintray user and api_key to bottom of "local.properties" file at root project folder.
+
+PS: you can ask K.Thanakij for user and api key
+```
+bintray.user={USER}
+bintray.apikey={API_KEY}
+```
+
+6.) Open a terminal session on the app folder.
+
+7.) Run gradle install script
+
+Warning: make sure gradle install successful
+
+Recommend: you should run this command 2 times
 ```
   ./gradlew install
 ```
-Warning: make sure gradle install successful
 
-6.) Run bintray upload script
+8.) Run bintray upload script
 ```
   ./gradlew bintrayUpload
 ```
