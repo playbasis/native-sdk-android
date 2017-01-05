@@ -75,5 +75,7 @@ public class RecentActivityResponse {
     public String currency;
     @SerializedName("transaction_id")
     public String transactionId;
+    @SerializedName("card")
+    public String card;
   }
 }
