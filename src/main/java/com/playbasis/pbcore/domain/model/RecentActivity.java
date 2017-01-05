@@ -333,11 +333,13 @@ public class RecentActivity extends PBModel {
     public String amount;
     public String currency;
     public String transactionId;
+    public String card;
 
     public Parameter(RecentActivityResponse.ParameterResponse parameterResponse) {
       this.amount = parameterResponse.amount;
       this.currency = parameterResponse.currency;
       this.transactionId = parameterResponse.transactionId;
+      this.card = parameterResponse.card;
     }
 
     public String getAmount() {
@@ -352,6 +354,10 @@ public class RecentActivity extends PBModel {
       return transactionId;
     }
 
+    public String getCard(){
+      return card;
+    }
+
     @Override
     public int describeContents() {
       return 0;
@@ -362,12 +368,14 @@ public class RecentActivity extends PBModel {
       dest.writeString(this.amount);
       dest.writeString(this.currency);
       dest.writeString(this.transactionId);
+      dest.writeString(this.card);
     }
 
     protected Parameter(Parcel in) {
       this.amount = in.readString();
       this.currency = in.readString();
       this.transactionId = in.readString();
+      this.card = in.readString();
     }
 
     public static final Creator<Parameter> CREATOR = new Creator<Parameter>() {
