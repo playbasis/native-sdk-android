@@ -1,6 +1,7 @@
 # Native SDK Android
 
-The SDK allows you to add to application for upload to the Bintray
+This SDK don't need to be include as module on the customer app, but require to be upload on bintray.
+The following instruction explain how to update and upload the SDK into bintray.
 
 ### Installation
 
@@ -8,8 +9,9 @@ The SDK allows you to add to application for upload to the Bintray
 
 2.) Import Native SDK Android module to the application.
 
-3.) After you finished update code, you have to change build.gradle script on Native SDK Android
-in the part libraryVersion before upload to Bintray.
+3.) Update the SDK code.
+
+4.) Once it's done, you need to change the Native SDK Android version name on build.gradle file.
 ```
 Example:
 '1.0.0' << For master
@@ -24,14 +26,15 @@ ext {
   ...
 }
 ```
-4.) Open terminal on android studio and make sure current point to application root.
+4.) Open a terminal sesion on the app folder.
 
-5.) Run script gradle install
+5.) Run gradle install script
 ```
   ./gradlew install
 ```
 Warning: make sure gradle install successful
-6.) Run script bintray upload
+
+6.) Run bintray upload script
 ```
   ./gradlew bintrayUpload
 ```
