@@ -26,7 +26,7 @@ ext {
   ...
 }
 ```
-4.) Open a terminal sesion on the app folder.
+4.) Open a terminal session on the app folder.
 
 5.) Run gradle install script
 ```
