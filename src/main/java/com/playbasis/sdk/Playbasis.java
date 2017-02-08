@@ -21,7 +21,8 @@ public class Playbasis {
   private static Playbasis playbasis;
   private static PlaybasisComponent playbasisComponent;
   //private static final String originBaseURL = "https://api.pbapp.net/";
-  private static final String originBaseURL = "https://dbs-api.pbapp.net/";
+//  private static final String originBaseURL = "https://dbs-api.pbapp.net/";
+  private static final String originBaseURL = "http://tg-api.pbapp.net/";
   private static String sBaseURL;
 
   @Inject
