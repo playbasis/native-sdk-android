@@ -47,6 +47,7 @@ import com.playbasis.pbcore.rest.service.SettingService;
 import com.playbasis.pbcore.rest.service.StoreOrganizeService;
 import com.playbasis.pbcore.rest.service.TokenService;
 import com.playbasis.pbcore.rest.service.TripService;
+import com.playbasis.sdk.Playbasis;
 
 import javax.inject.Inject;
 
@@ -108,7 +109,7 @@ public class RestClient {
     OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
     retrofit = new Retrofit.Builder()
-        .baseUrl(getBaseUrl())
+        .baseUrl(Playbasis.getBaseURL())
         .client(client)
         .addConverterFactory(GsonConverterFactory.create(getGson()))
         .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.from(threadExecutor)))
@@ -237,9 +238,9 @@ public class RestClient {
     return genericService;
   }
 
-  public String getBaseUrl() {
-    return "https://api.pbapp.net/";
-  }
+//  public String getBaseUrl() {
+//    return "https://api.pbapp.net/";
+//  }
 
   public void setApiKey(String apiKey) {
     this.apiKey = apiKey;
