@@ -340,8 +340,8 @@ public class PlayerAPI {
 
   public static class PlayerAuthForm extends PlayerAuthenticationForm {
 
-    public PlayerAuthForm(String password) {
-      super(password);
+    public PlayerAuthForm(String username, String password) {
+      super(username, password);
     }
   }
 

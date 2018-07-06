@@ -14,7 +14,8 @@ public class PlayerAuthenticationForm extends PBForm {
   protected String userName;
   protected String deviceToken;
 
-  public PlayerAuthenticationForm(String password) {
+  public PlayerAuthenticationForm(String username, String password) {
+    this.userName = username;
     this.password = password;
   }
 
