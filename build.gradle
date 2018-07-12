@@ -1,104 +1,110 @@
 buildscript {
-  repositories {
-    mavenCentral()
-    jcenter()
-  }
-  dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.1'
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-  }
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+    }
 }
 
 repositories {
-  mavenCentral()
-  jcenter()
+    google()
+    mavenCentral()
+    jcenter()
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'com.neenbedankt.android-apt'
 
 ext {
-  bintrayRepo = 'maven'
-  bintrayName = 'playbasis-sdk'
+    bintrayRepo = 'maven'
+    bintrayName = 'playbasis-sdk'
 
-  publishedGroupId = 'com.playbasis'
-  libraryName = 'playbasis-sdk'
-  artifact = 'playbasis-sdk'
+    publishedGroupId = 'com.playbasis'
+    libraryName = 'playbasis-sdk'
+    artifact = 'playbasis-sdk'
 
-  libraryDescription = 'The SDK to connect to playbasis API'
+    libraryDescription = 'The SDK to connect to playbasis API'
 
-  siteUrl = 'https://github.com/playbasis/native-sdk-android'
-  gitUrl = 'https://github.com/playbasis/native-sdk-android.git'
+    siteUrl = 'https://github.com/playbasis/native-sdk-android'
+    gitUrl = 'https://github.com/playbasis/native-sdk-android.git'
 
-  libraryVersion = '0.0.1'
+    libraryVersion = '0.0.4'
 
-  developerId = 'nakarinj'
-  developerName = 'Nakarin Jupattanakul'
-  developerEmail = 'nakarin.j@playbasis.com'
+    developerId = 'nakarinj'
+    developerName = 'Nakarin Jupattanakul'
+    developerEmail = 'nakarin.j@playbasis.com'
 
-  licenseName = 'The Apache Software License, Version 2.0'
-  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-  allLicenses = ["Apache-2.0"]
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
 
 
 android {
-  compileSdkVersion 21
-  buildToolsVersion "21.1.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
-  defaultConfig {
-    minSdkVersion 15
-    targetSdkVersion 21
-    versionCode 1
-    versionName "0.1"
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "0.1"
     }
-  }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  testCompile 'junit:junit:4.12'
-  compile 'com.android.support:appcompat-v7:21.0.3'
-  compile 'com.google.zxing:core:3.2.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.google.zxing:core:3.2.1'
 
-  // Dagger 2
-  apt 'com.google.dagger:dagger-compiler:2.0'
-  compile 'com.google.dagger:dagger:2.0'
-  provided 'javax.annotation:jsr250-api:1.0'
+    // Dagger 2
+//    annotationProcessor 'com.google.dagger:dagger-compiler:2.0'
+//    implementation 'com.google.dagger:dagger:2.0'
+//    provided 'javax.annotation:jsr250-api:1.0'
+    implementation 'com.google.dagger:dagger:2.11'
+    implementation 'com.google.dagger:dagger-android-support:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
 
-  // Butterknife
-  compile 'com.jakewharton:butterknife:8.0.1'
-  apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    // Butterknife
+    api 'com.jakewharton:butterknife:8.0.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.1'
 
-  // Retrofit
-  compile 'com.squareup.retrofit2:retrofit:2.0.2'
-  compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-  compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
-  compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
-  compile 'com.squareup.okhttp3:okhttp:3.2.0'
-  compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    // Retrofit
+    api 'com.squareup.retrofit2:retrofit:2.0.2'
+    api 'com.squareup.retrofit2:converter-gson:2.0.2'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    api 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+    api 'com.squareup.okhttp3:okhttp:3.2.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.2.0'
 
-  // Glide
-  compile 'com.github.bumptech.glide:glide:3.7.0'
+    // Glide
+    api 'com.github.bumptech.glide:glide:3.7.0'
 
-  // GSON
-  compile 'com.google.code.gson:gson:2.4'
+    // GSON
+    api 'com.google.code.gson:gson:2.4'
 
-  // RxAndroid + RxJava
-  compile 'io.reactivex:rxandroid:1.1.0'
-  compile 'io.reactivex:rxjava:1.1.0'
+    // RxAndroid + RxJava
+    api 'io.reactivex:rxandroid:1.1.0'
+    api 'io.reactivex:rxjava:1.1.0'
 
-  // BlurDialogFragment
-  //compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
+    // BlurDialogFragment
+    //compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
 
-  compile 'joda-time:joda-time:2.9.4'
+    api 'joda-time:joda-time:2.9.4'
 }
 
 apply plugin: 'com.github.dcendents.android-maven'
